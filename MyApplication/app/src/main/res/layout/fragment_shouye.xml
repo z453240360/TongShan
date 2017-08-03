@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/logo_heng" />
+
+    <!--<com.youth.banner.Banner xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/banner"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="200dp" />-->
+    <ImageView
+        android:src="@mipmap/banner_01"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:paddingTop="50dp"
+                android:onClick="onClick"
+                android:background="#ffffff"
+                android:id="@+id/mBtn_jinjian"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:drawingCacheQuality="auto"
+                android:drawableTop="@mipmap/jinjian"
+                android:text="进件"
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:textColor="#000000" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:onClick="onClick"
+                        android:drawingCacheQuality="auto"
+                        android:padding="5dp"
+                        android:background="#ffffff"
+                        android:id="@+id/mBtn_kehu"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/kehu"
+                        android:text="客户"
+                        android:textColor="#000000" />
+
+                    <Button
+                        android:clickable="false"
+                        android:drawingCacheQuality="auto"
+                        android:padding="5dp"
+                        android:background="#ffffff"
+                        android:id="@+id/mBtn_qiangdan"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/qiangdan"
+                        android:text="抢单"
+                        android:textColor="#000000" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:clickable="false"
+                        android:drawingCacheQuality="auto"
+                        android:padding="5dp"
+                        android:background="#ffffff"
+                        android:id="@+id/mBtn_shenpi"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/shenpi"
+                        android:text="审批"
+                        android:textColor="#000000" />
+
+                    <Button
+                        android:onClick="onClick"
+                        android:drawingCacheQuality="auto"
+                        android:padding="5dp"
+                        android:background="#ffffff"
+                        android:id="@+id/mBtn_shisuan"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/shisuangongju"
+                        android:text="试算工具"
+                        android:textColor="#000000" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <Button
+                    android:clickable="false"
+                    android:drawingCacheQuality="auto"
+                    android:background="#ffffff"
+                    android:id="@+id/mBtn_yeji"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/gerenyeji"
+                    android:text="个人业绩"
+                    android:textColor="#000000" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:clickable="false"
+                        android:drawingCacheQuality="auto"
+                        android:background="#ffffff"
+                        android:id="@+id/mBtn_longhu"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/longhubang"
+                        android:text="龙虎榜"
+                        android:textColor="#000000" />
+
+                    <Button
+                        android:clickable="false"
+                        android:drawingCacheQuality="auto"
+                        android:background="#ffffff"
+                        android:id="@+id/mBtn_gonggao"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawableTop="@mipmap/gonggaolan"
+                        android:text="公告栏"
+
+                        android:textColor="#000000" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    android:paddingTop="50dp"
+                    android:clickable="false"
+                    android:drawingCacheQuality="auto"
+                    android:background="#ffffff"
+                    android:drawablePadding="10dp"
+                    android:textColor="#000000"
+                    android:id="@+id/mBtn_chanpin"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableTop="@mipmap/chanpinzhongxin"
+                    android:text="产品中心" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

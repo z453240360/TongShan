@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_jinjian"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ts888.tongshan.tongshan.activity.JinjianActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbars_jinjian_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1b7ab4"
+        android:popupTheme="@style/AppTheme">
+
+        <TextView
+            android:id="@+id/mTxt_jinjian_Activity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="进件查询"
+            android:textSize="20sp" />
+    </android.support.v7.widget.Toolbar>
+
+    <EditText
+        android:paddingLeft="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="30dp"
+        android:drawablePadding="10dp"
+        android:id="@+id/mEd_tiaojian_jinjian_Activity"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/yuanjiao"
+        android:drawableLeft="@mipmap/kehuxingming"
+        android:hint="请输入姓名" />
+
+    <EditText
+        android:paddingLeft="15dp"
+        android:drawablePadding="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/mEd_shenfenzheng_jinjian_Activity"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/yuanjiao"
+        android:drawableLeft="@mipmap/shenfenzhenghao"
+        android:hint="输入身份证号" />
+
+    <TextView
+        android:id="@+id/mTxt_chaxun_jinjian_Activity"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@mipmap/jingshi"
+        android:text="请输入姓名或身份证号码,查询是否进件"
+        android:textColor="#1b7ab4" />
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:layout_margin="15dp"
+        android:textColor="#f7f7f7"
+        android:id="@+id/mBtn_chaxun_jinjian_Activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/yuanjiaologinbutton"
+        android:text="查  询" />
+
+    <LinearLayout
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:background="@drawable/xuxiankuang"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/mTxt_jieguo_jinjian_activity"
+            android:layout_marginTop="20dp"
+            android:textColor="#757575"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="查询结果" />
+
+        <TextView
+            android:id="@+id/mTxt_xinxi_jinjian_activity"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#1b7ab4"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="进件状态" />
+    </LinearLayout>
+</LinearLayout>

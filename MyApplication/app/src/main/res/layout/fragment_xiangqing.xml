@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:background="#F6F6F6"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/mTxt_gerenxinxi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/gerenxixni"
+            android:text="个人信息"
+            android:drawablePadding="10dp"
+            android:gravity="center"
+            android:textColor="#126cb0"
+            android:textSize="22dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/mTxt_shenfenzhenghao"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="借款人"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_alignBottom="@id/mTxt_shenfenzhenghao"
+                android:id="@+id/mTxt_shenfenid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textSize="18sp"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@id/mTxt_shenfenzhenghao"
+                android:textColor="#8b8b8b" />
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#8b8b8b" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/mTxt_jiekuan2"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="身份证号"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/mTxt_jiekuanname2"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/mTxt_jiekuan2"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@id/mTxt_jiekuan2"
+                android:textColor="#8b8b8b" />
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#8b8b8b" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/mTxt_shouji"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="注册手机 "
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_alignBottom="@id/mTxt_shouji"
+                android:id="@+id/mTxt_shouji2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/mTxt_shouji"
+                android:textColor="#8b8b8b" />
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#8b8b8b" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/mTxt_jine"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="申请金额 "
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_alignBottom="@id/mTxt_jine"
+                android:id="@+id/mTxt_jine2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/mTxt_jine"
+                android:textColor="#8b8b8b" />
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#8b8b8b" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/mTxt_hunyin"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="婚姻状况"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_alignBottom="@id/mTxt_hunyin"
+                android:id="@+id/mTxt_hunyin2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/mTxt_hunyin"
+                android:textColor="#8b8b8b" />
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#8b8b8b" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/mTxt_xueli"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="学历情况"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_alignBottom="@id/mTxt_xueli"
+                android:id="@+id/mTxt_xueli2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/mTxt_xueli"
+                android:textColor="#8b8b8b" />
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#8b8b8b" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/mTxt_dizhi"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="居住地址 "
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_alignBottom="@id/mTxt_dizhi"
+                android:id="@+id/mTxt_dizhi2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/mTxt_dizhi"
+                android:textColor="#8b8b8b" />
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#8b8b8b" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/mTxt_xinzhi"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="居住性质 "
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_alignBottom="@id/mTxt_xinzhi"
+                android:id="@+id/mTxt_xinzhi2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/mTxt_xinzhi"
+                android:textColor="#8b8b8b" />
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#8b8b8b" />
+        <TextView
+            android:background="#F6F6F6"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/gongzuoxinxi"
+            android:text="工作信息"
+            android:drawablePadding="10dp"
+            android:gravity="center"
+            android:textColor="#126cb0"
+            android:textSize="22dp" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/mTxt_danwei"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="单位名称 "
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_alignBottom="@id/mTxt_danwei"
+                android:id="@+id/mTxt_danwei2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/mTxt_danwei"
+                android:textColor="#8b8b8b" />
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#8b8b8b" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/mTxt_danweidizhi"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="单位地址"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_alignBottom="@id/mTxt_danweidizhi"
+                android:id="@+id/mTxt_danweidizhi2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/mTxt_danweidizhi"
+                android:textColor="#8b8b8b" />
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#8b8b8b" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/mTxt_danweidianhua"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="单位电话 "
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_alignBottom="@id/mTxt_danweidianhua"
+                android:id="@+id/mTxt_danweidianhua2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/mTxt_danweidianhua"
+                android:textColor="#8b8b8b" />
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#8b8b8b" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/mTxt_xingzhi"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="单位性质 "
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_alignBottom="@id/mTxt_xingzhi"
+                android:id="@+id/mTxt_xingzhi2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/mTxt_xingzhi"
+                android:textColor="#8b8b8b" />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#8b8b8b" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/mTxt_zhiji"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="单位职级"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_alignBottom="@id/mTxt_zhiji"
+                android:id="@+id/mTxt_zhiji2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/mTxt_zhiji"
+                android:textColor="#8b8b8b" />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#8b8b8b" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/mTxt_ruzhi"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="入职时间"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_alignBottom="@id/mTxt_ruzhi"
+                android:id="@+id/mTxt_ruzhi2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/mTxt_ruzhi"
+                android:textColor="#8b8b8b" />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#8b8b8b" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            >
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/mTxt_dangyue"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="当前月收入"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_alignBottom="@id/mTxt_dangyue"
+                android:id="@+id/mTxt_dangyue2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="30dp"
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/mTxt_dangyue"
+                android:textColor="#8b8b8b" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>

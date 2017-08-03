@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ts888.tongshan.tongshan.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/ll_main"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/yuanjiao"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_marginLeft="20dp"
+            android:id="@+id/rl_main2"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            >
+            <EditText
+                android:drawablePadding="10dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/mEd_user_phoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:textColorHint="#aaaaaa"
+                android:drawableLeft="@mipmap/shoujihao"
+                android:hint="请输入手机号" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginLeft="20dp"
+            android:id="@+id/rl_main"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            >
+
+            <EditText
+                android:drawablePadding="10dp"
+                android:background="@null"
+                android:layout_centerVertical="true"
+                android:textColorHint="#aaaaaa"
+                android:id="@+id/mEd_user_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/yanzhengma"
+                android:hint="请输入验证码" />
+
+            <Button
+                android:onClick="onClick"
+                android:layout_centerVertical="true"
+                android:layout_margin="10dp"
+                android:layout_alignParentRight="true"
+                android:textColor="#ffffff"
+                android:id="@+id/mBtn_getPassword"
+                android:layout_width="wrap_content"
+                android:background="@drawable/yuanjiaonutton"
+                android:layout_height="wrap_content"
+                android:text="免费获取" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_marginBottom="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/ll_main"
+        android:id="@+id/log_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/logo" />
+
+
+    <Button
+        android:onClick="onClick"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_below="@id/ll_main"
+        android:id="@+id/mBtn_logIn"
+        android:textColor="#f7f7f7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/yuanjiaologinbutton"
+        android:text="登陆" />
+
+</RelativeLayout>

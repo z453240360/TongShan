@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="3dp"
+    android:layout_width="match_parent"
+    android:layout_height="120dp">
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:textColor="#126cb0"
+        android:id="@+id/mTxt_dangqianjiedian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="当前节点：" />
+
+    <TextView
+        android:textColor="#126cb0"
+        android:layout_alignBottom="@id/mTxt_dangqianjiedian"
+        android:id="@+id/mTxt_jianban"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/mTxt_dangqianjiedian"
+        android:text="简版征信" />
+
+    <TextView
+        android:textColor="#0bb04a"
+        android:textSize="18sp"
+        android:id="@+id/mTxt_wuqian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="5000元" />
+
+    <TextView
+        android:textColor="#0bb04a"
+        android:textSize="18sp"
+        android:id="@+id/mTxt_jine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/mTxt_wuqian"
+        android:text="申请金额：" />
+
+    <RelativeLayout
+        android:layout_marginTop="5dp"
+        android:id="@+id/ll_kehu_fragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mTxt_dangqianjiedian"
+        android:gravity="center">
+
+        <TextView
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:id="@+id/mTxt_sunxiaobao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="孙小宝" />
+
+        <ImageView
+            android:id="@+id/mBtn_open"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/youjiantou_01" />
+
+        <TextView
+            android:layout_below="@id/mTxt_sunxiaobao"
+            android:id="@+id/view"
+            android:background="#8b8b8b"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_marginTop="3dp"
+        android:textColor="#8b8b8b"
+        android:textSize="18sp"
+        android:id="@+id/mTxt_shenqinshijian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_kehu_fragment"
+        android:text="申请时间:" />
+
+    <TextView
+        android:textColor="#8b8b8b"
+        android:textSize="18sp"
+        android:id="@+id/mTxt_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/mTxt_shenqinshijian"
+        android:layout_toRightOf="@id/mTxt_shenqinshijian"
+        android:text="时间" />
+</RelativeLayout>

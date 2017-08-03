@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_ye_wu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ts888.tongshan.tongshan.activity.YeWuActivity">
+
+    <RadioGroup
+        android:id="@+id/mRg_main"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/mRb_shouye"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="false"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/radiodrawable"
+            android:gravity="center"
+            android:tag="0"
+            android:layout_margin="2dp"
+            android:text="首页"
+            android:textColor="@drawable/radiobuttoncolor"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/mRb_xiaoxi"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/radiodrable2"
+            android:gravity="center"
+            android:layout_margin="2dp"
+            android:tag="1"
+            android:text="消息中心"
+            android:textColor="@drawable/radiobuttoncolor2"
+            android:textSize="15sp" />
+
+        <RadioButton
+            android:id="@+id/mRb_gengduo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/radiodrawable3"
+            android:gravity="center"
+            android:tag="2"
+            android:text="更多"
+            android:layout_margin="2dp"
+            android:textColor="@drawable/radiobuttoncolor2"
+            android:textSize="15sp" />
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/mFl_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/mRg_main" />
+</RelativeLayout>
