@@ -1,294 +1,340 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_shi_suan"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#F5F5F5"
     tools:context="com.ts888.tongshan.tongshan.activity.ShiSuanActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbars_jinjian_activity"
+        android:id="@+id/toolbars_shisuan_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:layout_gravity="center"
         android:background="#1b7ab4"
         android:popupTheme="@style/AppTheme">
 
         <TextView
             android:id="@+id/mTxt_jinjian_Activity"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_gravity="center"
             android:text="试算工具"
             android:textColor="#ffffff"
             android:textSize="22sp" />
     </android.support.v7.widget.Toolbar>
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/mtxt_jine"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/toolbars_shisuan_activity"
         android:layout_gravity="center_vertical"
-        android:id="@+id/ll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+        android:background="@null"
+        android:gravity="right|center_vertical"
+        android:text="申请金额："
+        android:textColor="#000000"
+        android:textSize="18sp" />
 
-        <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:text="申请金额："
-            android:textColor="#000000"
-            android:textSize="18sp" />
 
-        <EditText
-            android:inputType="number|numberDecimal"
-            android:id="@+id/mEd_jine"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:paddingLeft="2dp"
-            android:background="@drawable/yuanjiao"
-            android:hint="请输入申请金额"
-            android:textSize="18sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="万元"
-            android:textColor="#000000"
-            android:textSize="18sp" />
+    <TextView
+        android:id="@+id/wanyuan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/mtxt_jine"
 
-    </LinearLayout>
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/mtxt_jine"
+        android:layout_gravity="center_vertical"
+        android:gravity="right|center_vertical"
+        android:layout_marginRight="10dp"
+        android:text="万元"
+        android:background="#ffffff"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+    <EditText
+        android:id="@+id/mEd_jine"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@id/mtxt_jine"
+        android:layout_alignTop="@id/mtxt_jine"
+        android:layout_gravity="center_vertical"
+        android:layout_toLeftOf="@id/wanyuan"
+        android:layout_toRightOf="@id/mtxt_jine"
+        android:background="#ffffff"
+        android:hint="请输入申请金额"
+        android:inputType="number|numberDecimal"
+        android:paddingLeft="2dp"
+        android:textColorHint="#aaaaaa"
+        android:textSize="18sp" />
 
-    <LinearLayout
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/ll2"
+    <TextView
+        android:gravity="right|center_vertical"
+        android:id="@+id/txt_qixian"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/mtxt_jine"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:background="@null"
+        android:text="期   限："
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:id="@+id/mSpinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/txt_qixian"
+        android:layout_alignTop="@id/txt_qixian"
+        android:layout_below="@id/mtxt_jine"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@id/txt_qixian"
+        android:background="@drawable/yuanjiao"></Spinner>
+
+
+    <TextView
         android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:id="@+id/txt_feilv"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/txt_qixian"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="30dp"
+        android:background="@null"
+        android:gravity="right|center_vertical"
+        android:text="费   率："
+        android:textColor="#000000"
+        android:textSize="18sp" />
 
-        <TextView
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:background="@null"
-            android:text="期   限："
-            android:textColor="#000000"
-            android:textSize="18sp" />
-
-        <Spinner
-            android:id="@+id/mSpinner"
-            android:layout_width="match_parent"
-            android:layout_marginRight="10dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ll"
-            android:background="@drawable/yuanjiao"></Spinner>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/ll3"
-        android:layout_gravity="center_horizontal"
+    <Spinner
+        android:id="@+id/mSpinner2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_alignBottom="@id/txt_feilv"
+        android:layout_alignTop="@id/txt_feilv"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@id/txt_feilv"
 
-        <TextView
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:background="@null"
-            android:text="费   率："
-            android:textColor="#000000"
-            android:textSize="18sp" />
-
-        <Spinner
-            android:layout_marginRight="10dp"
-            android:id="@+id/mSpinner2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/yuanjiao"></Spinner>
-    </LinearLayout>
+        android:background="@drawable/yuanjiao"></Spinner>
 
 
     <Button
+
         android:id="@+id/mBtn_check"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_feilv"
+        android:layout_gravity="center_horizontal"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
         android:background="@drawable/yuanjiaologinbutton"
         android:onClick="onClick"
-        android:textSize="20sp"
+        android:text="查   询"
         android:textColor="#ffffff"
-        android:text="查   询" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/mTxt_chaxun_jinjian_Activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/mBtn_check"
+        android:layout_gravity="center_vertical"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:drawablePadding="10dp"
         android:drawableLeft="@mipmap/jingshi"
+        android:drawablePadding="10dp"
         android:text="试算结果仅供参考，具体以审批通过后的合同金额为准"
         android:textColor="#1b7ab4" />
 
-    <LinearLayout
-        android:gravity="center_vertical"
+    <RelativeLayout
+        android:id="@+id/rl_1"
         android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/mTxt_chaxun_jinjian_Activity"
         android:layout_marginTop="20dp"
         android:background="#ffffff"
-        android:orientation="horizontal">
+        android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/mTxt_feilv"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_gravity="right"
             android:layout_marginLeft="10dp"
-            android:text="月 费 率"
+            android:gravity="right"
+            android:text="月 费 率:"
             android:textColor="#000000"
             android:textSize="18sp" />
 
         <TextView
+
             android:id="@+id/mTxt_feilv2"
             android:layout_width="match_parent"
-            android:layout_gravity="center_vertical"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:textColor="#000" />
-    </LinearLayout>
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="40dp"
+            android:layout_toRightOf="@id/mTxt_feilv"
+            android:text="ahahah"
+            android:textColor="#8b8b8b" />
+    </RelativeLayout>
 
     <TextView
-        android:background="#aaaaaa"
+        android:id="@+id/txt1"
         android:layout_width="match_parent"
-        android:layout_height="0.3dp" />
+        android:layout_height="0.3dp"
+        android:layout_below="@id/rl_1"
+        android:background="#aaaaaa" />
 
-    <LinearLayout
-        android:gravity="center_vertical"
+    <RelativeLayout
+        android:id="@+id/rl_2"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/txt1"
         android:background="#ffffff"
-        android:orientation="horizontal">
+        android:gravity="center_vertical">
 
         <TextView
             android:id="@+id/mTxt_qixian"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="期    限"
+            android:layout_gravity="right"
             android:layout_marginLeft="10dp"
+            android:gravity="right"
+            android:text="期    限:"
             android:textColor="#000000"
             android:textSize="18sp" />
 
         <TextView
-            android:layout_gravity="center_vertical"
+
             android:id="@+id/mTxt_qixian2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:textColor="#000" />
-    </LinearLayout>
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="40dp"
+            android:textColor="#8b8b8b" />
+    </RelativeLayout>
+
     <TextView
-        android:background="#aaaaaa"
+        android:id="@+id/txt2"
         android:layout_width="match_parent"
-        android:layout_height="0.3dp" />
-    <LinearLayout
-        android:gravity="center_vertical"
+        android:layout_height="0.3dp"
+        android:layout_below="@id/rl_2"
+        android:background="#aaaaaa" />
+
+    <RelativeLayout
+        android:id="@+id/rl_3"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/txt2"
         android:background="#ffffff"
-        android:orientation="horizontal">
+        android:gravity="center_vertical">
 
         <TextView
-            android:layout_marginLeft="10dp"
+
             android:id="@+id/mTxt_daoshou"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="到手金额"
+            android:layout_gravity="right"
+            android:layout_marginLeft="10dp"
+            android:gravity="right"
+            android:text="到手金额:"
             android:textColor="#000000"
             android:textSize="18sp" />
 
         <TextView
-            android:layout_gravity="center_vertical"
+
             android:id="@+id/mTxt_daoshou2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:textColor="#000" />
-    </LinearLayout>
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="40dp"
+            android:textColor="#8b8b8b" />
+    </RelativeLayout>
+
     <TextView
-        android:background="#aaaaaa"
+        android:id="@+id/txt3"
         android:layout_width="match_parent"
-        android:layout_height="0.3dp" />
-    <LinearLayout
-        android:gravity="center_vertical"
+        android:layout_height="0.3dp"
+        android:layout_below="@id/rl_3"
+        android:background="#aaaaaa" />
+
+    <RelativeLayout
+        android:id="@+id/rl_4"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/txt3"
         android:background="#ffffff"
-        android:orientation="horizontal">
+        android:gravity="center_vertical">
 
         <TextView
-            android:layout_marginLeft="10dp"
             android:id="@+id/mTxt_hetong"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="合同金额"
+            android:layout_gravity="right"
+            android:layout_marginLeft="10dp"
+            android:gravity="right"
+            android:text="合同金额:"
             android:textColor="#000000"
             android:textSize="18sp" />
 
         <TextView
-            android:layout_gravity="center_vertical"
             android:id="@+id/mTxt_hetong2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:textColor="#000" />
-    </LinearLayout>
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="40dp"
+            android:textColor="#8b8b8b" />
+    </RelativeLayout>
+
+
     <TextView
-        android:background="#aaaaaa"
+        android:id="@+id/txt4"
         android:layout_width="match_parent"
-        android:layout_height="0.3dp" />
-    <LinearLayout
-        android:gravity="center_vertical"
+        android:layout_height="0.3dp"
+        android:layout_below="@id/rl_4"
+        android:background="#aaaaaa" />
+
+
+    <RelativeLayout
+        android:id="@+id/rl_5"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/txt4"
         android:background="#ffffff"
-        android:orientation="horizontal">
+        android:gravity="center_vertical">
 
         <TextView
-            android:layout_marginLeft="10dp"
             android:id="@+id/mTxt_meiyue"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="每月应还"
+            android:layout_gravity="right"
+            android:layout_marginLeft="10dp"
+            android:gravity="right"
+            android:text="每月应还:"
             android:textColor="#000000"
             android:textSize="18sp" />
 
         <TextView
-            android:layout_gravity="center_vertical"
             android:id="@+id/mTxt_meiyue2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:textColor="#000" />
-    </LinearLayout>
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="40dp"
+            android:textColor="#8b8b8b" />
+    </RelativeLayout>
 
-
-</LinearLayout>
+</RelativeLayout>

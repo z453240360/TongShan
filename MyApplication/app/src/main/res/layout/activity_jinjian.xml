@@ -9,15 +9,15 @@
     tools:context="com.ts888.tongshan.tongshan.activity.JinjianActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbars_jinjian_activity"
+        android:layout_gravity="center"
+        android:id="@+id/toolbars_jinjian"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#1b7ab4"
         android:popupTheme="@style/AppTheme">
-
         <TextView
             android:id="@+id/mTxt_jinjian_Activity"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="#ffffff"

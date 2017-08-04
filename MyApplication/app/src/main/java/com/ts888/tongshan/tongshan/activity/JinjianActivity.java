@@ -3,9 +3,12 @@ package com.ts888.tongshan.tongshan.activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -28,7 +31,7 @@ public class JinjianActivity extends AppCompatActivity implements IMainView {
     private SharedPreferences sharedPreferences;
     private String token;
     private String TAG = "dd";
-
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,18 @@ public class JinjianActivity extends AppCompatActivity implements IMainView {
 
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_jinjian);
+//
+//        bar = getSupportActionBar();
+//
+//        bar.setHomeButtonEnabled(true);
+//        bar.setDisplayHomeAsUpEnabled(true);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbars_jinjian);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.mipmap.zuojiantou);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
 
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         token = sharedPreferences.getString("token", "888888");
@@ -87,5 +102,16 @@ public class JinjianActivity extends AppCompatActivity implements IMainView {
         String detail = userInfiBean.getData().getDetail();
         mTxt_statue.setText(detail);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

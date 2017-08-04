@@ -324,7 +324,7 @@ public class DateModel {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 try {
-                    if (null==response.body()){
+                    if (null==response.body().string()){
                         callBack.failed("请求的数据为空，或参数异常");
                         return;
                     }

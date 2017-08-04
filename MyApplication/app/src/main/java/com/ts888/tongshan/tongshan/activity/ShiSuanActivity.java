@@ -5,8 +5,10 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -51,14 +53,20 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView{
     private int period;
     private TextView mTxt_feilv2,mTxt_qixian2,mTxt_daoshou2,mTxt_hetong2,mTxt_meiyue2;
     private List<Integer> periods;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_shi_suan);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbars_shisuan_activity);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.mipmap.zuojiantou);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         map = new HashMap<>();
 
@@ -199,5 +207,16 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView{
                 present.getCalcContractInfoData(parmsBean,token);
                 break;
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.ts888.tongshan.tongshan.activity.XiangQingActivity">
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbars_jinjian_activity"
+        android:layout_gravity="center"
+        android:id="@+id/toolbars_xiang_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -14,10 +15,10 @@
         android:popupTheme="@style/AppTheme">
 
         <TextView
-            android:id="@+id/mTxt_jinjian_Activity"
+            android:id="@+id/mTxt_xiangqing_Activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_gravity="center"
             android:text="客户详情页"
             android:textColor="#ffffff"
             android:textSize="22sp" />
@@ -25,7 +26,7 @@
 
     <LinearLayout
         android:layout_marginTop="15dp"
-        android:layout_below="@id/toolbars_jinjian_activity"
+        android:layout_below="@id/toolbars_xiang_activity"
         android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

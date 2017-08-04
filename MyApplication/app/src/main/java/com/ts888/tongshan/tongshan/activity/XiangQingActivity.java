@@ -43,18 +43,23 @@ public class XiangQingActivity extends AppCompatActivity implements IMainView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Window window = this.getWindow();
-//        //设置Window为全透明
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_xiang_qing);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbars_xiang_activity);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        toolbar.setNavigationIcon(R.mipmap.zuojiantou);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
         useC = getIntent().getStringExtra("useC");
         token = getIntent().getStringExtra("token");
         manager = getSupportFragmentManager();
 
-        radioGroup = (RadioGroup) findViewById(R.id.RG_xiangqing);
-        toolbar = (Toolbar) findViewById(R.id.toolbars_jinjian_activity);
-        toolbar.setLogo(R.mipmap.zuojiantou);
+//        radioGroup = (RadioGroup) findViewById(R.id.RG_xiangqing);
+//        toolbar = (Toolbar) findViewById(R.id.toolbars_xiang_activity);
+//        toolbar.setLogo(R.mipmap.zuojiantou);
 
 
         initFragments();

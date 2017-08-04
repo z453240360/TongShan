@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RadioGroup;
@@ -22,7 +23,6 @@ import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 import com.ts888.tongshan.tongshan.util.ColorState;
 
-import static com.ts888.tongshan.tongshan.R.id.toolbars_jinjian_activity;
 
 public class KeHuActivity extends AppCompatActivity implements IMainView{
 
@@ -33,7 +33,7 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
     private ParmsBean parmsBean;
     private SharedPreferences sharedPreferences;
     private String token;
-    private Toolbar toolbars_jinjian_activity;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,11 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_ke_hu);
 
-        toolbars_jinjian_activity = (Toolbar) findViewById(R.id.toolbars_jinjian_activity);
+        toolbar = (Toolbar) findViewById(R.id.toolbars_kehu_activity);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.mipmap.zuojiantou);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         String userCode = sharedPreferences.getString("userCode","88888");
@@ -112,5 +116,18 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return super.onCreateOptionsMenu(menu);
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

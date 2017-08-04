@@ -12,7 +12,7 @@
         android:layout_marginRight="20dp"
         android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="100dp"
         android:background="@drawable/yuanjiao"
         android:orientation="vertical">
 
@@ -83,8 +83,8 @@
     <Button
         android:onClick="onClick"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_below="@id/ll_main"
         android:id="@+id/mBtn_logIn"
         android:textColor="#f7f7f7"

@@ -8,19 +8,20 @@
     tools:context="com.ts888.tongshan.tongshan.activity.KeHuActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbars_jinjian_activity"
+        android:layout_gravity="center"
+        android:id="@+id/toolbars_kehu_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="#1b7ab4"
-        android:popupTheme="@style/AppTheme">
+        >
 
         <TextView
             android:id="@+id/mTxt_jinjian_Activity"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="客  户"
+            android:text="客户"
+            android:layout_gravity="center"
             android:textColor="#ffffff"
             android:textSize="22sp" />
     </android.support.v7.widget.Toolbar>
@@ -29,7 +30,7 @@
         android:id="@+id/mRg_kehu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbars_jinjian_activity"
+        android:layout_below="@id/toolbars_kehu_activity"
         android:layout_marginTop="10dp"
         android:orientation="horizontal">
 

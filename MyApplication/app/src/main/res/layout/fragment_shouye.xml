@@ -10,19 +10,11 @@
         android:layout_height="wrap_content"
         android:src="@mipmap/logo_heng" />
 
-    <!--<com.youth.banner.Banner xmlns:app="http://schemas.android.com/apk/res-auto"-->
-        <!--android:id="@+id/banner"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="200dp" />-->
     <ImageView
         android:layout_marginTop="5dp"
         android:src="@mipmap/banner_01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-
-
-
     <LinearLayout
         android:layout_margin="5dp"
         android:orientation="vertical"
@@ -42,6 +34,7 @@
                 android:layout_height="match_parent">
                 <!--jinjian-->
                 <Button
+                    android:layout_margin="5dp"
                     android:paddingTop="50dp"
                     android:onClick="onClick"
                     android:background="#ffffff"
@@ -62,6 +55,8 @@
                 android:layout_height="match_parent">
                 <!--kehu +shenpi-->
                 <Button
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="2.5dp"
                     android:onClick="onClick"
                     android:padding="5dp"
                     android:background="#ffffff"
@@ -74,6 +69,8 @@
                     android:textColor="#000000" />
 
                 <Button
+                    android:layout_marginTop="2.5dp"
+                    android:layout_marginBottom="5dp"
                     android:clickable="false"
                     android:padding="5dp"
                     android:background="#ffffff"
@@ -89,12 +86,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <Button
+                    android:layout_marginBottom="5dp"
                     android:clickable="false"
                     android:padding="5dp"
                     android:background="#ffffff"
@@ -132,12 +131,16 @@
                 android:layout_height="match_parent">
 
                 <LinearLayout
+
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
                     android:layout_height="0dp">
 <!--gerenyeji-->
                     <Button
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginBottom="5dp"
                         android:clickable="false"
                         android:background="#ffffff"
                         android:id="@+id/mBtn_yeji"
@@ -159,7 +162,9 @@
                     android:layout_height="0dp">
                     <!--longhubang +gonggao-->
                     <Button
-
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
                         android:clickable="false"
                         android:background="#ffffff"
                         android:id="@+id/mBtn_longhu"
@@ -172,6 +177,8 @@
                         android:textColor="#000000" />
 
                     <Button
+                        android:layout_marginRight="5dp"
+                        android:layout_marginBottom="5dp"
                         android:paddingTop="5dp"
                         android:clickable="false"
                         android:background="#ffffff"
@@ -190,11 +197,14 @@
             </LinearLayout>
 
             <LinearLayout
+
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <Button
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="5dp"
                     android:paddingTop="50dp"
                     android:clickable="false"
                     android:background="#ffffff"

@@ -6,19 +6,39 @@
     android:layout_height="match_parent"
     tools:context="com.ts888.tongshan.tongshan.activity.YeWuActivity">
 
-    <RadioGroup
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbars_yewu_activity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
         android:gravity="center"
+        android:background="#1b7ab4"
+        android:popupTheme="@style/AppTheme">
+
+        <TextView
+            android:id="@+id/mTxt_xiangqing_Activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="通善金融"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
+    </android.support.v7.widget.Toolbar>
+
+    <RadioGroup
+        android:background="#ffffff"
         android:id="@+id/mRg_main"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <RadioButton
-            android:layout_marginTop="2dp"
             android:id="@+id/mRb_shouye"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:button="@null"
             android:checked="true"
@@ -31,10 +51,10 @@
             android:textSize="15sp" />
 
         <RadioButton
-            android:layout_marginTop="2dp"
             android:id="@+id/mRb_xiaoxi"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:button="@null"
             android:drawablePadding="5dp"
@@ -46,10 +66,10 @@
             android:textSize="15sp" />
 
         <RadioButton
-            android:layout_marginTop="2dp"
             android:id="@+id/mRb_gengduo"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:button="@null"
             android:drawablePadding="5dp"
@@ -62,9 +82,10 @@
     </RadioGroup>
 
     <FrameLayout
-        android:layout_marginTop="10dp"
         android:id="@+id/mFl_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/mRg_main" />
+        android:layout_above="@id/mRg_main"
+        android:layout_below="@id/toolbars_yewu_activity"
+        android:layout_marginTop="10dp" />
 </RelativeLayout>
