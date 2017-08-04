@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:background="@null"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -16,18 +18,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <LinearLayout
-        android:layout_margin="5dp"
+        android:background="@null"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:background="@null"
             android:orientation="horizontal"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="0dp">
 
             <LinearLayout
+                android:background="@null"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:layout_width="0dp"
@@ -49,6 +53,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:background="@null"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:layout_width="0dp"
@@ -86,6 +91,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:background="@null"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
@@ -119,19 +125,21 @@
         </LinearLayout>
 
         <LinearLayout
+            android:background="@null"
             android:orientation="horizontal"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="0dp">
 
             <LinearLayout
+                android:background="@null"
                 android:orientation="vertical"
                 android:layout_weight="2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <LinearLayout
-
+                    android:background="@null"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
@@ -156,14 +164,16 @@
 
                 </LinearLayout>
                 <LinearLayout
+                    android:background="@null"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:orientation="horizontal"
                     android:layout_height="0dp">
                     <!--longhubang +gonggao-->
                     <Button
+                        android:paddingRight="5dp"
+                        android:layout_marginRight="2.5dp"
                         android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
                         android:layout_marginBottom="5dp"
                         android:clickable="false"
                         android:background="#ffffff"
@@ -177,6 +187,7 @@
                         android:textColor="#000000" />
 
                     <Button
+                        android:layout_marginLeft="2.5dp"
                         android:layout_marginRight="5dp"
                         android:layout_marginBottom="5dp"
                         android:paddingTop="5dp"
@@ -197,7 +208,7 @@
             </LinearLayout>
 
             <LinearLayout
-
+                android:background="@null"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent">
@@ -227,106 +238,6 @@
 
     </LinearLayout>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <LinearLayout
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_marginBottom="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-
-
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-
-
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginBottom="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:orientation="vertical">
-
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-
-
-
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
 
 
 </LinearLayout>
