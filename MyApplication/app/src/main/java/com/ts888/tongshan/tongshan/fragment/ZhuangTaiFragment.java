@@ -18,6 +18,8 @@ import com.ts888.tongshan.tongshan.bean.ZhuangTaiBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by dongdong on 2017/8/3.
  */
@@ -40,7 +42,6 @@ public class ZhuangTaiFragment extends Fragment implements IMainView{
         super.onViewCreated(view, savedInstanceState);
         String useC = getArguments().getString("useC");
         String token = getArguments().getString("token");
-
         mTxt_zhuangtainame = (TextView) view.findViewById(R.id.mTxt_zhuangtainame);
         mTxt_time_zhuangtai2 = (TextView) view.findViewById(R.id.mTxt_time_zhuangtai2);
         mTxt_jiekuanname2 = (TextView) view.findViewById(R.id.mTxt_jiekuanname2);
@@ -79,12 +80,9 @@ public class ZhuangTaiFragment extends Fragment implements IMainView{
 
     @Override
     public void getLogin(String s) {
-        Log.i("dd", "getLoginkkhkkhhk: "+ s);
 
         Gson gson = new Gson();
         ZhuangTaiBean zhuangTaiBean = gson.fromJson(s, ZhuangTaiBean.class);
-
-
         ZhuangTaiBean.DataBean data = zhuangTaiBean.getData();
         String userName = data.getUserName();
         int applyAmt = data.getApplyAmt();
@@ -92,10 +90,13 @@ public class ZhuangTaiFragment extends Fragment implements IMainView{
         int period = data.getPeriod();
         int verifySchedule = data.getVerifySchedule();
 
+        float v = (float)(applyAmt / 10000);
+        DecimalFormat fnum = new DecimalFormat("##0.00");
+        String dd=fnum.format(v);
 
         mTxt_zhuangtainame.setText(userName);
         mTxt_time_zhuangtai2.setText(applyDate);
-        mTxt_jiekuanname2.setText(""+applyAmt);
+        mTxt_jiekuanname2.setText(""+dd+"  万元");
         mTxt_qixian2.setText(""+period+"月");
         mTxt_shouji2.setText("");
         if (verifySchedule==0)

@@ -93,7 +93,7 @@
                 android:layout_centerVertical="true"
                 android:layout_alignBottom="@id/mTxt_jiekuan2"
                 android:layout_toRightOf="@id/mTxt_jiekuan2"
-                android:text="100000元"
+                android:text=""
                 android:textSize="20sp"
                 android:textColor="#126cb0" />
 
@@ -106,7 +106,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@id/mTxt_jiekuanname2"
-                android:text="24月"
+                android:text=""
                 android:textSize="20sp"
                 android:textColor="#27b75e" />
 
@@ -117,6 +117,7 @@
                 android:layout_alignBottom="@id/mTxt_jiekuanname2"
                 android:layout_toLeftOf="@id/mTxt_qixian2"
                 android:text="期限:"
+                android:layout_marginLeft="10dp"
                 android:textSize="18sp"
                 android:textColor="#27b75e" />
 
@@ -146,21 +147,14 @@
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
-            <ImageView
-                android:layout_alignBottom="@id/mTxt_shouji"
-                android:id="@+id/image_zhuangtai"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:src="@mipmap/youjiantou" />
-
             <TextView
                 android:id="@+id/mTxt_shouji2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_toLeftOf="@id/image_zhuangtai"
-                android:text=""
+                android:layout_marginRight="40dp"
+                android:layout_alignParentRight="true"
+                android:text="sssss"
+                android:textSize="18sp"
                 android:layout_alignBottom="@id/mTxt_shouji"
                 android:textColor="#8b8b8b" />
 
@@ -190,20 +184,14 @@
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
-            <ImageView
-                android:layout_alignBottom="@id/mTxt_jichu"
-                android:id="@+id/image_jichu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:src="@mipmap/youjiantou" />
 
             <TextView
+                android:textSize="18sp"
+                android:layout_alignParentRight="true"
                 android:id="@+id/mTxt_jichu2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_toLeftOf="@id/image_jichu"
                 android:layout_alignBottom="@id/mTxt_jichu"
                 android:textColor="#8b8b8b" />
 
@@ -232,20 +220,15 @@
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
-            <ImageView
-                android:layout_alignBottom="@id/mTxt_renmai"
-                android:id="@+id/image_renmai"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:src="@mipmap/youjiantou" />
+
 
             <TextView
+                android:textSize="18sp"
+                android:layout_alignParentRight="true"
                 android:id="@+id/mTxt_renmai2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_toLeftOf="@id/image_renmai"
                 android:text=""
                 android:layout_alignBottom="@id/mTxt_renmai"
                 android:textColor="#8b8b8b" />
@@ -276,20 +259,15 @@
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
-            <ImageView
-                android:layout_alignBottom="@id/mTxt_yinhang"
-                android:id="@+id/image_yinhang"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:src="@mipmap/youjiantou" />
+
 
             <TextView
+                android:textSize="18sp"
+                android:layout_alignParentRight="true"
                 android:id="@+id/mTxt_yinghang2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_toLeftOf="@id/image_yinhang"
                 android:text=""
                 android:layout_alignBottom="@id/mTxt_yinhang"
                 android:textColor="#8b8b8b" />
@@ -315,32 +293,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@mipmap/gerenzhengxin"
+
                 android:drawablePadding="10dp"
                 android:text="信息认证 "
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
-            <ImageView
-                android:layout_alignBottom="@id/mTxt_geren"
-                android:id="@+id/image_geren"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:src="@mipmap/youjiantou" />
-
             <TextView
+                android:layout_alignParentRight="true"
                 android:id="@+id/mTxt_geren2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_toLeftOf="@id/image_geren"
                 android:text=""
+                android:textSize="18sp"
                 android:layout_alignBottom="@id/mTxt_geren"
                 android:textColor="#8b8b8b" />
-
         </RelativeLayout>
-
-
-
     </LinearLayout>
 </ScrollView>

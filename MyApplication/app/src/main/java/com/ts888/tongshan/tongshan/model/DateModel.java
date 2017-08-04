@@ -71,7 +71,7 @@ public class DateModel {
                 try {
 
                     if (null==response.body()){
-                        callBack.failed("请检查网络或者确认有权限");
+                        callBack.failed("请求的数据为空，或参数异常");
                         return;
                     }
                     callBack.succesed(response.body().string());
@@ -82,7 +82,8 @@ public class DateModel {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                callBack.failed("请求网络失败：" + t.toString());
+
+                callBack.failed("请求网络失败");
             }
         });
     }
@@ -102,7 +103,7 @@ public class DateModel {
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 try {
                     if (null==response.body()){
-                        callBack.failed("请检查网络或者确认有权限");
+                        callBack.failed("请求的数据为空，或参数异常");
                         return;
                     }
                     callBack.succesed(response.body().string());
@@ -113,7 +114,7 @@ public class DateModel {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                callBack.failed("请求网络失败：" + t.toString());
+                callBack.failed("请求网络失败" );
             }
         });
     }
@@ -162,7 +163,7 @@ public class DateModel {
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 try {
                     if (null==response.body()){
-                        callBack.failed("请检查网络或者确认有权限");
+                        callBack.failed("请求的数据为空，或参数异常");
                         return;
                     }
                     callBack.succesed(response.body().string());
@@ -173,7 +174,7 @@ public class DateModel {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                callBack.failed("请求网络失败：" + t.toString());
+                callBack.failed("请求网络失败");
             }
         });
 
@@ -194,7 +195,7 @@ public class DateModel {
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 try {
                     if (null==response.body()){
-                        callBack.failed("请检查网络或者确认有权限");
+                        callBack.failed("请求的数据为空，或参数异常");
                         return;
                     }
                     callBack.succesed(response.body().string());
@@ -205,7 +206,7 @@ public class DateModel {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                callBack.failed("请求网络失败：" + t.toString());
+                callBack.failed("请求网络失败" );
             }
         });
 
@@ -227,7 +228,7 @@ public class DateModel {
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 try {
                     if (null==response.body()){
-                        callBack.failed("请检查网络或者确认有权限");
+                        callBack.failed("请求的数据为空，或参数异常");
                         return;
                     }
                     callBack.succesed(response.body().string());
@@ -238,7 +239,7 @@ public class DateModel {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                callBack.failed("请求网络失败：" + t.toString());
+                callBack.failed("请求网络失败");
             }
         });
 
@@ -259,7 +260,7 @@ public class DateModel {
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 try {
                     if (null==response.body()){
-                        callBack.failed("请检查网络或者确认有权限");
+                        callBack.failed("请求的数据为空，或参数异常");
                         return;
                     }
                     callBack.succesed(response.body().string());
@@ -270,7 +271,7 @@ public class DateModel {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                callBack.failed("请求网络失败：" + t.toString());
+                callBack.failed("请求网络失败");
             }
         });
 
@@ -292,7 +293,7 @@ public class DateModel {
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 try {
                     if (null==response.body()){
-                        callBack.failed("请检查网络或者确认有权限");
+                        callBack.failed("请求的数据为空，或参数异常");
                         return;
                     }
                     callBack.succesed(response.body().string());
@@ -303,7 +304,7 @@ public class DateModel {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                callBack.failed("请求网络失败：" + t.toString());
+                callBack.failed("请求网络失败");
             }
         });
 
@@ -324,7 +325,7 @@ public class DateModel {
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 try {
                     if (null==response.body()){
-                        callBack.failed("请检查网络或者确认有权限");
+                        callBack.failed("请求的数据为空，或参数异常");
                         return;
                     }
                     callBack.succesed(response.body().string());
@@ -335,7 +336,7 @@ public class DateModel {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                callBack.failed("请求网络失败：" + t.toString());
+                callBack.failed("请求网络失败,请检查网络");
             }
         });
 

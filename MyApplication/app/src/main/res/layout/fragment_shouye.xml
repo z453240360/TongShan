@@ -5,6 +5,7 @@
     android:orientation="vertical">
 
     <ImageView
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@mipmap/logo_heng" />
@@ -14,138 +15,151 @@
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="200dp" />-->
     <ImageView
+        android:layout_marginTop="5dp"
         android:src="@mipmap/banner_01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+
+
+
     <LinearLayout
+        android:layout_margin="5dp"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:orientation="horizontal"
             android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <Button
-                android:paddingTop="50dp"
-                android:onClick="onClick"
-                android:background="#ffffff"
-                android:id="@+id/mBtn_jinjian"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:drawableTop="@mipmap/jinjian"
-                android:text="进件"
-                android:layout_gravity="center"
-                android:textSize="16sp"
-                android:textColor="#000000" />
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
 
             <LinearLayout
+                android:layout_weight="1"
+                android:orientation="vertical"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
+                <!--jinjian-->
+                <Button
+                    android:paddingTop="50dp"
+                    android:onClick="onClick"
+                    android:background="#ffffff"
+                    android:id="@+id/mBtn_jinjian"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableTop="@mipmap/jinjian"
+                    android:text="进件"
+                    android:layout_gravity="center"
+                    android:textSize="16sp"
+                    android:textColor="#000000" />
+            </LinearLayout>
 
-                <LinearLayout
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <!--kehu +shenpi-->
+                <Button
+                    android:onClick="onClick"
+                    android:padding="5dp"
+                    android:background="#ffffff"
+                    android:id="@+id/mBtn_kehu"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:drawableTop="@mipmap/kehu"
+                    android:text="客户"
+                    android:textColor="#000000" />
 
-                    <Button
-                        android:onClick="onClick"
-                        android:padding="5dp"
-                        android:background="#ffffff"
-                        android:id="@+id/mBtn_kehu"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:drawableTop="@mipmap/kehu"
-                        android:text="客户"
-                        android:textColor="#000000" />
-
-                    <Button
-                        android:clickable="false"
-                        android:padding="5dp"
-                        android:background="#ffffff"
-                        android:id="@+id/mBtn_qiangdan"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:drawableTop="@mipmap/qiangdan"
-                        android:text="抢单"
-                        android:textColor="#000000" />
-
-                </LinearLayout>
-
-                <LinearLayout
+                <Button
+                    android:clickable="false"
+                    android:padding="5dp"
+                    android:background="#ffffff"
+                    android:id="@+id/mBtn_shenpi"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:drawableTop="@mipmap/shenpi"
+                    android:text="审批"
+                    android:textColor="#000000" />
 
-                    <Button
-                        android:clickable="false"
-                        android:padding="5dp"
-                        android:background="#ffffff"
-                        android:id="@+id/mBtn_shenpi"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:drawableTop="@mipmap/shenpi"
-                        android:text="审批"
-                        android:textColor="#000000" />
 
-                    <Button
-                        android:onClick="onClick"
-                        android:padding="5dp"
-                        android:background="#ffffff"
-                        android:id="@+id/mBtn_shisuan"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:drawableTop="@mipmap/shisuangongju"
-                        android:text="试算工具"
-                        android:textColor="#000000" />
-                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:clickable="false"
+                    android:padding="5dp"
+                    android:background="#ffffff"
+                    android:id="@+id/mBtn_qiangdan"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/qiangdan"
+                    android:text="抢单"
+                    android:textColor="#000000" />
+                <Button
+                    android:onClick="onClick"
+                    android:padding="5dp"
+                    android:background="#ffffff"
+                    android:id="@+id/mBtn_shisuan"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:drawableTop="@mipmap/shisuangongju"
+                    android:text="试算工具"
+                    android:textColor="#000000" />
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:orientation="horizontal"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:orientation="vertical"
                 android:layout_weight="2"
-                android:orientation="vertical">
-
-                <Button
-                    android:clickable="false"
-                    android:background="#ffffff"
-                    android:id="@+id/mBtn_yeji"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:drawablePadding="5dp"
-                    android:drawableTop="@mipmap/gerenyeji"
-                    android:text="个人业绩"
-                    android:textColor="#000000" />
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:orientation="horizontal">
-
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="0dp">
+<!--gerenyeji-->
                     <Button
-                        android:paddingTop="5dp"
+                        android:clickable="false"
+                        android:background="#ffffff"
+                        android:id="@+id/mBtn_yeji"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@mipmap/gerenyeji"
+                        android:text="个人业绩"
+                        android:textColor="#000000" />
+
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="0dp">
+                    <!--longhubang +gonggao-->
+                    <Button
+
                         android:clickable="false"
                         android:background="#ffffff"
                         android:id="@+id/mBtn_longhu"
@@ -158,7 +172,6 @@
                         android:textColor="#000000" />
 
                     <Button
-                        android:drawablePadding="5dp"
                         android:paddingTop="5dp"
                         android:clickable="false"
                         android:background="#ffffff"
@@ -173,13 +186,13 @@
                 </LinearLayout>
 
 
+
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
 
                 <Button
                     android:paddingTop="50dp"
@@ -193,8 +206,116 @@
                     android:layout_height="match_parent"
                     android:drawableTop="@mipmap/chanpinzhongxin"
                     android:text="产品中心" />
+
+
+                <!--chanpin zhongxin-->
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+
+
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+
+            </LinearLayout>
+        </LinearLayout>
+
     </LinearLayout>
 
 

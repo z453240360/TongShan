@@ -1,8 +1,10 @@
 package com.ts888.tongshan.tongshan;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +23,7 @@ import com.ts888.tongshan.tongshan.bean.ParmsBean;
 import com.ts888.tongshan.tongshan.model.ICallBack;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
+import com.ts888.tongshan.tongshan.util.ColorState;
 
 import static android.R.attr.data;
 
@@ -32,18 +35,14 @@ public class MainActivity extends AppCompatActivity implements IMainView {
 
     private String TAG = "dd";
     private String phoneNo;
-
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    private Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Window window = this.getWindow();
-        //设置Window为全透明
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE |
-                WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+        ColorState.setWindowStatusBarColor(this, Color.WHITE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
@@ -51,11 +50,12 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     }
 
     private void init() {
+        dialog = new Dialog(this);
         present = new Present(this);
 
         mEd_phoneNumber = (EditText) findViewById(R.id.mEd_user_phoneNumber);
         mEd_code = (EditText) findViewById(R.id.mEd_user_password);
-        mEd_phoneNumber.setText("18616850001");
+        mEd_phoneNumber.setText("18616850003");
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
     }
@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     @Override
     public void showLoading() {
         //显示加载框
+
     }
 
     @Override

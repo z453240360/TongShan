@@ -2,6 +2,7 @@ package com.ts888.tongshan.tongshan.activity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -23,6 +24,7 @@ import com.ts888.tongshan.tongshan.bean.ShiSuanDataBean;
 import com.ts888.tongshan.tongshan.bean.ShisuanParmBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
+import com.ts888.tongshan.tongshan.util.ColorState;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,9 +55,8 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Window window = this.getWindow();
-//        //设置Window为全透明
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_shi_suan);
 

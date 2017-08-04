@@ -3,6 +3,7 @@ package com.ts888.tongshan.tongshan.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.fragment.GengDuoFragment;
 import com.ts888.tongshan.tongshan.fragment.ShouyeFragment;
 import com.ts888.tongshan.tongshan.fragment.XiaoXiFragment;
+import com.ts888.tongshan.tongshan.util.ColorState;
 
 import java.util.ArrayList;
 
@@ -34,9 +36,10 @@ public class YeWuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Window window = this.getWindow();
+//        Window window = this.getWindow();
         //设置Window为全透明
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        ColorState.setWindowStatusBarColor(this, Color.WHITE);
+//        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_ye_wu);
 

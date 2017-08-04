@@ -3,6 +3,7 @@ package com.ts888.tongshan.tongshan.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import com.ts888.tongshan.tongshan.fragment.KeHuFragment;
 import com.ts888.tongshan.tongshan.fragment.ShouyeFragment;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
+import com.ts888.tongshan.tongshan.util.ColorState;
 
 import static com.ts888.tongshan.tongshan.R.id.toolbars_jinjian_activity;
 
@@ -36,8 +38,7 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Window window = this.getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_ke_hu);
 
@@ -48,9 +49,11 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
         token = sharedPreferences.getString("token", "888888");
         present = new Present(this);
         parmsBean = new ParmsBean();
-        parmsBean.setUserCode("TS_20170614103419437225140");
+        parmsBean.setUserCode(userCode);
 //        parmsBean.setUserCode(userCode);
         present.getFindUserBaseInfoByCode(parmsBean,token);//用户基本信息
+
+//        present.getFindScheduleByCode(parmsBean,token);
 
         mRg_KeHu = (RadioGroup) findViewById(R.id.mRg_kehu);
 

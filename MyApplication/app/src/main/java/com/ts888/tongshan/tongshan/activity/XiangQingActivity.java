@@ -5,12 +5,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.bean.ParmsBean;
@@ -34,6 +38,7 @@ public class XiangQingActivity extends AppCompatActivity implements IMainView {
     private Fragment lastFragment;
     private RadioGroup radioGroup;
     private ArrayList<Fragment> list = new ArrayList<Fragment>();
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +53,10 @@ public class XiangQingActivity extends AppCompatActivity implements IMainView {
         manager = getSupportFragmentManager();
 
         radioGroup = (RadioGroup) findViewById(R.id.RG_xiangqing);
+        toolbar = (Toolbar) findViewById(R.id.toolbars_jinjian_activity);
+        toolbar.setLogo(R.mipmap.zuojiantou);
+
+
         initFragments();
 
         manager.beginTransaction().add(R.id.frame_xiangqing, list.get(0)).commit();
@@ -57,7 +66,6 @@ public class XiangQingActivity extends AppCompatActivity implements IMainView {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
 
-                Log.i("dd", "onCheckedChanged: "+i);
                 RadioButton select = (RadioButton) findViewById(i);
 
                 int index = Integer.parseInt(select.getTag().toString());
@@ -78,9 +86,7 @@ public class XiangQingActivity extends AppCompatActivity implements IMainView {
 
         JichuXinXiFragment jichuXinXiFragment = new JichuXinXiFragment();
         Bundle bundle = new Bundle();
-
-        bundle.putString("useC", "TS_20170614103419437225140");
-        //bundle.putString("useC", useC);//TODO 替换本来的USECODE需要的
+        bundle.putString("useC", useC);
         bundle.putString("token", token);
         jichuXinXiFragment.setArguments(bundle);
         list.add(jichuXinXiFragment);
@@ -119,6 +125,17 @@ public class XiangQingActivity extends AppCompatActivity implements IMainView {
     @Override
     public void getLogin(String s) {
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        finish();
+        return super.onOptionsItemSelected(item);
     }
 
 }

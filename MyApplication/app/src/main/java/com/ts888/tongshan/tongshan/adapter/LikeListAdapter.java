@@ -14,23 +14,6 @@ import com.ts888.tongshan.tongshan.bean.FindScheduleBean;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/**
- * ***********************************************************
- * author: Randy
- * time: 上午9:31
- * name: RecyclerView的Adapter的写法
- * desc:
- * step:
- * 1. 继承RecyclerView.Adapter<VH extends ViewHolder>
- * 2. 在这个Adapter中写一个类继承RecyclerView.ViewHolder,并且传入Adapter的泛型
- * 3. 实现 三个抽象方法
- * getItemCount
- * onCreateViewHolder
- * onBindViewHolder
- * 4. 重写构造方法,参数传入 上下文Context 数据集
- * *************************************************************
- */
 public class LikeListAdapter extends RecyclerView.Adapter<LikeListAdapter.MyViewHolder> {
     private List<FindScheduleBean.DataBean> mDatas = new ArrayList();
     private Context mContext;
@@ -42,24 +25,19 @@ public class LikeListAdapter extends RecyclerView.Adapter<LikeListAdapter.MyView
         this.mContext = context;
     }
 
-    //返回RecyclerView总共有多少条
     @Override
     public int getItemCount() {
         return mDatas == null ? 0 : mDatas.size();
     }
 
-    //初始化布局,创建ViewHolder
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        //1. 初始化item的布局
         View view = mInflater.inflate(R.layout.adapter_kehu, parent, false);
-        //2. 创建出来ViewHolder对象
         MyViewHolder myViewHolder = new MyViewHolder(view);
 
         return myViewHolder;
     }
 
-    //绑定ViewHolder中的控件的数据
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 

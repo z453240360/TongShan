@@ -10,7 +10,7 @@
         android:gravity="center"
         android:id="@+id/mRg_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal">
 
@@ -62,6 +62,7 @@
     </RadioGroup>
 
     <FrameLayout
+        android:layout_marginTop="10dp"
         android:id="@+id/mFl_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

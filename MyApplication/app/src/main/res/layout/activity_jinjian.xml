@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:textColor="#ffffff"
             android:text="进件查询"
             android:textSize="20sp" />
     </android.support.v7.widget.Toolbar>
@@ -56,6 +57,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:drawableLeft="@mipmap/jingshi"
         android:text="请输入姓名或身份证号码,查询是否进件"
@@ -65,11 +67,12 @@
         android:layout_marginTop="10dp"
         android:layout_margin="15dp"
         android:textColor="#f7f7f7"
+        android:textSize="20dp"
         android:id="@+id/mBtn_chaxun_jinjian_Activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/yuanjiaologinbutton"
-        android:text="查  询" />
+        android:text="查      询" />
 
     <LinearLayout
         android:layout_marginLeft="15dp"
@@ -85,16 +88,18 @@
             android:layout_marginTop="20dp"
             android:textColor="#757575"
             android:gravity="center"
+            android:textSize="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="查询结果" />
 
         <TextView
             android:id="@+id/mTxt_xinxi_jinjian_activity"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
             android:textColor="#1b7ab4"
             android:gravity="center"
+            android:textSize="18sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="进件状态" />
