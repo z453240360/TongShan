@@ -1,6 +1,7 @@
 package com.ts888.tongshan.tongshan.model;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.ts888.tongshan.tongshan.constant.Constant;
 
@@ -65,7 +66,14 @@ public class DateModel {
         calls.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+
+
                 try {
+
+                    if (null==response.body()){
+                        callBack.failed("请检查网络或者确认有权限");
+                        return;
+                    }
                     callBack.succesed(response.body().string());
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -93,6 +101,10 @@ public class DateModel {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 try {
+                    if (null==response.body()){
+                        callBack.failed("请检查网络或者确认有权限");
+                        return;
+                    }
                     callBack.succesed(response.body().string());
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -149,6 +161,10 @@ public class DateModel {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 try {
+                    if (null==response.body()){
+                        callBack.failed("请检查网络或者确认有权限");
+                        return;
+                    }
                     callBack.succesed(response.body().string());
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -177,6 +193,10 @@ public class DateModel {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 try {
+                    if (null==response.body()){
+                        callBack.failed("请检查网络或者确认有权限");
+                        return;
+                    }
                     callBack.succesed(response.body().string());
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -206,6 +226,10 @@ public class DateModel {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 try {
+                    if (null==response.body()){
+                        callBack.failed("请检查网络或者确认有权限");
+                        return;
+                    }
                     callBack.succesed(response.body().string());
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -234,6 +258,10 @@ public class DateModel {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 try {
+                    if (null==response.body()){
+                        callBack.failed("请检查网络或者确认有权限");
+                        return;
+                    }
                     callBack.succesed(response.body().string());
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -263,6 +291,10 @@ public class DateModel {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 try {
+                    if (null==response.body()){
+                        callBack.failed("请检查网络或者确认有权限");
+                        return;
+                    }
                     callBack.succesed(response.body().string());
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -291,6 +323,10 @@ public class DateModel {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 try {
+                    if (null==response.body()){
+                        callBack.failed("请检查网络或者确认有权限");
+                        return;
+                    }
                     callBack.succesed(response.body().string());
                 } catch (IOException e) {
                     e.printStackTrace();

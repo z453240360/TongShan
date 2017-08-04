@@ -44,25 +44,32 @@ public class JichuXinXiFragment extends Fragment implements IMainView{
 
         Log.i("dd", "onViewCreated: "+useC+token);
         mTxt_shenfenid = (TextView) view.findViewById(R.id.mTxt_shenfenid);
-        mTxt_jiekuanname2 = (TextView) view.findViewById(R.id.mTxt_jiekuanname2);
-        mTxt_shouji2 = (TextView) view.findViewById(R.id.mTxt_shouji2);
+
+
         mTxt_jine2 = (TextView) view.findViewById(R.id.mTxt_jine2);
-        mTxt_hunyin2 = (TextView) view.findViewById(R.id.mTxt_hunyin2);
         mTxt_xueli2 = (TextView) view.findViewById(R.id.mTxt_xueli2);
         mTxt_dizhi2 = (TextView) view.findViewById(R.id.mTxt_dizhi2);
+        mTxt_ruzhi2 = (TextView) view.findViewById(R.id.mTxt_ruzhi2);
+        mTxt_zhiji2 = (TextView) view.findViewById(R.id.mTxt_zhiji2);
+        mTxt_hunyin2 = (TextView) view.findViewById(R.id.mTxt_hunyin2);
+        mTxt_dangyue = (TextView) view.findViewById(R.id.mTxt_dangyue);
         mTxt_xinzhi2 = (TextView) view.findViewById(R.id.mTxt_xinzhi2);
         mTxt_danwei2 = (TextView) view.findViewById(R.id.mTxt_danwei2);
-        mTxt_danweidianhua2 = (TextView) view.findViewById(R.id.mTxt_danweidianhua2);
-        mTxt_xingzhi2 = (TextView) view.findViewById(R.id.mTxt_xingzhi2);
-        mTxt_zhiji2 = (TextView) view.findViewById(R.id.mTxt_zhiji2);
-        mTxt_dangyue = (TextView) view.findViewById(R.id.mTxt_dangyue);
-        mTxt_ruzhi2 = (TextView) view.findViewById(R.id.mTxt_ruzhi2);
+        mTxt_shouji2 = (TextView) view.findViewById(R.id.mTxt_shouji2);
         mTxt_dangyue2= (TextView) view.findViewById(R.id.mTxt_dangyue2);
+        mTxt_xingzhi2 = (TextView) view.findViewById(R.id.mTxt_xingzhi2);
         mTxt_danweidizhi2 = (TextView) view.findViewById(R.id.mTxt_danweidizhi2);
+        mTxt_jiekuanname2 = (TextView) view.findViewById(R.id.mTxt_jiekuanname2);
+        mTxt_danweidianhua2 = (TextView) view.findViewById(R.id.mTxt_danweidianhua2);
+
         parmsBean = new ParmsBean();
-//        parmsBean.setUserCode(useC);
-        parmsBean.setUserCode("TS_20170614103419437225140");
+        parmsBean.setUserCode(useC);
+//        parmsBean.setUserCode("TS_20170614103419437225140");
+
+
+
         present = new Present(this);
+
         present.getFindUserBaseInfoByCode(parmsBean,token);
 
     }
@@ -90,15 +97,18 @@ public class JichuXinXiFragment extends Fragment implements IMainView{
     @Override
     public void getLogin(String s) {
         Log.i("dd", "getLogin:____________ "+s);
+
         Gson gson = new Gson();
-
         UserBaseInfoBean userBaseInfoBean = gson.fromJson(s, UserBaseInfoBean.class);
-
         UserBaseInfoBean.DataBean data = userBaseInfoBean.getData();
+
+        if (data==null){
+            return;
+        }
 
         mTxt_shenfenid.setText(data.getUserName());
         mTxt_jiekuanname2.setText(data.getIdCard());
-//        mTxt_shouji2.setText(data.getId());
+        mTxt_shouji2.setText(data.getRegisterPhoneNo());
         mTxt_jine2.setText(data.getUserName());
         mTxt_hunyin2.setText(data.getMarriageName());
         mTxt_xueli2.setText(data.getDegreeName());

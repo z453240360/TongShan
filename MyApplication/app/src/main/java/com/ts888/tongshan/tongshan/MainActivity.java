@@ -3,11 +3,13 @@ package com.ts888.tongshan.tongshan;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -37,6 +39,11 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Window window = this.getWindow();
+        //设置Window为全透明
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE |
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
@@ -65,7 +72,6 @@ public class MainActivity extends AppCompatActivity implements IMainView {
                 }
                 //获取验证码
                 parmsBean1.setPhoneNo(phoneNo);
-//                parmsBean.setPhoneNo("18616850001");
                 present.loadData(parmsBean1);
 
                 break;
@@ -115,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
 
     @Override
     public void showFaliure(String s) {
-
+        Toast.makeText(this, ""+s, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -136,7 +142,6 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         editor.putString("token",token);
         editor.putString("phoneNo",loginBean.getData().getPhoneNo());
         editor.commit();
-
         startActivity(new Intent(MainActivity.this, YeWuActivity.class));
 
     }

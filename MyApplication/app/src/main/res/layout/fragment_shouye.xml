@@ -16,7 +16,7 @@
     <ImageView
         android:src="@mipmap/banner_01"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +37,6 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:drawingCacheQuality="auto"
                 android:drawableTop="@mipmap/jinjian"
                 android:text="进件"
                 android:layout_gravity="center"
@@ -58,7 +57,6 @@
 
                     <Button
                         android:onClick="onClick"
-                        android:drawingCacheQuality="auto"
                         android:padding="5dp"
                         android:background="#ffffff"
                         android:id="@+id/mBtn_kehu"
@@ -71,7 +69,6 @@
 
                     <Button
                         android:clickable="false"
-                        android:drawingCacheQuality="auto"
                         android:padding="5dp"
                         android:background="#ffffff"
                         android:id="@+id/mBtn_qiangdan"
@@ -92,7 +89,6 @@
 
                     <Button
                         android:clickable="false"
-                        android:drawingCacheQuality="auto"
                         android:padding="5dp"
                         android:background="#ffffff"
                         android:id="@+id/mBtn_shenpi"
@@ -105,7 +101,6 @@
 
                     <Button
                         android:onClick="onClick"
-                        android:drawingCacheQuality="auto"
                         android:padding="5dp"
                         android:background="#ffffff"
                         android:id="@+id/mBtn_shisuan"
@@ -133,12 +128,12 @@
 
                 <Button
                     android:clickable="false"
-                    android:drawingCacheQuality="auto"
                     android:background="#ffffff"
                     android:id="@+id/mBtn_yeji"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:drawablePadding="5dp"
                     android:drawableTop="@mipmap/gerenyeji"
                     android:text="个人业绩"
                     android:textColor="#000000" />
@@ -150,20 +145,22 @@
                     android:orientation="horizontal">
 
                     <Button
+                        android:paddingTop="5dp"
                         android:clickable="false"
-                        android:drawingCacheQuality="auto"
                         android:background="#ffffff"
                         android:id="@+id/mBtn_longhu"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:drawablePadding="5dp"
                         android:drawableTop="@mipmap/longhubang"
                         android:text="龙虎榜"
                         android:textColor="#000000" />
 
                     <Button
+                        android:drawablePadding="5dp"
+                        android:paddingTop="5dp"
                         android:clickable="false"
-                        android:drawingCacheQuality="auto"
                         android:background="#ffffff"
                         android:id="@+id/mBtn_gonggao"
                         android:layout_width="0dp"
@@ -171,7 +168,6 @@
                         android:layout_weight="1"
                         android:drawableTop="@mipmap/gonggaolan"
                         android:text="公告栏"
-
                         android:textColor="#000000" />
 
                 </LinearLayout>
@@ -188,7 +184,6 @@
                 <Button
                     android:paddingTop="50dp"
                     android:clickable="false"
-                    android:drawingCacheQuality="auto"
                     android:background="#ffffff"
                     android:drawablePadding="10dp"
                     android:textColor="#000000"

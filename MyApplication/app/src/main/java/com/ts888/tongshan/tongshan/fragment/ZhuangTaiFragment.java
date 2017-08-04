@@ -51,7 +51,6 @@ public class ZhuangTaiFragment extends Fragment implements IMainView{
         mTxt_yinghang2 = (TextView) view.findViewById(R.id.mTxt_yinghang2);
         mTxt_geren2 = (TextView) view.findViewById(R.id.mTxt_geren2);
 
-
         parmsBean = new ParmsBean();
         parmsBean.setUserCode(useC);
         present = new Present(this);
@@ -81,7 +80,6 @@ public class ZhuangTaiFragment extends Fragment implements IMainView{
     @Override
     public void getLogin(String s) {
         Log.i("dd", "getLoginkkhkkhhk: "+ s);
-
 
         Gson gson = new Gson();
         ZhuangTaiBean zhuangTaiBean = gson.fromJson(s, ZhuangTaiBean.class);

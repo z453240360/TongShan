@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -29,6 +30,9 @@ public class JinjianActivity extends AppCompatActivity implements IMainView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Window window = this.getWindow();
+        //设置Window为全透明
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_jinjian);
 
@@ -41,18 +45,14 @@ public class JinjianActivity extends AppCompatActivity implements IMainView {
 
         present = new Present(this);
 
-
         findViewById(R.id.mBtn_chaxun_jinjian_Activity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ParmsBean parmsBean = new ParmsBean();
                 String userName = mEd_kehuname.getText().toString().trim();
-                //余杭
                 String idCard = mEd_idCard.getText().toString().trim();
-                //51022819811213629X
                 parmsBean.setUserName(userName);
                 parmsBean.setIdCard(idCard);
-
                 present.getUserInfo(parmsBean, token);
             }
         });

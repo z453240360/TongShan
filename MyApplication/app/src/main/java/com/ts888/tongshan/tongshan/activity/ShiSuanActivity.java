@@ -4,17 +4,34 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.bean.ParmsBean;
+import com.ts888.tongshan.tongshan.bean.ShiSuanDataBean;
 import com.ts888.tongshan.tongshan.bean.ShisuanParmBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static android.R.attr.data;
+import static android.R.id.list;
+import static com.ts888.tongshan.tongshan.R.id.mTxt_qixian2;
 
 public class ShiSuanActivity extends AppCompatActivity implements IMainView{
 
@@ -22,11 +39,36 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView{
     private ParmsBean parmsBean;
     private SharedPreferences sharedPreferences;
     private String token;
+    private Spinner mSpinner1,mSpeener2;
+    private ArrayAdapter<Integer> adapter;
+    private ArrayAdapter<String> adapter2;
+    private EditText mEd_jine;
+    private Map<String,String> map;
+    private String productCode;
+    private int applyAmt;
+    private int period;
+    private TextView mTxt_feilv2,mTxt_qixian2,mTxt_daoshou2,mTxt_hetong2,mTxt_meiyue2;
+    private List<Integer> periods;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Window window = this.getWindow();
+//        //设置Window为全透明
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_shi_suan);
+
+        map = new HashMap<>();
+
+        mSpinner1 = (Spinner) findViewById(R.id.mSpinner);
+        mSpeener2 = (Spinner) findViewById(R.id.mSpinner2);
+        mEd_jine = (EditText) findViewById(R.id.mEd_jine);
+        mTxt_feilv2 = (TextView) findViewById(R.id.mTxt_feilv2);
+        mTxt_qixian2 = (TextView) findViewById(R.id.mTxt_qixian2);
+        mTxt_daoshou2 = (TextView) findViewById(R.id.mTxt_daoshou2);
+        mTxt_hetong2 = (TextView) findViewById(R.id.mTxt_hetong2);
+        mTxt_meiyue2 = (TextView) findViewById(R.id.mTxt_meiyue2);
 
         present = new Present(this);
         parmsBean = new ParmsBean();
@@ -34,13 +76,29 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView{
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         String userCode = sharedPreferences.getString("userCode","88888");
         token = sharedPreferences.getString("token", "888888");
-
         present.getFindCalcParameter(parmsBean,token);
     }
 
     @Override
     public void getCode(String s) {
-        Log.i("dd", "getCode: "+s);
+        Gson g = new Gson();
+        ShiSuanDataBean shiSuanDataBean = g.fromJson(s, ShiSuanDataBean.class);
+        ShiSuanDataBean.DataBean data = shiSuanDataBean.getData();
+
+        int applyAmt = data.getApplyAmt();  //1000
+        double contractAmt = data.getContractAmt();//1100.0
+        double netAmt = data.getNetAmt();//822.14
+        double perRepayAmt = data.getPerRepayAmt();//99.28
+        double costMonthly = data.getCostMonthly();//1.38
+        int period = data.getPeriod();//12
+
+
+        mTxt_feilv2.setText(""+costMonthly);
+        mTxt_qixian2.setText(""+period);
+        mTxt_daoshou2.setText(""+netAmt);
+        mTxt_hetong2.setText(""+applyAmt);
+        mTxt_meiyue2.setText(""+perRepayAmt);
+
     }
 
     @Override
@@ -60,29 +118,83 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView{
 
     @Override
     public void getLogin(String s) {
-        Log.i("dd", "getLogin: "+s);
+
+        final ArrayList <String> elite = new ArrayList<>();
         Gson gson = new Gson();
-
+        Log.i("dd", "getLogin:++++++++++++++++++++ "+s);
         ShisuanParmBean shiSuanBean = gson.fromJson(s, ShisuanParmBean.class);
-        ShisuanParmBean.DataBean data = shiSuanBean.getData();
-        List<Integer> periods = data.getPeriods();
+        ShisuanParmBean.DataBean shisuan = shiSuanBean.getData();
+        periods = shisuan.getPeriods();
 
-        ShisuanParmBean.DataBean.ProductInfosBean productInfos = data.getProductInfos();
-        String elite13813 = productInfos.get_$Elite13813();
-        String elite17861 = productInfos.get_$Elite17861();
-        String elite158296 = productInfos.get_$Elite158296();
-        String elite198202 = productInfos.get_$Elite198202();
-        String elite218278 = productInfos.get_$Elite218278();
-        String elite238115 = productInfos.get_$Elite238115();
+        List<ShisuanParmBean.DataBean.ProductInfosBean> productInfos = shisuan.getProductInfos();
+
+        for (int i = 0; i < productInfos.size(); i++) {
+            ShisuanParmBean.DataBean.ProductInfosBean productInfosBean = productInfos.get(i);
+            String productCode = productInfosBean.getProductCode();
+            String costMonthly = productInfosBean.getCostMonthly();
+
+             map.put(costMonthly, productCode);
+            elite.add(costMonthly);
+        }
+
+
+        adapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_dropdown_item,periods);
+        mSpinner1.setAdapter(adapter);
+        mSpinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                period = periods.get(i);
+                Log.i("dd", "onItemSelected: "+period);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item,elite);
+        mSpeener2.setAdapter(adapter2);
+        mSpeener2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                productCode = map.get(elite.get(i));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+
     }
 
     public void onClick(View view) {
         switch (view.getId())
         {
             case R.id.mBtn_check:
-                parmsBean.setProductCode("1");
-                parmsBean.setApplyAmt((int)1.38);
-                parmsBean.setPeriod(12);
+
+                String money = mEd_jine.getText().toString().trim();
+
+                if (money.equals("")){
+                    Toast.makeText(this, "请输入金额", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else {
+                    applyAmt = (int) (Float.parseFloat(money)*10000);
+                }
+
+                if (null==productCode){
+                    Toast.makeText(this, "请选择费率", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                parmsBean.setProductCode(productCode);
+                parmsBean.setApplyAmt(applyAmt);
+                parmsBean.setPeriod(period);
                 present.getCalcContractInfoData(parmsBean,token);
                 break;
         }

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -33,18 +34,16 @@ public class YeWuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Window window = this.getWindow();
+        //设置Window为全透明
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_ye_wu);
 
-
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         token = sharedPreferences.getString("token", "888888");              //获取存储的token
-        Log.i(TAG, "token: " + token);
 
         init();
-
-
     }
 
     private void init() {

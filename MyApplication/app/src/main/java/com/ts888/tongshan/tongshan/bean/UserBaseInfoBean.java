@@ -41,6 +41,14 @@ public class UserBaseInfoBean {
     }
 
     public static class DataBean {
+        public String getRegisterPhoneNo() {
+            return registerPhoneNo;
+        }
+
+        public void setRegisterPhoneNo(String registerPhoneNo) {
+            this.registerPhoneNo = registerPhoneNo;
+        }
+
         /**
          * id : 72
          * userCode : TS_20170614103419437225140
@@ -80,6 +88,7 @@ public class UserBaseInfoBean {
          * monthSalaryName : 5000～7999
          */
 
+        private String registerPhoneNo;
         private int id;
         private String userCode;
         private String userName;

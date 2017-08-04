@@ -6,8 +6,11 @@ import android.content.SharedPreferences;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.RadioGroup;
 
 import com.ts888.tongshan.tongshan.R;
@@ -16,6 +19,8 @@ import com.ts888.tongshan.tongshan.fragment.KeHuFragment;
 import com.ts888.tongshan.tongshan.fragment.ShouyeFragment;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
+
+import static com.ts888.tongshan.tongshan.R.id.toolbars_jinjian_activity;
 
 public class KeHuActivity extends AppCompatActivity implements IMainView{
 
@@ -26,44 +31,39 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
     private ParmsBean parmsBean;
     private SharedPreferences sharedPreferences;
     private String token;
+    private Toolbar toolbars_jinjian_activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Window window = this.getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_ke_hu);
+
+        toolbars_jinjian_activity = (Toolbar) findViewById(R.id.toolbars_jinjian_activity);
 
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         String userCode = sharedPreferences.getString("userCode","88888");
         token = sharedPreferences.getString("token", "888888");
         present = new Present(this);
         parmsBean = new ParmsBean();
-//
         parmsBean.setUserCode("TS_20170614103419437225140");
-
 //        parmsBean.setUserCode(userCode);
         present.getFindUserBaseInfoByCode(parmsBean,token);//用户基本信息
-
-//        present.getFindScheduleByCode(parmsBean,token); //用户认证进度
-//
-//        parmsBean.setPage(1);
-//        parmsBean.setRows(1);
-//        present.getFindInApprovalApplyInfo(parmsBean,token);
 
         mRg_KeHu = (RadioGroup) findViewById(R.id.mRg_kehu);
 
         manager = getSupportFragmentManager();
-//        manager.beginTransaction().add(R.id.mFl_kehu, new KeHuFragment()).commit();
 
         KeHuFragment keHuFragment = new KeHuFragment();
         Bundle bundle = new Bundle();
-
-
         bundle.putString("key",userCode);
         bundle.putString("towKey",token);
         keHuFragment.setArguments(bundle);
 
-        manager.beginTransaction().add(R.id.mFl_kehu, keHuFragment).commit();
+        manager.beginTransaction().replace(R.id.mFl_kehu, keHuFragment).commit();
+
 
         keHuFragment.setCallBack(new ShouyeFragment.TextCallBack() {
             @Override
@@ -71,7 +71,9 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
                 Log.i(TAG, "getText获取usecode: "+str);
 
                 Intent intent = new Intent(KeHuActivity.this,XiangQingActivity.class);
-                intent.putExtra("useC",str);
+//                parmsBean.setUserCode("TS_20170614103419437225140");
+
+                intent.putExtra("useC",str);  //这里获取的useCode不能查询到相关信息
                 intent.putExtra("token",token);
                 startActivity(intent);
             }
@@ -102,5 +104,10 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
     @Override
     public void getLogin(String s) {
         Log.i(TAG, "getLogin55555: "+s);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
     }
 }
