@@ -29,16 +29,17 @@
     <RadioGroup
         android:id="@+id/mRg_kehu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_below="@id/toolbars_kehu_activity"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
         <RadioButton
+            android:background="#ffffff"
             android:clickable="false"
             android:id="@+id/mRb_shouye_kehu"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="2dp"
             android:layout_weight="1"
             android:button="@null"
@@ -52,10 +53,11 @@
             android:textSize="20sp" />
 
         <RadioButton
+            android:background="#ffffff"
             android:clickable="false"
             android:id="@+id/mRb_xiaoxi_kehu"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="2dp"
             android:layout_weight="1"
             android:button="@null"
@@ -68,10 +70,11 @@
             android:textSize="20sp" />
 
         <RadioButton
+            android:background="#ffffff"
             android:clickable="false"
             android:id="@+id/mRb_gengduo_kehu"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="2dp"
             android:layout_weight="1"
             android:button="@null"
@@ -88,21 +91,16 @@
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:gravity="center"
-        android:layout_height="30dp"
+        android:layout_height="50dp"
         android:layout_below="@id/mRg_kehu"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/yuanjiaoser"
+        android:layout_marginTop="12dp"
+        android:background="#ffffff"
         android:queryHint="搜索" />
-
 
     <FrameLayout
         android:id="@+id/mFl_kehu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/searchView"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="12dp" />
 </RelativeLayout>

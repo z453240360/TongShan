@@ -7,12 +7,14 @@ import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 
 import com.ts888.tongshan.tongshan.R;
@@ -34,6 +36,7 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
     private SharedPreferences sharedPreferences;
     private String token;
     private Toolbar toolbar;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,10 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
         setContentView(R.layout.activity_ke_hu);
 
         toolbar = (Toolbar) findViewById(R.id.toolbars_kehu_activity);
+        searchView = (SearchView) findViewById(R.id.searchView);
+        ImageView searchButton = (ImageView)searchView.findViewById(R.id.search_button);
+        searchButton.setImageResource(R.mipmap.sousuo);
+
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.mipmap.zuojiantou);
         getSupportActionBar().setHomeButtonEnabled(true);
