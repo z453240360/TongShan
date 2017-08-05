@@ -110,8 +110,5 @@ public class ZhuangTaiFragment extends Fragment implements IMainView{
         mTxt_yinghang2.setText("");
         mTxt_geren2.setText("");
 
-
-
-
     }
 }

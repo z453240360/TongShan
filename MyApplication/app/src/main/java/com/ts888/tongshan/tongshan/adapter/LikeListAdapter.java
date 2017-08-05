@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.bean.FindScheduleBean;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,11 +61,15 @@ public class LikeListAdapter extends RecyclerView.Adapter<LikeListAdapter.MyView
         });
 
 
+        //格式化数据
+        float v = (float)(applyAmt / 10000);
+        DecimalFormat fnum = new DecimalFormat("##0.00");
+        String dd=fnum.format(v);
+
         holder.mTxt_jianban.setText(currVerifyName);
         holder.mTxt_time.setText(applyDate);
         holder.mTxt_sunxiaobao.setText(userName);
-        holder.mTxt_wuqian.setText(""+applyAmt+"元");
-
+        holder.mTxt_wuqian.setText(""+dd+" 万元");
     }
 
 

@@ -1,5 +1,6 @@
 package com.ts888.tongshan.tongshan.activity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -58,6 +59,7 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         String userCode = sharedPreferences.getString("userCode","88888");
         token = sharedPreferences.getString("token", "888888");
+
         present = new Present(this);
         parmsBean = new ParmsBean();
         parmsBean.setUserCode(userCode);
@@ -102,7 +104,6 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
 
     @Override
     public void showLoading() {
-
     }
 
     @Override

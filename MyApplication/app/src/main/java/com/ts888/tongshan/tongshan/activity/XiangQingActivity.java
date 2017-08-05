@@ -1,6 +1,7 @@
 package com.ts888.tongshan.tongshan.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import com.ts888.tongshan.tongshan.fragment.KeHuFragment;
 import com.ts888.tongshan.tongshan.fragment.ZhuangTaiFragment;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
+import com.ts888.tongshan.tongshan.util.ColorState;
 
 import java.util.ArrayList;
 
@@ -43,6 +45,7 @@ public class XiangQingActivity extends AppCompatActivity implements IMainView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_xiang_qing);
 
@@ -50,6 +53,8 @@ public class XiangQingActivity extends AppCompatActivity implements IMainView {
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         toolbar.setNavigationIcon(R.mipmap.zuojiantou);
+
+
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
@@ -57,10 +62,7 @@ public class XiangQingActivity extends AppCompatActivity implements IMainView {
         token = getIntent().getStringExtra("token");
         manager = getSupportFragmentManager();
 
-//        radioGroup = (RadioGroup) findViewById(R.id.RG_xiangqing);
-//        toolbar = (Toolbar) findViewById(R.id.toolbars_xiang_activity);
-//        toolbar.setLogo(R.mipmap.zuojiantou);
-
+        radioGroup = (RadioGroup) findViewById(R.id.RG_xiangqing);
 
         initFragments();
 

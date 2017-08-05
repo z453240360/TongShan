@@ -1,6 +1,7 @@
 package com.ts888.tongshan.tongshan;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     private String phoneNo;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-    private Dialog dialog;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +51,13 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     }
 
     private void init() {
-        dialog = new Dialog(this);
         present = new Present(this);
-
         mEd_phoneNumber = (EditText) findViewById(R.id.mEd_user_phoneNumber);
         mEd_code = (EditText) findViewById(R.id.mEd_user_password);
         mEd_phoneNumber.setText("18616850003");
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
+        dialog = new ProgressDialog(this);
     }
 
     public void onClick(View view) {
@@ -86,7 +86,6 @@ public class MainActivity extends AppCompatActivity implements IMainView {
                 //登陆账号
                 parmsBean2.setPhoneNo(phoneNo);
                 parmsBean2.setVerifyCode(verifyCode);
-
                 present.login(parmsBean2);
 
                 break;
@@ -112,12 +111,16 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     @Override
     public void showLoading() {
         //显示加载框
+//        ProgressDialog.show(this,"登陆中","");
+        dialog.show();
 
     }
 
     @Override
     public void cancelLoading() {
         //退出加载框
+
+        dialog.dismiss();
     }
 
     @Override

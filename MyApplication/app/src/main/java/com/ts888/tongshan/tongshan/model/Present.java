@@ -3,6 +3,7 @@ package com.ts888.tongshan.tongshan.model;
 import android.content.Context;
 
 import com.google.gson.Gson;
+import com.ts888.tongshan.tongshan.bean.FindCalcParameterBean;
 import com.ts888.tongshan.tongshan.bean.ParmsBean;
 import com.ts888.tongshan.tongshan.util.MD5Util;
 
@@ -218,8 +219,8 @@ public class Present {
 
     }
 
-    //查询待进件客户信息
-    public void getCalcContractInfoData (ParmsBean parmsBean,String token){
+    //试算
+    public void getCalcContractInfoData (FindCalcParameterBean parmsBean, String token){
         String timeStamp = String.valueOf(System.currentTimeMillis());
         String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
         Gson g = new Gson();

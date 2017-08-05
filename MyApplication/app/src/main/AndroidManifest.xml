@@ -19,7 +19,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.TestActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,7 +30,8 @@
         <activity android:name=".activity.JinjianActivity" />
         <activity android:name=".activity.KeHuActivity" />
         <activity android:name=".activity.ShiSuanActivity" />
-        <activity android:name=".activity.XiangQingActivity"></activity>
+        <activity android:name=".activity.XiangQingActivity" />
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>

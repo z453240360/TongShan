@@ -22,7 +22,6 @@ import java.util.List;
 
 public class ShouyeFragment extends Fragment {
 
-
     private Button mBtn_jinjian,mBtn_kehu,mBtn_shisuan;
 
     @Nullable
@@ -60,11 +59,6 @@ public class ShouyeFragment extends Fragment {
                 callBack.getText("shisuan");
             }
         });
-
-
-
-
-
     }
 
 

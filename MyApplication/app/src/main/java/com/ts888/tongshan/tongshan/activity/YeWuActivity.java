@@ -52,7 +52,7 @@ public class YeWuActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         token = sharedPreferences.getString("token", "888888");              //获取存储的token
-
+        Log.i(TAG, "onCreate: "+token);
         init();
     }
 
@@ -123,4 +123,7 @@ public class YeWuActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+
 }

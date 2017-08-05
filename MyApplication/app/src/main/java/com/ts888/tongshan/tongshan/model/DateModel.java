@@ -328,6 +328,11 @@ public class DateModel {
                         callBack.failed("请求的数据为空，或参数异常");
                         return;
                     }
+
+                    String s = response.body().string();
+                    Log.i("s", "onResponse: "+s);
+//                    Log.i("dd", "onResponse: "+response.body().string().toString());
+
                     callBack.succesed(response.body().string());
                 } catch (IOException e) {
                     e.printStackTrace();
