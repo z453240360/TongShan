@@ -82,6 +82,7 @@ public class JinjianActivity extends AppCompatActivity implements IMainView {
     @Override
     public void showLoading() {
         Log.i(TAG, "showLoading: ");
+
     }
 
     @Override

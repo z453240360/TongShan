@@ -10,10 +10,13 @@ import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private ProgressDialog dialog;
+    private RelativeLayout activity_main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         ColorState.setWindowStatusBarColor(this, Color.WHITE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-
         init();
     }
 
@@ -58,6 +61,14 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         dialog = new ProgressDialog(this);
+        activity_main = (RelativeLayout) findViewById(R.id.activity_main);
+        activity_main.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                InputMethodManager manager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                return manager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
+            }
+        });
     }
 
     public void onClick(View view) {
@@ -134,7 +145,6 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         LoginBean loginBean = g.fromJson(s, LoginBean.class);
 
         String code = loginBean.getCode();
-        Log.i(TAG, "getLogin: "+s);
         if (!code .equals("1")) {
             Toast.makeText(this, "请求错误" + loginBean.getMessage(), Toast.LENGTH_SHORT).show();
             return;
@@ -146,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         editor.putString("token",token);
         editor.putString("phoneNo",loginBean.getData().getPhoneNo());
         editor.commit();
+        dialog.dismiss();
         startActivity(new Intent(MainActivity.this, YeWuActivity.class));
 
     }

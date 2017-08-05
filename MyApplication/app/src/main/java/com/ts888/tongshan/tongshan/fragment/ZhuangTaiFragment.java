@@ -1,5 +1,6 @@
 package com.ts888.tongshan.tongshan.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,8 +18,10 @@ import com.ts888.tongshan.tongshan.bean.ParmsBean;
 import com.ts888.tongshan.tongshan.bean.ZhuangTaiBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
+import com.ts888.tongshan.tongshan.yuansuan.YuanSuan;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 /**
  * Created by dongdong on 2017/8/3.
@@ -80,7 +83,7 @@ public class ZhuangTaiFragment extends Fragment implements IMainView{
 
     @Override
     public void getLogin(String s) {
-
+        Log.i("dd", "getLogin: "+s);
         Gson gson = new Gson();
         ZhuangTaiBean zhuangTaiBean = gson.fromJson(s, ZhuangTaiBean.class);
         ZhuangTaiBean.DataBean data = zhuangTaiBean.getData();
@@ -99,16 +102,27 @@ public class ZhuangTaiFragment extends Fragment implements IMainView{
         mTxt_jiekuanname2.setText(""+dd+"  万元");
         mTxt_qixian2.setText(""+period+"月");
         mTxt_shouji2.setText("");
-        if (verifySchedule==0)
-        {
-            mTxt_jichu2.setText("已认证");
-        }else {
-            mTxt_jichu2.setText("");
-        }
 
-        mTxt_renmai2.setText("");
-        mTxt_yinghang2.setText("");
-        mTxt_geren2.setText("");
+
+        ArrayList<Integer> number = YuanSuan.getNumber(verifySchedule);
+        for (int i = 0; i < number.size(); i++) {
+            Integer verifysche = number.get(i);
+            if (verifysche==2){
+                mTxt_jichu2.setText("已认证");
+                mTxt_jichu2.setTextColor(Color.rgb(39,183,94));
+            }else if (verifysche==4){
+                mTxt_renmai2.setText("已认证");
+                mTxt_renmai2.setTextColor(Color.rgb(39,183,94));
+            }else if (verifysche==8){
+                mTxt_geren2.setText("已认证");
+                mTxt_geren2.setTextColor(Color.rgb(39,183,94));
+            }else if (verifysche==18){
+                mTxt_yinghang2.setText("已认证");
+                mTxt_yinghang2.setTextColor(Color.rgb(39,183,94));
+            }else if (verifysche==0){
+                Log.i("", "getLogin: ");
+            }
+        }
 
     }
 }

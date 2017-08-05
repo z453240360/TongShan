@@ -1,8 +1,10 @@
 package com.ts888.tongshan.tongshan.fragment;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +28,7 @@ public class JichuXinXiFragment extends Fragment implements IMainView{
 
     private Present present;
     private ParmsBean parmsBean;
+    private ProgressDialog dialog;
     private TextView mTxt_shenfenid,mTxt_jiekuanname2,mTxt_shouji2,mTxt_jine2,mTxt_hunyin2,mTxt_xueli2,mTxt_dizhi2,mTxt_xinzhi2
     ,mTxt_danwei2,mTxt_danweidianhua2,mTxt_xingzhi2,mTxt_zhiji2,mTxt_ruzhi2,mTxt_dangyue,mTxt_danweidizhi2,mTxt_dangyue2;
 
@@ -41,12 +44,12 @@ public class JichuXinXiFragment extends Fragment implements IMainView{
 
         String useC = getArguments().getString("useC");
         String token = getArguments().getString("token");
-
+        dialog = new ProgressDialog(getActivity());
         Log.i("dd", "onViewCreated: "+useC+token);
         mTxt_shenfenid = (TextView) view.findViewById(R.id.mTxt_shenfenid);
 
 
-        mTxt_jine2 = (TextView) view.findViewById(R.id.mTxt_jine2);
+//        mTxt_jine2 = (TextView) view.findViewById(R.id.mTxt_jine2);
         mTxt_xueli2 = (TextView) view.findViewById(R.id.mTxt_xueli2);
         mTxt_dizhi2 = (TextView) view.findViewById(R.id.mTxt_dizhi2);
         mTxt_ruzhi2 = (TextView) view.findViewById(R.id.mTxt_ruzhi2);
@@ -62,6 +65,10 @@ public class JichuXinXiFragment extends Fragment implements IMainView{
         mTxt_jiekuanname2 = (TextView) view.findViewById(R.id.mTxt_jiekuanname2);
         mTxt_danweidianhua2 = (TextView) view.findViewById(R.id.mTxt_danweidianhua2);
 
+        mTxt_dizhi2.setMovementMethod(ScrollingMovementMethod.getInstance());
+        mTxt_danweidizhi2.setMovementMethod(ScrollingMovementMethod.getInstance());
+        mTxt_dizhi2.setHorizontallyScrolling(true);
+        mTxt_danweidizhi2.setHorizontallyScrolling(true);
         parmsBean = new ParmsBean();
         parmsBean.setUserCode(useC);
 //        parmsBean.setUserCode("TS_20170614103419437225140");
@@ -72,6 +79,7 @@ public class JichuXinXiFragment extends Fragment implements IMainView{
 
         present.getFindUserBaseInfoByCode(parmsBean,token);
 
+
     }
 
     @Override
@@ -81,12 +89,12 @@ public class JichuXinXiFragment extends Fragment implements IMainView{
 
     @Override
     public void showLoading() {
-
+        dialog.show();
     }
 
     @Override
     public void cancelLoading() {
-
+        dialog.cancel();
     }
 
     @Override
@@ -109,10 +117,9 @@ public class JichuXinXiFragment extends Fragment implements IMainView{
         mTxt_shenfenid.setText(data.getUserName());
         mTxt_jiekuanname2.setText(data.getIdCard());
         mTxt_shouji2.setText(data.getRegisterPhoneNo());
-        mTxt_jine2.setText(data.getUserName());
         mTxt_hunyin2.setText(data.getMarriageName());
         mTxt_xueli2.setText(data.getDegreeName());
-        mTxt_dizhi2.setText(data.getResidenceProvinceName()+data.getResidenceRegionName()+data.getResidenceAddress());
+        mTxt_dizhi2.setText(data.getResidenceRegionName()+data.getResidenceRegionName()+data.getResidenceAddress());
         mTxt_xinzhi2.setText(data.getResidenceConditionName());
         mTxt_danwei2.setText(data.getJobCompanyName());
         mTxt_danweidianhua2.setText(data.getJobCompanyPhone());
@@ -120,6 +127,6 @@ public class JichuXinXiFragment extends Fragment implements IMainView{
         mTxt_zhiji2.setText(data.getCurrJobSeniorityName());
         mTxt_ruzhi2.setText(data.getEntryDate());
         mTxt_dangyue2.setText(data.getMonthSalaryName());
-        mTxt_danweidizhi2.setText(data.getJobCompanyProvinceName()+data.getJobCompanyRegionName()+data.getJobCompanyAddress());
+        mTxt_danweidizhi2.setText(data.getJobCompanyCityName()+data.getJobCompanyRegionName()+data.getJobCompanyAddress());
     }
 }

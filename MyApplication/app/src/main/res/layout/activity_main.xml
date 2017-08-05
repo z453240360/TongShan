@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -12,7 +13,7 @@
         android:layout_marginRight="20dp"
         android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
         android:background="@drawable/yuanjiao"
         android:orientation="vertical">
 
@@ -28,7 +29,7 @@
                 android:drawablePadding="10dp"
                 android:layout_centerVertical="true"
                 android:id="@+id/mEd_user_phoneNumber"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:textColorHint="#aaaaaa"
@@ -51,8 +52,8 @@
                 android:layout_centerVertical="true"
                 android:textColorHint="#aaaaaa"
                 android:id="@+id/mEd_user_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
                 android:drawableLeft="@mipmap/yanzhengma"
                 android:hint="请输入验证码" />
 
@@ -65,7 +66,7 @@
                 android:id="@+id/mBtn_getPassword"
                 android:layout_width="wrap_content"
                 android:background="@drawable/yuanjiaonutton"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:text="免费获取" />
         </RelativeLayout>
     </LinearLayout>
@@ -88,9 +89,10 @@
         android:layout_below="@id/ll_main"
         android:id="@+id/mBtn_logIn"
         android:textColor="#f7f7f7"
+        android:textSize="25sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/yuanjiaologinbutton"
-        android:text="登陆" />
+        android:text="登   录" />
 
 </RelativeLayout>

@@ -29,7 +29,7 @@
     <RadioGroup
         android:id="@+id/mRg_kehu"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/toolbars_kehu_activity"
         android:layout_marginTop="5dp"
         android:orientation="horizontal">
@@ -50,7 +50,7 @@
             android:tag="0"
             android:text="待进件"
             android:textColor="@drawable/radiobuttoncolor"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <RadioButton
             android:background="#ffffff"
@@ -67,7 +67,7 @@
             android:tag="1"
             android:text="已进件"
             android:textColor="@drawable/radiobuttoncolor2"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <RadioButton
             android:background="#ffffff"
@@ -84,7 +84,7 @@
             android:tag="2"
             android:text="已放款"
             android:textColor="@drawable/radiobuttoncolor2"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </RadioGroup>
 
     <android.support.v7.widget.SearchView
@@ -93,7 +93,7 @@
         android:gravity="center"
         android:layout_height="50dp"
         android:layout_below="@id/mRg_kehu"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="6dp"
         android:background="#ffffff"
         android:queryHint="搜索" />
 
@@ -102,5 +102,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/searchView"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="6dp" />
 </RelativeLayout>

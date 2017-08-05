@@ -33,12 +33,6 @@ public class TestActivity extends AppCompatActivity implements IMainView{
 
 //        present.getFindCalcParameter(b,"eb783d1212d5787173d51ab636fb8ed9");
 
-
-
-
-
-
-
     }
 
     @Override

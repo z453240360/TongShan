@@ -38,6 +38,7 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
     private String token;
     private Toolbar toolbar;
     private SearchView searchView;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
         ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_ke_hu);
-
+        dialog = new ProgressDialog(this);
         toolbar = (Toolbar) findViewById(R.id.toolbars_kehu_activity);
         searchView = (SearchView) findViewById(R.id.searchView);
         ImageView searchButton = (ImageView)searchView.findViewById(R.id.search_button);
@@ -65,7 +66,6 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
         parmsBean.setUserCode(userCode);
 //        parmsBean.setUserCode(userCode);
         present.getFindUserBaseInfoByCode(parmsBean,token);//用户基本信息
-
 //        present.getFindScheduleByCode(parmsBean,token);
 
         mRg_KeHu = (RadioGroup) findViewById(R.id.mRg_kehu);
@@ -104,11 +104,12 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
 
     @Override
     public void showLoading() {
+        dialog.show();
     }
 
     @Override
     public void cancelLoading() {
-
+        dialog.cancel();
     }
 
     @Override

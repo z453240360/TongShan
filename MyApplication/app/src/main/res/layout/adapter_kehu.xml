@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:text="5000元" />
+        android:text="" />
 
     <TextView
         android:textColor="#0bb04a"
@@ -57,7 +57,7 @@
 
         <TextView
             android:textColor="#000000"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:id="@+id/mTxt_sunxiaobao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
         android:paddingLeft="20dp"
         android:layout_marginTop="3dp"
         android:textColor="#8b8b8b"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:id="@+id/mTxt_shenqinshijian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -95,11 +95,11 @@
     <TextView
         android:layout_marginLeft="10dp"
         android:textColor="#8b8b8b"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:id="@+id/mTxt_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/mTxt_shenqinshijian"
         android:layout_toRightOf="@id/mTxt_shenqinshijian"
-        android:text="时间" />
+        android:text="" />
 </RelativeLayout>

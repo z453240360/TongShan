@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="#ffffff"
+    android:background="@null"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -12,7 +12,7 @@
         <RelativeLayout
             android:background="#ffffff"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             >
 
             <TextView
@@ -35,27 +35,28 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@id/mTxt_shenfenzhenghao"
-                android:text="张杰"
+                android:text=""
                 android:textColor="#000000"
                 android:textSize="20sp" />
 
             <TextView
+                android:layout_below="@id/mTxt_zhuangtainame"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="25dp"
                 android:id="@+id/mTxt_time_zhuangtai2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/mTxt_shenfenzhenghao"
-                android:layout_alignParentRight="true"
-                android:text="时间"
+                android:text=""
                 android:textSize="15sp"
                 android:textColor="#8b8b8b" />
 
             <TextView
+                android:layout_marginTop="25dp"
+                android:layout_toLeftOf="@+id/mTxt_time_zhuangtai2"
+                android:layout_below="@id/mTxt_shenfenzhenghao"
                 android:id="@+id/mTxt_time_zhuangtai"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/mTxt_shenfenzhenghao"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/mTxt_time_zhuangtai2"
                 android:text="申请时间:"
                 android:textSize="15sp"
                 android:textColor="#8b8b8b" />
@@ -71,13 +72,12 @@
 
         <RelativeLayout
             android:background="#ffffff"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             >
 
             <TextView
+                android:layout_marginLeft="10dp"
                 android:layout_centerVertical="true"
                 android:id="@+id/mTxt_jiekuan2"
                 android:layout_width="80dp"
@@ -116,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@id/mTxt_jiekuanname2"
                 android:layout_toLeftOf="@id/mTxt_qixian2"
-                android:text="期限:"
+                android:text="期限:  "
                 android:layout_marginLeft="10dp"
                 android:textSize="18sp"
                 android:textColor="#27b75e" />
@@ -129,7 +129,7 @@
             android:layout_height="0.1dp"
             android:background="#8b8b8b" />
         <RelativeLayout
-            android:background="#ffffff"
+            android:background="@null"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
@@ -141,11 +141,10 @@
                 android:id="@+id/mTxt_shouji"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/xinxirenzheng"
                 android:drawablePadding="10dp"
                 android:text="信息认证 "
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/mTxt_shouji2"
@@ -153,7 +152,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="40dp"
                 android:layout_alignParentRight="true"
-                android:text="sssss"
                 android:textSize="18sp"
                 android:layout_alignBottom="@id/mTxt_shouji"
                 android:textColor="#8b8b8b" />
@@ -169,23 +167,24 @@
             android:background="#ffffff"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             >
 
             <TextView
+                android:layout_marginLeft="10dp"
                 android:layout_centerVertical="true"
                 android:id="@+id/mTxt_jichu"
+                android:drawableLeft="@mipmap/jichuxinxi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/jichuxinxi"
                 android:drawablePadding="10dp"
                 android:text="基础信息 "
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="20sp" />
 
 
             <TextView
+                android:text="未认证"
+                android:layout_marginRight="10dp"
                 android:textSize="18sp"
                 android:layout_alignParentRight="true"
                 android:id="@+id/mTxt_jichu2"
@@ -205,16 +204,15 @@
             android:background="#ffffff"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             >
 
             <TextView
+                android:layout_marginLeft="10dp"
+                android:drawableLeft="@mipmap/renmairenzheng"
                 android:layout_centerVertical="true"
                 android:id="@+id/mTxt_renmai"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/renmairenzheng"
                 android:drawablePadding="10dp"
                 android:text="人脉信息"
                 android:textColor="#000000"
@@ -223,13 +221,14 @@
 
 
             <TextView
+                android:layout_marginRight="10dp"
                 android:textSize="18sp"
                 android:layout_alignParentRight="true"
                 android:id="@+id/mTxt_renmai2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text=""
+                android:text="未认证"
                 android:layout_alignBottom="@id/mTxt_renmai"
                 android:textColor="#8b8b8b" />
 
@@ -244,16 +243,15 @@
             android:background="#ffffff"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             >
 
             <TextView
+                android:layout_marginLeft="10dp"
+                android:drawableLeft="@mipmap/yinhangliushui"
                 android:layout_centerVertical="true"
                 android:id="@+id/mTxt_yinhang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/xinxirenzheng"
                 android:drawablePadding="10dp"
                 android:text="银行流水"
                 android:textColor="#000000"
@@ -262,13 +260,14 @@
 
 
             <TextView
+                android:layout_marginRight="10dp"
                 android:textSize="18sp"
                 android:layout_alignParentRight="true"
                 android:id="@+id/mTxt_yinghang2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text=""
+                android:text="未认证"
                 android:layout_alignBottom="@id/mTxt_yinhang"
                 android:textColor="#8b8b8b" />
 
@@ -283,29 +282,28 @@
             android:background="#ffffff"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             >
 
             <TextView
+                android:layout_marginLeft="10dp"
+                android:drawableLeft="@mipmap/gerenzhengxin"
                 android:layout_centerVertical="true"
                 android:id="@+id/mTxt_geren"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/gerenzhengxin"
-
                 android:drawablePadding="10dp"
-                android:text="信息认证 "
+                android:text="个人征信"
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
             <TextView
+                android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"
                 android:id="@+id/mTxt_geren2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text=""
+                android:text="未认证"
                 android:textSize="18sp"
                 android:layout_alignBottom="@id/mTxt_geren"
                 android:textColor="#8b8b8b" />

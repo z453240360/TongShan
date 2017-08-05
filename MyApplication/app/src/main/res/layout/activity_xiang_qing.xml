@@ -25,7 +25,6 @@
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
-        android:layout_marginTop="15dp"
         android:layout_below="@id/toolbars_xiang_activity"
         android:id="@+id/ll"
         android:layout_width="match_parent"
@@ -33,6 +32,9 @@
         android:orientation="horizontal">
 
         <RadioGroup
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="#ffffff"
             android:id="@+id/RG_xiangqing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,8 +51,9 @@
                 android:gravity="center"
                 android:tag="0"
                 android:text="基础信息"
+                android:layout_margin="1dp"
                 android:textColor="@drawable/radiobuttoncolor"
-                android:textSize="22sp" />
+                android:textSize="20sp" />
 
             <RadioButton
                 android:id="@+id/mBnt_jichu2"
@@ -61,9 +64,10 @@
                 android:drawableTop="@drawable/radiodrawablezhuangtai"
                 android:gravity="center"
                 android:tag="1"
+                android:layout_margin="1dp"
                 android:text="状态查询"
                 android:textColor="@drawable/radiobuttoncolor"
-                android:textSize="22sp" />
+                android:textSize="20sp" />
 
         </RadioGroup>
 

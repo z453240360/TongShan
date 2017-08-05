@@ -116,6 +116,7 @@ public class XiangQingActivity extends AppCompatActivity implements IMainView {
 
     @Override
     public void showLoading() {
+//        dialog.show();
 
     }
 

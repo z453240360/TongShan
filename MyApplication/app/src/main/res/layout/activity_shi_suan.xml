@@ -210,14 +210,13 @@
                 android:textSize="18sp" />
 
             <TextView
-
+                android:textSize="18sp"
                 android:id="@+id/mTxt_feilv2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="40dp"
                 android:layout_toRightOf="@id/mTxt_feilv"
-                android:text="ahahah"
                 android:textColor="#8b8b8b" />
         </RelativeLayout>
 
@@ -248,8 +247,10 @@
                 android:textSize="18sp" />
 
             <TextView
-
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/mTxt_qixian"
                 android:id="@+id/mTxt_qixian2"
+                android:text=""
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -277,8 +278,7 @@
                 android:id="@+id/mTxt_daoshou"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_gravity="right"
+                android:layout_gravity="right|center_vertical"
                 android:layout_marginLeft="10dp"
                 android:gravity="right"
                 android:text="到手金额:"
@@ -286,7 +286,8 @@
                 android:textSize="18sp" />
 
             <TextView
-
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/mTxt_daoshou"
                 android:id="@+id/mTxt_daoshou2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -322,10 +323,12 @@
                 android:textSize="18sp" />
 
             <TextView
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/mTxt_hetong"
                 android:id="@+id/mTxt_hetong2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
                 android:layout_marginLeft="40dp"
                 android:textColor="#8b8b8b" />
         </RelativeLayout>
@@ -352,18 +355,20 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_gravity="right|center_vertical"
                 android:layout_marginLeft="10dp"
-                android:gravity="right"
+                android:gravity="right|center_vertical"
                 android:text="每月应还:"
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
             <TextView
+                android:textSize="18sp"
+                android:layout_toRightOf="@id/mTxt_meiyue"
                 android:id="@+id/mTxt_meiyue2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
                 android:layout_marginLeft="40dp"
                 android:textColor="#8b8b8b" />
         </RelativeLayout>

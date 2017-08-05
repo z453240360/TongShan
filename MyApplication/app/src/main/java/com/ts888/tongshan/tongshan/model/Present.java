@@ -77,11 +77,13 @@ public class Present {
                 @Override
                 public void succesed(String s) {
                     iMainView.getLogin(s);
+                    iMainView.cancelLoading();
                 }
 
                 @Override
                 public void failed(String s) {
                     iMainView.showFaliure(s);
+                    iMainView.cancelLoading();
                 }
             });
         } catch (NoSuchAlgorithmException e) {
@@ -91,6 +93,7 @@ public class Present {
 
     //根据用户身份证号和姓名查询进件状态
     public void getUserInfo(ParmsBean parmsBean,String token){
+        iMainView.showLoading();
         String timeStamp = String.valueOf(System.currentTimeMillis());
         String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
         Gson g = new Gson();
@@ -102,11 +105,13 @@ public class Present {
                 @Override
                 public void succesed(String s) {
                     iMainView.getLogin(s);
+                    iMainView.cancelLoading();
                 }
 
                 @Override
                 public void failed(String s) {
                     iMainView.showFaliure(s);
+                    iMainView.cancelLoading();
                 }
             });
         } catch (NoSuchAlgorithmException e) {
@@ -117,6 +122,7 @@ public class Present {
 
     //根据userCode查询用户基本信息
     public void getFindUserBaseInfoByCode(ParmsBean parmsBean,String token){
+        iMainView.showLoading();
         String timeStamp = String.valueOf(System.currentTimeMillis());
         String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
         Gson g = new Gson();
@@ -128,11 +134,13 @@ public class Present {
                 @Override
                 public void succesed(String s) {
                     iMainView.getLogin(s);
+                    iMainView.cancelLoading();
                 }
 
                 @Override
                 public void failed(String s) {
                     iMainView.showFaliure(s);
+                    iMainView.cancelLoading();
                 }
             });
         } catch (NoSuchAlgorithmException e) {
@@ -143,6 +151,7 @@ public class Present {
 
     //根据userCode查询用户认证进度
     public void getFindScheduleByCode(ParmsBean parmsBean,String token){
+        iMainView.showLoading();
         String timeStamp = String.valueOf(System.currentTimeMillis());
         String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
         Gson g = new Gson();
@@ -154,11 +163,13 @@ public class Present {
                 @Override
                 public void succesed(String s) {
                     iMainView.getLogin(s);
+                    iMainView.cancelLoading();
                 }
 
                 @Override
                 public void failed(String s) {
                     iMainView.showFaliure(s);
+                    iMainView.cancelLoading();
                 }
             });
         } catch (NoSuchAlgorithmException e) {
@@ -169,6 +180,7 @@ public class Present {
 
     //查询待进件客户信息
     public void getFindInApprovalApplyInfo(ParmsBean parmsBean,String token){
+        iMainView.showLoading();
         String timeStamp = String.valueOf(System.currentTimeMillis());
         String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
         Gson g = new Gson();
@@ -180,11 +192,13 @@ public class Present {
                 @Override
                 public void succesed(String s) {
                     iMainView.getLogin(s);
+                    iMainView.cancelLoading();
                 }
 
                 @Override
                 public void failed(String s) {
                     iMainView.showFaliure(s);
+                    iMainView.cancelLoading();
                 }
             });
         } catch (NoSuchAlgorithmException e) {
@@ -195,6 +209,7 @@ public class Present {
 
     //查询待进件客户信息
     public void getFindCalcParameter (ParmsBean parmsBean,String token){
+        iMainView.showLoading();
         String timeStamp = String.valueOf(System.currentTimeMillis());
         String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
         Gson g = new Gson();
@@ -206,11 +221,13 @@ public class Present {
                 @Override
                 public void succesed(String s) {
                     iMainView.getLogin(s);
+                    iMainView.cancelLoading();
                 }
 
                 @Override
                 public void failed(String s) {
                     iMainView.showFaliure(s);
+                    iMainView.cancelLoading();
                 }
             });
         } catch (NoSuchAlgorithmException e) {
@@ -221,6 +238,7 @@ public class Present {
 
     //试算
     public void getCalcContractInfoData (FindCalcParameterBean parmsBean, String token){
+        iMainView.showLoading();
         String timeStamp = String.valueOf(System.currentTimeMillis());
         String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
         Gson g = new Gson();
@@ -232,11 +250,13 @@ public class Present {
                 @Override
                 public void succesed(String s) {
                     iMainView.getCode(s);
+                    iMainView.cancelLoading();
                 }
 
                 @Override
                 public void failed(String s) {
                     iMainView.showFaliure(s);
+                    iMainView.cancelLoading();
                 }
             });
         } catch (NoSuchAlgorithmException e) {

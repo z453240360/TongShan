@@ -324,16 +324,11 @@ public class DateModel {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 try {
-                    if (null==response.body().string()){
-                        callBack.failed("请求的数据为空，或参数异常");
+                    String responseBodyMsg = response.body().string();
+                    if (("").equals(responseBodyMsg) || null == responseBodyMsg){
                         return;
                     }
-
-                    String s = response.body().string();
-                    Log.i("s", "onResponse: "+s);
-//                    Log.i("dd", "onResponse: "+response.body().string().toString());
-
-                    callBack.succesed(response.body().string());
+                    callBack.succesed(responseBodyMsg);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
