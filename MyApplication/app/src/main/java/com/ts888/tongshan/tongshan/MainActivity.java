@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         present = new Present(this);
         mEd_phoneNumber = (EditText) findViewById(R.id.mEd_user_phoneNumber);
         mEd_code = (EditText) findViewById(R.id.mEd_user_password);
-        mEd_phoneNumber.setText("18616850003");
+//        mEd_phoneNumber.setText("18616850003");
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         dialog = new ProgressDialog(this);
