@@ -83,7 +83,7 @@ public class DateModel {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
 
-                callBack.failed("请求网络失败");
+                callBack.failed("");
             }
         });
     }

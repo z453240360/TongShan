@@ -7,14 +7,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,12 +34,15 @@ import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 import com.ts888.tongshan.tongshan.util.ColorState;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static android.R.attr.data;
+import static android.R.id.edit;
 import static android.R.id.list;
 import static com.ts888.tongshan.tongshan.R.id.mTxt_qixian2;
 
@@ -56,6 +64,7 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
     private List<Integer> periods;
     private Toolbar toolbar;
     private FindCalcParameterBean calcParameterBean;
+    private ScrollView activity_shi_suan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +72,18 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
         ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_shi_suan);
+
+        activity_shi_suan = (ScrollView)findViewById(R.id.activity_shi_suan);
+        activity_shi_suan.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                InputMethodManager manager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                return manager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
+            }
+        });
+
+
+
 
         initToolBar();
         initView();
@@ -87,8 +108,13 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
         mTxt_feilv2.setText("" + costMonthly);
         mTxt_qixian2.setText("" + period);
         mTxt_daoshou2.setText("" + netAmt);
-        mTxt_hetong2.setText("" + applyAmt);
+        mTxt_hetong2.setText("" + contractAmt);
         mTxt_meiyue2.setText("" + perRepayAmt);
+
+
+
+
+
 
     }
 
@@ -160,7 +186,9 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.mBtn_check:
-
+                ((InputMethodManager)getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
+                        ShiSuanActivity.this.getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
                 Present present1 = new Present(this);
                 String money = mEd_jine.getText().toString().trim();
                 if (money.equals("")) {
@@ -204,7 +232,36 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
         mTxt_daoshou2 = (TextView) findViewById(R.id.mTxt_daoshou2);
         mTxt_hetong2 = (TextView) findViewById(R.id.mTxt_hetong2);
         mTxt_meiyue2 = (TextView) findViewById(R.id.mTxt_meiyue2);
+
+        mEd_jine.addTextChangedListener(new TextWatcher() {
+
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                DecimalFormat df=(DecimalFormat) NumberFormat.getInstance();
+                df.setMaximumFractionDigits(2);
+                String format = df.format(Float.parseFloat(s.toString()));
+                mEd_jine.setText(format);
+                Log.i("dd", "onTextChanged: "+format);
+
+                //TODO 保留小数点后两位
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
     }
+
+
+
 
     private void initToolBar() {
         toolbar = (Toolbar) findViewById(R.id.toolbars_shisuan_activity);

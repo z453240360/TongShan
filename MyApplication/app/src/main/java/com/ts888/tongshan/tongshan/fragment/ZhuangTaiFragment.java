@@ -100,7 +100,7 @@ public class ZhuangTaiFragment extends Fragment implements IMainView{
         mTxt_zhuangtainame.setText(userName);
         mTxt_time_zhuangtai2.setText(applyDate);
         mTxt_jiekuanname2.setText(""+dd+"  万元");
-        mTxt_qixian2.setText(""+period+"月");
+        mTxt_qixian2.setText(""+period+"个月");
         mTxt_shouji2.setText("");
 
 
@@ -116,7 +116,7 @@ public class ZhuangTaiFragment extends Fragment implements IMainView{
             }else if (verifysche==8){
                 mTxt_geren2.setText("已认证");
                 mTxt_geren2.setTextColor(Color.rgb(39,183,94));
-            }else if (verifysche==18){
+            }else if (verifysche==16){
                 mTxt_yinghang2.setText("已认证");
                 mTxt_yinghang2.setTextColor(Color.rgb(39,183,94));
             }else if (verifysche==0){

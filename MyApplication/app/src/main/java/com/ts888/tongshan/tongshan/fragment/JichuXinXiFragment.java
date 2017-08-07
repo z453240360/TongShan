@@ -24,18 +24,17 @@ import static com.ts888.tongshan.tongshan.R.id.view;
  * Created by Administrator on 2017/8/1.
  */
 
-public class JichuXinXiFragment extends Fragment implements IMainView{
+public class JichuXinXiFragment extends Fragment implements IMainView {
 
     private Present present;
     private ParmsBean parmsBean;
     private ProgressDialog dialog;
-    private TextView mTxt_shenfenid,mTxt_jiekuanname2,mTxt_shouji2,mTxt_jine2,mTxt_hunyin2,mTxt_xueli2,mTxt_dizhi2,mTxt_xinzhi2
-    ,mTxt_danwei2,mTxt_danweidianhua2,mTxt_xingzhi2,mTxt_zhiji2,mTxt_ruzhi2,mTxt_dangyue,mTxt_danweidizhi2,mTxt_dangyue2;
+    private TextView mTxt_shenfenid, mTxt_jiekuanname2, mTxt_shouji2, mTxt_jine2, mTxt_hunyin2, mTxt_xueli2, mTxt_dizhi2, mTxt_xinzhi2, mTxt_danwei2, mTxt_danweidianhua2, mTxt_xingzhi2, mTxt_zhiji2, mTxt_ruzhi2, mTxt_dangyue, mTxt_danweidizhi2, mTxt_dangyue2;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_xiangqing,container,false);
+        return inflater.inflate(R.layout.fragment_xiangqing, container, false);
     }
 
     @Override
@@ -45,7 +44,7 @@ public class JichuXinXiFragment extends Fragment implements IMainView{
         String useC = getArguments().getString("useC");
         String token = getArguments().getString("token");
         dialog = new ProgressDialog(getActivity());
-        Log.i("dd", "onViewCreated: "+useC+token);
+        Log.i("dd", "onViewCreated: " + useC + token);
         mTxt_shenfenid = (TextView) view.findViewById(R.id.mTxt_shenfenid);
 
 
@@ -59,7 +58,7 @@ public class JichuXinXiFragment extends Fragment implements IMainView{
         mTxt_xinzhi2 = (TextView) view.findViewById(R.id.mTxt_xinzhi2);
         mTxt_danwei2 = (TextView) view.findViewById(R.id.mTxt_danwei2);
         mTxt_shouji2 = (TextView) view.findViewById(R.id.mTxt_shouji2);
-        mTxt_dangyue2= (TextView) view.findViewById(R.id.mTxt_dangyue2);
+        mTxt_dangyue2 = (TextView) view.findViewById(R.id.mTxt_dangyue2);
         mTxt_xingzhi2 = (TextView) view.findViewById(R.id.mTxt_xingzhi2);
         mTxt_danweidizhi2 = (TextView) view.findViewById(R.id.mTxt_danweidizhi2);
         mTxt_jiekuanname2 = (TextView) view.findViewById(R.id.mTxt_jiekuanname2);
@@ -74,10 +73,9 @@ public class JichuXinXiFragment extends Fragment implements IMainView{
 //        parmsBean.setUserCode("TS_20170614103419437225140");
 
 
-
         present = new Present(this);
 
-        present.getFindUserBaseInfoByCode(parmsBean,token);
+        present.getFindUserBaseInfoByCode(parmsBean, token);
 
 
     }
@@ -104,14 +102,24 @@ public class JichuXinXiFragment extends Fragment implements IMainView{
 
     @Override
     public void getLogin(String s) {
-        Log.i("dd", "getLogin:____________ "+s);
+        Log.i("dd", "getLogin:____________ " + s);
 
         Gson gson = new Gson();
         UserBaseInfoBean userBaseInfoBean = gson.fromJson(s, UserBaseInfoBean.class);
         UserBaseInfoBean.DataBean data = userBaseInfoBean.getData();
 
-        if (data==null){
+        if (data == null) {
             return;
+        }
+
+        String dizhi2 = data.getResidenceProvinceName() + data.getResidenceRegionName() + data.getResidenceRegionName() + data.getResidenceAddress();
+        if (dizhi2 == null) {
+            mTxt_dizhi2.setText("");
+        }
+        String danweidizhi2 = data.getJobCompanyProvinceName() + data.getJobCompanyCityName() + data.getJobCompanyRegionName() + data.getJobCompanyAddress();
+
+        if (danweidizhi2 == null) {
+            mTxt_danweidizhi2.setText("");
         }
 
         mTxt_shenfenid.setText(data.getUserName());
@@ -119,7 +127,7 @@ public class JichuXinXiFragment extends Fragment implements IMainView{
         mTxt_shouji2.setText(data.getRegisterPhoneNo());
         mTxt_hunyin2.setText(data.getMarriageName());
         mTxt_xueli2.setText(data.getDegreeName());
-        mTxt_dizhi2.setText(data.getResidenceRegionName()+data.getResidenceRegionName()+data.getResidenceAddress());
+        mTxt_dizhi2.setText(dizhi2);
         mTxt_xinzhi2.setText(data.getResidenceConditionName());
         mTxt_danwei2.setText(data.getJobCompanyName());
         mTxt_danweidianhua2.setText(data.getJobCompanyPhone());
@@ -127,6 +135,6 @@ public class JichuXinXiFragment extends Fragment implements IMainView{
         mTxt_zhiji2.setText(data.getCurrJobSeniorityName());
         mTxt_ruzhi2.setText(data.getEntryDate());
         mTxt_dangyue2.setText(data.getMonthSalaryName());
-        mTxt_danweidizhi2.setText(data.getJobCompanyCityName()+data.getJobCompanyRegionName()+data.getJobCompanyAddress());
+        mTxt_danweidizhi2.setText(danweidizhi2);
     }
 }

@@ -30,7 +30,6 @@ public class YuanSuan {
                 return integers28;
             case 26:
                 ArrayList<Integer> integers26 = new ArrayList<>();
-
                 integers26.add(2);
                 integers26.add(8);
                 integers26.add(16);
