@@ -34,6 +34,8 @@ import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 import com.ts888.tongshan.tongshan.util.ColorState;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -106,7 +108,7 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
         mTxt_feilv2.setText("" + costMonthly);
         mTxt_qixian2.setText("" + period);
         mTxt_daoshou2.setText("" + netAmt);
-        mTxt_hetong2.setText("" + applyAmt);
+        mTxt_hetong2.setText("" + contractAmt);
         mTxt_meiyue2.setText("" + perRepayAmt);
 
 
@@ -184,8 +186,9 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.mBtn_check:
-
-//                getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                ((InputMethodManager)getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
+                        ShiSuanActivity.this.getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
                 Present present1 = new Present(this);
                 String money = mEd_jine.getText().toString().trim();
                 if (money.equals("")) {
@@ -231,27 +234,27 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
         mTxt_meiyue2 = (TextView) findViewById(R.id.mTxt_meiyue2);
 
         mEd_jine.addTextChangedListener(new TextWatcher() {
-            private boolean isChanged = false;
+
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int before, int count) {
-
 
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                DecimalFormat df=(DecimalFormat) NumberFormat.getInstance();
+                df.setMaximumFractionDigits(2);
+                String format = df.format(Float.parseFloat(s.toString()));
+                mEd_jine.setText(format);
+                Log.i("dd", "onTextChanged: "+format);
 
+                //TODO 保留小数点后两位
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-                String temp = s.toString();
-                int posDot = temp.indexOf(".");
-                if (posDot <= 0) return;
-                if (temp.length() - posDot - 1 > 2) {
-                    s.delete(posDot + 3, posDot + 4);
-                }
+
             }
         });
 

@@ -333,14 +333,12 @@
                 android:textColor="#8b8b8b" />
         </RelativeLayout>
 
-
         <TextView
             android:id="@+id/txt4"
             android:layout_width="match_parent"
             android:layout_height="0.3dp"
             android:layout_below="@id/rl_4"
             android:background="#aaaaaa" />
-
 
         <RelativeLayout
             android:id="@+id/rl_5"
@@ -354,7 +352,7 @@
                 android:id="@+id/mTxt_meiyue"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
+                android:layout_gravity ="center_vertical"
                 android:layout_marginLeft="10dp"
                 android:gravity="right|center_vertical"
                 android:text="每月应还:"

@@ -60,7 +60,7 @@
         android:gravity="center"
         android:layout_height="wrap_content"
         android:drawableLeft="@mipmap/jingshi"
-        android:text="请输入姓名或身份证号码,查询是否进件"
+        android:text="请输入姓名和身份证号码,查询是否进件"
         android:textColor="#1b7ab4" />
 
     <Button

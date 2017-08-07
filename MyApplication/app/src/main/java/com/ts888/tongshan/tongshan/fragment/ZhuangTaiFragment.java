@@ -116,7 +116,7 @@ public class ZhuangTaiFragment extends Fragment implements IMainView{
             }else if (verifysche==8){
                 mTxt_geren2.setText("已认证");
                 mTxt_geren2.setTextColor(Color.rgb(39,183,94));
-            }else if (verifysche==18){
+            }else if (verifysche==16){
                 mTxt_yinghang2.setText("已认证");
                 mTxt_yinghang2.setTextColor(Color.rgb(39,183,94));
             }else if (verifysche==0){
