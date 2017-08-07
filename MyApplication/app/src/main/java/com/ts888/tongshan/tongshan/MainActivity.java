@@ -30,6 +30,7 @@ import com.ts888.tongshan.tongshan.model.Present;
 import com.ts888.tongshan.tongshan.util.ColorState;
 
 import static android.R.attr.data;
+import static com.ts888.tongshan.tongshan.R.id.mEd_user_password;
 
 public class MainActivity extends AppCompatActivity implements IMainView {
 
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     private void init() {
         present = new Present(this);
         mEd_phoneNumber = (EditText) findViewById(R.id.mEd_user_phoneNumber);
-        mEd_code = (EditText) findViewById(R.id.mEd_user_password);
+        mEd_code = (EditText) findViewById(mEd_user_password);
 //        mEd_phoneNumber.setText("18616850003");
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();

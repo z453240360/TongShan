@@ -119,7 +119,7 @@ public class JichuXinXiFragment extends Fragment implements IMainView{
         mTxt_shouji2.setText(data.getRegisterPhoneNo());
         mTxt_hunyin2.setText(data.getMarriageName());
         mTxt_xueli2.setText(data.getDegreeName());
-        mTxt_dizhi2.setText(data.getResidenceRegionName()+data.getResidenceRegionName()+data.getResidenceAddress());
+        mTxt_dizhi2.setText(data.getResidenceProvinceName()+data.getResidenceRegionName()+data.getResidenceRegionName()+data.getResidenceAddress());
         mTxt_xinzhi2.setText(data.getResidenceConditionName());
         mTxt_danwei2.setText(data.getJobCompanyName());
         mTxt_danweidianhua2.setText(data.getJobCompanyPhone());
@@ -127,6 +127,6 @@ public class JichuXinXiFragment extends Fragment implements IMainView{
         mTxt_zhiji2.setText(data.getCurrJobSeniorityName());
         mTxt_ruzhi2.setText(data.getEntryDate());
         mTxt_dangyue2.setText(data.getMonthSalaryName());
-        mTxt_danweidizhi2.setText(data.getJobCompanyCityName()+data.getJobCompanyRegionName()+data.getJobCompanyAddress());
+        mTxt_danweidizhi2.setText(data.getJobCompanyProvinceName()+data.getJobCompanyCityName()+data.getJobCompanyRegionName()+data.getJobCompanyAddress());
     }
 }

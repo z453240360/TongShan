@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -9,90 +8,95 @@
 
     <LinearLayout
         android:id="@+id/ll_main"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_centerInParent="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_centerInParent="true"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
         android:background="@drawable/yuanjiao"
         android:orientation="vertical">
 
         <RelativeLayout
-            android:layout_marginLeft="20dp"
             android:id="@+id/rl_main2"
             android:layout_width="match_parent"
-            android:layout_weight="1"
             android:layout_height="0dp"
-            >
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1">
+
             <EditText
-                android:inputType="phone"
-                android:drawablePadding="10dp"
-                android:layout_centerVertical="true"
                 android:id="@+id/mEd_user_phoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
                 android:background="@null"
-                android:textColorHint="#aaaaaa"
                 android:drawableLeft="@mipmap/shoujihao"
-                android:hint="请输入手机号" />
+                android:drawablePadding="10dp"
+                android:hint="请输入手机号"
+                android:inputType="phone"
+                android:textColorHint="#aaaaaa" />
         </RelativeLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#aaaaaa" />
+
         <RelativeLayout
-            android:layout_marginLeft="20dp"
             android:id="@+id/rl_main"
             android:layout_width="match_parent"
-            android:layout_weight="1"
             android:layout_height="0dp"
-            >
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1">
 
             <EditText
-                android:inputType="numberPassword"
-                android:drawablePadding="10dp"
-                android:background="@null"
-                android:layout_centerVertical="true"
-                android:textColorHint="#aaaaaa"
                 android:id="@+id/mEd_user_password"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:background="@null"
                 android:drawableLeft="@mipmap/yanzhengma"
-                android:hint="请输入验证码" />
+                android:drawablePadding="10dp"
+                android:hint="请输入验证码"
+                android:inputType="number"
+                android:textColorHint="#aaaaaa" />
 
             <Button
-                android:onClick="onClick"
-                android:layout_centerVertical="true"
-                android:layout_margin="10dp"
-                android:layout_alignParentRight="true"
-                android:textColor="#ffffff"
                 android:id="@+id/mBtn_getPassword"
                 android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="10dp"
                 android:background="@drawable/yuanjiaonutton"
-                android:layout_height="40dp"
-                android:text="免费获取" />
+                android:onClick="onClick"
+                android:text="免费获取"
+                android:textColor="#ffffff" />
         </RelativeLayout>
     </LinearLayout>
 
     <ImageView
-        android:layout_marginBottom="60dp"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@id/ll_main"
         android:id="@+id/log_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
+        android:layout_above="@id/ll_main"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="30dp"
         android:src="@mipmap/logo" />
 
 
     <Button
-        android:onClick="onClick"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_below="@id/ll_main"
         android:id="@+id/mBtn_logIn"
-        android:textColor="#f7f7f7"
-        android:textSize="25sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/ll_main"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/yuanjiaologinbutton"
-        android:text="登   录" />
+        android:onClick="onClick"
+        android:text="登   录"
+        android:textColor="#f7f7f7"
+        android:textSize="25sp" />
 
 </RelativeLayout>

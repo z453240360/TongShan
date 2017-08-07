@@ -100,7 +100,7 @@ public class ZhuangTaiFragment extends Fragment implements IMainView{
         mTxt_zhuangtainame.setText(userName);
         mTxt_time_zhuangtai2.setText(applyDate);
         mTxt_jiekuanname2.setText(""+dd+"  万元");
-        mTxt_qixian2.setText(""+period+"月");
+        mTxt_qixian2.setText(""+period+"个月");
         mTxt_shouji2.setText("");
 
 
