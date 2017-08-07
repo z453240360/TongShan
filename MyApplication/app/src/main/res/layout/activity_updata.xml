@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_updata"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ts888.tongshan.tongshan.activity.UpdataActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbars_guanyu_activity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:background="#1b7ab4"
+        android:popupTheme="@style/AppTheme">
+
+        <TextView
+            android:id="@+id/mTxt_xiangqing_Activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="关于我们"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/mImg_updatalogo"
+        android:src="@mipmap/uplogo"
+        android:layout_marginTop="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="213dp"
+        android:layout_height="181dp" />
+
+    <TextView
+        android:layout_below="@id/mImg_updatalogo"
+        android:layout_marginTop="15.3dp"
+        android:id="@+id/mTxt_updata"
+        android:text="版本号："
+        android:layout_marginLeft="140dp"
+        android:textSize="12.5sp"
+        android:textColor="#555555"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_toRightOf="@id/mTxt_updata"
+        android:layout_alignBottom="@id/mTxt_updata"
+        android:layout_alignTop="@id/mTxt_updata"
+        android:textSize="12.5sp"
+        android:textColor="#555555"
+        android:id="@+id/mTxt_versionCode"
+        android:text="1.01.1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/mTxt_updata"
+        android:layout_marginTop="47.3dp"
+        android:textColor="#126cb0"
+        android:textSize="12.5sp"
+        android:text="检查版本更新"
+        android:background="@drawable/yuanjiaoupdata"
+        android:layout_width="220.7dp"
+        android:layout_height="41.3dp" />
+
+</RelativeLayout>

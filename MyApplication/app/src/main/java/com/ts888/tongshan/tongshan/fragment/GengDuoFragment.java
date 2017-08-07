@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.ts888.tongshan.tongshan.R;
 
@@ -15,11 +16,36 @@ import com.ts888.tongshan.tongshan.R;
  */
 
 public class GengDuoFragment extends Fragment {
+
+    private Button mBtn_updata;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_gengduo,container,false);
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mBtn_updata = (Button) view.findViewById(R.id.mBtn_updata);
 
+        mBtn_updata.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callBack.getText("updata");
+            }
+        });
+    }
+
+
+    public interface TextCallBack{
+        void getText(String str);
+    }
+
+    private ShouyeFragment.TextCallBack callBack;
+
+    public void setCallBack(ShouyeFragment.TextCallBack callBack){
+        this.callBack = callBack;
+    }
 }

@@ -111,6 +111,19 @@ public class YeWuActivity extends AppCompatActivity {
                 }
             }
         });
+
+        gengDuoFragment.setCallBack(new ShouyeFragment.TextCallBack() {
+            @Override
+            public void getText(String str) {
+                if (str.equals("updata"))
+                {
+                    startActivity(new Intent(YeWuActivity.this, UpdataActivity.class));
+                }
+            }
+        });
+
+
+
     }
 
     @Override

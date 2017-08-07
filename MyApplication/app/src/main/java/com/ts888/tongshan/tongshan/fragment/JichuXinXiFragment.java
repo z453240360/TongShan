@@ -113,13 +113,13 @@ public class JichuXinXiFragment extends Fragment implements IMainView {
         }
 
         String dizhi2 = data.getResidenceProvinceName() + data.getResidenceRegionName() + data.getResidenceRegionName() + data.getResidenceAddress();
-        if (dizhi2 == null) {
-            mTxt_dizhi2.setText("");
+        if (dizhi2 .equals("nullnullnullnull")) {
+            dizhi2="";
         }
         String danweidizhi2 = data.getJobCompanyProvinceName() + data.getJobCompanyCityName() + data.getJobCompanyRegionName() + data.getJobCompanyAddress();
 
-        if (danweidizhi2 == null) {
-            mTxt_danweidizhi2.setText("");
+        if (danweidizhi2 .equals("nullnullnullnull")) {
+            danweidizhi2="";
         }
 
         mTxt_shenfenid.setText(data.getUserName());

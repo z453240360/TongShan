@@ -33,6 +33,8 @@ import com.ts888.tongshan.tongshan.bean.ShisuanParmBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 import com.ts888.tongshan.tongshan.util.ColorState;
+import com.ts888.tongshan.tongshan.util.DataFormatFromInt;
+import com.ts888.tongshan.tongshan.util.EditTextUtil;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -98,18 +100,21 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
         ShiSuanDataBean shiSuanDataBean = g.fromJson(s, ShiSuanDataBean.class);
         ShiSuanDataBean.DataBean data = shiSuanDataBean.getData();
 
-        int applyAmt = data.getApplyAmt();  //1000
+//        int applyAmt = data.getApplyAmt();  //1000
         double contractAmt = data.getContractAmt();//1100.0
         double netAmt = data.getNetAmt();//822.14
         double perRepayAmt = data.getPerRepayAmt();//99.28
         double costMonthly = data.getCostMonthly();//1.38
         int period = data.getPeriod();//12
 
+
+
+
         mTxt_feilv2.setText("" + costMonthly);
         mTxt_qixian2.setText("" + period);
-        mTxt_daoshou2.setText("" + netAmt);
-        mTxt_hetong2.setText("" + contractAmt);
-        mTxt_meiyue2.setText("" + perRepayAmt);
+        mTxt_daoshou2.setText("" + DataFormatFromInt.getDoubleByDouble(netAmt));
+        mTxt_hetong2.setText("" + DataFormatFromInt.getDoubleByDouble(contractAmt));
+        mTxt_meiyue2.setText("" + DataFormatFromInt.getDoubleByDouble(perRepayAmt));
 
 
 
@@ -233,30 +238,7 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
         mTxt_hetong2 = (TextView) findViewById(R.id.mTxt_hetong2);
         mTxt_meiyue2 = (TextView) findViewById(R.id.mTxt_meiyue2);
 
-        mEd_jine.addTextChangedListener(new TextWatcher() {
-
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                DecimalFormat df=(DecimalFormat) NumberFormat.getInstance();
-                df.setMaximumFractionDigits(2);
-                String format = df.format(Float.parseFloat(s.toString()));
-                mEd_jine.setText(format);
-                Log.i("dd", "onTextChanged: "+format);
-
-                //TODO 保留小数点后两位
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+        EditTextUtil.twoPoint(mEd_jine);
 
     }
 
