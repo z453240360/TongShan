@@ -24,6 +24,8 @@ public class UpdataActivity extends AppCompatActivity implements IMainView{
         setContentView(R.layout.activity_updata);
 
         initToolBar();
+
+        
     }
 
 
