@@ -28,7 +28,7 @@
     <ImageView
         android:id="@+id/mImg_updatalogo"
         android:src="@mipmap/uplogo"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="90dp"
         android:layout_centerHorizontal="true"
         android:layout_width="213dp"
         android:layout_height="181dp" />
@@ -56,12 +56,14 @@
         android:layout_height="wrap_content" />
 
     <Button
+        android:id="@+id/mBtn_update"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/mTxt_updata"
         android:layout_marginTop="47.3dp"
         android:textColor="#126cb0"
         android:textSize="12.5sp"
         android:text="检查版本更新"
+        android:onClick="onClick"
         android:background="@drawable/yuanjiaoupdata"
         android:layout_width="220.7dp"
         android:layout_height="41.3dp" />

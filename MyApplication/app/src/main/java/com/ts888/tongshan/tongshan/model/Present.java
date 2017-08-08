@@ -3,8 +3,10 @@ package com.ts888.tongshan.tongshan.model;
 import android.content.Context;
 
 import com.google.gson.Gson;
+import com.ts888.tongshan.tongshan.bean.ApkUpDateParamsBeam;
 import com.ts888.tongshan.tongshan.bean.FindCalcParameterBean;
 import com.ts888.tongshan.tongshan.bean.ParmsBean;
+import com.ts888.tongshan.tongshan.util.EncoderUtils;
 import com.ts888.tongshan.tongshan.util.MD5Util;
 
 import java.security.NoSuchAlgorithmException;
@@ -37,10 +39,7 @@ public class Present {
 
         Gson g = new Gson();
         final String params = g.toJson(parmsBean);
-
-        try {
-            String md51 = MD5Util.getMD5(md5);
-
+            String md51 = EncoderUtils.encoder(md5);
             dateModel.getSendVerfy(timeStamp, md51, params, new ICallBack() {
                 @Override
                 public void succesed(String s) {
@@ -55,11 +54,6 @@ public class Present {
 
                 }
             });
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-
-
     }
 
     //账号登陆
@@ -67,12 +61,12 @@ public class Present {
         iMainView.showLoading();
         String timeStamp = String.valueOf(System.currentTimeMillis());
         String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
+
+
         Gson g = new Gson();
         final String params = g.toJson(parmsBean);
 
-        try {
-            String md51 = MD5Util.getMD5(md5);
-
+        String md51 = EncoderUtils.encoder(md5);
             dateModel.getCheckVerifyCode(timeStamp, md51, params, new ICallBack() {
                 @Override
                 public void succesed(String s) {
@@ -86,9 +80,9 @@ public class Present {
                     iMainView.cancelLoading();
                 }
             });
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//        }
     }
 
     //根据用户身份证号和姓名查询进件状态
@@ -98,8 +92,7 @@ public class Present {
         String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
         Gson g = new Gson();
         final String params = g.toJson(parmsBean);
-        try {
-            String md51 = MD5Util.getMD5(md5);
+        String md51 = EncoderUtils.encoder(md5);
 
             dateModel.getRegistApply(timeStamp, md51, params, token,new ICallBack() {
                 @Override
@@ -114,9 +107,6 @@ public class Present {
                     iMainView.cancelLoading();
                 }
             });
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -127,9 +117,7 @@ public class Present {
         String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
         Gson g = new Gson();
         final String params = g.toJson(parmsBean);
-        try {
-            String md51 = MD5Util.getMD5(md5);
-
+        String md51 = EncoderUtils.encoder(md5);
             dateModel.getFindUserBaseInfoByCode(timeStamp, md51, params, token,new ICallBack() {
                 @Override
                 public void succesed(String s) {
@@ -143,9 +131,7 @@ public class Present {
                     iMainView.cancelLoading();
                 }
             });
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
+
 
     }
 
@@ -156,9 +142,7 @@ public class Present {
         String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
         Gson g = new Gson();
         final String params = g.toJson(parmsBean);
-        try {
-            String md51 = MD5Util.getMD5(md5);
-
+        String md51 = EncoderUtils.encoder(md5);
             dateModel.getFindScheduleByCode(timeStamp, md51, params, token,new ICallBack() {
                 @Override
                 public void succesed(String s) {
@@ -172,9 +156,6 @@ public class Present {
                     iMainView.cancelLoading();
                 }
             });
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -185,9 +166,7 @@ public class Present {
         String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
         Gson g = new Gson();
         final String params = g.toJson(parmsBean);
-        try {
-            String md51 = MD5Util.getMD5(md5);
-
+        String md51 = EncoderUtils.encoder(md5);
             dateModel.getFindInApprovalApplyInfo(timeStamp, md51, params, token,new ICallBack() {
                 @Override
                 public void succesed(String s) {
@@ -201,9 +180,6 @@ public class Present {
                     iMainView.cancelLoading();
                 }
             });
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -214,9 +190,7 @@ public class Present {
         String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
         Gson g = new Gson();
         final String params = g.toJson(parmsBean);
-        try {
-            String md51 = MD5Util.getMD5(md5);
-
+        String md51 = EncoderUtils.encoder(md5);
             dateModel.getFindCalcParameter(timeStamp, md51, params, token,new ICallBack() {
                 @Override
                 public void succesed(String s) {
@@ -230,9 +204,6 @@ public class Present {
                     iMainView.cancelLoading();
                 }
             });
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -243,9 +214,7 @@ public class Present {
         String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
         Gson g = new Gson();
         final String params = g.toJson(parmsBean);
-        try {
-            String md51 = MD5Util.getMD5(md5);
-
+        String md51 = EncoderUtils.encoder(md5);
             dateModel.getCalcContractInfoData(timeStamp, md51, params, token,new ICallBack() {
                 @Override
                 public void succesed(String s) {
@@ -259,13 +228,33 @@ public class Present {
                     iMainView.cancelLoading();
                 }
             });
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
 
     }
 
 
+    //更新APP
+    public void getApkUpdate(ApkUpDateParamsBeam parmsBean, String token){
+        iMainView.showLoading();
+        String timeStamp = String.valueOf(System.currentTimeMillis());
+        String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
+        Gson g = new Gson();
+        final String params = g.toJson(parmsBean);
+        String md51 = EncoderUtils.encoder(md5);
+            dateModel.getApkUpdate(timeStamp, md51, params, token,new ICallBack() {
+                @Override
+                public void succesed(String s) {
+                    iMainView.getCode(s);
+                    iMainView.cancelLoading();
+                }
+
+                @Override
+                public void failed(String s) {
+                    iMainView.showFaliure(s);
+                    iMainView.cancelLoading();
+                }
+            });
+
+    }
 
 
 }

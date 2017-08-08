@@ -112,7 +112,7 @@ public class JichuXinXiFragment extends Fragment implements IMainView {
             return;
         }
 
-        String dizhi2 = data.getResidenceProvinceName() + data.getResidenceRegionName() + data.getResidenceRegionName() + data.getResidenceAddress();
+        String dizhi2 = data.getResidenceProvinceName() + data.getResidenceCityName() + data.getResidenceRegionName() + data.getResidenceAddress();
         if (dizhi2 .equals("nullnullnullnull")) {
             dizhi2="";
         }

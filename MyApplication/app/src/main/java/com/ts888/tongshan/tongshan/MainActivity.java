@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ColorState.StatusBarLightMode(this);
+
         ColorState.setWindowStatusBarColor(this, Color.WHITE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
@@ -162,6 +164,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         editor.putString("phoneNo",loginBean.getData().getPhoneNo());
         editor.commit();
         dialog.dismiss();
+        mEd_code.setText("");
         startActivity(new Intent(MainActivity.this, YeWuActivity.class));
 
     }

@@ -1,8 +1,5 @@
 package com.ts888.tongshan.tongshan.model;
 
-import android.util.Log;
-import android.widget.Toast;
-
 import com.ts888.tongshan.tongshan.constant.Constant;
 
 import java.io.IOException;
@@ -34,6 +31,16 @@ public class DateModel {
                         Request request = chain.request();
                         Request.Builder builder1 = request.newBuilder();
                         Request build = builder1.addHeader("X-SignInfo", md51) //验签信息
+                                .addHeader("X-OSVersion",android.os.Build.VERSION.RELEASE)//移动系统版本号
+                                .addHeader("X-Version","1.0")//app版本号
+                                .addHeader("X-Platform","Android")//移动平台
+                                .addHeader("X-PackageName","com.ts888.tongshan.tongshan")//包名
+                                .addHeader("X-Longitude","null")
+                                .addHeader("X-Latitude","null")
+                                .addHeader("X-DeviceModel",android.os.Build.MODEL)//手机型号
+                                .addHeader("X-APIVersion","1.0")
+                                .addHeader("X-Address","null")
+                                .addHeader("X-Build","100")
                                 .addHeader("X-Channel", "iwifi-offical")//  渠道名称
                                 .addHeader("X-Timestamp", timeStamp)// 时间戳
                                 .addHeader("Content-Type", "application/json")
@@ -129,6 +136,16 @@ public class DateModel {
                         Request request = chain.request();
                         Request.Builder builder1 = request.newBuilder();
                         Request build = builder1.addHeader("X-SignInfo", md51) //验签信息
+                                .addHeader("X-OSVersion",android.os.Build.VERSION.RELEASE)//移动系统版本号
+                                .addHeader("X-Version","1.0")//app版本号
+                                .addHeader("X-Platform","Android")//移动平台
+                                .addHeader("X-PackageName","com.ts888.tongshan.tongshan")//包名
+                                .addHeader("X-Longitude","")
+                                .addHeader("X-Latitude","")
+                                .addHeader("X-DeviceModel",android.os.Build.MODEL)//手机型号
+                                .addHeader("X-APIVersion","1.0")
+                                .addHeader("X-Address","")
+                                .addHeader("X-Build","100")
                                 .addHeader("X-Channel", "iwifi-offical")//  渠道名称
                                 .addHeader("X-Timestamp", timeStamp)// 时间戳
                                 .addHeader("Content-Type", "application/json")
@@ -342,17 +359,40 @@ public class DateModel {
 
     }
 
+    //更新APK
+    public void getApkUpdate (final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.getApkUpdate(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                try {
+                    String responseBodyMsg = response.body().string();
+                    if (("").equals(responseBodyMsg) || null == responseBodyMsg){
+                        return;
+                    }
+                    callBack.succesed(responseBodyMsg);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败,请检查网络");
+            }
+        });
+
+    }
 
 
 
 
+    }
 
-
-
-
-
-
-
-
-
-}

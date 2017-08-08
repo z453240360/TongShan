@@ -372,6 +372,40 @@
                 android:src="@mipmap/youjiantou" />
 
         </RelativeLayout>
+        <TextView
+            android:id="@+id/txtp8"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/zhaitong_zigu"
+            android:textColor="#aaaaaa" />
+
+        <RelativeLayout
+            android:id="@+id/zhaitong_tuixiu"
+            android:layout_width="match_parent"
+            android:layout_height="41dp"
+            android:layout_below="@id/txtp7"
+            android:layout_gravity="center_vertical"
+            android:background="#ffffff"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:text="U贷人群及退休人群"
+                android:textColor="#126cb0"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/youjiantou" />
+
+        </RelativeLayout>
+
 
 
     </RelativeLayout>

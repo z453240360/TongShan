@@ -1,19 +1,33 @@
 package com.ts888.tongshan.tongshan.activity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.ts888.tongshan.tongshan.R;
+import com.ts888.tongshan.tongshan.bean.ApkUpDateParamsBeam;
+import com.ts888.tongshan.tongshan.bean.UpDateFromNetBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
+import com.ts888.tongshan.tongshan.model.Present;
+import com.ts888.tongshan.tongshan.update.upma.UpdateManager;
 import com.ts888.tongshan.tongshan.util.ColorState;
 
-public class UpdataActivity extends AppCompatActivity implements IMainView{
+public class UpdataActivity extends AppCompatActivity implements IMainView {
 
     private Toolbar toolbar;
+    private ApkUpDateParamsBeam beam;
+    private Present present;
+    private SharedPreferences sharedPreferences;
+    private String token;
 
 //    setContentView(R.layout.activity_updata);
 
@@ -23,8 +37,24 @@ public class UpdataActivity extends AppCompatActivity implements IMainView{
         ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_updata);
+        sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
+        token = sharedPreferences.getString("token", "888888");              //获取存储的token
 
         initToolBar();
+
+        initBean();
+
+    }
+
+
+    private void initBean() {
+
+        beam = new ApkUpDateParamsBeam();
+        present = new Present(this);
+        beam.setVersion("1.0.0");
+        beam.setChannel("xscxapp");
+
+
     }
 
     private void initToolBar() {
@@ -35,8 +65,36 @@ public class UpdataActivity extends AppCompatActivity implements IMainView{
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
+
     @Override
     public void getCode(String s) {
+        Log.i("dd", "getCode: " + s);
+
+        Gson gson = new Gson();
+        UpDateFromNetBean upDateFromNetBean = gson.fromJson(s, UpDateFromNetBean.class);
+
+        UpDateFromNetBean.DataBean data = upDateFromNetBean.getData();
+
+        if (data == null) {
+            return;
+        }
+        String md5 = data.getMd5();//md5
+        String description = data.getDescription(); //备注test
+        int forceUpdate = data.getForceUpdate();//不强制更新，1，强制更新
+        int needUpdate = data.getNeedUpdate();//是否需要更新
+        String url = data.getUrl();//测试地址
+        String recentVersion = data.getRecentVersion();//当前版本号
+        SharedPreferences.Editor edit = sharedPreferences.edit();
+        edit.putString("url", url).commit();
+
+        if (needUpdate == 1) {
+            Toast.makeText(this, "当前版本：" + recentVersion + "，可以更新", Toast.LENGTH_SHORT).show();
+//            getAPK(url);
+            new UpdateManager(this).checkUpdate(false);
+
+        } else {
+            Toast.makeText(this, "当前版本：" + recentVersion + "不需要更新", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -62,12 +120,25 @@ public class UpdataActivity extends AppCompatActivity implements IMainView{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public void onClick(View view) {
+
+        switch (view.getId()) {
+            case R.id.mBtn_update:
+                present.getApkUpdate(beam, token);
+                break;
+        }
+
+    }
+
+
+
+
 }

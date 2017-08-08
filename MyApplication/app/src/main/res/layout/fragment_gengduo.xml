@@ -4,11 +4,13 @@
     android:layout_height="match_parent">
 
     <Button
+        android:background="#ffffff"
         android:id="@+id/mBtn_updata"
         android:onClick="onClick"
-        android:text="即将上线"
-        android:textSize="50sp"
+        android:text="关于我们"
+        android:textSize="20sp"
         android:gravity="center"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 </LinearLayout>
