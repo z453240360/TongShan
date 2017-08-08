@@ -242,7 +242,6 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginLeft="4dp"
                     android:background="#ffffff"
-                    android:clickable="false"
                     android:drawablePadding="10dp"
                     android:drawableTop="@mipmap/chanpinzhongxin"
                     android:elevation="0dp"

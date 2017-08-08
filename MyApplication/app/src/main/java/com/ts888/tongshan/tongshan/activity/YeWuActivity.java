@@ -108,6 +108,8 @@ public class YeWuActivity extends AppCompatActivity {
                     startActivity(new Intent(YeWuActivity.this, KeHuActivity.class));
                 }else if (str.equals("shisuan")){
                     startActivity(new Intent(YeWuActivity.this, ShiSuanActivity.class));
+                }else if (str.equals("chanpinzhongxin")) {
+                    startActivity(new Intent(YeWuActivity.this, ProductCenterActivity.class));
                 }
             }
         });

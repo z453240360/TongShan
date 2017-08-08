@@ -8,56 +8,23 @@ import android.view.MenuItem;
 import android.view.Window;
 
 import com.ts888.tongshan.tongshan.R;
-import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.util.ColorState;
 
-public class UpdataActivity extends AppCompatActivity implements IMainView{
+public class ProductCenterActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-
-//    setContentView(R.layout.activity_updata);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_updata);
+        setContentView(R.layout.activity_product_center);
 
-        initToolBar();
-    }
-
-    private void initToolBar() {
-        toolbar = (Toolbar) findViewById(R.id.toolbars_guanyu_activity);
+        toolbar = (Toolbar) findViewById(R.id.toolbars_pro_activity);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.mipmap.zuojiantou);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-    }
-
-    @Override
-    public void getCode(String s) {
-
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void cancelLoading() {
-
-    }
-
-    @Override
-    public void showFaliure(String s) {
-
-    }
-
-    @Override
-    public void getLogin(String s) {
-
     }
 
     @Override

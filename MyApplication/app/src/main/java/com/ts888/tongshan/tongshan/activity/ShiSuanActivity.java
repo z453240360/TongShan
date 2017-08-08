@@ -96,9 +96,15 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
     @Override
     public void getCode(String s) {
         Log.i("dd", "getCode: "+s);
+
         Gson g = new Gson();
         ShiSuanDataBean shiSuanDataBean = g.fromJson(s, ShiSuanDataBean.class);
         ShiSuanDataBean.DataBean data = shiSuanDataBean.getData();
+
+        if (data==null){
+            Toast.makeText(this, shiSuanDataBean.getMessage()+"", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
 //        int applyAmt = data.getApplyAmt();  //1000
         double contractAmt = data.getContractAmt();//1100.0
@@ -107,19 +113,11 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
         double costMonthly = data.getCostMonthly();//1.38
         int period = data.getPeriod();//12
 
-
-
-
         mTxt_feilv2.setText("" + costMonthly);
         mTxt_qixian2.setText("" + period);
         mTxt_daoshou2.setText("" + DataFormatFromInt.getDoubleByDouble(netAmt));
         mTxt_hetong2.setText("" + DataFormatFromInt.getDoubleByDouble(contractAmt));
         mTxt_meiyue2.setText("" + DataFormatFromInt.getDoubleByDouble(perRepayAmt));
-
-
-
-
-
 
     }
 
@@ -200,7 +198,7 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
                     Toast.makeText(this, "请输入金额", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-                    applyAmt = (int) (Float.parseFloat(money) * 10000);
+                    applyAmt = (int) (Double.parseDouble(money) * 10000);
                 }
 
                 if (null == productCode) {

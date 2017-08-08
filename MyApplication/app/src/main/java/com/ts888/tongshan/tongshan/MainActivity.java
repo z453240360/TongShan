@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.ts888.tongshan.tongshan.activity.ShiSuanActivity;
 import com.ts888.tongshan.tongshan.activity.YeWuActivity;
 import com.ts888.tongshan.tongshan.bean.CodeDataBean;
 import com.ts888.tongshan.tongshan.bean.LoginBean;
@@ -76,6 +77,9 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         switch (view.getId()) {
             case R.id.mBtn_getPassword:
 
+                ((InputMethodManager)getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
+                        MainActivity.this.getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
                 ParmsBean parmsBean1 = new ParmsBean();
                 phoneNo = mEd_phoneNumber.getText().toString().trim();
                 if (null == phoneNo) {
@@ -147,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
 
         String code = loginBean.getCode();
         if (!code .equals("1")) {
-            Toast.makeText(this, "请求错误" + loginBean.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, ""+loginBean.getMessage(), Toast.LENGTH_SHORT).show();
             return;
         }
 

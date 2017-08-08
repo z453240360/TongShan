@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -64,6 +65,10 @@ public class JinjianActivity extends AppCompatActivity implements IMainView {
         findViewById(R.id.mBtn_chaxun_jinjian_Activity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ((InputMethodManager)getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
+                        JinjianActivity.this.getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
+
                 ParmsBean parmsBean = new ParmsBean();
                 String userName = mEd_kehuname.getText().toString().trim();
                 String idCard = mEd_idCard.getText().toString().trim();

@@ -33,7 +33,8 @@
         <activity android:name=".activity.XiangQingActivity" />
         <activity android:name=".activity.TestActivity" />
         <activity android:name=".activity.UpdataActivity" />
-        <activity android:name=".activity.BaseActivity"></activity>
+        <activity android:name=".activity.BaseActivity" />
+        <activity android:name=".activity.ProductCenterActivity"></activity>
     </application>
 
 </manifest>
