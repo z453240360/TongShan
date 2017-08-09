@@ -18,7 +18,7 @@ import com.ts888.tongshan.tongshan.bean.ApkUpDateParamsBeam;
 import com.ts888.tongshan.tongshan.bean.UpDateFromNetBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
-import com.ts888.tongshan.tongshan.update.upma.UpdateManager;
+import com.ts888.tongshan.tongshan.updateapkutil.UpdateVersionController;
 import com.ts888.tongshan.tongshan.util.ColorState;
 
 public class UpdataActivity extends AppCompatActivity implements IMainView {
@@ -29,7 +29,8 @@ public class UpdataActivity extends AppCompatActivity implements IMainView {
     private SharedPreferences sharedPreferences;
     private String token;
 
-//    setContentView(R.layout.activity_updata);
+    private UpdateVersionController controller = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,10 @@ public class UpdataActivity extends AppCompatActivity implements IMainView {
         initToolBar();
 
         initBean();
+
+        if (null == controller) {
+            controller = UpdateVersionController.getInstance(this);
+        }
 
     }
 
@@ -88,9 +93,13 @@ public class UpdataActivity extends AppCompatActivity implements IMainView {
         edit.putString("url", url).commit();
 
         if (needUpdate == 1) {
-            Toast.makeText(this, "当前版本：" + recentVersion + "，可以更新", Toast.LENGTH_SHORT).show();
-//            getAPK(url);
-            new UpdateManager(this).checkUpdate(false);
+            if (forceUpdate==0){
+                controller.normalCheckUpdateInfo(url);
+
+            }else if(forceUpdate==1){
+                controller.forceCheckUpdateInfo(url);
+            }
+
 
         } else {
             Toast.makeText(this, "当前版本：" + recentVersion + "不需要更新", Toast.LENGTH_SHORT).show();
@@ -132,6 +141,7 @@ public class UpdataActivity extends AppCompatActivity implements IMainView {
 
         switch (view.getId()) {
             case R.id.mBtn_update:
+
                 present.getApkUpdate(beam, token);
                 break;
         }
