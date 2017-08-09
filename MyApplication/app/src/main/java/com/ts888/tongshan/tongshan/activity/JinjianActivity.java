@@ -24,6 +24,12 @@ import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 import com.ts888.tongshan.tongshan.util.ColorState;
 
+/**
+ * 进件界面
+ *      输入客户姓名和身份证号码点击查询，获取客户进件状态------getLogin（）；
+ *
+ */
+
 public class JinjianActivity extends AppCompatActivity implements IMainView {
 
     private EditText mEd_kehuname, mEd_idCard;
@@ -36,32 +42,31 @@ public class JinjianActivity extends AppCompatActivity implements IMainView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //设置状态栏及标题栏
         ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
-
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_jinjian);
-//
-//        bar = getSupportActionBar();
-//
-//        bar.setHomeButtonEnabled(true);
-//        bar.setDisplayHomeAsUpEnabled(true);
 
+        //初始化toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbars_jinjian);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.mipmap.zuojiantou);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-
+        //获取缓存的token
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         token = sharedPreferences.getString("token", "888888");
 
+        //初始化控件
         mEd_kehuname = (EditText) findViewById(R.id.mEd_tiaojian_jinjian_Activity);
         mEd_idCard = (EditText) findViewById(R.id.mEd_shenfenzheng_jinjian_Activity);
         mTxt_statue = (TextView) findViewById(R.id.mTxt_xinxi_jinjian_activity);
 
+        //初始化逻辑处理层
         present = new Present(this);
 
+        //按钮的点击事件
         findViewById(R.id.mBtn_chaxun_jinjian_Activity).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,7 +79,7 @@ public class JinjianActivity extends AppCompatActivity implements IMainView {
                 String idCard = mEd_idCard.getText().toString().trim();
                 parmsBean.setUserName(userName);
                 parmsBean.setIdCard(idCard);
-                present.getUserInfo(parmsBean, token);
+                present.getUserInfo(parmsBean, token); //发送网络请求
             }
         });
     }
@@ -100,6 +105,7 @@ public class JinjianActivity extends AppCompatActivity implements IMainView {
         Log.i(TAG, "showFaliure: ");
     }
 
+    //获取网络请求信息
     @Override
     public void getLogin(String s) {
         Log.i(TAG, "getLogin: "+s);
@@ -107,6 +113,11 @@ public class JinjianActivity extends AppCompatActivity implements IMainView {
         UserInfiBean userInfiBean = g.fromJson(s, UserInfiBean.class);
         String detail = userInfiBean.getData().getDetail();
         mTxt_statue.setText(detail);
+
+    }
+
+    @Override
+    public void getUpDate(String s) {
 
     }
 

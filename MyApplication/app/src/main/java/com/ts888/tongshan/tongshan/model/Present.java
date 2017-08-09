@@ -16,6 +16,7 @@ import static com.ts888.tongshan.tongshan.constant.Constant.SECURITY_KEY;
 
 /**
  * Created by Administrator on 2017/8/3.
+ * 网络请求逻辑层
  */
 
 public class Present {
@@ -243,7 +244,7 @@ public class Present {
             dateModel.getApkUpdate(timeStamp, md51, params, token,new ICallBack() {
                 @Override
                 public void succesed(String s) {
-                    iMainView.getCode(s);
+                    iMainView.getUpDate(s);
                     iMainView.cancelLoading();
                 }
 

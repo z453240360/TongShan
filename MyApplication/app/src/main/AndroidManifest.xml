@@ -31,9 +31,7 @@
         <activity android:name=".activity.KeHuActivity" />
         <activity android:name=".activity.ShiSuanActivity" />
         <activity android:name=".activity.XiangQingActivity" />
-        <activity android:name=".activity.TestActivity" />
         <activity android:name=".activity.UpdataActivity" />
-        <activity android:name=".activity.BaseActivity" />
         <activity android:name=".activity.ProductCenterActivity" />
         <activity android:name=".activity.QiandanActivity" />
         <activity android:name=".activity.ShenPiActivity" />

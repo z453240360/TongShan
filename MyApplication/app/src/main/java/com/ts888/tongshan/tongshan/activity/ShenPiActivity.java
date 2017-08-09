@@ -5,6 +5,9 @@ import android.os.Bundle;
 
 import com.ts888.tongshan.tongshan.R;
 
+/**
+ *审批页面
+ */
 public class ShenPiActivity extends AppCompatActivity {
 
     @Override

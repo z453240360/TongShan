@@ -52,8 +52,8 @@ public class WebActivity extends AppCompatActivity {
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
 
-        url = intent.getStringExtra("producturl");
-        title = intent.getStringExtra("title");
+        url = intent.getStringExtra("producturl");  //网址
+        title = intent.getStringExtra("title"); // 标题
         mTxt_xiangqing_web.setText(title);
         loadUrl(url);
     }

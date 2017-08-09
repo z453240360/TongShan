@@ -6,6 +6,12 @@ package com.ts888.tongshan.tongshan.constant;
 
 public interface Constant {
 
+
+    //APP版本号
+    String APPVERSION="1.0.0";
+    //app渠道
+    String CHANNEL = "xscxapp";
+
     String BASEURL = "https://appsales-uat.tsjinrong.cn/";
 
     //发送验证码

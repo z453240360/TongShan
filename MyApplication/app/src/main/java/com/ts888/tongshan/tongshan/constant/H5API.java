@@ -34,9 +34,6 @@ public interface H5API {
     //备注：简版征信
     String simpleCreditStandar = "https://s3.cn-north-1.amazonaws.com.cn/appsales-dev.tsjinrong.cn/static/product/simpleCreditStandar.html ";
 
-
-
-
     /**
      *onLine
      *

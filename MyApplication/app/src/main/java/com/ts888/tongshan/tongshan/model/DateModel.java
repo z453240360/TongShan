@@ -17,11 +17,13 @@ import retrofit2.Retrofit;
 
 /**
  * Created by Administrator on 2017/8/3.
+ * 网络请求信息管理类
  */
 
 public class DateModel {
 
 
+    //不带token的请求头，
     public Retrofit getClict(final String timeStamp, final String md51) {
         //添加请求头信息
         OkHttpClient client = new OkHttpClient.Builder()
@@ -126,7 +128,7 @@ public class DateModel {
         });
     }
 
-
+    //带有Token de 请求头
     public Retrofit getUserClict(final String timeStamp, final String md51, final String token) {
         //添加请求头信息
         OkHttpClient client = new OkHttpClient.Builder()
@@ -163,7 +165,6 @@ public class DateModel {
 
         return retrofit;
     }
-
 
     //根据用户身份证号和姓名查询进件状态
     public void getRegistApply(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
@@ -359,10 +360,45 @@ public class DateModel {
 
     }
 
+    public Retrofit getUserClictUpdate(final String timeStamp, final String md51, final String token) {
+        //添加请求头信息
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(new Interceptor() {
+                    @Override
+                    public Response intercept(Chain chain) throws IOException {
+                        Request request = chain.request();
+                        Request.Builder builder1 = request.newBuilder();
+                        Request build = builder1.addHeader("X-SignInfo", md51) //验签信息
+                                .addHeader("X-OSVersion",android.os.Build.VERSION.RELEASE)//移动系统版本号
+                                .addHeader("X-Version","1.0")//app版本号
+                                .addHeader("X-Platform","Android")//移动平台
+                                .addHeader("X-PackageName","com.ts888.tongshan.tongshan")//包名
+                                .addHeader("X-Longitude","")
+                                .addHeader("X-Latitude","")
+                                .addHeader("X-DeviceModel",android.os.Build.MODEL)//手机型号
+                                .addHeader("X-APIVersion","1.0")
+                                .addHeader("X-Address","")
+                                .addHeader("X-Build","100")
+                                .addHeader("X-Channel", "iwifi-offical")//  渠道名称
+                                .addHeader("X-Timestamp", timeStamp)// 时间戳
+                                .addHeader("Content-Type", "application/json")
+                                .build();
+                        return chain.proceed(build);
+                    }
+                }).retryOnConnectionFailure(true)
+                .build();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .client(client)
+                .baseUrl(Constant.BASEURL)
+                .build();
+
+        return retrofit;
+    }
     //更新APK
     public void getApkUpdate (final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
 
-        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        Retrofit retrofit = getUserClictUpdate(timeStamp,md51,token);
         IService iService = retrofit.create(IService.class);
 
         RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);

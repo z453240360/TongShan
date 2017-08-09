@@ -22,6 +22,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * 产品中心页面
+ *      点击按钮，携带网址和标题，跳转到新的页面显示H5信息
+ */
 public class ProductCenterActivity extends AppCompatActivity {
 
     @BindView(R.id.mTxt_product_Activity)
@@ -108,6 +112,12 @@ public class ProductCenterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product_center);
         ButterKnife.bind(this);
 
+
+        initToolBar();
+
+    }
+
+    private void initToolBar() {
         toolbar = (Toolbar) findViewById(R.id.toolbars_pro_activity);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.mipmap.zuojiantou);
@@ -115,15 +125,6 @@ public class ProductCenterActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     @OnClick({R.id.mBtn_pd_daikuanyaoqiu, R.id.mBtn_pd_biaozhun, R.id.mBtn_pd_jinjian, R.id.mBtn_pd_Ewangtong, R.id.mBtn_pd_Efangtong, R.id.mBtn_pd_Udaitong, R.id.mBtn_pd_weidai, R.id.mBtn_pd_Eshouxin, R.id.mBtn_pd_Ezigu, R.id.mBtn_pd_Ezhai_shouxin, R.id.mBtn_pd_Ezhai_zigu, R.id.mBtn_pd_Udai_renqun})
     public void onViewClicked(View view) {
@@ -149,7 +150,7 @@ public class ProductCenterActivity extends AppCompatActivity {
             case R.id.mBtn_pd_weidai://E微贷
                 startWebActivity(H5API.Eweidai, "E微贷");
                 break;
-            case R.id.mBtn_pd_Eshouxin://E保通-受薪????
+            case R.id.mBtn_pd_Eshouxin://E保通-受薪
                 startWebActivity(H5API.Ebaotong, "E保通-受薪");
                 break;
             case R.id.mBtn_pd_Ezigu://E保通-自雇
@@ -168,16 +169,23 @@ public class ProductCenterActivity extends AppCompatActivity {
     }
 
 
+    //跳转到H5加载页
     public void startWebActivity(String url, String name) {
-
         Intent intent = new Intent(this, WebActivity.class);
-
         intent.putExtra("producturl", url);
         intent.putExtra("title", name);
-
         startActivity(intent);
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }

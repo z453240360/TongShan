@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 /**
  * Created by dongdong on 2017/8/3.
+ * 显示用户状态信息
  */
 
 public class ZhuangTaiFragment extends Fragment implements IMainView{
@@ -123,6 +124,11 @@ public class ZhuangTaiFragment extends Fragment implements IMainView{
                 Log.i("", "getLogin: ");
             }
         }
+
+    }
+
+    @Override
+    public void getUpDate(String s) {
 
     }
 }
