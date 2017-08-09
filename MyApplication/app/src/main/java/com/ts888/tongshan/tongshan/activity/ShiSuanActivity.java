@@ -1,5 +1,6 @@
 package com.ts888.tongshan.tongshan.activity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -67,6 +68,7 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
     private Toolbar toolbar;
     private FindCalcParameterBean calcParameterBean;
     private ScrollView activity_shi_suan;
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,12 +125,12 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
 
     @Override
     public void showLoading() {
-
+        dialog.show();
     }
 
     @Override
     public void cancelLoading() {
-
+        dialog.dismiss();
     }
 
     @Override
@@ -244,6 +246,7 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
 
 
     private void initToolBar() {
+        dialog = new ProgressDialog(this);
         toolbar = (Toolbar) findViewById(R.id.toolbars_shisuan_activity);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.mipmap.zuojiantou);

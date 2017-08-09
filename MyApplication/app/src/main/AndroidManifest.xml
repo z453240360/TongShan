@@ -39,7 +39,8 @@
         <activity android:name=".activity.ShenPiActivity" />
         <activity android:name=".activity.GeRenYeJiActivity" />
         <activity android:name=".activity.LongHuBangActivity" />
-        <activity android:name=".activity.GongGaoActivity"></activity>
+        <activity android:name=".activity.GongGaoActivity" />
+        <activity android:name=".activity.WebActivity"></activity>
     </application>
 
 </manifest>

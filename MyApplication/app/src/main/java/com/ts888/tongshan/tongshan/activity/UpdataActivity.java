@@ -1,5 +1,6 @@
 package com.ts888.tongshan.tongshan.activity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -30,6 +31,7 @@ public class UpdataActivity extends AppCompatActivity implements IMainView {
     private String token;
 
     private UpdateVersionController controller = null;
+    private ProgressDialog dialog;
 
 
     @Override
@@ -40,6 +42,7 @@ public class UpdataActivity extends AppCompatActivity implements IMainView {
         setContentView(R.layout.activity_updata);
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         token = sharedPreferences.getString("token", "888888");              //获取存储的token
+        dialog = new ProgressDialog(this);
 
         initToolBar();
 
@@ -56,9 +59,8 @@ public class UpdataActivity extends AppCompatActivity implements IMainView {
 
         beam = new ApkUpDateParamsBeam();
         present = new Present(this);
-        beam.setVersion("1.0.0");
-        beam.setChannel("xscxapp");
-
+        beam.setVersion("1.0.0");//设置版本好
+        beam.setChannel("xscxapp");//渠道
 
     }
 
@@ -100,7 +102,6 @@ public class UpdataActivity extends AppCompatActivity implements IMainView {
                 controller.forceCheckUpdateInfo(url);
             }
 
-
         } else {
             Toast.makeText(this, "当前版本：" + recentVersion + "不需要更新", Toast.LENGTH_SHORT).show();
         }
@@ -109,12 +110,12 @@ public class UpdataActivity extends AppCompatActivity implements IMainView {
 
     @Override
     public void showLoading() {
-
+        dialog.show();
     }
 
     @Override
     public void cancelLoading() {
-
+        dialog.dismiss();
     }
 
     @Override
