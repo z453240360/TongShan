@@ -1,5 +1,7 @@
 package com.ts888.tongshan.tongshan.model;
 
+import android.util.Log;
+
 import com.ts888.tongshan.tongshan.constant.Constant;
 
 import java.io.IOException;
@@ -413,6 +415,7 @@ public class DateModel {
                     if (("").equals(responseBodyMsg) || null == responseBodyMsg){
                         return;
                     }
+                    Log.i("dd", "onResponse: ");
                     callBack.succesed(responseBodyMsg);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -421,7 +424,7 @@ public class DateModel {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-                callBack.failed("请求网络失败,请检查网络");
+                callBack.failed("请求网络失败,请检查网络"+t.toString());
             }
         });
 
