@@ -48,15 +48,12 @@ public class KeHuFragment extends Fragment implements IMainView {
 
         String tokens = getArguments().getString("towKey");
         String userCodes = getArguments().getString("key");
-        Log.i("dd", "onViewCreated: "+userCodes+tokens);
 
         parmsBean = new ParmsBean();
         parmsBean.setPage(1);
         parmsBean.setRows(20);
         mKeHu_rl = (RecyclerView) view.findViewById(R.id.kehu_rl);
         present = new Present(this);
-
-//        present.getFindInApprovalApplyInfo(parmsBean,"3fc2e6465e78c40c6802a33a38e714bd");
         present.getFindInApprovalApplyInfo(parmsBean,tokens);
     }
 
@@ -83,7 +80,6 @@ public class KeHuFragment extends Fragment implements IMainView {
     @Override
     public void getLogin(String s) {
 
-        Log.i("dd", "getLogin+++++: "+s);
         Gson g = new Gson();
         FindScheduleBean findScheduleBean = g.fromJson(s, FindScheduleBean.class);
         final List<FindScheduleBean.DataBean> data = findScheduleBean.getData();
@@ -103,6 +99,11 @@ public class KeHuFragment extends Fragment implements IMainView {
                 callBack.getText(data.get(pos).getUserCode());
             }
         });
+
+    }
+
+    @Override
+    public void getUpDate(String s) {
 
     }
 

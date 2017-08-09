@@ -6,7 +6,16 @@ package com.ts888.tongshan.tongshan.constant;
 
 public interface Constant {
 
-    String BASEURL = "https://appsales-uat.tsjinrong.cn/";
+
+    //APP版本号
+    String APPVERSION="1.0.0";
+    //app渠道
+    String CHANNEL = "xscxapp";
+
+    //测试环境
+//    String BASEURL = "https://appsales-uat.tsjinrong.cn/";
+    //生产环境appsales.tsjinrong.cn/appsales-entry
+    String BASEURL = "https://appsales.tsjinrong.cn/";
 
     //发送验证码
     String sendVerifyCode = "appsales-entry/login/sendVerifyCode";

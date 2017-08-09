@@ -5,6 +5,10 @@ import android.os.Bundle;
 
 import com.ts888.tongshan.tongshan.R;
 
+/**
+ * 个人业绩界面
+ *
+ */
 public class GeRenYeJiActivity extends AppCompatActivity {
 
     @Override

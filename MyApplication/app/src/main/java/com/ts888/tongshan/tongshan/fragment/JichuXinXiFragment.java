@@ -22,6 +22,9 @@ import static com.ts888.tongshan.tongshan.R.id.view;
 
 /**
  * Created by Administrator on 2017/8/1.
+ * 基础信息展示页面
+ *
+ *
  */
 
 public class JichuXinXiFragment extends Fragment implements IMainView {
@@ -136,5 +139,10 @@ public class JichuXinXiFragment extends Fragment implements IMainView {
         mTxt_ruzhi2.setText(data.getEntryDate());
         mTxt_dangyue2.setText(data.getMonthSalaryName());
         mTxt_danweidizhi2.setText(danweidizhi2);
+    }
+
+    @Override
+    public void getUpDate(String s) {
+
     }
 }

@@ -1,5 +1,6 @@
 package com.ts888.tongshan.tongshan.activity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -48,33 +49,42 @@ import static android.R.id.edit;
 import static android.R.id.list;
 import static com.ts888.tongshan.tongshan.R.id.mTxt_qixian2;
 
+/**
+ * 试算页面
+ *      初始发送试算信息参数请求，请求结果设置到Spinner内，留待查询时候选择使用
+ *      点击按钮获取下拉框中的参数，作为请求参数，发送网络请求，结果分别设置到对应的位置
+ *
+ */
 public class ShiSuanActivity extends AppCompatActivity implements IMainView {
 
-    private Present present;
-    private ParmsBean parmsBean;
-    private SharedPreferences sharedPreferences;
+    private int period;
+    private int applyAmt;
     private String token;
+    private Toolbar toolbar;
+    private Present present;
+    private EditText mEd_jine;
+    private String productCode;
+    private ParmsBean parmsBean;
+    private List<Integer> periods;
+    private ProgressDialog dialog;
+    private Map<String, String> map;
+    private ScrollView activity_shi_suan;
     private Spinner mSpinner1, mSpeener2;
     private ArrayAdapter<Integer> adapter;
     private ArrayAdapter<String> adapter2;
-    private EditText mEd_jine;
-    private Map<String, String> map;
-    private String productCode;
-    private int applyAmt;
-    private int period;
-    private TextView mTxt_feilv2, mTxt_qixian2, mTxt_daoshou2, mTxt_hetong2, mTxt_meiyue2;
-    private List<Integer> periods;
-    private Toolbar toolbar;
+    private SharedPreferences sharedPreferences;
     private FindCalcParameterBean calcParameterBean;
-    private ScrollView activity_shi_suan;
+    private TextView mTxt_feilv2, mTxt_qixian2, mTxt_daoshou2, mTxt_hetong2, mTxt_meiyue2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //设置状态栏和标题栏
         ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_shi_suan);
 
+        //设置软键盘适应输入框位置
         activity_shi_suan = (ScrollView)findViewById(R.id.activity_shi_suan);
         activity_shi_suan.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -84,19 +94,15 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
             }
         });
 
-
-
-
         initToolBar();
         initView();
         initBean();
         initCode();
     }
 
+    //点击查询后返回数据
     @Override
     public void getCode(String s) {
-        Log.i("dd", "getCode: "+s);
-
         Gson g = new Gson();
         ShiSuanDataBean shiSuanDataBean = g.fromJson(s, ShiSuanDataBean.class);
         ShiSuanDataBean.DataBean data = shiSuanDataBean.getData();
@@ -106,29 +112,28 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
             return;
         }
 
-//        int applyAmt = data.getApplyAmt();  //1000
         double contractAmt = data.getContractAmt();//1100.0
         double netAmt = data.getNetAmt();//822.14
         double perRepayAmt = data.getPerRepayAmt();//99.28
         double costMonthly = data.getCostMonthly();//1.38
         int period = data.getPeriod();//12
 
-        mTxt_feilv2.setText("" + costMonthly);
-        mTxt_qixian2.setText("" + period);
-        mTxt_daoshou2.setText("" + DataFormatFromInt.getDoubleByDouble(netAmt));
-        mTxt_hetong2.setText("" + DataFormatFromInt.getDoubleByDouble(contractAmt));
-        mTxt_meiyue2.setText("" + DataFormatFromInt.getDoubleByDouble(perRepayAmt));
+        mTxt_feilv2.setText("" + costMonthly); //费率
+        mTxt_qixian2.setText("" + period);    //期限
+        mTxt_daoshou2.setText("" + DataFormatFromInt.getDoubleByDouble(netAmt)); //到手金额
+        mTxt_hetong2.setText("" + DataFormatFromInt.getDoubleByDouble(contractAmt));//合同金额
+        mTxt_meiyue2.setText("" + DataFormatFromInt.getDoubleByDouble(perRepayAmt)); //每月应还
 
     }
 
     @Override
     public void showLoading() {
-
+        dialog.show();
     }
 
     @Override
     public void cancelLoading() {
-
+        dialog.dismiss();
     }
 
     @Override
@@ -136,12 +141,12 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
 
     }
 
+    //获取试算中费率，期限等参数信息，并添加到Spinner上显示
     @Override
     public void getLogin(String s) {
 
         final ArrayList<String> elite = new ArrayList<>();
         Gson gson = new Gson();
-        Log.i("dd", "getLogin:++++++++++++++++++++ " + s);
         ShisuanParmBean shiSuanBean = gson.fromJson(s, ShisuanParmBean.class);
         ShisuanParmBean.DataBean shisuan = shiSuanBean.getData();
         periods = shisuan.getPeriods();
@@ -186,12 +191,22 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
         });
     }
 
+    @Override
+    public void getUpDate(String s) {
+
+    }
+
+
     public void onClick(View view) {
         switch (view.getId()) {
+
+            //点击查询
             case R.id.mBtn_check:
+                //隐藏软键盘
                 ((InputMethodManager)getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
                         ShiSuanActivity.this.getCurrentFocus().getWindowToken(),
                         InputMethodManager.HIDE_NOT_ALWAYS);
+
                 Present present1 = new Present(this);
                 String money = mEd_jine.getText().toString().trim();
                 if (money.equals("")) {
@@ -206,10 +221,11 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
                     return;
                 }
 
+                //设置请求参数
                 calcParameterBean.setProductCode(productCode);
                 calcParameterBean.setApplyAmt(applyAmt);
                 calcParameterBean.setPeriod(period);
-                present1.getCalcContractInfoData(calcParameterBean, token);
+                present1.getCalcContractInfoData(calcParameterBean, token); //发送网路请求
                 break;
         }
     }
@@ -236,14 +252,15 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
         mTxt_hetong2 = (TextView) findViewById(R.id.mTxt_hetong2);
         mTxt_meiyue2 = (TextView) findViewById(R.id.mTxt_meiyue2);
 
-        EditTextUtil.twoPoint(mEd_jine);
+        EditTextUtil.twoPoint(mEd_jine); //小数点后保留两位
 
     }
 
 
 
-
+    //设置标题栏
     private void initToolBar() {
+        dialog = new ProgressDialog(this);
         toolbar = (Toolbar) findViewById(R.id.toolbars_shisuan_activity);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.mipmap.zuojiantou);
@@ -252,6 +269,7 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
 
     }
 
+    //获取token和用户码
     private void initCode() {
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         String userCode = sharedPreferences.getString("userCode", "88888");
@@ -259,6 +277,7 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
         present.getFindCalcParameter(parmsBean, token);
     }
 
+    //出事化参数对象及其他类对象
     private void initBean() {
         present = new Present(this);
         parmsBean = new ParmsBean();

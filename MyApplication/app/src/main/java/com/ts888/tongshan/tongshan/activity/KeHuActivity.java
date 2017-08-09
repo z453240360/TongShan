@@ -26,6 +26,12 @@ import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 import com.ts888.tongshan.tongshan.util.ColorState;
 
+/**
+ * 客户界面
+ *      通过radiobutton 加载三个对应的Fragment，在Fragment中处理主要的逻辑及显示信息问题
+ *
+ *
+ */
 
 public class KeHuActivity extends AppCompatActivity implements IMainView{
 
@@ -43,35 +49,38 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //设置状态栏及标题栏
         ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_ke_hu);
+        //加载框
         dialog = new ProgressDialog(this);
-        toolbar = (Toolbar) findViewById(R.id.toolbars_kehu_activity);
+        //初始化控件searchView
         searchView = (SearchView) findViewById(R.id.searchView);
+        mRg_KeHu = (RadioGroup) findViewById(R.id.mRg_kehu);
         ImageView searchButton = (ImageView)searchView.findViewById(R.id.search_button);
-        searchButton.setImageResource(R.mipmap.sousuo);
+        toolbar = (Toolbar) findViewById(R.id.toolbars_kehu_activity);
 
+        searchButton.setImageResource(R.mipmap.sousuo);
+        //设置toolbar
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.mipmap.zuojiantou);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        //获取用户码和token
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         String userCode = sharedPreferences.getString("userCode","88888");
         token = sharedPreferences.getString("token", "888888");
-
+        //初始化参数以及网络逻辑类
         present = new Present(this);
         parmsBean = new ParmsBean();
         parmsBean.setUserCode(userCode);
-//        parmsBean.setUserCode(userCode);
+        //发送网络请求，获取客户基本信息
         present.getFindUserBaseInfoByCode(parmsBean,token);//用户基本信息
-//        present.getFindScheduleByCode(parmsBean,token);
-
-        mRg_KeHu = (RadioGroup) findViewById(R.id.mRg_kehu);
-
+        //Fragent管理类
         manager = getSupportFragmentManager();
-
+        //初始化客户基本信息碎片，传入用户码和token
         KeHuFragment keHuFragment = new KeHuFragment();
         Bundle bundle = new Bundle();
         bundle.putString("key",userCode);
@@ -79,8 +88,7 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
         keHuFragment.setArguments(bundle);
 
         manager.beginTransaction().replace(R.id.mFl_kehu, keHuFragment).commit();
-
-
+        //设置点击回调监听，跳转到详情界面，获取客户详情列表
         keHuFragment.setCallBack(new ShouyeFragment.TextCallBack() {
             @Override
             public void getText(String str) {
@@ -119,7 +127,11 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
 
     @Override
     public void getLogin(String s) {
-        Log.i(TAG, "getLogin55555: "+s);
+    }
+
+    @Override
+    public void getUpDate(String s) {
+
     }
 
     @Override
@@ -129,6 +141,7 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
 
 
 
+    //点击标题栏的返回按钮
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId())

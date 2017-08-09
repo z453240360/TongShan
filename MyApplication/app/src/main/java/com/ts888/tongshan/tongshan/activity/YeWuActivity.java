@@ -24,6 +24,11 @@ import com.ts888.tongshan.tongshan.util.ColorState;
 
 import java.util.ArrayList;
 
+/**
+ * 业务首页，显示一堆功能跳转按钮
+ *          banner位置目前只有一张突变，以ImageView代替显示
+ *
+ */
 public class YeWuActivity extends AppCompatActivity {
 
     private SharedPreferences sharedPreferences;
@@ -39,20 +44,20 @@ public class YeWuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //设置状态栏和标题栏
         ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_ye_wu);
-
+        //设置标题栏
         toolbar = (Toolbar) findViewById(R.id.toolbars_yewu_activity);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.mipmap.zuojiantou);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-
+        //获取缓存的token
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         token = sharedPreferences.getString("token", "888888");              //获取存储的token
-        Log.i(TAG, "onCreate: "+token);
         init();
     }
 
@@ -98,7 +103,7 @@ public class YeWuActivity extends AppCompatActivity {
         list.add(xiaoXiFragment);
         list.add(gengDuoFragment);
 
-
+        //设置点击回调事件，点击相应的按钮，跳转到不同的功能页面
         shouyeFragment.setCallBack(new ShouyeFragment.TextCallBack() {
             @Override
             public void getText(String str) {

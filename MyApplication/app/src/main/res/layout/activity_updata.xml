@@ -51,7 +51,7 @@
         android:textSize="12.5sp"
         android:textColor="#555555"
         android:id="@+id/mTxt_versionCode"
-        android:text="1.01.1"
+        android:text="1.0.0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

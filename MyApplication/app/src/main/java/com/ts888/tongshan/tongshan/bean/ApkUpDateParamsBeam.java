@@ -2,6 +2,8 @@ package com.ts888.tongshan.tongshan.bean;
 
 /**
  * Created by Administrator on 2017/8/8.
+ * app更新的参数设置
+ *
  */
 
 public class ApkUpDateParamsBeam {

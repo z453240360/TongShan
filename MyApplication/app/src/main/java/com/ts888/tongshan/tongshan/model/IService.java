@@ -13,6 +13,7 @@ import retrofit2.http.Url;
 
 /**
  * Created by Administrator on 2017/8/3.
+ * 地址请求接口类
  */
 
 public interface IService {

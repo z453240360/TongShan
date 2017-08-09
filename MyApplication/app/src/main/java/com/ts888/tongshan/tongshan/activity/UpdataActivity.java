@@ -1,5 +1,6 @@
 package com.ts888.tongshan.tongshan.activity;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -10,17 +11,26 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.bean.ApkUpDateParamsBeam;
 import com.ts888.tongshan.tongshan.bean.UpDateFromNetBean;
+import com.ts888.tongshan.tongshan.constant.Constant;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 import com.ts888.tongshan.tongshan.updateapkutil.UpdateVersionController;
 import com.ts888.tongshan.tongshan.util.ColorState;
 
+import static com.ts888.tongshan.tongshan.R.id.mTxt_versionCode;
+
+
+/**
+ * 更新状态页
+ *      点击查询，获取系统的需求更新信息，根据不同字段的信息判断是否需要更新或者强制更新
+ */
 public class UpdataActivity extends AppCompatActivity implements IMainView {
 
     private Toolbar toolbar;
@@ -30,35 +40,47 @@ public class UpdataActivity extends AppCompatActivity implements IMainView {
     private String token;
 
     private UpdateVersionController controller = null;
+    private ProgressDialog dialog;
+
+    private TextView mTxt_versionCode;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //设置状态栏颜色为蓝色
         ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_updata);
+
+        //获取token
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
-        token = sharedPreferences.getString("token", "888888");              //获取存储的token
+        token = sharedPreferences.getString("token", "888888");  //获取存储的token
+        dialog = new ProgressDialog(this);
 
         initToolBar();
 
         initBean();
 
+        initView();
+        //版本更新管理类
         if (null == controller) {
             controller = UpdateVersionController.getInstance(this);
         }
 
     }
 
+    private void initView() {
+        mTxt_versionCode = (TextView) findViewById(R.id.mTxt_versionCode);  //设置版本信息
+        mTxt_versionCode.setText(Constant.APPVERSION);
+    }
+
 
     private void initBean() {
-
         beam = new ApkUpDateParamsBeam();
         present = new Present(this);
-        beam.setVersion("1.0.0");
-        beam.setChannel("xscxapp");
-
+        beam.setVersion(Constant.APPVERSION);//设置版本号
+        beam.setChannel(Constant.CHANNEL);//渠道
 
     }
 
@@ -73,8 +95,34 @@ public class UpdataActivity extends AppCompatActivity implements IMainView {
 
     @Override
     public void getCode(String s) {
-        Log.i("dd", "getCode: " + s);
 
+
+
+    }
+
+    @Override
+    public void showLoading() {
+        dialog.show();
+    }
+
+    @Override
+    public void cancelLoading() {
+        dialog.dismiss();
+    }
+
+    @Override
+    public void showFaliure(String s) {
+
+    }
+
+    @Override
+    public void getLogin(String s) {
+
+    }
+
+    //主页面登陆 提示更新
+    @Override
+    public void getUpDate(String s) {
         Gson gson = new Gson();
         UpDateFromNetBean upDateFromNetBean = gson.fromJson(s, UpDateFromNetBean.class);
 
@@ -85,7 +133,7 @@ public class UpdataActivity extends AppCompatActivity implements IMainView {
         }
         String md5 = data.getMd5();//md5
         String description = data.getDescription(); //备注test
-        int forceUpdate = data.getForceUpdate();//不强制更新，1，强制更新
+        int forceUpdate = data.getForceUpdate();//0不强制更新，1，强制更新
         int needUpdate = data.getNeedUpdate();//是否需要更新
         String url = data.getUrl();//测试地址
         String recentVersion = data.getRecentVersion();//当前版本号
@@ -100,31 +148,9 @@ public class UpdataActivity extends AppCompatActivity implements IMainView {
                 controller.forceCheckUpdateInfo(url);
             }
 
-
         } else {
             Toast.makeText(this, "当前版本：" + recentVersion + "不需要更新", Toast.LENGTH_SHORT).show();
         }
-
-    }
-
-    @Override
-    public void showLoading() {
-
-    }
-
-    @Override
-    public void cancelLoading() {
-
-    }
-
-    @Override
-    public void showFaliure(String s) {
-
-    }
-
-    @Override
-    public void getLogin(String s) {
-
     }
 
     @Override

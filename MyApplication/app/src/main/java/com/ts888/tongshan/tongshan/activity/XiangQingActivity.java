@@ -30,6 +30,11 @@ import java.util.ArrayList;
 
 import static android.R.id.list;
 
+/**
+ * 详情页面，RadioButton加载两个Fragment,分别显示选中条目的详情和状态信息
+ *
+ *
+ */
 public class XiangQingActivity extends AppCompatActivity implements IMainView {
 
     private Present present;
@@ -45,16 +50,15 @@ public class XiangQingActivity extends AppCompatActivity implements IMainView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //设置状态栏及标题栏
         ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_xiang_qing);
-
+        //设置自定义标题栏
         toolbar = (Toolbar) findViewById(R.id.toolbars_xiang_activity);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         toolbar.setNavigationIcon(R.mipmap.zuojiantou);
-
-
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
@@ -132,6 +136,11 @@ public class XiangQingActivity extends AppCompatActivity implements IMainView {
 
     @Override
     public void getLogin(String s) {
+
+    }
+
+    @Override
+    public void getUpDate(String s) {
 
     }
 
