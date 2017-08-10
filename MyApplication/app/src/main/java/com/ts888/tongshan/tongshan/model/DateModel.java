@@ -415,6 +415,7 @@ public class DateModel {
                     if (("").equals(responseBodyMsg) || null == responseBodyMsg){
                         return;
                     }
+                    Log.i("dd", "onResponse: ");
                     callBack.succesed(responseBodyMsg);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -423,8 +424,12 @@ public class DateModel {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+<<<<<<< HEAD
                 Log.i("dd", "onFailure: "+t.toString());
                 callBack.failed("请求网络失败,请检查网络");
+=======
+                callBack.failed("请求网络失败,请检查网络"+t.toString());
+>>>>>>> 56edbab10211dd701c89f337ed9fc6ea59da0559
             }
         });
 
