@@ -63,5 +63,15 @@ public interface IService {
     Call<ResponseBody> getApkUpdate (@Body RequestBody status);
 
 
+    //个人战绩
+    @POST(Constant.getIndividualRanking)
+    Call<ResponseBody> getIndividualRanking(@Body RequestBody status);
+    //团队战绩
+    @POST(Constant.getGroupRanking)
+    Call<ResponseBody> getGroupRanking (@Body RequestBody status);
+    //门店战绩
+    @POST(Constant.getOrgRanking)
+    Call<ResponseBody> getOrgRanking (@Body RequestBody status);
+
 
 }

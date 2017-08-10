@@ -13,6 +13,7 @@ import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.adapter.GeRenAdapter;
+import com.ts888.tongshan.tongshan.model.IMainView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ import static com.ts888.tongshan.tongshan.R.id.xrecycler_geren;
  * Created by Administrator on 2017/8/10.
  */
 
-public class LongHuGeRenFragment extends Fragment {
+public class LongHuGeRenFragment extends Fragment implements IMainView{
     @BindView(xrecycler_geren)
     XRecyclerView xrecyclerGeren;
     Unbinder unbinder;
@@ -46,6 +47,7 @@ public class LongHuGeRenFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(getActivity());
+        String token = getArguments().getString("token");
         adapter = new GeRenAdapter(getActivity(),mDatas);
 
         xrecyclerGeren.setAdapter(adapter);
@@ -101,5 +103,35 @@ public class LongHuGeRenFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void getCode(String s) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void cancelLoading() {
+
+    }
+
+    @Override
+    public void showFaliure(String s) {
+
+    }
+
+    @Override
+    public void getLogin(String s) {
+
+    }
+
+    @Override
+    public void getUpDate(String s) {
+
     }
 }

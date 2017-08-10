@@ -461,7 +461,7 @@ public class DateModel {
         });
 
     }
-
+    //不带TOKEN的拦截
     public Retrofit getUserClictUpdate(final String timeStamp, final String md51, final String token) {
         //添加请求头信息
         OkHttpClient client = new OkHttpClient.Builder()
@@ -575,8 +575,107 @@ public class DateModel {
 
     }
 
+    //查询个人战绩
+    public void getIndividualRanking(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
 
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
 
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.getIndividualRanking(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                String individualRanking = null;
+                try {
+                    individualRanking = response.body().string();
+                    if (null==individualRanking){
+                        callBack.failed("请求的数据为空，或参数异常");
+                        return;
+                    }
+                    callBack.succesed(individualRanking);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败");
+            }
+        });
 
     }
+
+    //团队战绩查询
+    public void getGroupRanking(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.getGroupRanking(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                String individualRanking = null;
+                try {
+                    individualRanking = response.body().string();
+                    if (null==individualRanking){
+                        callBack.failed("请求的数据为空，或参数异常");
+                        return;
+                    }
+                    callBack.succesed(individualRanking);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败");
+            }
+        });
+
+    }
+
+    //门店战绩查询
+    public void getOrgRanking(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.getOrgRanking(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                String individualRanking = null;
+                try {
+                    individualRanking = response.body().string();
+                    if (null==individualRanking){
+                        callBack.failed("请求的数据为空，或参数异常");
+                        return;
+                    }
+                    callBack.succesed(individualRanking);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败");
+            }
+        });
+
+    }
+
+}
 

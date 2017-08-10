@@ -47,6 +47,16 @@ public interface Constant {
     //APK更新
     String apkUpdate = "appsales-entry/apk/apkUpdate";
 
+    //个人战绩
+    String getIndividualRanking = "appsales-entry/ranking/getIndividualRanking";
+
+    //团队战绩
+    String getGroupRanking = "appsales-entry/ranking/getGroupRanking";
+
+    //门店战绩
+    String getOrgRanking = "appsales-entry/ranking/getOrgRanking";
+
+
     //上传apk
     String apkInfo = "appsales-entry/appcredit-admin/apk/apkInfo";
 
