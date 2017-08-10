@@ -107,7 +107,6 @@ public class XiangQingActivity extends AppCompatActivity implements IMainView {
         bundle2.putString("useC", useC);
         bundle2.putString("token", token);
         zhuangTaiFragment.setArguments(bundle2);
-
         list.add(zhuangTaiFragment);
 
 
