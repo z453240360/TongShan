@@ -1,5 +1,7 @@
 package com.ts888.tongshan.tongshan.model;
 
+import android.util.Log;
+
 import com.ts888.tongshan.tongshan.constant.Constant;
 
 import java.io.IOException;
@@ -376,7 +378,7 @@ public class DateModel {
                                 .addHeader("X-Longitude","")
                                 .addHeader("X-Latitude","")
                                 .addHeader("X-DeviceModel",android.os.Build.MODEL)//手机型号
-                                .addHeader("X-APIVersion","1.0")
+                                .addHeader("X-APIVersion","1.0.0")
                                 .addHeader("X-Address","")
                                 .addHeader("X-Build","100")
                                 .addHeader("X-Channel", "iwifi-offical")//  渠道名称
@@ -421,6 +423,7 @@ public class DateModel {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.i("dd", "onFailure: "+t.toString());
                 callBack.failed("请求网络失败,请检查网络");
             }
         });

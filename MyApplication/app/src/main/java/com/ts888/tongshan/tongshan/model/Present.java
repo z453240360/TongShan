@@ -1,6 +1,7 @@
 package com.ts888.tongshan.tongshan.model;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.ts888.tongshan.tongshan.bean.ApkUpDateParamsBeam;
