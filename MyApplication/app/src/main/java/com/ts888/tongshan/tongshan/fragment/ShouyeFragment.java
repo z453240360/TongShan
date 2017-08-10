@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.ts888.tongshan.tongshan.R.id.mBtn_chanpin;
+import static com.ts888.tongshan.tongshan.R.id.mBtn_longhu;
 import static com.ts888.tongshan.tongshan.R.id.mBtn_shisuan;
 
 
@@ -27,7 +28,7 @@ import static com.ts888.tongshan.tongshan.R.id.mBtn_shisuan;
 
 public class ShouyeFragment extends Fragment {
 
-    private Button mBtn_jinjian,mBtn_kehu,mBtn_shisuan,mBtn_chanpin;
+    private Button mBtn_jinjian,mBtn_kehu,mBtn_shisuan,mBtn_chanpin,mBtn_longhu;
 
     @Nullable
     @Override
@@ -44,6 +45,7 @@ public class ShouyeFragment extends Fragment {
         mBtn_jinjian = (Button) view.findViewById(R.id.mBtn_jinjian);
         mBtn_shisuan = (Button) view.findViewById(R.id.mBtn_shisuan);
         mBtn_chanpin = (Button) view.findViewById(R.id.mBtn_chanpin);
+        mBtn_longhu = (Button) view.findViewById(R.id.mBtn_longhu);
 
         mBtn_kehu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +72,13 @@ public class ShouyeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 callBack.getText("chanpinzhongxin");
+            }
+        });
+
+        mBtn_longhu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                callBack.getText("longhubang");
             }
         });
     }

@@ -5,6 +5,19 @@ import android.util.Log;
 import com.ts888.tongshan.tongshan.constant.Constant;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import okhttp3.Interceptor;
 import okhttp3.MediaType;
@@ -53,7 +66,51 @@ public class DateModel {
                     }
                 }).retryOnConnectionFailure(true)
                 .build();
+        SSLContext sc = null;
 
+
+        try {
+            sc = SSLContext.getInstance("SSL");
+            sc.init(null, new TrustManager[]{new X509TrustManager() {
+                @Override
+                public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws java.security.cert.CertificateException {
+
+                }
+
+                @Override
+                public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws java.security.cert.CertificateException {
+
+                }
+
+                @Override
+                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                    return null;
+                }
+            }}, new SecureRandom());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        HostnameVerifier hv1 = new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        };
+
+        String workerClassName = "okhttp3.OkHttpClient";
+        try {
+            Class workerClass = Class.forName(workerClassName);
+            Field hostnameVerifier = workerClass.getDeclaredField("hostnameVerifier");
+            hostnameVerifier.setAccessible(true);
+            hostnameVerifier.set(client, hv1);
+
+            Field sslSocketFactory = workerClass.getDeclaredField("sslSocketFactory");
+            sslSocketFactory.setAccessible(true);
+            sslSocketFactory.set(client, sc.getSocketFactory());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         Retrofit retrofit = new Retrofit.Builder()
                 .client(client)
@@ -62,7 +119,6 @@ public class DateModel {
 
         return retrofit;
     }
-
 
     //获取验证码
     public void getSendVerfy(final String timeStamp, final String md51, String params,final ICallBack callBack) {
@@ -159,6 +215,50 @@ public class DateModel {
                     }
                 }).retryOnConnectionFailure(true)
                 .build();
+
+        SSLContext sc = null;
+        try {
+            sc = SSLContext.getInstance("SSL");
+            sc.init(null, new TrustManager[]{new X509TrustManager() {
+                @Override
+                public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws java.security.cert.CertificateException {
+
+                }
+
+                @Override
+                public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws java.security.cert.CertificateException {
+
+                }
+
+                @Override
+                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                    return null;
+                }
+            }}, new SecureRandom());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        HostnameVerifier hv1 = new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        };
+
+        String workerClassName = "okhttp3.OkHttpClient";
+        try {
+            Class workerClass = Class.forName(workerClassName);
+            Field hostnameVerifier = workerClass.getDeclaredField("hostnameVerifier");
+            hostnameVerifier.setAccessible(true);
+            hostnameVerifier.set(client, hv1);
+
+            Field sslSocketFactory = workerClass.getDeclaredField("sslSocketFactory");
+            sslSocketFactory.setAccessible(true);
+            sslSocketFactory.set(client, sc.getSocketFactory());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         Retrofit retrofit = new Retrofit.Builder()
                 .client(client)
@@ -389,6 +489,51 @@ public class DateModel {
                     }
                 }).retryOnConnectionFailure(true)
                 .build();
+        SSLContext sc = null;
+
+
+        try {
+            sc = SSLContext.getInstance("SSL");
+            sc.init(null, new TrustManager[]{new X509TrustManager() {
+                @Override
+                public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws java.security.cert.CertificateException {
+
+                }
+
+                @Override
+                public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws java.security.cert.CertificateException {
+
+                }
+
+                @Override
+                public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                    return null;
+                }
+            }}, new SecureRandom());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        HostnameVerifier hv1 = new HostnameVerifier() {
+            @Override
+            public boolean verify(String hostname, SSLSession session) {
+                return true;
+            }
+        };
+
+        String workerClassName = "okhttp3.OkHttpClient";
+        try {
+            Class workerClass = Class.forName(workerClassName);
+            Field hostnameVerifier = workerClass.getDeclaredField("hostnameVerifier");
+            hostnameVerifier.setAccessible(true);
+            hostnameVerifier.set(client, hv1);
+
+            Field sslSocketFactory = workerClass.getDeclaredField("sslSocketFactory");
+            sslSocketFactory.setAccessible(true);
+            sslSocketFactory.set(client, sc.getSocketFactory());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         Retrofit retrofit = new Retrofit.Builder()
                 .client(client)
@@ -415,7 +560,6 @@ public class DateModel {
                     if (("").equals(responseBodyMsg) || null == responseBodyMsg){
                         return;
                     }
-                    Log.i("dd", "onResponse: ");
                     callBack.succesed(responseBodyMsg);
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -424,12 +568,8 @@ public class DateModel {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-<<<<<<< HEAD
                 Log.i("dd", "onFailure: "+t.toString());
                 callBack.failed("请求网络失败,请检查网络");
-=======
-                callBack.failed("请求网络失败,请检查网络"+t.toString());
->>>>>>> 56edbab10211dd701c89f337ed9fc6ea59da0559
             }
         });
 

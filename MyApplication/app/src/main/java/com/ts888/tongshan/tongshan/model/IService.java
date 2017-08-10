@@ -63,8 +63,5 @@ public interface IService {
     Call<ResponseBody> getApkUpdate (@Body RequestBody status);
 
 
-    @Streaming //大文件时要加不然会OOM
-    @GET
-    Call<ResponseBody> downloadFile(@Url String fileUrl);
 
 }

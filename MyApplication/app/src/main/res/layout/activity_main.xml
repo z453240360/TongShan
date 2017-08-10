@@ -67,7 +67,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_margin="10dp"
-                android:background="@drawable/yuanjiaonutton"
+                android:background="@drawable/codeseletor"
                 android:onClick="onClick"
                 android:text="免费获取"
                 android:textColor="#ffffff" />

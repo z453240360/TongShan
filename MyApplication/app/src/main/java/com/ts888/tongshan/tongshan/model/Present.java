@@ -33,7 +33,7 @@ public class Present {
     //获取验证码
     public void loadData(ParmsBean parmsBean) {
 
-        iMainView.showLoading();
+//        iMainView.showLoading();
 
         String timeStamp = String.valueOf(System.currentTimeMillis());
 
@@ -46,13 +46,13 @@ public class Present {
                 @Override
                 public void succesed(String s) {
                     iMainView.getCode(s);
-                    iMainView.cancelLoading();
+//                    iMainView.cancelLoading();
                 }
 
                 @Override
                 public void failed(String s) {
                     iMainView.showFaliure(s);
-                    iMainView.cancelLoading();
+//                    iMainView.cancelLoading();
 
                 }
             });
