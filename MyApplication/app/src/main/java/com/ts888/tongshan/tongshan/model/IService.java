@@ -63,8 +63,15 @@ public interface IService {
     Call<ResponseBody> getApkUpdate (@Body RequestBody status);
 
 
-    @Streaming //大文件时要加不然会OOM
-    @GET
-    Call<ResponseBody> downloadFile(@Url String fileUrl);
+    //个人战绩
+    @POST(Constant.getIndividualRanking)
+    Call<ResponseBody> getIndividualRanking(@Body RequestBody status);
+    //团队战绩
+    @POST(Constant.getGroupRanking)
+    Call<ResponseBody> getGroupRanking (@Body RequestBody status);
+    //门店战绩
+    @POST(Constant.getOrgRanking)
+    Call<ResponseBody> getOrgRanking (@Body RequestBody status);
+
 
 }

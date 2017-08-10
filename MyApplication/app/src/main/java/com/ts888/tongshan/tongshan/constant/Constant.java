@@ -13,9 +13,9 @@ public interface Constant {
     String CHANNEL = "xscxapp";
 
     //测试环境
-//    String BASEURL = "https://appsales-uat.tsjinrong.cn/";
-    //生产环境appsales.tsjinrong.cn/appsales-entry
-    String BASEURL = "https://appsales.tsjinrong.cn/";
+    String BASEURL = "https://appsales-uat.tsjinrong.cn/";
+    //生产环境https://appsales.tsjinrong.cn/appsales-entry
+//    String BASEURL = "https://appsales.tsjinrong.cn/";
 
     //发送验证码
     String sendVerifyCode = "appsales-entry/login/sendVerifyCode";
@@ -46,6 +46,16 @@ public interface Constant {
 
     //APK更新
     String apkUpdate = "appsales-entry/apk/apkUpdate";
+
+    //个人战绩
+    String getIndividualRanking = "appsales-entry/ranking/getIndividualRanking";
+
+    //团队战绩
+    String getGroupRanking = "appsales-entry/ranking/getGroupRanking";
+
+    //门店战绩
+    String getOrgRanking = "appsales-entry/ranking/getOrgRanking";
+
 
     //上传apk
     String apkInfo = "appsales-entry/appcredit-admin/apk/apkInfo";

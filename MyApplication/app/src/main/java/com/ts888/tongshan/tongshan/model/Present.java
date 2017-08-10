@@ -1,6 +1,7 @@
 package com.ts888.tongshan.tongshan.model;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.ts888.tongshan.tongshan.bean.ApkUpDateParamsBeam;
@@ -32,7 +33,7 @@ public class Present {
     //获取验证码
     public void loadData(ParmsBean parmsBean) {
 
-        iMainView.showLoading();
+//        iMainView.showLoading();
 
         String timeStamp = String.valueOf(System.currentTimeMillis());
 
@@ -45,13 +46,13 @@ public class Present {
                 @Override
                 public void succesed(String s) {
                     iMainView.getCode(s);
-                    iMainView.cancelLoading();
+//                    iMainView.cancelLoading();
                 }
 
                 @Override
                 public void failed(String s) {
                     iMainView.showFaliure(s);
-                    iMainView.cancelLoading();
+//                    iMainView.cancelLoading();
 
                 }
             });
@@ -254,6 +255,80 @@ public class Present {
                     iMainView.cancelLoading();
                 }
             });
+
+    }
+
+
+    //个人战绩查询
+    public void getIndividualRanking (FindCalcParameterBean parmsBean, String token){
+        iMainView.showLoading();
+        String timeStamp = String.valueOf(System.currentTimeMillis());
+        String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
+        Gson g = new Gson();
+        final String params = g.toJson(parmsBean);
+        String md51 = EncoderUtils.encoder(md5);
+        dateModel.getIndividualRanking(timeStamp, md51, params, token,new ICallBack() {
+            @Override
+            public void succesed(String s) {
+                iMainView.getCode(s);
+                iMainView.cancelLoading();
+            }
+
+            @Override
+            public void failed(String s) {
+                iMainView.showFaliure(s);
+                iMainView.cancelLoading();
+            }
+        });
+
+    }
+
+
+    //团队战绩
+    public void getGroupRanking (FindCalcParameterBean parmsBean, String token){
+        iMainView.showLoading();
+        String timeStamp = String.valueOf(System.currentTimeMillis());
+        String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
+        Gson g = new Gson();
+        final String params = g.toJson(parmsBean);
+        String md51 = EncoderUtils.encoder(md5);
+        dateModel.getGroupRanking(timeStamp, md51, params, token,new ICallBack() {
+            @Override
+            public void succesed(String s) {
+                iMainView.getCode(s);
+                iMainView.cancelLoading();
+            }
+
+            @Override
+            public void failed(String s) {
+                iMainView.showFaliure(s);
+                iMainView.cancelLoading();
+            }
+        });
+
+    }
+
+    //门店战绩
+    public void getOrgRanking (FindCalcParameterBean parmsBean, String token){
+        iMainView.showLoading();
+        String timeStamp = String.valueOf(System.currentTimeMillis());
+        String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
+        Gson g = new Gson();
+        final String params = g.toJson(parmsBean);
+        String md51 = EncoderUtils.encoder(md5);
+        dateModel.getOrgRanking(timeStamp, md51, params, token,new ICallBack() {
+            @Override
+            public void succesed(String s) {
+                iMainView.getCode(s);
+                iMainView.cancelLoading();
+            }
+
+            @Override
+            public void failed(String s) {
+                iMainView.showFaliure(s);
+                iMainView.cancelLoading();
+            }
+        });
 
     }
 
