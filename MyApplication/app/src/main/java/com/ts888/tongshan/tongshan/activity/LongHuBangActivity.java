@@ -63,7 +63,7 @@ public class LongHuBangActivity extends AppCompatActivity implements IMainView{
 
 
         bu= new Bundle();
-        bu.putString("token",token);
+
         intiToolBar();
 
         init();
@@ -73,6 +73,7 @@ public class LongHuBangActivity extends AppCompatActivity implements IMainView{
     private void init() {
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         token = sharedPreferences.getString("token","888888");
+        bu.putString("token",token);
         manager = getSupportFragmentManager();
         initFragment();
 
