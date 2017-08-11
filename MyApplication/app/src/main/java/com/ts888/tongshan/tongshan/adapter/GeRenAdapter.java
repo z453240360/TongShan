@@ -3,6 +3,7 @@ package com.ts888.tongshan.tongshan.adapter;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 
 import com.ts888.tongshan.tongshan.R;
+import com.ts888.tongshan.tongshan.bean.IndividualRanking;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +19,11 @@ import java.util.List;
 
 public class GeRenAdapter extends RecyclerView.Adapter<GeRenAdapter.MyViewHolder> {
 
-    private List<String> mDatas = new ArrayList<>();
+    private List<IndividualRanking.DataBean> mDatas = new ArrayList<>();
     private Context mContext;
     private LayoutInflater mInflater;
 
-    public GeRenAdapter(Context context, List<String> datas) {
+    public GeRenAdapter(Context context, List<IndividualRanking.DataBean> datas) {
         this.mInflater = LayoutInflater.from(context);
         mDatas = datas;
         this.mContext = context;
@@ -39,6 +41,10 @@ public class GeRenAdapter extends RecyclerView.Adapter<GeRenAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
+        IndividualRanking.DataBean dataBean = mDatas.get(position);
+        String userName = dataBean.getUserName();
+
+        Log.i("dd", "onBindViewHolder: "+userName);
         //获取当前数据
         if (position==0){
             holder.mTxt_geren_number.setCompoundDrawables(mContext.getResources().getDrawable(R.mipmap.diyi),null,null,null);
@@ -48,7 +54,13 @@ public class GeRenAdapter extends RecyclerView.Adapter<GeRenAdapter.MyViewHolder
             holder.mTxt_geren_number.setCompoundDrawables(mContext.getResources().getDrawable(R.mipmap.disan),null,null,null);
         }
 
-        String str = mDatas.get(position);
+        holder.mTxt_geren_number.setText(userName);
+        holder.mTxt_geren_componey.setText(dataBean.getGroupLeaderName());
+        holder.mTxt_geren_money.setText(dataBean.getManagerName());
+        holder.mTxt_geren_name.setText(dataBean.getOrgName());
+
+
+
 
         //设置不同条目的东西
         holder.mTxt_geren_number.setText("");
@@ -83,7 +95,7 @@ public class GeRenAdapter extends RecyclerView.Adapter<GeRenAdapter.MyViewHolder
     }
 
     //增加一条数据
-    public void insertData(int pos, String data) {
+    public void insertData(int pos, IndividualRanking.DataBean data) {
         mDatas.add(pos, data);
 
         notifyItemInserted(pos);

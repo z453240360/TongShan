@@ -32,6 +32,7 @@ public class LongHuTuanDuiFragment extends Fragment implements IMainView{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         present = new Present(this);
         token = getArguments().getString("token");
         present.getGroupRanking(new FindCalcParameterBean(),token);

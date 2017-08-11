@@ -5,15 +5,20 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.adapter.GeRenAdapter;
+import com.ts888.tongshan.tongshan.bean.FindCalcParameterBean;
+import com.ts888.tongshan.tongshan.bean.IndividualRanking;
 import com.ts888.tongshan.tongshan.model.IMainView;
+import com.ts888.tongshan.tongshan.model.Present;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,18 +27,21 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
+import static android.R.attr.data;
 import static com.ts888.tongshan.tongshan.R.id.xrecycler_geren;
 
 /**
  * Created by Administrator on 2017/8/10.
  */
 
-public class LongHuGeRenFragment extends Fragment implements IMainView{
-    @BindView(xrecycler_geren)
-    XRecyclerView xrecyclerGeren;
+public class LongHuGeRenFragment extends Fragment implements IMainView {
     Unbinder unbinder;
-    private List<String> mDatas = new ArrayList<>();
+    private List<IndividualRanking.DataBean> mDatas = new ArrayList<>();
     private GeRenAdapter adapter;
+    private String token;
+    private Present present;
+    private XRecyclerView xrecyclerGeren;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -47,9 +55,28 @@ public class LongHuGeRenFragment extends Fragment implements IMainView{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(getActivity());
-        String token = getArguments().getString("token");
-        adapter = new GeRenAdapter(getActivity(),mDatas);
+        xrecyclerGeren = (XRecyclerView) view.findViewById(R.id.xrecycler_geren);
+        present = new Present(this);
+        token = getArguments().getString("token");
+        present.getIndividualRanking(new FindCalcParameterBean(),token);
 
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @Override
+    public void getCode(String s) {
+        Log.i("dd", "getCode:+个人 " + s);
+        Gson g = new Gson();
+        IndividualRanking individualRanking = g.fromJson(s, IndividualRanking.class);
+        mDatas = individualRanking.getData();
+
+        adapter = new GeRenAdapter(getActivity(), mDatas);
         xrecyclerGeren.setAdapter(adapter);
         xrecyclerGeren.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -69,7 +96,7 @@ public class LongHuGeRenFragment extends Fragment implements IMainView{
                     @Override
                     public void run() {
                         //刷新
-                        mDatas.add(0, "刷新出来的数据");
+//                        mDatas.add(0, "刷新出来的数据");
                         adapter.notifyItemInserted(0);
 
                         //取消刷新的小圆圈: 刷新完成
@@ -86,7 +113,7 @@ public class LongHuGeRenFragment extends Fragment implements IMainView{
                     @Override
                     public void run() {
                         //加载更多
-                        mDatas.add("加载更多");
+//                        mDatas.add("加载更多");
                         adapter.notifyItemInserted(mDatas.size());
 
                         //加载更多完成,取消加载更多的按钮
@@ -96,18 +123,6 @@ public class LongHuGeRenFragment extends Fragment implements IMainView{
 
             }
         });
-    }
-
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
-
-    @Override
-    public void getCode(String s) {
-
     }
 
     @Override

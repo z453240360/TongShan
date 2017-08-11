@@ -74,6 +74,7 @@ public class LongHuBangActivity extends AppCompatActivity implements IMainView{
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         token = sharedPreferences.getString("token","888888");
         bu.putString("token",token);
+
         manager = getSupportFragmentManager();
         initFragment();
 

@@ -79,7 +79,6 @@ public class KeHuFragment extends Fragment implements IMainView {
 
     @Override
     public void getLogin(String s) {
-
         Gson g = new Gson();
         FindScheduleBean findScheduleBean = g.fromJson(s, FindScheduleBean.class);
         final List<FindScheduleBean.DataBean> data = findScheduleBean.getData();
