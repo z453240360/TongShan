@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.bean.FindCalcParameterBean;
+import com.ts888.tongshan.tongshan.bean.LongHuParmsBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 
@@ -22,6 +23,9 @@ import com.ts888.tongshan.tongshan.model.Present;
 public class LongHuTuanDuiFragment extends Fragment implements IMainView{
     private Present present;
     private String token;
+    private LongHuParmsBean parmsBean;
+    private int page=1;
+    private int row = 10;
 
     @Nullable
     @Override
@@ -32,10 +36,12 @@ public class LongHuTuanDuiFragment extends Fragment implements IMainView{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        parmsBean = new LongHuParmsBean();
+        parmsBean.setPage(page);
+        parmsBean.setRows(row);
         present = new Present(this);
         token = getArguments().getString("token");
-        present.getGroupRanking(new FindCalcParameterBean(),token);
+        present.getGroupRanking(parmsBean,token);
 
     }
 

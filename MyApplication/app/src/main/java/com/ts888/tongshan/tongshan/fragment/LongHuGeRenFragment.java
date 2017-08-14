@@ -17,6 +17,7 @@ import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.adapter.GeRenAdapter;
 import com.ts888.tongshan.tongshan.bean.FindCalcParameterBean;
 import com.ts888.tongshan.tongshan.bean.IndividualRanking;
+import com.ts888.tongshan.tongshan.bean.LongHuParmsBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 
@@ -28,6 +29,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 import static android.R.attr.data;
+import static android.content.ContentValues.TAG;
 import static com.ts888.tongshan.tongshan.R.id.xrecycler_geren;
 
 /**
@@ -40,8 +42,11 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
     private GeRenAdapter adapter;
     private String token;
     private Present present;
+    private LongHuParmsBean parmsBean;
     private XRecyclerView xrecyclerGeren;
-
+    private int page=1;
+    private int row = 10;
+    private boolean isFirst = true;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,7 +63,10 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
         xrecyclerGeren = (XRecyclerView) view.findViewById(R.id.xrecycler_geren);
         present = new Present(this);
         token = getArguments().getString("token");
-        present.getIndividualRanking(new FindCalcParameterBean(),token);
+        parmsBean = new LongHuParmsBean();
+        parmsBean.setPage(page);
+        parmsBean.setRows(row);
+        present.getIndividualRanking(parmsBean,token);
 
     }
 
@@ -71,14 +79,24 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
 
     @Override
     public void getCode(String s) {
-        Log.i("dd", "getCode:+个人 " + s);
-        Gson g = new Gson();
-        IndividualRanking individualRanking = g.fromJson(s, IndividualRanking.class);
-        mDatas = individualRanking.getData();
+        if (isFirst){
 
-        adapter = new GeRenAdapter(getActivity(), mDatas);
-        xrecyclerGeren.setAdapter(adapter);
-        xrecyclerGeren.setLayoutManager(new LinearLayoutManager(getActivity()));
+            Gson g = new Gson();
+            IndividualRanking individualRanking = g.fromJson(s, IndividualRanking.class);
+            mDatas = individualRanking.getData();
+            adapter = new GeRenAdapter(getActivity(), mDatas);
+            xrecyclerGeren.setLayoutManager(new LinearLayoutManager(getActivity()));
+            xrecyclerGeren.setAdapter(adapter);
+            isFirst=false;
+        }else {
+            Gson g = new Gson();
+            IndividualRanking individualRanking = g.fromJson(s, IndividualRanking.class);
+            List<IndividualRanking.DataBean> data = individualRanking.getData();
+            adapter = new GeRenAdapter(getActivity(), mDatas);
+            xrecyclerGeren.setLayoutManager(new LinearLayoutManager(getActivity()));
+            xrecyclerGeren.setAdapter(adapter);
+        }
+
 
         //=======================================================================
         // 更改刷新 加载 按钮的样式
@@ -91,10 +109,12 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
         xrecyclerGeren.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
+
+
+
                         //刷新
 //                        mDatas.add(0, "刷新出来的数据");
                         adapter.notifyItemInserted(0);
@@ -114,6 +134,7 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
                     public void run() {
                         //加载更多
 //                        mDatas.add("加载更多");
+
                         adapter.notifyItemInserted(mDatas.size());
 
                         //加载更多完成,取消加载更多的按钮

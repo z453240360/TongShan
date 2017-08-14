@@ -42,28 +42,42 @@ public class GeRenAdapter extends RecyclerView.Adapter<GeRenAdapter.MyViewHolder
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
         IndividualRanking.DataBean dataBean = mDatas.get(position);
-        String userName = dataBean.getUserName();
+//        String userName = dataBean.getUserName();
 
-        Log.i("dd", "onBindViewHolder: "+userName);
+//        Log.i("dd", "onBindViewHolder: "+userName);
+        String staffName = dataBean.getStaffName();
+        int individualRanking = dataBean.getIndividualRanking();
+        int individualResults = dataBean.getIndividualResults();
+        int staffId = dataBean.getStaffId();
+
         //获取当前数据
         if (position==0){
             holder.mTxt_geren_number.setCompoundDrawables(mContext.getResources().getDrawable(R.mipmap.diyi),null,null,null);
+            holder.mTxt_geren_number.setText("第 "+individualRanking+" 名");
+            holder.mTxt_geren_componey.setText("上海营业部");
+            holder.mTxt_geren_money.setText(individualResults+"");
+            holder.mTxt_geren_name.setText(staffName);
+
+
         }else if (position==1){
             holder.mTxt_geren_number.setCompoundDrawables(mContext.getResources().getDrawable(R.mipmap.dier),null,null,null);
+            holder.mTxt_geren_number.setText("第 "+individualRanking+" 名");
+            holder.mTxt_geren_componey.setText("上海营业部");
+            holder.mTxt_geren_money.setText(individualResults+"");
+            holder.mTxt_geren_name.setText(staffName);
         }else if (position==2){
             holder.mTxt_geren_number.setCompoundDrawables(mContext.getResources().getDrawable(R.mipmap.disan),null,null,null);
+            holder.mTxt_geren_number.setText("第 "+individualRanking+" 名");
+            holder.mTxt_geren_componey.setText("上海营业部");
+            holder.mTxt_geren_money.setText(individualResults+"");
+            holder.mTxt_geren_name.setText(staffName);
         }
 
-        holder.mTxt_geren_number.setText(userName);
-        holder.mTxt_geren_componey.setText(dataBean.getGroupLeaderName());
-        holder.mTxt_geren_money.setText(dataBean.getManagerName());
-        holder.mTxt_geren_name.setText(dataBean.getOrgName());
+        holder.mTxt_geren_number.setText("第 "+individualRanking+" 名");
+        holder.mTxt_geren_componey.setText("上海营业部");
+        holder.mTxt_geren_money.setText(individualResults+"");
+        holder.mTxt_geren_name.setText(staffName);
 
-
-
-
-        //设置不同条目的东西
-        holder.mTxt_geren_number.setText("");
         //设置点击事件
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +93,7 @@ public class GeRenAdapter extends RecyclerView.Adapter<GeRenAdapter.MyViewHolder
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mDatas == null ? 0 : mDatas.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

@@ -6,6 +6,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.ts888.tongshan.tongshan.bean.ApkUpDateParamsBeam;
 import com.ts888.tongshan.tongshan.bean.FindCalcParameterBean;
+import com.ts888.tongshan.tongshan.bean.LongHuParmsBean;
 import com.ts888.tongshan.tongshan.bean.ParmsBean;
 import com.ts888.tongshan.tongshan.util.EncoderUtils;
 import com.ts888.tongshan.tongshan.util.MD5Util;
@@ -260,7 +261,7 @@ public class Present {
 
 
     //个人战绩查询
-    public void getIndividualRanking (FindCalcParameterBean parmsBean, String token){
+    public void getIndividualRanking (LongHuParmsBean parmsBean, String token){
         iMainView.showLoading();
         String timeStamp = String.valueOf(System.currentTimeMillis());
         String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
@@ -285,7 +286,7 @@ public class Present {
 
 
     //团队战绩
-    public void getGroupRanking (FindCalcParameterBean parmsBean, String token){
+    public void getGroupRanking (LongHuParmsBean parmsBean, String token){
         iMainView.showLoading();
         String timeStamp = String.valueOf(System.currentTimeMillis());
         String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
@@ -309,7 +310,7 @@ public class Present {
     }
 
     //门店战绩
-    public void getOrgRanking (FindCalcParameterBean parmsBean, String token){
+    public void getOrgRanking (LongHuParmsBean parmsBean, String token){
         iMainView.showLoading();
         String timeStamp = String.valueOf(System.currentTimeMillis());
         String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;

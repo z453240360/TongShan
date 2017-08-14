@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         present = new Present(this);  //初始化请求逻辑管理类
         mEd_phoneNumber = (EditText) findViewById(R.id.mEd_user_phoneNumber);  //电话号码输入框
         mEd_code = (EditText) findViewById(R.id.mEd_user_password);                 //验证码输入框
-        //mEd_phoneNumber.setText("18616850003");
+        mEd_phoneNumber.setText("18616850004");
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);  //数据存储初始化
         editor = sharedPreferences.edit();
 
@@ -204,6 +204,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         //获得返回的验证码
         Log.i(TAG, "getCode: " + s);
         String data = codeDataBean.getData();
+        mEd_code.setText(data);
         String message = codeDataBean.getMessage();
         if (message != null) {
             Toast.makeText(this, codeDataBean.getMessage(), Toast.LENGTH_SHORT).show();
