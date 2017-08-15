@@ -11,10 +11,14 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.fragment.GengDuoFragment;
@@ -23,6 +27,8 @@ import com.ts888.tongshan.tongshan.fragment.XiaoXiFragment;
 import com.ts888.tongshan.tongshan.util.ColorState;
 
 import java.util.ArrayList;
+
+import static android.R.attr.y;
 
 /**
  * 业务首页，显示一堆功能跳转按钮
@@ -40,6 +46,7 @@ public class YeWuActivity extends AppCompatActivity {
     private Fragment lastFragment;
     private RadioGroup mRgMain;
     private Toolbar toolbar;
+    private RelativeLayout activity_ye_wu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +55,11 @@ public class YeWuActivity extends AppCompatActivity {
         ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_ye_wu);
+
+        activity_ye_wu = (RelativeLayout) findViewById(R.id.activity_ye_wu);
+//        setToolBarShow();
+
+
         //设置标题栏
         toolbar = (Toolbar) findViewById(R.id.toolbars_yewu_activity);
         setSupportActionBar(toolbar);
@@ -60,6 +72,29 @@ public class YeWuActivity extends AppCompatActivity {
         token = sharedPreferences.getString("token", "888888");              //获取存储的token
         init();
     }
+
+//    private void setToolBarShow() {
+//
+//        activity_ye_wu.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                switch (motionEvent.getAction()){
+//                    case motionEvent.ACTION_MOVE:
+//
+//
+//                        break;
+//
+//
+//                }
+//
+//
+//
+//
+//                return false;
+//            }
+//        });
+//
+////    }
 
     private void init() {
 
@@ -148,6 +183,34 @@ public class YeWuActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        float down = 0;
+        float move = 0;
+
+        switch (event.getAction())
+        {
+            case MotionEvent.ACTION_MOVE:
+                move = event.getY();
+                break;
+            case MotionEvent.ACTION_DOWN:
+                down = event.getY();
+                break;
+        }
+
+        if (move-down>100){
+
+            Log.i(TAG, "向上: "+(move-down));
+
+        }else {
+
+            Log.i(TAG, "向下 "+(move-down));
 
 
+        }
+
+
+
+        return super.onTouchEvent(event);
+    }
 }

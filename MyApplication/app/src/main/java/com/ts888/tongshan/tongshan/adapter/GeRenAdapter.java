@@ -49,9 +49,7 @@ public class GeRenAdapter extends RecyclerView.Adapter<GeRenAdapter.MyViewHolder
         String staffName = dataBean.getStaffName();  //个人姓名
         int individualRanking = dataBean.getIndividualRanking();  //  个人排名
         int individualResults = dataBean.getIndividualResults();  // 个人业绩
-        int staffId = dataBean.getStaffId();  //
-
-
+        String orgName = dataBean.getOrgName();
 
         String aFloat = DataFormatFromInt.getDoubleByDouble((double) individualResults/10000);
 
@@ -63,26 +61,26 @@ public class GeRenAdapter extends RecyclerView.Adapter<GeRenAdapter.MyViewHolder
 
             holder.mTxt_geren_number.setCompoundDrawables(ss,null,null,null);
             holder.mTxt_geren_number.setCompoundDrawablePadding(5);
-            holder.mTxt_geren_number.setTextColor(Color.rgb(90,184,255));
-            holder.mTxt_geren_componey.setTextColor(Color.rgb(90,184,255));
-            holder.mTxt_geren_money.setTextColor(Color.rgb(90,184,255));
-            holder.mTxt_geren_name.setTextColor(Color.rgb(90,184,255));
+            holder.mTxt_geren_number.setTextColor(Color.rgb(18,108,176));
+            holder.mTxt_geren_componey.setTextColor(Color.rgb(18,108,176));
+            holder.mTxt_geren_money.setTextColor(Color.rgb(18,108,176));
+            holder.mTxt_geren_name.setTextColor(Color.rgb(18,108,176));
         }else if (individualRanking==2){
             Drawable ss = mContext.getResources().getDrawable(R.mipmap.dier);
             ss.setBounds(0,0,60,90);
             holder.mTxt_geren_number.setCompoundDrawables(ss,null,null,null);
-            holder.mTxt_geren_number.setTextColor(Color.rgb(90,184,255));
-            holder.mTxt_geren_componey.setTextColor(Color.rgb(90,184,255));
-            holder.mTxt_geren_money.setTextColor(Color.rgb(90,184,255));
-            holder.mTxt_geren_name.setTextColor(Color.rgb(90,184,255));
+            holder.mTxt_geren_number.setTextColor(Color.rgb(18,108,176));
+            holder.mTxt_geren_componey.setTextColor(Color.rgb(18,108,176));
+            holder.mTxt_geren_money.setTextColor(Color.rgb(18,108,176));
+            holder.mTxt_geren_name.setTextColor(Color.rgb(18,108,176));
         }else if (individualRanking==3){
             Drawable ss = mContext.getResources().getDrawable(R.mipmap.disan);
             ss.setBounds(0,0,60,90);
             holder.mTxt_geren_number.setCompoundDrawables(ss,null,null,null);
-            holder.mTxt_geren_number.setTextColor(Color.rgb(90,184,255));
-            holder.mTxt_geren_componey.setTextColor(Color.rgb(90,184,255));
-            holder.mTxt_geren_money.setTextColor(Color.rgb(90,184,255));
-            holder.mTxt_geren_name.setTextColor(Color.rgb(90,184,255));
+            holder.mTxt_geren_number.setTextColor(Color.rgb(18,108,176));
+            holder.mTxt_geren_componey.setTextColor(Color.rgb(18,108,176));
+            holder.mTxt_geren_money.setTextColor(Color.rgb(18,108,176));
+            holder.mTxt_geren_name.setTextColor(Color.rgb(18,108,176));
         }else {
             Drawable ss = mContext.getResources().getDrawable(R.mipmap.disan);
             holder.mTxt_geren_number.setCompoundDrawables(ss,null,null,null);
@@ -94,7 +92,7 @@ public class GeRenAdapter extends RecyclerView.Adapter<GeRenAdapter.MyViewHolder
         }
 
         holder.mTxt_geren_number.setText("第 "+individualRanking+" 名");
-        holder.mTxt_geren_componey.setText("上海营业部");
+        holder.mTxt_geren_componey.setText(orgName);
         holder.mTxt_geren_money.setText(aFloat+" 万元");
         holder.mTxt_geren_name.setText(staffName);
 

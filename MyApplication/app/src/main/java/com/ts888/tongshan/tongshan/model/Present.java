@@ -1,21 +1,14 @@
 package com.ts888.tongshan.tongshan.model;
 
-import android.content.Context;
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.ts888.tongshan.tongshan.bean.ApkUpDateParamsBeam;
 import com.ts888.tongshan.tongshan.bean.FindCalcParameterBean;
 import com.ts888.tongshan.tongshan.bean.LongHuParmsBean;
 import com.ts888.tongshan.tongshan.bean.ParmsBean;
 import com.ts888.tongshan.tongshan.util.EncoderUtils;
-import com.ts888.tongshan.tongshan.util.MD5Util;
-
-import java.security.NoSuchAlgorithmException;
 
 import static com.ts888.tongshan.tongshan.constant.Constant.API_KEY;
 import static com.ts888.tongshan.tongshan.constant.Constant.SECURITY_KEY;
-import static okhttp3.Protocol.get;
 
 /**
  * Created by Administrator on 2017/8/3.

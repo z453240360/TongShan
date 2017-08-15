@@ -127,7 +127,7 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
 
     @Override
     public void getCode(String s) {
-        Log.i(TAG, "IndividualRanking: "+s);
+        Log.i(TAG, "IndividualRanking:+列表 "+s);
         Gson g = new Gson();
         IndividualRanking individualRanking = g.fromJson(s, IndividualRanking.class);
         mDatas = individualRanking.getData();
@@ -161,18 +161,22 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
 
     @Override
     public void getUpDate(String s) {
-//        Gson gson = new Gson();
-//        Log.i(TAG, "individualRanking: "+s);
-//
-//        FindRankingStarffByIdBean findRankingStarffById = gson.fromJson(s, FindRankingStarffByIdBean.class);
-//
-//        FindRankingStarffByIdBean.DataBean data = findRankingStarffById.getData();
-//
-//        if (data==null){
-//            return;
-//        }
-//        FindRankingStarffByIdBean.DataBean.IndividualRankingDtoBean individualRankingDto = data.getIndividualRankingDto();
-//        int individualRanking = individualRankingDto.getIndividualRanking();
-//        mBtn_geren_dangqian.setText("我的当前名次：第 "+individualRanking+"名");
+        Gson gson = new Gson();
+        Log.i(TAG, "individualRanking:+排名 "+s);
+
+        FindRankingStarffByIdBean findRankingStarffById = gson.fromJson(s, FindRankingStarffByIdBean.class);
+
+        FindRankingStarffByIdBean.DataBean data = findRankingStarffById.getData();
+
+
+        if (data==null){
+            mBtn_geren_dangqian.setText("我的当前名次：---");
+            return;
+        }
+
+
+        int individualRanking = data.getIndividualRankingDto().getIndividualRanking();
+
+        mBtn_geren_dangqian.setText("我的当前名次：第 "+individualRanking+"名");
     }
 }

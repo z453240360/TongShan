@@ -11,7 +11,7 @@ public class IndividualRanking {
 
     /**
      * code : 1
-     * data : [{"staffId":4116,"staffName":"摆海军","individualRanking":1,"individualResults":470400},{"staffId":3853,"staffName":"昝玉龙","individualRanking":2,"individualResults":470400},{"staffId":259,"staffName":"刘颖","individualRanking":3,"individualResults":150000},{"staffId":4078,"staffName":"王海芸","individualRanking":4,"individualResults":144800},{"staffId":4137,"staffName":"房选达","individualRanking":5,"individualResults":122700},{"staffId":3124,"staffName":"鲁大清","individualRanking":6,"individualResults":122700},{"staffId":3769,"staffName":"汪国扬","individualRanking":7,"individualResults":122700},{"staffId":3653,"staffName":"何荣","individualRanking":8,"individualResults":114700},{"staffId":3969,"staffName":"何虹兵","individualRanking":9,"individualResults":98100},{"staffId":3194,"staffName":"周莉萍","individualRanking":10,"individualResults":87500}]
+     * data : [{"staffName":"黄晓艳","orgName":"海口市第一营业部","individualRanking":1,"individualResults":332800},{"staffName":"陈雅竹","orgName":"海口市第一营业部","individualRanking":2,"individualResults":319000},{"staffName":"林燕妮","orgName":"厦门市第一营业部","individualRanking":3,"individualResults":269200},{"staffName":"汪修文","orgName":"上海市福州路营业部","individualRanking":4,"individualResults":245400},{"staffName":"朱永芳","orgName":"合肥市芜湖路营业部","individualRanking":5,"individualResults":240000},{"staffName":"陈哲望","orgName":"杭州市建国北路营业部","individualRanking":6,"individualResults":239800},{"staffName":"马梓航","orgName":"乌鲁木齐市第一营业部","individualRanking":7,"individualResults":235200},{"staffName":"赵健","orgName":"上海市福州路营业部","individualRanking":8,"individualResults":228000},{"staffName":"陈元龙","orgName":"海口市第一营业部","individualRanking":9,"individualResults":220900},{"staffName":"吴勤雪","orgName":"合肥市芜湖路营业部","individualRanking":10,"individualResults":209700}]
      * message : null
      */
 
@@ -45,24 +45,16 @@ public class IndividualRanking {
 
     public static class DataBean {
         /**
-         * staffId : 4116
-         * staffName : 摆海军
+         * staffName : 黄晓艳
+         * orgName : 海口市第一营业部
          * individualRanking : 1
-         * individualResults : 470400
+         * individualResults : 332800
          */
 
-        private int staffId;
         private String staffName;
+        private String orgName;
         private int individualRanking;
         private int individualResults;
-
-        public int getStaffId() {
-            return staffId;
-        }
-
-        public void setStaffId(int staffId) {
-            this.staffId = staffId;
-        }
 
         public String getStaffName() {
             return staffName;
@@ -70,6 +62,14 @@ public class IndividualRanking {
 
         public void setStaffName(String staffName) {
             this.staffName = staffName;
+        }
+
+        public String getOrgName() {
+            return orgName;
+        }
+
+        public void setOrgName(String orgName) {
+            this.orgName = orgName;
         }
 
         public int getIndividualRanking() {

@@ -71,6 +71,7 @@ public class GeRenYeJiActivity extends AppCompatActivity implements IMainView{
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         token = sharedPreferences.getString("token","888888");
         progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Loading...");
         present = new Present(this);
         present.getUserStatistics(new LongHuParmsBean(),token);
 

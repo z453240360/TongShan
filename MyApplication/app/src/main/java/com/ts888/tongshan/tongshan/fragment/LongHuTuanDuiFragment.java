@@ -142,15 +142,16 @@ public class LongHuTuanDuiFragment extends Fragment implements IMainView{
 
     @Override
     public void getUpDate(String s) {
-//        Log.i("dd", "getUpDate: 排名"+s);
-//        Gson gson = new Gson();
-//        FindRankingStarffByIdBean findRankingStarffById = gson.fromJson(s, FindRankingStarffByIdBean.class);
-//        FindRankingStarffByIdBean.DataBean data = findRankingStarffById.getData();
-//        if (data==null){
-//            return;
-//        }
-//        FindRankingStarffByIdBean.DataBean.GroupRankingDtoBean groupRankingDto = data.getGroupRankingDto();
-//        int orgRanking = groupRankingDto.getGroupRanking();
-//        mBtn_group_dangqian.setText("我的团队排名：第 " + orgRanking + "名");
+        Log.i("dd", "getUpDate: 排名"+s);
+        Gson gson = new Gson();
+        FindRankingStarffByIdBean findRankingStarffById = gson.fromJson(s, FindRankingStarffByIdBean.class);
+        FindRankingStarffByIdBean.DataBean data = findRankingStarffById.getData();
+        if (data==null){
+            mBtn_group_dangqian.setText("我的团队排名：---");
+            return;
+        }
+        FindRankingStarffByIdBean.DataBean.GroupRankingDtoBean groupRankingDto = data.getGroupRankingDto();
+        int orgRanking = groupRankingDto.getGroupRanking();
+        mBtn_group_dangqian.setText("我的团队排名：第 " + orgRanking + "名");
     }
 }

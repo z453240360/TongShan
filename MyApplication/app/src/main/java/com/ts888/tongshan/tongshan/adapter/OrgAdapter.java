@@ -59,23 +59,23 @@ public class OrgAdapter extends RecyclerView.Adapter<OrgAdapter.MyViewHolder> {
 
             holder.mTxt_geren_number.setCompoundDrawables(ss,null,null,null);
             holder.mTxt_geren_number.setCompoundDrawablePadding(5);
-            holder.mTxt_geren_number.setTextColor(Color.rgb(90,184,255));
-            holder.mTxt_geren_componey.setTextColor(Color.rgb(90,184,255));
-            holder.mTxt_geren_money.setTextColor(Color.rgb(90,184,255));
+            holder.mTxt_geren_number.setTextColor(Color.rgb(18,108,176));
+            holder.mTxt_geren_componey.setTextColor(Color.rgb(18,108,176));
+            holder.mTxt_geren_money.setTextColor(Color.rgb(18,108,176));
         }else if (individualRanking==2){
             Drawable ss = mContext.getResources().getDrawable(R.mipmap.dier);
             ss.setBounds(0,0,60,90);
             holder.mTxt_geren_number.setCompoundDrawables(ss,null,null,null);
-            holder.mTxt_geren_number.setTextColor(Color.rgb(90,184,255));
-            holder.mTxt_geren_componey.setTextColor(Color.rgb(90,184,255));
-            holder.mTxt_geren_money.setTextColor(Color.rgb(90,184,255));
+            holder.mTxt_geren_number.setTextColor(Color.rgb(18,108,176));
+            holder.mTxt_geren_componey.setTextColor(Color.rgb(18,108,176));
+            holder.mTxt_geren_money.setTextColor(Color.rgb(18,108,176));
         }else if (individualRanking==3){
             Drawable ss = mContext.getResources().getDrawable(R.mipmap.disan);
             ss.setBounds(0,0,60,90);
             holder.mTxt_geren_number.setCompoundDrawables(ss,null,null,null);
-            holder.mTxt_geren_number.setTextColor(Color.rgb(90,184,255));
-            holder.mTxt_geren_componey.setTextColor(Color.rgb(90,184,255));
-            holder.mTxt_geren_money.setTextColor(Color.rgb(90,184,255));
+            holder.mTxt_geren_number.setTextColor(Color.rgb(18,108,176));
+            holder.mTxt_geren_componey.setTextColor(Color.rgb(18,108,176));
+            holder.mTxt_geren_money.setTextColor(Color.rgb(18,108,176));
         }else {
             Drawable ss = mContext.getResources().getDrawable(R.mipmap.disan);
             holder.mTxt_geren_number.setCompoundDrawables(ss,null,null,null);
@@ -87,7 +87,7 @@ public class OrgAdapter extends RecyclerView.Adapter<OrgAdapter.MyViewHolder> {
 
         holder.mTxt_geren_number.setText("第 "+individualRanking+" 名");
         holder.mTxt_geren_componey.setText(orgName);
-        holder.mTxt_geren_money.setText("负责人："+staffName);
+        holder.mTxt_geren_money.setText(staffName);
 
         //设置点击事件
         holder.itemView.setOnClickListener(new View.OnClickListener() {

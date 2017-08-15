@@ -145,15 +145,16 @@ public class LongHuMenDianFragment extends Fragment implements IMainView {
 
     @Override
     public void getUpDate(String s) {
-//        Log.i("dd", "getUpDate: 排名"+s);
-//        Gson gson = new Gson();
-//        FindRankingStarffByIdBean findRankingStarffById = gson.fromJson(s, FindRankingStarffByIdBean.class);
-//        FindRankingStarffByIdBean.DataBean data = findRankingStarffById.getData();
-//        if (data==null){
-//            return;
-//        }
-//        FindRankingStarffByIdBean.DataBean.OrgRankingDtoBean orgRankingDto = data.getOrgRankingDto();
-//        int orgRanking = orgRankingDto.getOrgRanking();
-//        mBtn_org_dangqian.setText("我的门店排名：第 " + orgRanking + "名");
+        Log.i("dd", "getUpDate: 排名"+s);
+        Gson gson = new Gson();
+        FindRankingStarffByIdBean findRankingStarffById = gson.fromJson(s, FindRankingStarffByIdBean.class);
+        FindRankingStarffByIdBean.DataBean data = findRankingStarffById.getData();
+        if (data==null){
+            mBtn_org_dangqian.setText("我的门店排名：---");
+            return;
+        }
+        FindRankingStarffByIdBean.DataBean.OrgRankingDtoBean orgRankingDto = data.getOrgRankingDto();
+        int orgRanking = orgRankingDto.getOrgRanking();
+        mBtn_org_dangqian.setText("我的门店排名：第 " + orgRanking + "名");
     }
 }

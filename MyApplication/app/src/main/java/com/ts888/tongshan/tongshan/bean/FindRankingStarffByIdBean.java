@@ -9,13 +9,13 @@ public class FindRankingStarffByIdBean {
 
     /**
      * code : 1
-     * data : {"individualRankingDto":{"staffId":259,"staffName":"刘颖","individualRanking":3,"individualResults":150000},"groupRankingDto":{"groupName":"直销一组","groupCode":16,"groupLeaderName":"王露","groupRanking":30,"groupResults":50300},"orgRankingDto":{"orgName":"成都市天府国际营业部","orgCode":17,"managerName":"程瑶","orgRanking":1,"orgResults":1647000}}
-     * message : null
+     * data : {"individualRankingDto":{"staffName":"吴茜","individualRanking":8,"individualResults":99999},"groupRankingDto":{"groupName":"直销五组","groupLeaderName":"刘小芳","groupRanking":19,"groupResults":73600},"orgRankingDto":{"orgName":"惠州市第一营业部","managerName":"姜丽军","orgRanking":14,"orgResults":73600}}
+     * massage :
      */
 
     private String code;
     private DataBean data;
-    private Object message;
+    private String massage;
 
     public String getCode() {
         return code;
@@ -33,19 +33,19 @@ public class FindRankingStarffByIdBean {
         this.data = data;
     }
 
-    public Object getMessage() {
-        return message;
+    public String getMassage() {
+        return massage;
     }
 
-    public void setMessage(Object message) {
-        this.message = message;
+    public void setMassage(String massage) {
+        this.massage = massage;
     }
 
     public static class DataBean {
         /**
-         * individualRankingDto : {"staffId":259,"staffName":"刘颖","individualRanking":3,"individualResults":150000}
-         * groupRankingDto : {"groupName":"直销一组","groupCode":16,"groupLeaderName":"王露","groupRanking":30,"groupResults":50300}
-         * orgRankingDto : {"orgName":"成都市天府国际营业部","orgCode":17,"managerName":"程瑶","orgRanking":1,"orgResults":1647000}
+         * individualRankingDto : {"staffName":"吴茜","individualRanking":8,"individualResults":99999}
+         * groupRankingDto : {"groupName":"直销五组","groupLeaderName":"刘小芳","groupRanking":19,"groupResults":73600}
+         * orgRankingDto : {"orgName":"惠州市第一营业部","managerName":"姜丽军","orgRanking":14,"orgResults":73600}
          */
 
         private IndividualRankingDtoBean individualRankingDto;
@@ -78,24 +78,14 @@ public class FindRankingStarffByIdBean {
 
         public static class IndividualRankingDtoBean {
             /**
-             * staffId : 259
-             * staffName : 刘颖
-             * individualRanking : 3
-             * individualResults : 150000
+             * staffName : 吴茜
+             * individualRanking : 8
+             * individualResults : 99999
              */
 
-            private int staffId;
             private String staffName;
             private int individualRanking;
             private int individualResults;
-
-            public int getStaffId() {
-                return staffId;
-            }
-
-            public void setStaffId(int staffId) {
-                this.staffId = staffId;
-            }
 
             public String getStaffName() {
                 return staffName;
@@ -124,15 +114,13 @@ public class FindRankingStarffByIdBean {
 
         public static class GroupRankingDtoBean {
             /**
-             * groupName : 直销一组
-             * groupCode : 16
-             * groupLeaderName : 王露
-             * groupRanking : 30
-             * groupResults : 50300
+             * groupName : 直销五组
+             * groupLeaderName : 刘小芳
+             * groupRanking : 19
+             * groupResults : 73600
              */
 
             private String groupName;
-            private int groupCode;
             private String groupLeaderName;
             private int groupRanking;
             private int groupResults;
@@ -143,14 +131,6 @@ public class FindRankingStarffByIdBean {
 
             public void setGroupName(String groupName) {
                 this.groupName = groupName;
-            }
-
-            public int getGroupCode() {
-                return groupCode;
-            }
-
-            public void setGroupCode(int groupCode) {
-                this.groupCode = groupCode;
             }
 
             public String getGroupLeaderName() {
@@ -180,15 +160,13 @@ public class FindRankingStarffByIdBean {
 
         public static class OrgRankingDtoBean {
             /**
-             * orgName : 成都市天府国际营业部
-             * orgCode : 17
-             * managerName : 程瑶
-             * orgRanking : 1
-             * orgResults : 1647000
+             * orgName : 惠州市第一营业部
+             * managerName : 姜丽军
+             * orgRanking : 14
+             * orgResults : 73600
              */
 
             private String orgName;
-            private int orgCode;
             private String managerName;
             private int orgRanking;
             private int orgResults;
@@ -199,14 +177,6 @@ public class FindRankingStarffByIdBean {
 
             public void setOrgName(String orgName) {
                 this.orgName = orgName;
-            }
-
-            public int getOrgCode() {
-                return orgCode;
-            }
-
-            public void setOrgCode(int orgCode) {
-                this.orgCode = orgCode;
             }
 
             public String getManagerName() {

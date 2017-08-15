@@ -11,7 +11,7 @@ public class GroupRankingBean {
 
     /**
      * code : 1
-     * data : [{"groupName":"直销三组","groupCode":86,"groupLeaderName":"白茹雪2","groupRanking":1,"groupResults":470400},{"groupName":"直销四组","groupCode":127,"groupLeaderName":"马海艳","groupRanking":2,"groupResults":470400},{"groupName":"直销三组","groupCode":138,"groupLeaderName":"杨岚","groupRanking":3,"groupResults":234800},{"groupName":"直销4组","groupCode":139,"groupLeaderName":"杨嘉轩","groupRanking":4,"groupResults":198900},{"groupName":"直销二组","groupCode":51,"groupLeaderName":"竺益鹏","groupRanking":5,"groupResults":196300},{"groupName":"直销一组","groupCode":88,"groupLeaderName":"赵亚军","groupRanking":6,"groupResults":196300},{"groupName":"直销四组","groupCode":44,"groupLeaderName":"王佳佳","groupRanking":7,"groupResults":184100},{"groupName":"直销三组","groupCode":87,"groupLeaderName":"张楠","groupRanking":8,"groupResults":135000},{"groupName":"销售4组","groupCode":4,"groupLeaderName":"张贺","groupRanking":9,"groupResults":122700},{"groupName":"直销三组","groupCode":36,"groupLeaderName":"王蔚","groupRanking":10,"groupResults":114700}]
+     * data : [{"groupName":"直销三组","groupLeaderName":"陈柳任","orgName":"海口市第一营业部","groupRanking":1,"groupResults":1031100},{"groupName":"销售1组","groupLeaderName":"黄丽君","orgName":"上海市福州路营业部","groupRanking":2,"groupResults":751700},{"groupName":"直销四组","groupLeaderName":"马海艳","orgName":"乌鲁木齐市第一营业部","groupRanking":3,"groupResults":458900},{"groupName":"直销三组","groupLeaderName":"张楠","orgName":"乌鲁木齐市第一营业部","groupRanking":4,"groupResults":421100},{"groupName":"直销2组","groupLeaderName":"樊真真","orgName":"郑州市第一营业部","groupRanking":5,"groupResults":379700},{"groupName":"直销三组","groupLeaderName":"张哲","orgName":"合肥市芜湖路营业部","groupRanking":6,"groupResults":371900},{"groupName":"直销二组","groupLeaderName":"竺益鹏","orgName":"杭州市建国北路营业部","groupRanking":7,"groupResults":368200},{"groupName":"直销二组","groupLeaderName":"李梅","orgName":"乌鲁木齐市第一营业部","groupRanking":8,"groupResults":365600},{"groupName":"销售5组","groupLeaderName":"王艺菲","orgName":"上海市福州路营业部","groupRanking":9,"groupResults":346400},{"groupName":"直销一组","groupLeaderName":"郭阳","orgName":"广州市林和西路营业部","groupRanking":10,"groupResults":302300}]
      * message : null
      */
 
@@ -46,15 +46,15 @@ public class GroupRankingBean {
     public static class DataBean {
         /**
          * groupName : 直销三组
-         * groupCode : 86
-         * groupLeaderName : 白茹雪2
+         * groupLeaderName : 陈柳任
+         * orgName : 海口市第一营业部
          * groupRanking : 1
-         * groupResults : 470400
+         * groupResults : 1031100
          */
 
         private String groupName;
-        private int groupCode;
         private String groupLeaderName;
+        private String orgName;
         private int groupRanking;
         private int groupResults;
 
@@ -66,20 +66,20 @@ public class GroupRankingBean {
             this.groupName = groupName;
         }
 
-        public int getGroupCode() {
-            return groupCode;
-        }
-
-        public void setGroupCode(int groupCode) {
-            this.groupCode = groupCode;
-        }
-
         public String getGroupLeaderName() {
             return groupLeaderName;
         }
 
         public void setGroupLeaderName(String groupLeaderName) {
             this.groupLeaderName = groupLeaderName;
+        }
+
+        public String getOrgName() {
+            return orgName;
+        }
+
+        public void setOrgName(String orgName) {
+            this.orgName = orgName;
         }
 
         public int getGroupRanking() {

@@ -93,7 +93,7 @@ public class UpdateVersionController {
         info.setAppname("通善金融");
         info.setForceUpp("no");
         info.setUppcontent("" +
-                "1. 1. 新增产品中心\n" +
+                "1. 新增龙虎榜和个人业绩\n" +
                 "2. 优化UI.\n" +
                 "3. 改变体验");//更新内容
         updateApp();

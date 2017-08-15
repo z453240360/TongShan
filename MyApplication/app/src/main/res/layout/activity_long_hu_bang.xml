@@ -29,7 +29,7 @@
         android:id="@+id/mRg_longhu"
         android:layout_below="@id/toolbars_longhu"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:gravity="center"
         android:orientation="horizontal">
 

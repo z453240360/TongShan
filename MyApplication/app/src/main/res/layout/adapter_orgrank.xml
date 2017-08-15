@@ -14,38 +14,42 @@
 
     <TextView
         android:id="@+id/mTxt_geren_number"
-        android:layout_width="80dp"
+        android:layout_width="65dp"
         android:layout_height="match_parent"
         android:layout_above="@id/linegeren"
         android:layout_marginLeft="10dp"
         android:gravity="right|center_vertical"
         android:text="第一名"
         android:textColor="#555555"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
-    <TextView
-        android:id="@+id/mTxt_geren_componey"
-        android:layout_width="140dp"
-        android:layout_height="match_parent"
-        android:layout_toRightOf="@id/mTxt_geren_number"
-        android:gravity="center"
-        android:text="上海营业部"
-        android:ellipsize="end"
-        android:singleLine="true"
-        android:textColor="#555555"
-        android:textSize="16sp" />
+
 
     <TextView
         android:id="@+id/mTxt_geren_money"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
         android:layout_height="match_parent"
+        android:gravity="left|center_vertical"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/mTxt_geren_componey"
-        android:gravity="center"
         android:text="120万"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="10dp"
         android:ellipsize="end"
         android:singleLine="true"
         android:textColor="#555555"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/mTxt_geren_componey"
+        android:layout_width="150dp"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/mTxt_geren_number"
+        android:layout_toLeftOf="@id/mTxt_geren_money"
+        android:layout_marginLeft="20dp"
+        android:gravity="left|center_vertical"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="#555555"
+        android:textSize="14sp" />
 
 </RelativeLayout>
