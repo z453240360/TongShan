@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.ts888.tongshan.tongshan.R;
@@ -23,6 +24,9 @@ import com.ts888.tongshan.tongshan.bean.IndividualRanking;
 import com.ts888.tongshan.tongshan.bean.LongHuParmsBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -164,18 +168,38 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
         Gson gson = new Gson();
         Log.i(TAG, "individualRanking:+排名 "+s);
 
+        try {
+            JSONObject obj = new JSONObject(s);
+
+            JSONObject data = obj.getJSONObject("data");
+            JSONObject individualRankingDto = data.getJSONObject("individualRankingDto");
+
+
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
         FindRankingStarffByIdBean findRankingStarffById = gson.fromJson(s, FindRankingStarffByIdBean.class);
 
         FindRankingStarffByIdBean.DataBean data = findRankingStarffById.getData();
 
+        int i = data.hashCode();
+        int i1 = "".hashCode();
 
-        if (data==null){
+        Log.i(TAG, "getUpDate: "+i+".............."+i1);
+
+        if (i==i1){
             mBtn_geren_dangqian.setText("我的当前名次：---");
             return;
         }
 
 
         int individualRanking = data.getIndividualRankingDto().getIndividualRanking();
+
 
         mBtn_geren_dangqian.setText("我的当前名次：第 "+individualRanking+"名");
     }
