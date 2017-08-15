@@ -8,7 +8,7 @@
     tools:context="com.ts888.tongshan.tongshan.activity.GeRenYeJiActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbars_yewu_activity"
+        android:id="@+id/toolbars_gerenyeji_activity"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_alignParentTop="true"
@@ -33,65 +33,111 @@
         android:gravity="left|center_vertical"
         android:text="当月累计业绩情况"
         android:textColor="#555555"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
 
     <LinearLayout
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
-            <RelativeLayout
+            <com.ts888.tongshan.tongshan.wedget.GeRenWedget
+                android:id="@+id/my_wedget1"
+                android:layout_width="0dp"
+                android:layout_margin="5dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:id="@+id/yeji_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="85"
-                    android:textSize="24sp" />
+                android:background="#42e2c2" />
 
-                <TextView
-                    android:id="@+id/yeji_danwei"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_alignBottom="@id/yeji_number"
-                    android:layout_toRightOf="@id/yeji_number"
-                    android:layout_weight="1"
-                    android:text="件"
-                    android:textSize="14sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_weight="1"
-                    android:text="进件量" />
-            </RelativeLayout>
+            <com.ts888.tongshan.tongshan.wedget.GeRenWedget
+                android:id="@+id/my_wedget2"
+                android:layout_margin="5dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#30e488" />
 
         </LinearLayout>
-
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <com.ts888.tongshan.tongshan.wedget.GeRenWedget
+                android:id="@+id/my_wedget3"
+                android:layout_width="0dp"
+                android:layout_margin="5dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#30e488" />
+
+            <com.ts888.tongshan.tongshan.wedget.GeRenWedget
+                android:id="@+id/my_wedget4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:background="#42e2c2" />
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
+            <com.ts888.tongshan.tongshan.wedget.GeRenWedget
+                android:id="@+id/my_wedget5"
+                android:layout_width="0dp"
+                android:layout_margin="5dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#dfd264" />
 
+            <com.ts888.tongshan.tongshan.wedget.GeRenWedget
+                android:id="@+id/my_wedget6"
+                android:layout_width="0dp"
+                android:layout_margin="5dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#dfd264" />
 
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <com.ts888.tongshan.tongshan.wedget.GeRenWedget
+                android:id="@+id/my_wedget7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:background="#73b4f1" />
+
+            <com.ts888.tongshan.tongshan.wedget.GeRenWedget
+                android:id="@+id/my_wedget8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:background="#ef5858" />
+
+        </LinearLayout>
 
 
     </LinearLayout>
+
 
 </LinearLayout>

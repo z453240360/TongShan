@@ -175,7 +175,6 @@
                         android:layout_marginBottom="5dp"
                         android:layout_weight="1"
                         android:background="#ffffff"
-                        android:clickable="false"
                         android:drawablePadding="3dp"
                         android:drawableTop="@mipmap/gerenyeji"
                         android:elevation="0dp"

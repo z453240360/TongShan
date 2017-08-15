@@ -14,11 +14,18 @@ public abstract class BaseActivity extends AppCompatActivity implements IMainVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base2);
+
+        initView();
+        initToolBar();
+        initBean();
+
     }
 
+    protected abstract void initToolBar();
 
+    protected abstract void initBean();
 
+    protected abstract void initView();
 
 
 }

@@ -56,6 +56,11 @@ public interface Constant {
     //门店战绩
     String getOrgRanking = "appsales-entry/ranking/getOrgRanking";
 
+    //查询个人排名
+    String getFindRankingByStaffId = "appsales-entry/ranking/findRankingByStaffId ";
+
+    //查询个人排名
+    String getUserStatistics = "appsales-entry/statistics/getUserStatistics";
 
     //上传apk
     String apkInfo = "appsales-entry/appcredit-admin/apk/apkInfo";

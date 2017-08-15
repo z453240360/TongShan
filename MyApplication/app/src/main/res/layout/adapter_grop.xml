@@ -20,14 +20,16 @@
         android:layout_marginLeft="10dp"
         android:layout_height="match_parent"
         android:layout_above="@id/linegeren"
-        />
+        android:text="第一名" />
     <TextView
         android:textColor="#555555"
         android:textSize="16sp"
         android:gravity="center"
         android:layout_toRightOf="@id/mTxt_geren_number"
         android:id="@+id/mTxt_geren_componey"
-        android:layout_width="110dp"
+        android:layout_width="100dp"
+        android:ellipsize="end"
+        android:singleLine="true"
         android:layout_height="match_parent"
         android:text="上海营业部" />
 
@@ -35,21 +37,25 @@
         android:textColor="#555555"
         android:textSize="16sp"
         android:gravity="center"
+        android:ellipsize="end"
+        android:singleLine="true"
         android:layout_toRightOf="@id/mTxt_geren_componey"
         android:id="@+id/mTxt_geren_name"
         android:layout_width="50dp"
         android:layout_height="match_parent"
-        />
+        android:text="张三" />
 
     <TextView
         android:layout_alignParentRight="true"
         android:textColor="#555555"
         android:textSize="16sp"
         android:gravity="center"
+        android:ellipsize="end"
+        android:singleLine="true"
         android:layout_toRightOf="@id/mTxt_geren_name"
         android:id="@+id/mTxt_geren_money"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-         />
+        android:text="120万" />
 
 </RelativeLayout>

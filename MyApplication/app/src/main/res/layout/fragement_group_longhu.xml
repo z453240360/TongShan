@@ -5,8 +5,10 @@
     android:layout_height="match_parent"
     >
 
+
+
     <Button
-        android:id="@+id/mBtn_geren_dangqian"
+        android:id="@+id/mBtn_group_dangqian"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -15,9 +17,9 @@
         android:textColor="#ffffff"
         android:textSize="16sp" />
     <com.jcodecraeer.xrecyclerview.XRecyclerView
-        android:id="@+id/xrecycler_geren"
+        android:id="@+id/xrecycler_group"
         android:background="#ffffff"
-        android:layout_above="@id/mBtn_geren_dangqian"
+        android:layout_above="@id/mBtn_group_dangqian"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </RelativeLayout>

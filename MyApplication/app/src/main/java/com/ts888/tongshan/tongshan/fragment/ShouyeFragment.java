@@ -23,12 +23,11 @@ import static com.ts888.tongshan.tongshan.R.id.mBtn_shisuan;
 /**
  * Created by dongdong on 2017/7/30.
  * 首页Fragment
- *
  */
 
 public class ShouyeFragment extends Fragment {
 
-    private Button mBtn_jinjian,mBtn_kehu,mBtn_shisuan,mBtn_chanpin,mBtn_longhu;
+    private Button mBtn_jinjian, mBtn_kehu, mBtn_shisuan, mBtn_chanpin, mBtn_longhu, mBtn_yeji;
 
     @Nullable
     @Override
@@ -46,6 +45,7 @@ public class ShouyeFragment extends Fragment {
         mBtn_shisuan = (Button) view.findViewById(R.id.mBtn_shisuan);
         mBtn_chanpin = (Button) view.findViewById(R.id.mBtn_chanpin);
         mBtn_longhu = (Button) view.findViewById(R.id.mBtn_longhu);
+        mBtn_yeji = (Button) view.findViewById(R.id.mBtn_yeji);
 
         mBtn_kehu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,24 +81,25 @@ public class ShouyeFragment extends Fragment {
                 callBack.getText("longhubang");
             }
         });
+
+        mBtn_yeji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                callBack.getText("gerenyeji");
+            }
+        });
     }
 
 
-
-
-
-    public interface TextCallBack{
+    public interface TextCallBack {
         void getText(String str);
     }
 
     private TextCallBack callBack;
 
-    public void setCallBack(TextCallBack callBack){
+    public void setCallBack(TextCallBack callBack) {
         this.callBack = callBack;
     }
-
-
-
 
 
 }

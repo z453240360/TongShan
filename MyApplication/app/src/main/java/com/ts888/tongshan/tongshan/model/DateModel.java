@@ -677,5 +677,73 @@ public class DateModel {
 
     }
 
+    //查询个人排名
+    public void getFindRankingByStaffId(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.getFindRankingByStaffId(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                String individualRanking = null;
+                try {
+                    individualRanking = response.body().string();
+                    if (null==individualRanking){
+                        callBack.failed("请求的数据为空，或参数异常");
+                        return;
+                    }
+                    callBack.succesed(individualRanking);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败");
+            }
+        });
+
+    }
+
+    //个人业绩中心
+    public void getUserStatistics(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.getUserStatistics(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                String individualRanking = null;
+                try {
+                    individualRanking = response.body().string();
+                    if (null==individualRanking){
+                        callBack.failed("请求的数据为空，或参数异常");
+                        return;
+                    }
+                    callBack.succesed(individualRanking);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败");
+            }
+        });
+
+    }
+
 }
 

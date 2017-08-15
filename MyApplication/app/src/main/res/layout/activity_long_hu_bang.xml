@@ -79,21 +79,26 @@
             android:textColor="@drawable/radiobuttoncolor2"
             android:textSize="15sp" />
     </RadioGroup>
-
-    <Button
-        android:background="#5ab8ff"
-        android:textColor="#ffffff"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:layout_alignParentBottom="true"
-        android:text="我的当前名次：159 名"
-        android:id="@+id/mBtn_longhu_dangqian"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <FrameLayout
-        android:id="@+id/frame_longhu"
-        android:layout_above="@id/mBtn_longhu_dangqian"
+    <TextView
+        android:id="@+id/linegeren"
         android:layout_below="@id/mRg_longhu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="0.5dp"
+        android:background="#508a8a8a" />
+    <!--<Button-->
+        <!--android:background="#5ab8ff"-->
+        <!--android:textColor="#ffffff"-->
+        <!--android:textSize="16sp"-->
+        <!--android:gravity="center"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:text="我的当前名次：159 名"-->
+        <!--android:id="@+id/mBtn_longhu_dangqian"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content" />-->
+    <FrameLayout
+        android:id="@+id/frame_longhu"
+        android:layout_below="@id/linegeren"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </RelativeLayout>

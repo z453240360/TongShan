@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
@@ -16,6 +18,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.adapter.GeRenAdapter;
 import com.ts888.tongshan.tongshan.bean.FindCalcParameterBean;
+import com.ts888.tongshan.tongshan.bean.FindRankingStarffByIdBean;
 import com.ts888.tongshan.tongshan.bean.IndividualRanking;
 import com.ts888.tongshan.tongshan.bean.LongHuParmsBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
@@ -29,7 +32,9 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 import static android.R.attr.data;
+import static android.R.string.no;
 import static android.content.ContentValues.TAG;
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static com.ts888.tongshan.tongshan.R.id.xrecycler_geren;
 
 /**
@@ -39,14 +44,18 @@ import static com.ts888.tongshan.tongshan.R.id.xrecycler_geren;
 public class LongHuGeRenFragment extends Fragment implements IMainView {
     Unbinder unbinder;
     private List<IndividualRanking.DataBean> mDatas = new ArrayList<>();
+    private List<IndividualRanking.DataBean> mGeRenDatas = new ArrayList<>();
     private GeRenAdapter adapter;
     private String token;
     private Present present;
     private LongHuParmsBean parmsBean;
     private XRecyclerView xrecyclerGeren;
-    private int page=1;
+    private int page = 1;
     private int row = 10;
     private boolean isFirst = true;
+    private LinearLayoutManager manager;
+    private Button mBtn_geren_dangqian;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -61,12 +70,51 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(getActivity());
         xrecyclerGeren = (XRecyclerView) view.findViewById(R.id.xrecycler_geren);
+        mBtn_geren_dangqian = (Button) view.findViewById(R.id.mBtn_geren_dangqian);
+
         present = new Present(this);
         token = getArguments().getString("token");
         parmsBean = new LongHuParmsBean();
         parmsBean.setPage(page);
         parmsBean.setRows(row);
-        present.getIndividualRanking(parmsBean,token);
+        present.getIndividualRanking(parmsBean, token);
+//        present.getFindRankingByStaffId(new LongHuParmsBean(),token);//查询个人排名
+
+        adapter = new GeRenAdapter(getActivity(), mGeRenDatas);
+        manager = new LinearLayoutManager(getActivity());
+        xrecyclerGeren.setLayoutManager(manager);
+        xrecyclerGeren.setAdapter(adapter);
+
+        //=======================================================================
+        // 更改刷新 加载 按钮的样式
+        //=======================================================================
+        xrecyclerGeren.setRefreshProgressStyle(ProgressStyle.BallBeat);
+        xrecyclerGeren.setLoadingMoreProgressStyle(ProgressStyle.LineScalePulseOutRapid);
+
+
+        //下拉刷新，上拉加载
+        xrecyclerGeren.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                page = 1;
+                mGeRenDatas.clear();
+                parmsBean.setPage(page);
+                parmsBean.setRows(row);
+                present.getIndividualRanking(parmsBean, token);
+                xrecyclerGeren.refreshComplete();
+            }
+
+            @Override
+            public void onLoadMore() {
+                page++;
+                parmsBean.setPage(page);
+                parmsBean.setRows(row);
+                present.getIndividualRanking(parmsBean, token);
+                xrecyclerGeren.smoothScrollToPosition(mGeRenDatas.size()-1);
+                xrecyclerGeren.loadMoreComplete();
+
+            }
+        });
 
     }
 
@@ -79,71 +127,16 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
 
     @Override
     public void getCode(String s) {
-        if (isFirst){
-
-            Gson g = new Gson();
-            IndividualRanking individualRanking = g.fromJson(s, IndividualRanking.class);
-            mDatas = individualRanking.getData();
-            adapter = new GeRenAdapter(getActivity(), mDatas);
-            xrecyclerGeren.setLayoutManager(new LinearLayoutManager(getActivity()));
-            xrecyclerGeren.setAdapter(adapter);
-            isFirst=false;
-        }else {
-            Gson g = new Gson();
-            IndividualRanking individualRanking = g.fromJson(s, IndividualRanking.class);
-            List<IndividualRanking.DataBean> data = individualRanking.getData();
-            adapter = new GeRenAdapter(getActivity(), mDatas);
-            xrecyclerGeren.setLayoutManager(new LinearLayoutManager(getActivity()));
-            xrecyclerGeren.setAdapter(adapter);
+        Log.i(TAG, "IndividualRanking: "+s);
+        Gson g = new Gson();
+        IndividualRanking individualRanking = g.fromJson(s, IndividualRanking.class);
+        mDatas = individualRanking.getData();
+        if (mDatas.size()==0){
+            Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
+            return;
         }
-
-
-        //=======================================================================
-        // 更改刷新 加载 按钮的样式
-        //=======================================================================
-        xrecyclerGeren.setRefreshProgressStyle(ProgressStyle.BallBeat);
-        xrecyclerGeren.setLoadingMoreProgressStyle(ProgressStyle.LineScalePulseOutRapid);
-
-
-        //暴露出来的刷新加载的方法
-        xrecyclerGeren.setLoadingListener(new XRecyclerView.LoadingListener() {
-            @Override
-            public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-
-
-
-                        //刷新
-//                        mDatas.add(0, "刷新出来的数据");
-                        adapter.notifyItemInserted(0);
-
-                        //取消刷新的小圆圈: 刷新完成
-                        xrecyclerGeren.refreshComplete();
-                    }
-                }, 1000);
-
-            }
-
-            @Override
-            public void onLoadMore() {
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        //加载更多
-//                        mDatas.add("加载更多");
-
-                        adapter.notifyItemInserted(mDatas.size());
-
-                        //加载更多完成,取消加载更多的按钮
-                        xrecyclerGeren.loadMoreComplete();
-                    }
-                }, 1000);
-
-            }
-        });
+        mGeRenDatas.addAll(mDatas);
+        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -168,6 +161,18 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
 
     @Override
     public void getUpDate(String s) {
-
+//        Gson gson = new Gson();
+//        Log.i(TAG, "individualRanking: "+s);
+//
+//        FindRankingStarffByIdBean findRankingStarffById = gson.fromJson(s, FindRankingStarffByIdBean.class);
+//
+//        FindRankingStarffByIdBean.DataBean data = findRankingStarffById.getData();
+//
+//        if (data==null){
+//            return;
+//        }
+//        FindRankingStarffByIdBean.DataBean.IndividualRankingDtoBean individualRankingDto = data.getIndividualRankingDto();
+//        int individualRanking = individualRankingDto.getIndividualRanking();
+//        mBtn_geren_dangqian.setText("我的当前名次：第 "+individualRanking+"名");
     }
 }

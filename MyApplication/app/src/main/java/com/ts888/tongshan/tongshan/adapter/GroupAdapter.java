@@ -4,14 +4,13 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import com.ts888.tongshan.tongshan.R;
+import com.ts888.tongshan.tongshan.bean.GroupRankingBean;
 import com.ts888.tongshan.tongshan.bean.IndividualRanking;
 import com.ts888.tongshan.tongshan.util.DataFormatFromInt;
 
@@ -19,14 +18,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class GeRenAdapter extends RecyclerView.Adapter<GeRenAdapter.MyViewHolder> {
+public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.MyViewHolder> {
 
-    private List<IndividualRanking.DataBean> mDatas = new ArrayList<>();
+    private List<GroupRankingBean.DataBean> mDatas = new ArrayList<>();
     private Context mContext;
     private LayoutInflater mInflater;
     private Boolean isFirst;
 
-    public GeRenAdapter(Context context, List<IndividualRanking.DataBean> datas) {
+    public GroupAdapter(Context context, List<GroupRankingBean.DataBean> datas) {
         this.mInflater = LayoutInflater.from(context);
         mDatas = datas;
         this.mContext = context;
@@ -35,7 +34,7 @@ public class GeRenAdapter extends RecyclerView.Adapter<GeRenAdapter.MyViewHolder
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //1. 初始化item的布局
-        View view = mInflater.inflate(R.layout.adapter_geren, parent, false);
+        View view = mInflater.inflate(R.layout.adapter_grop, parent, false);
         //2. 创建出来ViewHolder对象
         MyViewHolder myViewHolder = new MyViewHolder(view);
         return myViewHolder;
@@ -44,12 +43,13 @@ public class GeRenAdapter extends RecyclerView.Adapter<GeRenAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
-        IndividualRanking.DataBean dataBean = mDatas.get(position);
+        GroupRankingBean.DataBean dataBean = mDatas.get(position);
+        String staffName = dataBean.getGroupName(); //团队名称
+        int individualRanking = dataBean.getGroupRanking(); //团队排名
+        int individualResults = dataBean.getGroupResults();  //团队业绩
+        String groupLeaderName = dataBean.getGroupLeaderName();  //队长姓名
 
-        String staffName = dataBean.getStaffName();  //个人姓名
-        int individualRanking = dataBean.getIndividualRanking();  //  个人排名
-        int individualResults = dataBean.getIndividualResults();  // 个人业绩
-        int staffId = dataBean.getStaffId();  //
+        int staffId = dataBean.getGroupCode();
 
 
 
@@ -95,7 +95,7 @@ public class GeRenAdapter extends RecyclerView.Adapter<GeRenAdapter.MyViewHolder
 
         holder.mTxt_geren_number.setText("第 "+individualRanking+" 名");
         holder.mTxt_geren_componey.setText("上海营业部");
-        holder.mTxt_geren_money.setText(aFloat+" 万元");
+        holder.mTxt_geren_money.setText("团队长："+groupLeaderName);
         holder.mTxt_geren_name.setText(staffName);
 
         //设置点击事件
@@ -129,7 +129,7 @@ public class GeRenAdapter extends RecyclerView.Adapter<GeRenAdapter.MyViewHolder
     }
 
     //增加一条数据
-    public void insertData(int pos, IndividualRanking.DataBean data) {
+    public void insertData(int pos, GroupRankingBean.DataBean data) {
         mDatas.add(pos, data);
 
         notifyItemInserted(pos);

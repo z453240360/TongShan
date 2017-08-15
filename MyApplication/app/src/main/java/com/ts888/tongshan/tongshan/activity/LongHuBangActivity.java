@@ -18,6 +18,7 @@ import android.widget.RadioGroup;
 
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.bean.FindCalcParameterBean;
+import com.ts888.tongshan.tongshan.bean.LongHuParmsBean;
 import com.ts888.tongshan.tongshan.bean.ParmsBean;
 import com.ts888.tongshan.tongshan.fragment.GengDuoFragment;
 import com.ts888.tongshan.tongshan.fragment.LongHuGeRenFragment;
@@ -61,8 +62,8 @@ public class LongHuBangActivity extends AppCompatActivity implements IMainView{
         setContentView(R.layout.activity_long_hu_bang);
         ButterKnife.bind(this);
 
-
         bu= new Bundle();
+
 
         intiToolBar();
 
@@ -74,6 +75,9 @@ public class LongHuBangActivity extends AppCompatActivity implements IMainView{
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
         token = sharedPreferences.getString("token","888888");
         bu.putString("token",token);
+
+        present = new Present(this);
+        present.getFindRankingByStaffId(new LongHuParmsBean(),token);
 
         manager = getSupportFragmentManager();
         initFragment();
@@ -143,7 +147,7 @@ public class LongHuBangActivity extends AppCompatActivity implements IMainView{
 
     @Override
     public void getCode(String s) {
-        Log.i("dd", "getCode: "+s);
+        Log.i("dd", "getCode:—————————————————————— "+s);
     }
 
     @Override

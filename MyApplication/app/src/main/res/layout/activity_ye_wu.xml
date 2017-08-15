@@ -29,7 +29,7 @@
         android:background="#ffffff"
         android:id="@+id/mRg_main"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:gravity="center"
         android:orientation="horizontal">
@@ -42,7 +42,7 @@
             android:layout_weight="1"
             android:button="@null"
             android:checked="true"
-            android:drawablePadding="5dp"
+            android:drawablePadding="0dp"
             android:drawableTop="@drawable/radiodrawable"
             android:gravity="center"
             android:tag="0"
@@ -57,7 +57,7 @@
             android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:button="@null"
-            android:drawablePadding="5dp"
+            android:drawablePadding="0dp"
             android:drawableTop="@drawable/radiodrable2"
             android:gravity="center"
             android:tag="1"
@@ -72,7 +72,7 @@
             android:layout_marginTop="2dp"
             android:layout_weight="1"
             android:button="@null"
-            android:drawablePadding="5dp"
+            android:drawablePadding="0dp"
             android:drawableTop="@drawable/radiodrawable3"
             android:gravity="center"
             android:tag="2"
@@ -81,11 +81,19 @@
             android:textSize="15sp" />
     </RadioGroup>
 
+    <TextView
+        android:id="@+id/linegeren"
+        android:layout_below="@id/mRg_longhu"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_above="@id/mRg_main"
+        android:background="#508a8a8a" />
+
     <FrameLayout
         android:id="@+id/mFl_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/mRg_main"
+        android:layout_above="@id/linegeren"
         android:layout_below="@id/toolbars_yewu_activity"
         android:layout_marginTop="10dp" />
 </RelativeLayout>

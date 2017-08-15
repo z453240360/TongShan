@@ -73,5 +73,13 @@ public interface IService {
     @POST(Constant.getOrgRanking)
     Call<ResponseBody> getOrgRanking (@Body RequestBody status);
 
+    //查询个人排名
+    @POST(Constant.getFindRankingByStaffId)
+    Call<ResponseBody> getFindRankingByStaffId (@Body RequestBody status);
+
+    //查询个人排名
+    @POST(Constant.getUserStatistics)
+    Call<ResponseBody> getUserStatistics (@Body RequestBody status);
+
 
 }
