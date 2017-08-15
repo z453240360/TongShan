@@ -82,7 +82,7 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
         parmsBean.setPage(page);
         parmsBean.setRows(row);
         present.getIndividualRanking(parmsBean, token);
-//        present.getFindRankingByStaffId(new LongHuParmsBean(),token);//查询个人排名
+        present.getFindRankingByStaffId(new LongHuParmsBean(),token);//查询个人排名
 
         adapter = new GeRenAdapter(getActivity(), mGeRenDatas);
         manager = new LinearLayoutManager(getActivity());
@@ -168,31 +168,15 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
         Gson gson = new Gson();
         Log.i(TAG, "individualRanking:+排名 "+s);
 
-        try {
-            JSONObject obj = new JSONObject(s);
 
-            JSONObject data = obj.getJSONObject("data");
-            JSONObject individualRankingDto = data.getJSONObject("individualRankingDto");
-
-
-
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
 
         FindRankingStarffByIdBean findRankingStarffById = gson.fromJson(s, FindRankingStarffByIdBean.class);
 
         FindRankingStarffByIdBean.DataBean data = findRankingStarffById.getData();
-
-        int i = data.hashCode();
-        int i1 = "".hashCode();
-
-        Log.i(TAG, "getUpDate: "+i+".............."+i1);
-
-        if (i==i1){
+        FindRankingStarffByIdBean.DataBean.IndividualRankingDtoBean individualRankingDto = data.getIndividualRankingDto();
+        boolean b = individualRankingDto instanceof FindRankingStarffByIdBean.DataBean.IndividualRankingDtoBean;
+        if (!b){
             mBtn_geren_dangqian.setText("我的当前名次：---");
             return;
         }

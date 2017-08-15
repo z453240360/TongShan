@@ -6,6 +6,26 @@ package com.ts888.tongshan.tongshan.bean;
 
 public class FindRankingStarffByIdBean {
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        FindRankingStarffByIdBean that = (FindRankingStarffByIdBean) o;
+
+        if (code != null ? !code.equals(that.code) : that.code != null) return false;
+        if (data != null ? !data.equals(that.data) : that.data != null) return false;
+        return massage != null ? massage.equals(that.massage) : that.massage == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = code != null ? code.hashCode() : 0;
+        result = 31 * result + (data != null ? data.hashCode() : 0);
+        result = 31 * result + (massage != null ? massage.hashCode() : 0);
+        return result;
+    }
 
     /**
      * code : 1
@@ -42,6 +62,27 @@ public class FindRankingStarffByIdBean {
     }
 
     public static class DataBean {
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof DataBean)) return false;
+
+            DataBean dataBean = (DataBean) o;
+
+            if (!getIndividualRankingDto().equals(dataBean.getIndividualRankingDto())) return false;
+            if (!getGroupRankingDto().equals(dataBean.getGroupRankingDto())) return false;
+            return getOrgRankingDto().equals(dataBean.getOrgRankingDto());
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = getIndividualRankingDto().hashCode();
+            result = 31 * result + getGroupRankingDto().hashCode();
+            result = 31 * result + getOrgRankingDto().hashCode();
+            return result;
+        }
+
         /**
          * individualRankingDto : {"staffName":"吴茜","individualRanking":8,"individualResults":99999}
          * groupRankingDto : {"groupName":"直销五组","groupLeaderName":"刘小芳","groupRanking":19,"groupResults":73600}
@@ -77,6 +118,27 @@ public class FindRankingStarffByIdBean {
         }
 
         public static class IndividualRankingDtoBean {
+            @Override
+            public boolean equals(Object o) {
+                if (this == o) return true;
+                if (!(o instanceof IndividualRankingDtoBean)) return false;
+
+                IndividualRankingDtoBean that = (IndividualRankingDtoBean) o;
+
+                if (getIndividualRanking() != that.getIndividualRanking()) return false;
+                if (getIndividualResults() != that.getIndividualResults()) return false;
+                return getStaffName().equals(that.getStaffName());
+
+            }
+
+            @Override
+            public int hashCode() {
+                int result = getStaffName().hashCode();
+                result = 31 * result + getIndividualRanking();
+                result = 31 * result + getIndividualResults();
+                return result;
+            }
+
             /**
              * staffName : 吴茜
              * individualRanking : 8

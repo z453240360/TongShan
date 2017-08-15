@@ -28,8 +28,6 @@ import com.ts888.tongshan.tongshan.model.Present;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.attr.data;
-import static com.ts888.tongshan.tongshan.R.id.mBtn_geren_dangqian;
 
 /**
  * Created by Administrator on 2017/8/10.
@@ -149,12 +147,14 @@ public class LongHuMenDianFragment extends Fragment implements IMainView {
         Gson gson = new Gson();
         FindRankingStarffByIdBean findRankingStarffById = gson.fromJson(s, FindRankingStarffByIdBean.class);
         FindRankingStarffByIdBean.DataBean data = findRankingStarffById.getData();
-        if (data==null){
+        FindRankingStarffByIdBean.DataBean.OrgRankingDtoBean orgRankingDto1 = data.getOrgRankingDto();
+
+        boolean b = orgRankingDto1 instanceof FindRankingStarffByIdBean.DataBean.OrgRankingDtoBean;
+        if (!b){
             mBtn_org_dangqian.setText("我的门店排名：---");
             return;
         }
-        FindRankingStarffByIdBean.DataBean.OrgRankingDtoBean orgRankingDto = data.getOrgRankingDto();
-        int orgRanking = orgRankingDto.getOrgRanking();
+        int orgRanking = orgRankingDto1.getOrgRanking();
         mBtn_org_dangqian.setText("我的门店排名：第 " + orgRanking + "名");
     }
 }
