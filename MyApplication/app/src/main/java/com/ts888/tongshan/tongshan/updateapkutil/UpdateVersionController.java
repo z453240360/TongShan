@@ -28,8 +28,6 @@ import java.net.URL;
 
 
 public class UpdateVersionController {
-
-
     private Context context;
 
     //更新文件的实例
