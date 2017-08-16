@@ -60,7 +60,7 @@
             android:layout_weight="1"
             android:button="@null"
             android:drawablePadding="0dp"
-
+            android:clickable="false"
             android:drawableTop="@drawable/radiodrable2"
             android:gravity="center"
             android:tag="1"
@@ -83,6 +83,7 @@
             android:paddingTop="10dp"
             android:gravity="center"
             android:tag="2"
+            android:clickable="false"
             android:text="更多"
             android:textColor="@drawable/radiobuttoncolor2"
             android:textSize="15sp" />
