@@ -229,7 +229,7 @@
                         android:clickable="false"
                         android:drawableTop="@mipmap/gonggaolan"
                         android:elevation="0dp"
-                        android:paddingTop="5dp"
+                        android:paddingTop="10dp"
                         android:text="公告栏"
                         android:textColor="#000000" />
 
