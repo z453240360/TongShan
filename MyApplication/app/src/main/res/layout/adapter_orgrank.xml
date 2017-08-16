@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="55dp"
     android:layout_marginBottom="2dp">
 
 
@@ -19,7 +19,6 @@
         android:layout_above="@id/linegeren"
         android:layout_marginLeft="10dp"
         android:gravity="right|center_vertical"
-        android:text="第一名"
         android:textColor="#555555"
         android:textSize="14sp" />
 
@@ -31,7 +30,6 @@
         android:layout_height="match_parent"
         android:gravity="left|center_vertical"
         android:layout_alignParentRight="true"
-        android:text="120万"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="10dp"
         android:ellipsize="end"

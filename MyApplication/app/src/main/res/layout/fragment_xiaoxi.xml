@@ -1,12 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <TextView
-        android:text="即将上线"
-        android:textSize="50sp"
-        android:gravity="center"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/paint_clear"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="25sp"
+            android:background="#508a8a8a"
+            android:text="清除画板" />
+
+        <TextView
+            android:id="@+id/paint_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="#D607F5"
+            android:gravity="center"
+            android:text="画板"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/paint_color"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="25sp"
+            android:background="#508a8a8a"
+            android:text="随机换色" />
+
+    </LinearLayout>
+
+    <com.ts888.tongshan.tongshan.wedget.MyPaintView
+        android:id="@+id/paintView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>

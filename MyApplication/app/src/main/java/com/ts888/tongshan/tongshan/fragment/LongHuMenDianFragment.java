@@ -1,5 +1,6 @@
 package com.ts888.tongshan.tongshan.fragment;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -31,6 +32,7 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2017/8/10.
+ * 门店战绩： 默认只显示前5名战绩
  */
 
 public class LongHuMenDianFragment extends Fragment implements IMainView {
@@ -38,7 +40,7 @@ public class LongHuMenDianFragment extends Fragment implements IMainView {
     private Present present;
     private LongHuParmsBean parmsBean;
     private int page = 1;
-    private int row = 10;
+    private int row = 5;
 
     private List<OrgRankingBean.DataBean> mDatas = new ArrayList<>();
     private List<OrgRankingBean.DataBean> mGeRenDatas = new ArrayList<>();
@@ -46,6 +48,8 @@ public class LongHuMenDianFragment extends Fragment implements IMainView {
     private XRecyclerView xrecyclerGeren;
     private LinearLayoutManager manager;
     private Button mBtn_org_dangqian;
+    private ProgressDialog progressDialog;
+
 
     @Nullable
     @Override
@@ -60,6 +64,10 @@ public class LongHuMenDianFragment extends Fragment implements IMainView {
         xrecyclerGeren = (XRecyclerView) view.findViewById(R.id.xrecycler_org);
         mBtn_org_dangqian = (Button) view.findViewById(R.id.mBtn_org_dangqian);
 
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle("Loading...");
+        progressDialog.show();
+
         present = new Present(this);
         parmsBean = new LongHuParmsBean();
         parmsBean.setPage(page);
@@ -71,31 +79,39 @@ public class LongHuMenDianFragment extends Fragment implements IMainView {
         manager = new LinearLayoutManager(getActivity());
         xrecyclerGeren.setLayoutManager(manager);
         xrecyclerGeren.setAdapter(adapter);
+
+
+
+
 //        刷新动画
         xrecyclerGeren.setRefreshProgressStyle(ProgressStyle.BallBeat);
-        xrecyclerGeren.setLoadingMoreProgressStyle(ProgressStyle.LineScalePulseOutRapid);
+//        xrecyclerGeren.setLoadingMoreProgressStyle(ProgressStyle.LineScalePulseOutRapid);
 
-//
-//        //暴露出来的刷新加载的方法
+////
+////        //暴露出来的刷新加载的方法
         xrecyclerGeren.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                page = 1;
-                mGeRenDatas.clear();
-                parmsBean.setPage(page);
-                parmsBean.setRows(row);
-                present.getOrgRanking(parmsBean, token);
+//                page = 1;
+//                mGeRenDatas.clear();
+//                parmsBean.setPage(page);
+//                parmsBean.setRows(row);
+//                present.getOrgRanking(parmsBean, token);
                 xrecyclerGeren.refreshComplete();
             }
 
 
             @Override
             public void onLoadMore() {
-                page++;
-                parmsBean.setPage(page);
-                parmsBean.setRows(row);
-                present.getOrgRanking(parmsBean, token);
-                xrecyclerGeren.smoothScrollToPosition(mGeRenDatas.size() - 1);
+
+                Toast.makeText(getActivity(), "只显示前5名业绩", Toast.LENGTH_SHORT).show();
+
+                //下拉加载更多，目前不需要
+//                page++;
+//                parmsBean.setPage(page);
+//                parmsBean.setRows(row);
+//                present.getOrgRanking(parmsBean, token);
+//                xrecyclerGeren.smoothScrollToPosition(mGeRenDatas.size() - 1);
                 xrecyclerGeren.loadMoreComplete();
             }
         });
@@ -105,7 +121,7 @@ public class LongHuMenDianFragment extends Fragment implements IMainView {
 
     @Override
     public void getCode(String s) {
-        Log.i("dd", "OrgRankingBean:+org " + s);
+        progressDialog.cancel();
         if (s==null){
             return;
         }
@@ -118,6 +134,7 @@ public class LongHuMenDianFragment extends Fragment implements IMainView {
         }
         mGeRenDatas.addAll(mDatas);
         adapter.notifyDataSetChanged();
+
 
     }
 
@@ -155,6 +172,6 @@ public class LongHuMenDianFragment extends Fragment implements IMainView {
             return;
         }
         int orgRanking = orgRankingDto1.getOrgRanking();
-        mBtn_org_dangqian.setText("我的门店排名：第 " + orgRanking + "名");
+        mBtn_org_dangqian.setText("我的门店排名：第 " + orgRanking + " 名");
     }
 }

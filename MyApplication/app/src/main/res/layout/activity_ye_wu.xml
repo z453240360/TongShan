@@ -9,7 +9,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbars_yewu_activity"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:gravity="center"
         android:background="#1b7ab4"
@@ -22,14 +22,14 @@
             android:layout_gravity="center"
             android:text="通善金融"
             android:textColor="#ffffff"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
     </android.support.v7.widget.Toolbar>
 
     <RadioGroup
         android:background="#ffffff"
         android:id="@+id/mRg_main"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
         android:gravity="center"
         android:orientation="horizontal">
@@ -47,6 +47,8 @@
             android:gravity="center"
             android:tag="0"
             android:text="首页"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:textColor="@drawable/radiobuttoncolor"
             android:textSize="15sp" />
 
@@ -58,10 +60,13 @@
             android:layout_weight="1"
             android:button="@null"
             android:drawablePadding="0dp"
+
             android:drawableTop="@drawable/radiodrable2"
             android:gravity="center"
             android:tag="1"
             android:text="消息中心"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:textColor="@drawable/radiobuttoncolor2"
             android:textSize="15sp" />
 
@@ -73,7 +78,9 @@
             android:layout_weight="1"
             android:button="@null"
             android:drawablePadding="0dp"
+            android:paddingBottom="5dp"
             android:drawableTop="@drawable/radiodrawable3"
+            android:paddingTop="10dp"
             android:gravity="center"
             android:tag="2"
             android:text="更多"
@@ -95,5 +102,5 @@
         android:layout_height="match_parent"
         android:layout_above="@id/linegeren"
         android:layout_below="@id/toolbars_yewu_activity"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="0dp" />
 </RelativeLayout>

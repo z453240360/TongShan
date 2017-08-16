@@ -75,7 +75,7 @@ public class UpdateVersionController {
         info.setApkname("com.ts888.tongshan.tongshan.apk");
         info.setAppname("通善金融");
         info.setForceUpp("yes");
-        info.setUppcontent("1. 新增产品中心\n2. 优化UI.\n3. 改变体验");//更新内容
+        info.setUppcontent("1. 新增产品中心\n2. 优化UI.\n3. 消息页面显示成画板\n");//更新内容
         updateApp();
     }
 
@@ -94,8 +94,8 @@ public class UpdateVersionController {
         info.setForceUpp("no");
         info.setUppcontent("" +
                 "1. 新增龙虎榜和个人业绩\n" +
-                "2. 优化UI.\n" +
-                "3. 改变体验");//更新内容
+                "2. 优化UI\n" +
+                "3. 消息页面显示成画板");//更新内容
         updateApp();
     }
 

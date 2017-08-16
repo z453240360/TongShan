@@ -15,7 +15,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbars_shisuan_activity"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_alignParentTop="true"
             android:layout_gravity="center"
             android:background="#1b7ab4"
@@ -28,7 +28,7 @@
                 android:layout_gravity="center"
                 android:text="试算工具"
                 android:textColor="#ffffff"
-                android:textSize="22sp" />
+                android:textSize="20sp" />
         </android.support.v7.widget.Toolbar>
 
 

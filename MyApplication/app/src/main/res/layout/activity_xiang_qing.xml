@@ -9,7 +9,7 @@
         android:layout_gravity="center"
         android:id="@+id/toolbars_xiang_activity"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:background="#1b7ab4"
         android:popupTheme="@style/AppTheme">
@@ -21,7 +21,7 @@
             android:layout_gravity="center"
             android:text="客户详情页"
             android:textColor="#ffffff"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout

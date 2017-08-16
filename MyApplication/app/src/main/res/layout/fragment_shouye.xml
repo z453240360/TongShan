@@ -46,6 +46,7 @@
                 android:orientation="vertical">
                 <!--jinjian-->
                 <Button
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
                     android:layout_marginRight="2dp"
                     android:id="@+id/mBtn_jinjian"
                     android:layout_width="match_parent"
@@ -55,7 +56,8 @@
                     android:drawableTop="@mipmap/jinjian"
                     android:elevation="0dp"
                     android:onClick="onClick"
-                    android:paddingTop="50dp"
+                    android:paddingTop="40dp"
+                    android:paddingBottom="20dp"
                     android:text="进件"
                     android:textColor="#000000"
                     android:textSize="16sp" />
@@ -70,6 +72,7 @@
                 android:orientation="vertical">
                 <!--kehu +shenpi-->
                 <Button
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
                     android:id="@+id/mBtn_kehu"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -85,6 +88,7 @@
                     android:textColor="#000000" />
 
                 <Button
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
                     android:id="@+id/mBtn_shenpi"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -112,6 +116,7 @@
                 android:orientation="vertical">
 
                 <Button
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
                     android:id="@+id/mBtn_qiangdan"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -127,6 +132,7 @@
                     android:textColor="#000000" />
 
                 <Button
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
                     android:id="@+id/mBtn_shisuan"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -169,13 +175,15 @@
                     android:orientation="horizontal">
                     <!--gerenyeji-->
                     <Button
+                        style="@style/Base.Widget.AppCompat.Button.Borderless"
                         android:id="@+id/mBtn_yeji"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="5dp"
                         android:layout_weight="1"
                         android:background="#ffffff"
-                        android:drawablePadding="3dp"
+                        android:padding="5dp"
+                        android:drawablePadding="0dp"
                         android:drawableTop="@mipmap/gerenyeji"
                         android:elevation="0dp"
                         android:text="个人业绩"
@@ -185,7 +193,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="4dp"
                     android:layout_weight="1"
                     android:background="@null"
                     android:elevation="0dp"
@@ -197,23 +205,25 @@
                         android:layout_height="match_parent"
                         android:layout_marginBottom="5dp"
                         android:layout_marginLeft="5dp"
-                        android:layout_marginRight="7dp"
+                        android:layout_marginRight="8dp"
                         android:layout_weight="1"
                         android:background="#ffffff"
                         android:clickable="true"
                         android:drawablePadding="5dp"
                         android:drawableTop="@mipmap/longhubang"
                         android:elevation="0dp"
+                        style="@style/Base.Widget.AppCompat.Button.Borderless"
                         android:paddingRight="5dp"
+                        android:paddingTop="5dp"
                         android:text="龙虎榜"
                         android:textColor="#000000" />
 
                     <Button
+                        style="@style/Base.Widget.AppCompat.Button.Borderless"
                         android:id="@+id/mBtn_gonggao"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="5dp"
-                        android:layout_marginLeft="0.5dp"
                         android:layout_weight="1"
                         android:background="#ffffff"
                         android:clickable="false"
@@ -234,6 +244,7 @@
                 android:elevation="0dp">
 
                 <Button
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
                     android:id="@+id/mBtn_chanpin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -245,7 +256,8 @@
                     android:drawableTop="@mipmap/chanpinzhongxin"
                     android:elevation="0dp"
                     android:gravity="center"
-                    android:paddingTop="50dp"
+                    android:paddingTop="40dp"
+                    android:paddingBottom="30dp"
                     android:text="产品中心"
                     android:textColor="#000000" />
             </LinearLayout>

@@ -1,5 +1,6 @@
 package com.ts888.tongshan.tongshan.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -36,25 +37,27 @@ import static com.ts888.tongshan.tongshan.R.id.mBtn_org_dangqian;
  * Created by Administrator on 2017/8/10.
  */
 
-public class LongHuTuanDuiFragment extends Fragment implements IMainView{
+public class LongHuTuanDuiFragment extends Fragment implements IMainView {
 
     private List<GroupRankingBean.DataBean> mDatas = new ArrayList<>();
     private List<GroupRankingBean.DataBean> mGeRenDatas = new ArrayList<>();
     private Present present;
     private String token;
     private LongHuParmsBean parmsBean;
-    private int page=1;
+    private int page = 1;
     private int row = 10;
     private XRecyclerView xrecyclerGroup;
     private Button mBtn_group_dangqian;
     private GroupRankingBean groupRankingBean;
     private GroupAdapter adapter;
     private LinearLayoutManager manager;
+    private ProgressDialog progressDialog;
+    private boolean isFirst = true;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragement_group_longhu,container,false);
+        return inflater.inflate(R.layout.fragement_group_longhu, container, false);
     }
 
     @Override
@@ -63,13 +66,17 @@ public class LongHuTuanDuiFragment extends Fragment implements IMainView{
         xrecyclerGroup = (XRecyclerView) view.findViewById(R.id.xrecycler_group);
         mBtn_group_dangqian = (Button) view.findViewById(R.id.mBtn_group_dangqian);
 
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle("Loading...");
+        progressDialog.show();
+
         parmsBean = new LongHuParmsBean();
         parmsBean.setPage(page);
         parmsBean.setRows(row);
         present = new Present(this);
         token = getArguments().getString("token");
-        present.getGroupRanking(parmsBean,token);
-        present.getFindRankingByStaffId(new LongHuParmsBean(),token);
+        present.getGroupRanking(parmsBean, token);
+        present.getFindRankingByStaffId(new LongHuParmsBean(), token);
 
         adapter = new GroupAdapter(getActivity(), mGeRenDatas);
         manager = new LinearLayoutManager(getActivity());
@@ -92,11 +99,19 @@ public class LongHuTuanDuiFragment extends Fragment implements IMainView{
 
             @Override
             public void onLoadMore() {
-                page++;
-                parmsBean.setPage(page);
-                parmsBean.setRows(row);
-                present.getGroupRanking(parmsBean, token);
-                xrecyclerGroup.smoothScrollToPosition(mGeRenDatas.size() - 1);
+
+                if (isFirst) {
+                    Toast.makeText(getActivity(), "只显示前10名业绩", Toast.LENGTH_SHORT).show();
+                    isFirst = false;
+                }
+
+
+                //加载更多
+//                page++;
+//                parmsBean.setPage(page);
+//                parmsBean.setRows(row);
+//                present.getGroupRanking(parmsBean, token);
+//                xrecyclerGroup.smoothScrollToPosition(mGeRenDatas.size() - 1);
                 xrecyclerGroup.loadMoreComplete();
             }
         });
@@ -105,8 +120,8 @@ public class LongHuTuanDuiFragment extends Fragment implements IMainView{
 
     @Override
     public void getCode(String s) {
-        Log.i("dd", "GroupRankingBean: "+s);
-        if (s==null){
+        progressDialog.cancel();
+        if (s == null) {
             return;
         }
         Gson gson = new Gson();
@@ -118,11 +133,11 @@ public class LongHuTuanDuiFragment extends Fragment implements IMainView{
         }
         mGeRenDatas.addAll(mDatas);
         adapter.notifyDataSetChanged();
+
     }
 
     @Override
     public void showLoading() {
-
     }
 
     @Override
@@ -142,18 +157,18 @@ public class LongHuTuanDuiFragment extends Fragment implements IMainView{
 
     @Override
     public void getUpDate(String s) {
-        Log.i("dd", "getUpDate: 排名"+s);
+        Log.i("dd", "getUpDate: 排名" + s);
         Gson gson = new Gson();
         FindRankingStarffByIdBean findRankingStarffById = gson.fromJson(s, FindRankingStarffByIdBean.class);
         FindRankingStarffByIdBean.DataBean data = findRankingStarffById.getData();
         FindRankingStarffByIdBean.DataBean.GroupRankingDtoBean groupRankingDto = data.getGroupRankingDto();
         boolean b = groupRankingDto instanceof FindRankingStarffByIdBean.DataBean.GroupRankingDtoBean;
-        if (!b){
+        if (!b) {
             mBtn_group_dangqian.setText("我的团队排名：---");
             return;
         }
 
         int orgRanking = groupRankingDto.getGroupRanking();
-        mBtn_group_dangqian.setText("我的团队排名：第 " + orgRanking + "名");
+        mBtn_group_dangqian.setText("我的团队排名：第 " + orgRanking + " 名");
     }
 }

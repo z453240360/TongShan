@@ -1,5 +1,6 @@
 package com.ts888.tongshan.tongshan.fragment;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -59,6 +60,7 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
     private boolean isFirst = true;
     private LinearLayoutManager manager;
     private Button mBtn_geren_dangqian;
+    private ProgressDialog progressDialog;
 
     @Nullable
     @Override
@@ -75,6 +77,11 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
         ButterKnife.bind(getActivity());
         xrecyclerGeren = (XRecyclerView) view.findViewById(R.id.xrecycler_geren);
         mBtn_geren_dangqian = (Button) view.findViewById(R.id.mBtn_geren_dangqian);
+
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle("Loading...");
+        progressDialog.show();
+
 
         present = new Present(this);
         token = getArguments().getString("token");
@@ -110,6 +117,15 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
 
             @Override
             public void onLoadMore() {
+                if (page>=5){
+                    if (isFirst){
+                        Toast.makeText(getActivity(), "只能查看前50名业绩", Toast.LENGTH_SHORT).show();
+                        isFirst=false;
+                    }
+//                    Toast.makeText(getActivity(), "只能查看前50名业绩", Toast.LENGTH_SHORT).show();
+                    xrecyclerGeren.loadMoreComplete();
+                    return;
+                }
                 page++;
                 parmsBean.setPage(page);
                 parmsBean.setRows(row);
@@ -131,21 +147,23 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
 
     @Override
     public void getCode(String s) {
+        progressDialog.cancel();
         Log.i(TAG, "IndividualRanking:+列表 "+s);
         Gson g = new Gson();
         IndividualRanking individualRanking = g.fromJson(s, IndividualRanking.class);
         mDatas = individualRanking.getData();
+
         if (mDatas.size()==0){
             Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
             return;
         }
         mGeRenDatas.addAll(mDatas);
         adapter.notifyDataSetChanged();
+
     }
 
     @Override
     public void showLoading() {
-
     }
 
     @Override
@@ -168,11 +186,7 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
         Gson gson = new Gson();
         Log.i(TAG, "individualRanking:+排名 "+s);
 
-
-
-
         FindRankingStarffByIdBean findRankingStarffById = gson.fromJson(s, FindRankingStarffByIdBean.class);
-
         FindRankingStarffByIdBean.DataBean data = findRankingStarffById.getData();
         FindRankingStarffByIdBean.DataBean.IndividualRankingDtoBean individualRankingDto = data.getIndividualRankingDto();
         boolean b = individualRankingDto instanceof FindRankingStarffByIdBean.DataBean.IndividualRankingDtoBean;
@@ -180,11 +194,7 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
             mBtn_geren_dangqian.setText("我的当前名次：---");
             return;
         }
-
-
         int individualRanking = data.getIndividualRankingDto().getIndividualRanking();
-
-
-        mBtn_geren_dangqian.setText("我的当前名次：第 "+individualRanking+"名");
+        mBtn_geren_dangqian.setText("我的当前名次：第 "+individualRanking+" 名");
     }
 }

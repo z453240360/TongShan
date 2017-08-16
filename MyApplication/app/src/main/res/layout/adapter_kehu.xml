@@ -2,8 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:paddingTop="5dp"
-    android:layout_marginBottom="5dp"
+    android:paddingTop="0dp"
+    android:layout_marginBottom="1dp"
     android:background="#ffffff"
     android:layout_height="wrap_content">
 
@@ -20,7 +20,7 @@
         android:textColor="#126cb0"
         android:layout_alignBottom="@id/mTxt_dangqianjiedian"
         android:id="@+id/mTxt_jianban"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/mTxt_dangqianjiedian"
@@ -29,8 +29,9 @@
     <TextView
         android:layout_marginRight="20dp"
         android:textColor="#0bb04a"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:id="@+id/mTxt_wuqian"
+        android:layout_alignBottom="@id/mTxt_dangqianjiedian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -38,9 +39,10 @@
 
     <TextView
         android:textColor="#0bb04a"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:id="@+id/mTxt_jine"
         android:layout_width="wrap_content"
+        android:layout_alignBottom="@id/mTxt_dangqianjiedian"
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/mTxt_wuqian"
         android:text="申请金额：" />
@@ -73,9 +75,10 @@
             android:src="@mipmap/youjiantou_01" />
 
         <TextView
+            android:layout_marginTop="5dp"
             android:layout_below="@id/mTxt_sunxiaobao"
             android:id="@+id/view"
-            android:background="#8b8b8b"
+            android:background="#508b8b8b"
             android:layout_width="match_parent"
             android:layout_height="0.1dp"/>
 
@@ -83,7 +86,7 @@
 
     <TextView
         android:paddingLeft="20dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="5dp"
         android:textColor="#8b8b8b"
         android:textSize="14sp"
         android:id="@+id/mTxt_shenqinshijian"
@@ -102,4 +105,11 @@
         android:layout_alignTop="@id/mTxt_shenqinshijian"
         android:layout_toRightOf="@id/mTxt_shenqinshijian"
         android:text="" />
+    <TextView
+        android:layout_marginTop="3dp"
+        android:layout_below="@id/mTxt_shenqinshijian"
+        android:id="@+id/view2"
+        android:background="#8b8b8b"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"/>
 </RelativeLayout>
