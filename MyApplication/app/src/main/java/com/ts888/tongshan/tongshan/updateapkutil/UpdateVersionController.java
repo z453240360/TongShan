@@ -26,10 +26,11 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static android.R.id.message;
+
 
 public class UpdateVersionController {
     private Context context;
-
     //更新文件的实例
     private AppUpdateInfo info;
     //当前版本号
@@ -38,7 +39,8 @@ public class UpdateVersionController {
     private Dialog dialog;
     //下载进度条
     private ProgressDialog pd;
-
+    private SharedPreferences sharedPreferences;
+    private String updatemessages;
 
     public static UpdateVersionController getInstance(Context context) {
         return new UpdateVersionController(context);
@@ -46,9 +48,11 @@ public class UpdateVersionController {
 
     public UpdateVersionController(Context context) {
         this.context = context;
+        sharedPreferences=context.getSharedPreferences("ts", Context.MODE_PRIVATE);
+        updatemessages = sharedPreferences.getString("gengxin","wodetian");
     }
 
-    public void normalCheckUpdateInfo(String url) {
+    public void normalCheckUpdateInfo(String url,String message) {
         //获取版本号：这里的版本号在项目的build.gradle中是可以看到的，看复制过来的参数
         /**
          defaultConfig {
@@ -60,11 +64,11 @@ public class UpdateVersionController {
          }
          */
         versionCode = getVerCode(context);//等于19
-        checkVersionTask(url);
+        checkVersionTask(url,message);
 
     }
 
-    public void forceCheckUpdateInfo(String url) {//强制更新一般不用
+    public void forceCheckUpdateInfo(String url,String message) {//强制更新一般不用
         versionCode = getVerCode(context);//等于19
         info = new AppUpdateInfo();
         info.setUrl(url);
@@ -73,14 +77,16 @@ public class UpdateVersionController {
         info.setApkname("com.ts888.tongshan.tongshan.apk");
         info.setAppname("通善金融");
         info.setForceUpp("yes");
-        info.setUppcontent("1. 新增产品中心\n2. 优化UI.\n3. 消息页面显示成画板\n");//更新内容
+//        info.setUppcontent("1. 新增产品中心\n2. 优化UI.\n3. 消息页面显示成画板\n");//更新内容
+        info.setUppcontent(message);
+
         updateApp();
     }
 
     /**
      * 步骤一：获取版本信息
      */
-    private void checkVersionTask(String url) {
+    private void checkVersionTask(String url,String message) {
         //网络加载获取app新版版本信息
         //这里不做请求直接赋值
         info = new AppUpdateInfo();
@@ -90,10 +96,11 @@ public class UpdateVersionController {
         info.setApkname("com.ts888.tongshan.tongshan.apk");
         info.setAppname("通善金融");
         info.setForceUpp("no");
-        info.setUppcontent("" +
-                "1. 新增龙虎榜和个人业绩\n" +
-                "2. 优化UI\n" +
-                "3. 消息页面显示成画板");//更新内容
+//        info.setUppcontent("" +
+//                "1. 新增龙虎榜和个人业绩\n" +
+//                "2. 优化UI\n" +
+//                "3. 消息页面显示成画板");//更新内容
+        info.setUppcontent(message);
         updateApp();
     }
 

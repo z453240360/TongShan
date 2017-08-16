@@ -142,14 +142,14 @@ public class UpdataActivity extends AppCompatActivity implements IMainView {
 
         if (needUpdate == 1) {
             if (forceUpdate==0){
-                controller.normalCheckUpdateInfo(url);
+                controller.normalCheckUpdateInfo(url,description);
 
             }else if(forceUpdate==1){
-                controller.forceCheckUpdateInfo(url);
+                controller.forceCheckUpdateInfo(url,description);
             }
 
         } else {
-            Toast.makeText(this, "当前版本：" + recentVersion + "不需要更新", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "当前版本：" +"不需要更新", Toast.LENGTH_SHORT).show();
         }
     }
 

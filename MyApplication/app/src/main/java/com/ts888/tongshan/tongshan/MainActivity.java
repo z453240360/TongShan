@@ -277,20 +277,24 @@ public class MainActivity extends AppCompatActivity implements IMainView {
             return;
         }
         String md5 = data.getMd5();//md5
-        String description = data.getDescription(); //备注test
+        String description = data.getDescription(); //备注test,返回更新信息
+
+
         int forceUpdate = data.getForceUpdate();//0不强制更新，1，强制更新
+
+
         int needUpdate = data.getNeedUpdate();//是否需要更新
         String url = data.getUrl();//测试地址
         String recentVersion = data.getRecentVersion();//当前版本号
         SharedPreferences.Editor edit = sharedPreferences.edit();
         edit.putString("url", url).commit();
-
+        editor.putString("gengxin", description).commit();
         if (needUpdate == 1) {
             if (forceUpdate == 0) {
-                controller.normalCheckUpdateInfo(url);
+                controller.normalCheckUpdateInfo(url,description);
 
             } else if (forceUpdate == 1) {
-                controller.forceCheckUpdateInfo(url);
+                controller.forceCheckUpdateInfo(url,description);
             }
 
         } else {
