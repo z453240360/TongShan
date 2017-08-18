@@ -47,7 +47,7 @@
             android:paddingTop="7dp"
             android:tag="0"
             android:background="#ffffff"
-            android:text="个人战绩TOP50"
+            android:text="个人TOP50"
             android:textColor="@drawable/radiobuttoncolor"
             android:textSize="14sp" />
 
@@ -64,7 +64,7 @@
             android:paddingTop="7dp"
             android:tag="1"
             android:background="#ffffff"
-            android:text="团队战绩TOP10"
+            android:text="团队TOP10"
             android:textColor="@drawable/radiobuttoncolor"
             android:textSize="14sp" />
 
@@ -81,7 +81,7 @@
             android:tag="2"
             android:background="#ffffff"
             android:layout_marginLeft="2dp"
-            android:text="门店战绩TOP5"
+            android:text="门店TOP5"
             android:textColor="@drawable/radiobuttoncolor2"
             android:textSize="14sp" />
     </RadioGroup>

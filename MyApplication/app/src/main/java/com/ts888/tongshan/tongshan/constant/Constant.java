@@ -10,7 +10,7 @@ public interface Constant {
     //APP版本号
     String APPVERSION="1.0.0";
     //app渠道
-    String CHANNEL = "xscxapp";
+    String CHANNEL = "official";
 
     //测试环境
 //    String BASEURL = "https://appsales-uat.tsjinrong.cn/";

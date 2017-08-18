@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -121,6 +122,8 @@ public class GeRenAdapter extends RecyclerView.Adapter<GeRenAdapter.MyViewHolder
             super(itemView);
             mTxt_geren_number = (TextView) itemView.findViewById(R.id.mTxt_geren_number);
             mTxt_geren_componey = (TextView) itemView.findViewById(R.id.mTxt_geren_componey);
+            mTxt_geren_componey.setMovementMethod(ScrollingMovementMethod.getInstance());
+            mTxt_geren_componey.setHorizontallyScrolling(true);
             mTxt_geren_name = (TextView) itemView.findViewById(R.id.mTxt_geren_name);
             mTxt_geren_money = (TextView) itemView.findViewById(R.id.mTxt_geren_money);
         }

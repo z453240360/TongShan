@@ -45,8 +45,6 @@
         android:layout_toLeftOf="@id/mTxt_geren_money"
         android:layout_marginLeft="20dp"
         android:gravity="left|center_vertical"
-        android:ellipsize="end"
-        android:singleLine="true"
         android:textColor="#555555"
         android:textSize="14sp" />
 

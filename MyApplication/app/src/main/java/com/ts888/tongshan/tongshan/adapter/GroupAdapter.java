@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,9 @@ import com.ts888.tongshan.tongshan.util.DataFormatFromInt;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.ts888.tongshan.tongshan.R.id.mTxt_dizhi2;
+import static com.ts888.tongshan.tongshan.R.id.mTxt_geren_componey;
 
 
 public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.MyViewHolder> {
@@ -64,6 +68,8 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.MyViewHolder
             holder.mTxt_geren_number.setCompoundDrawablePadding(5);
             holder.mTxt_geren_number.setTextColor(Color.rgb(18,108,176));
             holder.mTxt_geren_componey.setTextColor(Color.rgb(18,108,176));
+//            holder.mTxt_geren_componey.setMovementMethod(ScrollingMovementMethod.getInstance());
+//            holder.mTxt_geren_componey.setHorizontallyScrolling(true);
             holder.mTxt_geren_money.setTextColor(Color.rgb(18,108,176));
             holder.mTxt_geren_name.setTextColor(Color.rgb(18,108,176));
         }else if (individualRanking==2){
@@ -72,6 +78,8 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.MyViewHolder
             holder.mTxt_geren_number.setCompoundDrawables(ss,null,null,null);
             holder.mTxt_geren_number.setTextColor(Color.rgb(18,108,176));
             holder.mTxt_geren_componey.setTextColor(Color.rgb(18,108,176));
+//            holder.mTxt_geren_componey.setMovementMethod(ScrollingMovementMethod.getInstance());
+//            holder.mTxt_geren_componey.setHorizontallyScrolling(true);
             holder.mTxt_geren_money.setTextColor(Color.rgb(18,108,176));
             holder.mTxt_geren_name.setTextColor(Color.rgb(18,108,176));
         }else if (individualRanking==3){
@@ -80,12 +88,15 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.MyViewHolder
             holder.mTxt_geren_number.setCompoundDrawables(ss,null,null,null);
             holder.mTxt_geren_number.setTextColor(Color.rgb(18,108,176));
             holder.mTxt_geren_componey.setTextColor(Color.rgb(18,108,176));
+//            holder.mTxt_geren_componey.setMovementMethod(ScrollingMovementMethod.getInstance());
+//            holder.mTxt_geren_componey.setHorizontallyScrolling(true);
             holder.mTxt_geren_money.setTextColor(Color.rgb(18,108,176));
             holder.mTxt_geren_name.setTextColor(Color.rgb(18,108,176));
         }else {
             Drawable ss = mContext.getResources().getDrawable(R.mipmap.disan);
             holder.mTxt_geren_number.setCompoundDrawables(ss,null,null,null);
-
+//            holder.mTxt_geren_componey.setMovementMethod(ScrollingMovementMethod.getInstance());
+//            holder.mTxt_geren_componey.setHorizontallyScrolling(true);
             holder.mTxt_geren_componey.setTextColor(Color.rgb(85,85,85));
             holder.mTxt_geren_money.setTextColor(Color.rgb(85,85,85));
             holder.mTxt_geren_name.setTextColor(Color.rgb(85,85,85));
@@ -94,6 +105,8 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.MyViewHolder
 
         holder.mTxt_geren_number.setText("第 "+individualRanking+" 名");
         holder.mTxt_geren_componey.setText(orgName+staffName);
+//        holder.mTxt_geren_componey.setMovementMethod(ScrollingMovementMethod.getInstance());
+//        holder.mTxt_geren_componey.setHorizontallyScrolling(true);
         holder.mTxt_geren_money.setText(groupLeaderName);
         holder.mTxt_geren_name.setText(staffName);
 
@@ -122,6 +135,8 @@ public class GroupAdapter extends RecyclerView.Adapter<GroupAdapter.MyViewHolder
             super(itemView);
             mTxt_geren_number = (TextView) itemView.findViewById(R.id.mTxt_geren_number);
             mTxt_geren_componey = (TextView) itemView.findViewById(R.id.mTxt_geren_componey);
+            mTxt_geren_componey.setMovementMethod(ScrollingMovementMethod.getInstance());
+            mTxt_geren_componey.setHorizontallyScrolling(true);
             mTxt_geren_name = (TextView) itemView.findViewById(R.id.mTxt_geren_name);
             mTxt_geren_money = (TextView) itemView.findViewById(R.id.mTxt_geren_money);
         }
