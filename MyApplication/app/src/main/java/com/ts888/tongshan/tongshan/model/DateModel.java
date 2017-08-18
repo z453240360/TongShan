@@ -134,7 +134,13 @@ public class DateModel {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
 
+                int code = response.code();
+                if (code!=200){
 
+                    callBack.failed("服务器异常");
+
+                    return;
+                }
                 try {
 
                     if (null==response.body()){
@@ -168,6 +174,13 @@ public class DateModel {
         calls.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+
+                    callBack.failed("服务器异常");
+
+                    return;
+                }
                 try {
                     if (null==response.body()){
                         callBack.failed("请求的数据为空，或参数异常");
@@ -281,6 +294,14 @@ public class DateModel {
         calls.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+
+                int code = response.code();
+                if (code!=200){
+
+                    callBack.failed("服务器异常");
+
+                    return;
+                }
                 try {
                     if (null==response.body()){
                         callBack.failed("请求的数据为空，或参数异常");
@@ -313,6 +334,13 @@ public class DateModel {
         calls.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+
+                    callBack.failed("服务器异常");
+
+                    return;
+                }
                 try {
                     if (null==response.body()){
                         callBack.failed("请求的数据为空，或参数异常");
@@ -346,6 +374,13 @@ public class DateModel {
         calls.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+
+                    callBack.failed("服务器异常");
+
+                    return;
+                }
                 try {
                     if (null==response.body()){
                         callBack.failed("请求的数据为空，或参数异常");
@@ -378,6 +413,13 @@ public class DateModel {
         calls.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+
+                    callBack.failed("服务器异常");
+
+                    return;
+                }
                 try {
                     if (null==response.body()){
                         callBack.failed("请求的数据为空，或参数异常");
@@ -411,6 +453,13 @@ public class DateModel {
         calls.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+
+                    callBack.failed("服务器异常");
+
+                    return;
+                }
                 try {
                     if (null==response.body()){
                         callBack.failed("请求的数据为空，或参数异常");
@@ -443,6 +492,13 @@ public class DateModel {
         calls.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+
+                    callBack.failed("服务器异常");
+
+                    return;
+                }
                 try {
                     String responseBodyMsg = response.body().string();
                     if (("").equals(responseBodyMsg) || null == responseBodyMsg){
@@ -555,6 +611,11 @@ public class DateModel {
         calls.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+                    callBack.failed("服务器异常");
+                    return;
+                }
                 try {
                     String responseBodyMsg = response.body().string();
                     if (("").equals(responseBodyMsg) || null == responseBodyMsg){
@@ -588,6 +649,14 @@ public class DateModel {
         calls.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+
+                int code = response.code();
+                if (code!=200){
+
+                    callBack.failed("服务器异常");
+
+                    return;
+                }
                 String individualRanking = null;
                 try {
                     individualRanking = response.body().string();
@@ -622,6 +691,14 @@ public class DateModel {
         calls.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+
+                int code = response.code();
+                if (code!=200){
+
+                    callBack.failed("服务器异常");
+
+                    return;
+                }
                 String individualRanking = null;
                 try {
                     individualRanking = response.body().string();
@@ -656,6 +733,15 @@ public class DateModel {
         calls.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+
+                int code = response.code();
+                if (code!=200){
+
+                    callBack.failed("服务器异常");
+
+                    return;
+                }
+
                 String individualRanking = null;
                 try {
                     individualRanking = response.body().string();
@@ -690,6 +776,14 @@ public class DateModel {
         calls.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+
+                int code = response.code();
+                if (code!=200){
+
+                    callBack.failed("服务器异常");
+
+                    return;
+                }
                 String individualRanking = null;
                 try {
                     individualRanking = response.body().string();
@@ -724,6 +818,11 @@ public class DateModel {
         calls.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+                    callBack.failed("服务器异常");
+                    return;
+                }
                 String individualRanking = null;
                 try {
                     individualRanking = response.body().string();

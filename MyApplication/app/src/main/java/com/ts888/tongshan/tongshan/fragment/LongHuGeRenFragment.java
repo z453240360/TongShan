@@ -147,7 +147,11 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
 
     @Override
     public void getCode(String s) {
+        Log.i(TAG, "个人列表数据: "+s);
         progressDialog.cancel();
+        if (s.equals("")){
+            return;
+        }
         Log.i(TAG, "IndividualRanking:+列表 "+s);
         Gson g = new Gson();
         IndividualRanking individualRanking = g.fromJson(s, IndividualRanking.class);
@@ -168,7 +172,7 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
 
     @Override
     public void cancelLoading() {
-
+        progressDialog.cancel();
     }
 
     @Override
@@ -183,6 +187,10 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
 
     @Override
     public void getUpDate(String s) {
+        Log.i(TAG, "个人排名: "+s);
+        if (s.equals("")){
+            return;
+        }
         Gson gson = new Gson();
         Log.i(TAG, "individualRanking:+排名 "+s);
 

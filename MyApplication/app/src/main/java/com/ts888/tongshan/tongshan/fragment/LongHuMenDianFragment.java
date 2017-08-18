@@ -145,7 +145,7 @@ public class LongHuMenDianFragment extends Fragment implements IMainView {
 
     @Override
     public void cancelLoading() {
-
+        progressDialog.cancel();
     }
 
     @Override

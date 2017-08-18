@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
             //登陆点击时间
             case R.id.mBtn_logIn:
                 ParmsBean parmsBean2 = new ParmsBean();
-
+                phoneNo = mEd_phoneNumber.getText().toString().trim();
                 String verifyCode = mEd_code.getText().toString().trim();
                 if (phoneNo.equals("") || verifyCode.equals("")) {
                     Toast.makeText(this, "请检查输入是否有误", Toast.LENGTH_SHORT).show();
