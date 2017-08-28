@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.ts888.tongshan.tongshan.R;
@@ -113,6 +114,12 @@ public class GeRenYeJiActivity extends AppCompatActivity implements IMainView{
         Log.i("dd", "getUpDate: "+s);
         Gson gson = new Gson();
         GeRenYeJiBean geRenYeJiBean = gson.fromJson(s, GeRenYeJiBean.class);
+        String code = geRenYeJiBean.getCode();
+        if (!code.equals("1"))
+        {
+            Toast.makeText(this, ""+geRenYeJiBean.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
         GeRenYeJiBean.DataBean data = geRenYeJiBean.getData();
 
         String cancelCount = data.getCancelCount(); //取消件数

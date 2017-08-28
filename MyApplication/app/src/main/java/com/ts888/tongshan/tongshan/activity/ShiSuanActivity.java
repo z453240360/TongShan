@@ -148,6 +148,12 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
         final ArrayList<String> elite = new ArrayList<>();
         Gson gson = new Gson();
         ShisuanParmBean shiSuanBean = gson.fromJson(s, ShisuanParmBean.class);
+        String code = shiSuanBean.getCode();
+        if (!"1".equals(code)){
+            Toast.makeText(this, ""+shiSuanBean.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         ShisuanParmBean.DataBean shisuan = shiSuanBean.getData();
         periods = shisuan.getPeriods();
 

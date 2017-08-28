@@ -24,6 +24,7 @@ import com.ts888.tongshan.tongshan.model.Present;
 import com.ts888.tongshan.tongshan.updateapkutil.UpdateVersionController;
 import com.ts888.tongshan.tongshan.util.ColorState;
 
+import static android.R.attr.data;
 import static com.ts888.tongshan.tongshan.R.id.mTxt_versionCode;
 
 
@@ -125,6 +126,12 @@ public class UpdataActivity extends AppCompatActivity implements IMainView {
     public void getUpDate(String s) {
         Gson gson = new Gson();
         UpDateFromNetBean upDateFromNetBean = gson.fromJson(s, UpDateFromNetBean.class);
+
+        String code = upDateFromNetBean.getCode();
+        if (!"1".equals(code)){
+            Toast.makeText(this, ""+upDateFromNetBean.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         UpDateFromNetBean.DataBean data = upDateFromNetBean.getData();
 

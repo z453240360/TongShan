@@ -779,9 +779,7 @@ public class DateModel {
 
                 int code = response.code();
                 if (code!=200){
-
                     callBack.failed("服务器异常");
-
                     return;
                 }
                 String individualRanking = null;

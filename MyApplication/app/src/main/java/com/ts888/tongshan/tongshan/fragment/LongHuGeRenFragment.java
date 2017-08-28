@@ -155,6 +155,10 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
         Log.i(TAG, "IndividualRanking:+列表 "+s);
         Gson g = new Gson();
         IndividualRanking individualRanking = g.fromJson(s, IndividualRanking.class);
+        String code = individualRanking.getCode();
+        if (!code.equals("1")){
+            Toast.makeText(getActivity(), ""+individualRanking.getMessage(), Toast.LENGTH_SHORT).show();
+        }
         mDatas = individualRanking.getData();
 
         if (mDatas.size()==0){
@@ -192,10 +196,23 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
             return;
         }
         Gson gson = new Gson();
-        Log.i(TAG, "individualRanking:+排名 "+s);
-
         FindRankingStarffByIdBean findRankingStarffById = gson.fromJson(s, FindRankingStarffByIdBean.class);
+
+        String code = findRankingStarffById.getCode();
+        //message 字段
+        String massage = findRankingStarffById.getMassage();
+
+        if (!code.equals("1")){
+            Toast.makeText(getActivity(), ""+massage, Toast.LENGTH_SHORT).show();
+            mBtn_geren_dangqian.setText(massage+"");
+            return;
+        }
         FindRankingStarffByIdBean.DataBean data = findRankingStarffById.getData();
+
+        if (null==data){
+            Toast.makeText(getActivity(), ""+findRankingStarffById.getMassage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
         FindRankingStarffByIdBean.DataBean.IndividualRankingDtoBean individualRankingDto = data.getIndividualRankingDto();
         boolean b = individualRankingDto instanceof FindRankingStarffByIdBean.DataBean.IndividualRankingDtoBean;
         if (!b){

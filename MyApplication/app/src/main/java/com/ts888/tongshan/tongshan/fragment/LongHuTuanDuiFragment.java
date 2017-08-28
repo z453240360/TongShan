@@ -126,6 +126,11 @@ public class LongHuTuanDuiFragment extends Fragment implements IMainView {
         }
         Gson gson = new Gson();
         GroupRankingBean orgRankingBean = gson.fromJson(s, GroupRankingBean.class);
+        String code = orgRankingBean.getCode();
+        if (!code.equals("1")){
+            Toast.makeText(getActivity(), ""+orgRankingBean.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
         mDatas = orgRankingBean.getData();
         if (mDatas.size() == 0) {
             Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
@@ -160,7 +165,19 @@ public class LongHuTuanDuiFragment extends Fragment implements IMainView {
         Log.i("dd", "getUpDate: 排名" + s);
         Gson gson = new Gson();
         FindRankingStarffByIdBean findRankingStarffById = gson.fromJson(s, FindRankingStarffByIdBean.class);
+        String code = findRankingStarffById.getCode();
+        if (!code.equals("1")){
+            Toast.makeText(getActivity(), ""+findRankingStarffById.getMassage(), Toast.LENGTH_SHORT).show();
+            mBtn_group_dangqian.setText(""+findRankingStarffById.getMassage());
+//            mBtn_group_dangqian.setText("我的团队排名：---");
+            return;
+
+        }
         FindRankingStarffByIdBean.DataBean data = findRankingStarffById.getData();
+        if (null==data){
+            Toast.makeText(getActivity(), ""+findRankingStarffById.getMassage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
         FindRankingStarffByIdBean.DataBean.GroupRankingDtoBean groupRankingDto = data.getGroupRankingDto();
         boolean b = groupRankingDto instanceof FindRankingStarffByIdBean.DataBean.GroupRankingDtoBean;
         if (!b) {

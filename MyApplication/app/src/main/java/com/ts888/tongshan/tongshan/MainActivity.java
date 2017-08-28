@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         }
 
 
-            present.getApkUpdate(beam, null);    //发送更新请求
+        present.getApkUpdate(beam, null);    //发送更新请求
     }
 
     private void init() {
@@ -206,6 +206,11 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         CodeDataBean codeDataBean = g.fromJson(s, CodeDataBean.class);
         //获得返回的验证码
         Log.i(TAG, "getCode: " + s);
+        String code = codeDataBean.getCode();
+        if (!code.equals("1")) {
+            Toast.makeText(this, "" + codeDataBean.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
         String data = codeDataBean.getData();
         mEd_code.setText(data); //自动设置请求到的验证码
         String message = codeDataBean.getMessage();
@@ -271,6 +276,12 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     public void getUpDate(String s) {
         Gson gson = new Gson();
         UpDateFromNetBean upDateFromNetBean = gson.fromJson(s, UpDateFromNetBean.class);
+        String code = upDateFromNetBean.getCode();
+        if (!code.equals("1")) {
+            Toast.makeText(this, "" + upDateFromNetBean.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         UpDateFromNetBean.DataBean data = upDateFromNetBean.getData();
 
         if (data == null) {
@@ -291,10 +302,10 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         editor.putString("gengxin", description).commit();
         if (needUpdate == 1) {
             if (forceUpdate == 0) {
-                controller.normalCheckUpdateInfo(url,description);
+                controller.normalCheckUpdateInfo(url, description);
 
             } else if (forceUpdate == 1) {
-                controller.forceCheckUpdateInfo(url,description);
+                controller.forceCheckUpdateInfo(url, description);
             }
 
         } else {
@@ -307,8 +318,8 @@ public class MainActivity extends AppCompatActivity implements IMainView {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){
-            if((System.currentTimeMillis()-exitTime) > 2000){
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
                 Toast.makeText(getApplicationContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
                 exitTime = System.currentTimeMillis();
             } else {

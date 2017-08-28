@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -87,6 +88,10 @@ public class ZhuangTaiFragment extends Fragment implements IMainView{
         Log.i("dd", "getLogin: "+s);
         Gson gson = new Gson();
         ZhuangTaiBean zhuangTaiBean = gson.fromJson(s, ZhuangTaiBean.class);
+        String code = zhuangTaiBean.getCode();
+        if (!code.equals("1")){
+            Toast.makeText(getActivity(), ""+zhuangTaiBean.getMessage(), Toast.LENGTH_SHORT).show();
+        }
         ZhuangTaiBean.DataBean data = zhuangTaiBean.getData();
         String userName = data.getUserName();
         int applyAmt = data.getApplyAmt();

@@ -29,6 +29,8 @@ import com.ts888.tongshan.tongshan.model.Present;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.ts888.tongshan.tongshan.R.id.mBtn_geren_dangqian;
+
 
 /**
  * Created by Administrator on 2017/8/10.
@@ -127,6 +129,11 @@ public class LongHuMenDianFragment extends Fragment implements IMainView {
         }
         Gson gson = new Gson();
         OrgRankingBean orgRankingBean = gson.fromJson(s, OrgRankingBean.class);
+        String code = orgRankingBean.getCode();
+        if (!code.equals("1")){
+            Toast.makeText(getActivity(), ""+orgRankingBean.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
         mDatas = orgRankingBean.getData();
         if (mDatas.size() == 0) {
             Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
@@ -163,7 +170,19 @@ public class LongHuMenDianFragment extends Fragment implements IMainView {
         Log.i("dd", "getUpDate: 排名"+s);
         Gson gson = new Gson();
         FindRankingStarffByIdBean findRankingStarffById = gson.fromJson(s, FindRankingStarffByIdBean.class);
+        String code = findRankingStarffById.getCode();
+        if (!code.equals("1")){
+            Toast.makeText(getActivity(), ""+findRankingStarffById.getMassage(), Toast.LENGTH_SHORT).show();
+            mBtn_org_dangqian.setText(""+findRankingStarffById.getMassage());
+            return;
+        }
         FindRankingStarffByIdBean.DataBean data = findRankingStarffById.getData();
+
+        if (null==data){
+            Toast.makeText(getActivity(), ""+findRankingStarffById.getMassage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         FindRankingStarffByIdBean.DataBean.OrgRankingDtoBean orgRankingDto1 = data.getOrgRankingDto();
 
         boolean b = orgRankingDto1 instanceof FindRankingStarffByIdBean.DataBean.OrgRankingDtoBean;

@@ -14,7 +14,7 @@ public interface Constant {
 
     //测试环境
 //    String BASEURL = "https://appsales-uat.tsjinrong.cn/";
-    //生产环境https://appsales.tsjinrong.cn/appsales-entry
+    //生产环境
     String BASEURL = "https://appsales.tsjinrong.cn/";
 
     //发送验证码

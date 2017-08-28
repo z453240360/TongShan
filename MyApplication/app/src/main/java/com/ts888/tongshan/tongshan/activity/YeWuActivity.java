@@ -52,8 +52,12 @@ public class YeWuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //设置状态栏和标题栏
-        ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
+//        //设置状态栏和标题栏
+//        ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
+        //设置状态栏字体为黑色
+        ColorState.StatusBarLightMode(this);
+        //状态栏颜色为白色
+        ColorState.setWindowStatusBarColor(this, Color.WHITE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_ye_wu);
 

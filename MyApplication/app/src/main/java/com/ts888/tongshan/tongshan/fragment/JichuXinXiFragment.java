@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.ts888.tongshan.tongshan.R;
@@ -18,6 +19,7 @@ import com.ts888.tongshan.tongshan.bean.UserBaseInfoBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 
+import static android.R.attr.data;
 import static com.ts888.tongshan.tongshan.R.id.view;
 
 /**
@@ -109,6 +111,11 @@ public class JichuXinXiFragment extends Fragment implements IMainView {
 
         Gson gson = new Gson();
         UserBaseInfoBean userBaseInfoBean = gson.fromJson(s, UserBaseInfoBean.class);
+
+        String code = userBaseInfoBean.getCode();
+        if (!code.equals("1")){
+            Toast.makeText(getActivity(), ""+userBaseInfoBean.getMessage(), Toast.LENGTH_SHORT).show();
+        }
         UserBaseInfoBean.DataBean data = userBaseInfoBean.getData();
 
         if (data == null) {

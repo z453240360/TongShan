@@ -6,26 +6,7 @@ package com.ts888.tongshan.tongshan.bean;
 
 public class FindRankingStarffByIdBean {
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        FindRankingStarffByIdBean that = (FindRankingStarffByIdBean) o;
-
-        if (code != null ? !code.equals(that.code) : that.code != null) return false;
-        if (data != null ? !data.equals(that.data) : that.data != null) return false;
-        return massage != null ? massage.equals(that.massage) : that.massage == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = code != null ? code.hashCode() : 0;
-        result = 31 * result + (data != null ? data.hashCode() : 0);
-        result = 31 * result + (massage != null ? massage.hashCode() : 0);
-        return result;
-    }
 
     /**
      * code : 1

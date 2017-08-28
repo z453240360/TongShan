@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.ts888.tongshan.tongshan.R;
@@ -111,6 +112,12 @@ public class JinjianActivity extends AppCompatActivity implements IMainView {
         Log.i(TAG, "getLogin: "+s);
         Gson g = new Gson();
         UserInfiBean userInfiBean = g.fromJson(s, UserInfiBean.class);
+        String code = userInfiBean.getCode();
+        if (!code.equals("1"))
+        {
+            Toast.makeText(this, ""+userInfiBean.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
         String detail = userInfiBean.getData().getDetail();
         mTxt_statue.setText(detail);
 

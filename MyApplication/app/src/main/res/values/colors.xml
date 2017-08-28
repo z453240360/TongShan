@@ -6,7 +6,7 @@
     <color name="primary">#FF03A9F4</color>
     <color name="primary_dark">#FF0288D1</color>
     <color name="status_bar_color">@color/primary_dark</color>
-    <color name="colorWhite">#ffffff</color>
+    <color name="colorWhite">#00ffffff</color>
     <color name="colorBlue">#1b7ab4</color>
     <color name="colorMy">#27b75e</color>
 </resources>

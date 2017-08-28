@@ -348,7 +348,6 @@ public class Present {
                 iMainView.cancelLoading();
             }
         });
-
     }
 
     //个人业绩查询

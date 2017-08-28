@@ -7,12 +7,13 @@
     tools:context="com.ts888.tongshan.tongshan.activity.YeWuActivity">
 
     <android.support.v7.widget.Toolbar
+        android:visibility="invisible"
         android:id="@+id/toolbars_yewu_activity"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_alignParentTop="true"
         android:gravity="center"
-        android:background="#1b7ab4"
+        android:background="#fff"
         android:popupTheme="@style/AppTheme">
 
         <TextView
@@ -24,6 +25,14 @@
             android:textColor="#ffffff"
             android:textSize="20sp" />
     </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:layout_alignParentTop="true"
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:src="@mipmap/logo_heng" />
 
     <RadioGroup
         android:background="#ffffff"
@@ -102,6 +111,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/linegeren"
-        android:layout_below="@id/toolbars_yewu_activity"
+        android:layout_below="@id/img"
         android:layout_marginTop="0dp" />
 </RelativeLayout>

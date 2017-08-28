@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.ts888.tongshan.tongshan.R;
@@ -81,6 +82,10 @@ public class KeHuFragment extends Fragment implements IMainView {
     public void getLogin(String s) {
         Gson g = new Gson();
         FindScheduleBean findScheduleBean = g.fromJson(s, FindScheduleBean.class);
+        String code = findScheduleBean.getCode();
+        if (!code.equals("1")){
+            Toast.makeText(getActivity(), ""+findScheduleBean.getMessage(), Toast.LENGTH_SHORT).show();
+        }
         final List<FindScheduleBean.DataBean> data = findScheduleBean.getData();
 
 
