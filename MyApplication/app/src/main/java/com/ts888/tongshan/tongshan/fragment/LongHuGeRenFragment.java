@@ -213,7 +213,7 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
             Toast.makeText(getActivity(), ""+findRankingStarffById.getMassage(), Toast.LENGTH_SHORT).show();
             return;
         }
-        FindRankingStarffByIdBean.DataBean.IndividualRankingDtoBean individualRankingDto = data.getIndividualRankingDto();
+        Object individualRankingDto = data.getIndividualRankingDto();
         boolean b = individualRankingDto instanceof FindRankingStarffByIdBean.DataBean.IndividualRankingDtoBean;
         if (!b){
             mBtn_geren_dangqian.setText("我的当前名次：---");

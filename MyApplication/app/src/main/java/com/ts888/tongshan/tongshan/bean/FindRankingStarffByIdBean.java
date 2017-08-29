@@ -16,7 +16,7 @@ public class FindRankingStarffByIdBean {
 
     private String code;
     private DataBean data;
-    private String massage;
+    private String message;
 
     public String getCode() {
         return code;
@@ -35,11 +35,11 @@ public class FindRankingStarffByIdBean {
     }
 
     public String getMassage() {
-        return massage;
+        return message;
     }
 
-    public void setMassage(String massage) {
-        this.massage = massage;
+    public void setMassage(String message) {
+        this.message = message;
     }
 
     public static class DataBean {

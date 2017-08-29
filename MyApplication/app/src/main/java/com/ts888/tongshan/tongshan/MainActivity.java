@@ -93,8 +93,6 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         if (null == controller) {
             controller = UpdateVersionController.getInstance(this);  //创建App更新管理类
         }
-
-
         present.getApkUpdate(beam, null);    //发送更新请求
     }
 
@@ -179,9 +177,11 @@ public class MainActivity extends AppCompatActivity implements IMainView {
 
             //登陆点击时间
             case R.id.mBtn_logIn:
+
                 ParmsBean parmsBean2 = new ParmsBean();
                 phoneNo = mEd_phoneNumber.getText().toString().trim();
                 String verifyCode = mEd_code.getText().toString().trim();
+
                 if (phoneNo.equals("") || verifyCode.equals("")) {
                     Toast.makeText(this, "请检查输入是否有误", Toast.LENGTH_SHORT).show();
                     flag = false;
@@ -255,10 +255,14 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         if (!code.equals("1")) {
             Toast.makeText(this, "" + loginBean.getMessage(), Toast.LENGTH_SHORT).show();
             return;
+        }else if (code.equals(19902)){
+            Toast.makeText(this, "" + loginBean.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
         }
 
         String token = loginBean.getData().getToken();      //token
         String userCode = loginBean.getData().getUserCode();  //用户码
+
         //本地缓存
         editor.putString("userCode", userCode);
         editor.putString("token", token);
@@ -266,6 +270,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         editor.commit();
         dialog.dismiss();
         mEd_code.setText("");
+
         //成功跳转到业务界面
         startActivity(new Intent(MainActivity.this, YeWuActivity.class));
 
@@ -309,7 +314,11 @@ public class MainActivity extends AppCompatActivity implements IMainView {
             }
 
         } else {
-//            Toast.makeText(this, "当前版本：" + recentVersion + "不需要更新", Toast.LENGTH_SHORT).show();
+            //TODO 增加自动登陆
+
+
+
+
         }
 
     }
