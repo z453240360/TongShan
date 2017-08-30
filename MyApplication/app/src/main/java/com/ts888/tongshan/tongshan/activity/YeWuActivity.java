@@ -197,14 +197,9 @@ public class YeWuActivity extends AppCompatActivity {
         }
 
         if (move-down>100){
-
             Log.i(TAG, "向上: "+(move-down));
-
         }else {
-
             Log.i(TAG, "向下 "+(move-down));
-
-
         }
 
 

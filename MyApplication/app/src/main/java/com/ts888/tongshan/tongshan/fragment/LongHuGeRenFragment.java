@@ -68,7 +68,6 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
         View view = inflater.inflate(R.layout.fragement_geren_longhu, container, false);
         unbinder = ButterKnife.bind(this, view);
         return view;
-
     }
 
     @Override
