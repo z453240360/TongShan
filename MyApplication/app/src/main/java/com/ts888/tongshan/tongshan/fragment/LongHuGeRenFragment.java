@@ -158,6 +158,7 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
         String code = individualRanking.getCode();
         if (!code.equals("1")){
             Toast.makeText(getActivity(), ""+individualRanking.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
         }
         mDatas = individualRanking.getData();
 
@@ -181,7 +182,7 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
 
     @Override
     public void showFaliure(String s) {
-
+        Toast.makeText(getActivity(), "" + s, Toast.LENGTH_SHORT).show();
     }
 
     @Override

@@ -157,7 +157,7 @@ public class LongHuMenDianFragment extends Fragment implements IMainView {
 
     @Override
     public void showFaliure(String s) {
-
+        Toast.makeText(getActivity(), "" + s, Toast.LENGTH_SHORT).show();
     }
 
     @Override

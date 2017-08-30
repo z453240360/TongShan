@@ -91,6 +91,7 @@ public class ZhuangTaiFragment extends Fragment implements IMainView{
         String code = zhuangTaiBean.getCode();
         if (!code.equals("1")){
             Toast.makeText(getActivity(), ""+zhuangTaiBean.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
         }
         ZhuangTaiBean.DataBean data = zhuangTaiBean.getData();
         String userName = data.getUserName();

@@ -137,7 +137,7 @@ public class DateModel {
                 int code = response.code();
                 if (code!=200){
 
-                    callBack.failed("服务器异常");
+                    callBack.failed("服务器异常,状态码："+code);
 
                     return;
                 }
@@ -177,7 +177,7 @@ public class DateModel {
                 int code = response.code();
                 if (code!=200){
 
-                    callBack.failed("服务器异常");
+                    callBack.failed("服务器异常,状态码："+code);
 
                     return;
                 }
@@ -298,7 +298,7 @@ public class DateModel {
                 int code = response.code();
                 if (code!=200){
 
-                    callBack.failed("服务器异常");
+                    callBack.failed("服务器异常,状态码："+code);
 
                     return;
                 }
@@ -337,7 +337,7 @@ public class DateModel {
                 int code = response.code();
                 if (code!=200){
 
-                    callBack.failed("服务器异常");
+                    callBack.failed("服务器异常,状态码："+code);
 
                     return;
                 }
@@ -377,7 +377,7 @@ public class DateModel {
                 int code = response.code();
                 if (code!=200){
 
-                    callBack.failed("服务器异常");
+                    callBack.failed("服务器异常,状态码："+code);
 
                     return;
                 }
@@ -416,7 +416,7 @@ public class DateModel {
                 int code = response.code();
                 if (code!=200){
 
-                    callBack.failed("服务器异常");
+                    callBack.failed("服务器异常,状态码："+code);
 
                     return;
                 }
@@ -456,7 +456,7 @@ public class DateModel {
                 int code = response.code();
                 if (code!=200){
 
-                    callBack.failed("服务器异常");
+                    callBack.failed("服务器异常,状态码："+code);
 
                     return;
                 }
@@ -495,7 +495,7 @@ public class DateModel {
                 int code = response.code();
                 if (code!=200){
 
-                    callBack.failed("服务器异常");
+                    callBack.failed("服务器异常,状态码："+code);
 
                     return;
                 }
@@ -613,7 +613,7 @@ public class DateModel {
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 int code = response.code();
                 if (code!=200){
-                    callBack.failed("服务器异常");
+                    callBack.failed("服务器异常,状态码："+code);
                     return;
                 }
                 try {
@@ -653,7 +653,7 @@ public class DateModel {
                 int code = response.code();
                 if (code!=200){
 
-                    callBack.failed("服务器异常");
+                    callBack.failed("服务器异常,状态码："+code);
 
                     return;
                 }
@@ -695,7 +695,7 @@ public class DateModel {
                 int code = response.code();
                 if (code!=200){
 
-                    callBack.failed("服务器异常");
+                    callBack.failed("服务器异常,状态码："+code);
 
                     return;
                 }
@@ -737,7 +737,7 @@ public class DateModel {
                 int code = response.code();
                 if (code!=200){
 
-                    callBack.failed("服务器异常");
+                    callBack.failed("服务器异常,状态码："+code);
 
                     return;
                 }
@@ -779,7 +779,7 @@ public class DateModel {
 
                 int code = response.code();
                 if (code!=200){
-                    callBack.failed("服务器异常");
+                    callBack.failed("服务器异常,状态码："+code);
                     return;
                 }
                 String individualRanking = null;
@@ -818,7 +818,7 @@ public class DateModel {
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
                 int code = response.code();
                 if (code!=200){
-                    callBack.failed("服务器异常");
+                    callBack.failed("服务器异常,状态码："+code);
                     return;
                 }
                 String individualRanking = null;

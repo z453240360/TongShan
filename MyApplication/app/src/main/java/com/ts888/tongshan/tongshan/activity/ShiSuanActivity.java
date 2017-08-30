@@ -105,6 +105,14 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
     public void getCode(String s) {
         Gson g = new Gson();
         ShiSuanDataBean shiSuanDataBean = g.fromJson(s, ShiSuanDataBean.class);
+
+        String code = shiSuanDataBean.getCode();
+        if (!code.equals("1"))
+        {
+            Toast.makeText(this, ""+shiSuanDataBean.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         ShiSuanDataBean.DataBean data = shiSuanDataBean.getData();
 
         if (data==null){
@@ -138,7 +146,7 @@ public class ShiSuanActivity extends AppCompatActivity implements IMainView {
 
     @Override
     public void showFaliure(String s) {
-
+        Toast.makeText(this, "" + s, Toast.LENGTH_SHORT).show();
     }
 
     //获取试算中费率，期限等参数信息，并添加到Spinner上显示

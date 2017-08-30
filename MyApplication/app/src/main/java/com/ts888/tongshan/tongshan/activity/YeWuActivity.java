@@ -58,6 +58,7 @@ public class YeWuActivity extends AppCompatActivity {
         ColorState.StatusBarLightMode(this);
         //状态栏颜色为白色
         ColorState.setWindowStatusBarColor(this, Color.WHITE);
+
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_ye_wu);
 
@@ -85,16 +86,8 @@ public class YeWuActivity extends AppCompatActivity {
 //            public boolean onTouch(View view, MotionEvent motionEvent) {
 //                switch (motionEvent.getAction()){
 //                    case motionEvent.ACTION_MOVE:
-//
-//
 //                        break;
-//
-//
 //                }
-//
-//
-//
-//
 //                return false;
 //            }
 //        });
@@ -220,6 +213,13 @@ public class YeWuActivity extends AppCompatActivity {
     }
 
     private long exitTime = 0;
+
+    /**
+     * 确认是否返回登陆
+     * @param keyCode
+     * @param event
+     * @return
+     */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){

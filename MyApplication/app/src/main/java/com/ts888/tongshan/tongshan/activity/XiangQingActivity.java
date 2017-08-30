@@ -130,7 +130,7 @@ public class XiangQingActivity extends AppCompatActivity implements IMainView {
 
     @Override
     public void showFaliure(String s) {
-
+        Toast.makeText(this, "" + s, Toast.LENGTH_SHORT).show();
     }
 
     @Override

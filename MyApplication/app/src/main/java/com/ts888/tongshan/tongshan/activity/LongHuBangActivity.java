@@ -15,6 +15,7 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.bean.FindCalcParameterBean;
@@ -162,7 +163,7 @@ public class LongHuBangActivity extends AppCompatActivity implements IMainView{
 
     @Override
     public void showFaliure(String s) {
-
+        Toast.makeText(this, "" + s, Toast.LENGTH_SHORT).show();
     }
 
     @Override

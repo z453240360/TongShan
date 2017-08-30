@@ -2,6 +2,7 @@ package com.ts888.tongshan.tongshan;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -10,6 +11,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -315,10 +317,31 @@ public class MainActivity extends AppCompatActivity implements IMainView {
 
         } else {
             //TODO 增加自动登陆
+            String phoneNo = sharedPreferences.getString("phoneNo", "");
+            String token = sharedPreferences.getString("token", "");
 
+            if (phoneNo.equals("")||token.equals("")){
+                return;
+            }
 
+            startActivity(new Intent(MainActivity.this, YeWuActivity.class));
 
-
+//            AlertDialog dialog = new AlertDialog.Builder(this)
+//                    .setTitle("确认登陆")
+//                    .setMessage("是否使用号码："+phoneNo+" 登陆")
+//                    .setNeutralButton("取消", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                        }
+//                    })
+//                    .setNegativeButton("确定", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            startActivity(new Intent(MainActivity.this, YeWuActivity.class));
+//                        }
+//                    })
+//                    .show();
         }
 
     }

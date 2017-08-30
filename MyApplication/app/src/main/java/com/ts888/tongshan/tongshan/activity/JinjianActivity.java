@@ -103,7 +103,7 @@ public class JinjianActivity extends AppCompatActivity implements IMainView {
 
     @Override
     public void showFaliure(String s) {
-        Log.i(TAG, "showFaliure: ");
+        Toast.makeText(this, "" + s, Toast.LENGTH_SHORT).show();
     }
 
     //获取网络请求信息
