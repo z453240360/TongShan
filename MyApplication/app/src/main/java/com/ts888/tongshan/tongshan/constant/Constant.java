@@ -13,9 +13,9 @@ public interface Constant {
     String CHANNEL = "official";
 
     //测试环境
-//    String BASEURL = "https://appsales-uat.tsjinrong.cn/";
+    String BASEURL = "https://appsales-uat.tsjinrong.cn/";
     //生产环境
-    String BASEURL = "https://appsales.tsjinrong.cn/";
+//    String BASEURL = "https://appsales.tsjinrong.cn/";
 
     //发送验证码
     String sendVerifyCode = "appsales-entry/login/sendVerifyCode";
@@ -68,5 +68,8 @@ public interface Constant {
     String API_KEY = "pmjWn6kLz6mcQf2N";
 
     String SECURITY_KEY = "1cLLub8UOLvlT69ITSBFgHX50f9T4rOG";
+
+    //轮播页面  参数：（0 ：首页bannner），（1,：启动页吧bannner）
+    String Banner ="appsales-entry/banner/findBannerByType";
 
 }

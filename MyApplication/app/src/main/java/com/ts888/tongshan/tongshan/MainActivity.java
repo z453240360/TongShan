@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         mBtn_getPassword = (Button) findViewById(R.id.mBtn_getPassword);
         dialog = new ProgressDialog(this);//初始化加载框
         dialog.setTitle("Loading...");
+        dialog.setCancelable(false);
         present = new Present(this);  //初始化请求逻辑管理类
         mEd_phoneNumber = (EditText) findViewById(R.id.mEd_user_phoneNumber);  //电话号码输入框
         mEd_code = (EditText) findViewById(R.id.mEd_user_password);                 //验证码输入框

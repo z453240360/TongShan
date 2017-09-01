@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@null"
     android:elevation="0dp"
     android:orientation="vertical">
@@ -22,10 +23,20 @@
         android:src="@mipmap/logo_heng" />
 
     <ImageView
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:src="@mipmap/layer_1"
         android:layout_marginTop="5dp"
-        android:src="@mipmap/layer_1" />
+        android:id="@+id/imageView" />
+
+    <com.youth.banner.Banner
+        android:id="@+id/banner"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginTop="5dp"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -133,7 +144,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_weight="1"
                     android:background="#ffffff"
-                    android:clickable="false"
+                    android:clickable="true"
                     android:drawableTop="@mipmap/qiangdan"
                     android:elevation="0dp"
                     android:padding="5dp"
@@ -192,7 +203,7 @@
                         android:layout_weight="1"
                         android:background="#ffffff"
                         android:padding="5dp"
-                        android:clickable="false"
+                        android:clickable="true"
                         android:drawablePadding="0dp"
                         android:drawableTop="@mipmap/gerenyeji"
                         android:elevation="0dp"
@@ -236,7 +247,7 @@
                         android:layout_marginBottom="5dp"
                         android:layout_weight="1"
                         android:background="#ffffff"
-                        android:clickable="false"
+                        android:clickable="true"
                         android:drawableTop="@mipmap/gonggaolan"
                         android:elevation="0dp"
                         android:paddingTop="10dp"

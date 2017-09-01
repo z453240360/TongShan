@@ -4,10 +4,30 @@
     android:id="@+id/activity_gong_gao"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.ts888.tongshan.tongshan.activity.GongGaoActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbars_gonggao"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:background="#1b7ab4"
+        android:gravity="center"
+        android:popupTheme="@style/AppTheme">
+
+        <TextView
+            android:id="@+id/mTxt_gonggao_web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="公告栏"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </android.support.v7.widget.Toolbar>
+
+    <WebView
+        android:id="@+id/webView_gonggao"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbars_gonggao" />
 </RelativeLayout>

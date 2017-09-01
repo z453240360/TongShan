@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.ts888.tongshan.tongshan.MainActivity">
 
+
     <LinearLayout
         android:id="@+id/ll_main"
         android:layout_width="match_parent"
@@ -98,5 +99,6 @@
         android:text="登   录"
         android:textColor="#f7f7f7"
         android:textSize="25sp" />
+
 
 </RelativeLayout>

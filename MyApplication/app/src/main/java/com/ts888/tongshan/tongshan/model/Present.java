@@ -2,6 +2,7 @@ package com.ts888.tongshan.tongshan.model;
 
 import com.google.gson.Gson;
 import com.ts888.tongshan.tongshan.bean.ApkUpDateParamsBeam;
+import com.ts888.tongshan.tongshan.bean.BannerTypeBean;
 import com.ts888.tongshan.tongshan.bean.FindCalcParameterBean;
 import com.ts888.tongshan.tongshan.bean.LongHuParmsBean;
 import com.ts888.tongshan.tongshan.bean.ParmsBean;
@@ -374,5 +375,29 @@ public class Present {
 
     }
 
+
+    //获取bannner
+    public void getBanner(BannerTypeBean parmsBean, String token){
+        iMainView.showLoading();
+        String timeStamp = String.valueOf(System.currentTimeMillis());
+        String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
+        Gson g = new Gson();
+        final String params = g.toJson(parmsBean);
+        String md51 = EncoderUtils.encoder(md5);
+        dateModel.getBanner(timeStamp, md51, params, token,new ICallBack() {
+            @Override
+            public void succesed(String s) {
+                iMainView.getUpDate(s);
+                iMainView.cancelLoading();
+            }
+
+            @Override
+            public void failed(String s) {
+                iMainView.showFaliure(s);
+                iMainView.cancelLoading();
+            }
+        });
+
+    }
 
 }

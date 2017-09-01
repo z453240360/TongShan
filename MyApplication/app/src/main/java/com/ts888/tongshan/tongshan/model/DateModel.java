@@ -842,5 +842,43 @@ public class DateModel {
 
     }
 
+
+    //获取banner
+    public void getBanner (final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClictUpdate(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.getBanner(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+                    callBack.failed("服务器异常,状态码："+code);
+                    return;
+                }
+                try {
+                    String responseBodyMsg = response.body().string();
+                    if (("").equals(responseBodyMsg) || null == responseBodyMsg){
+                        return;
+                    }
+                    callBack.succesed(responseBodyMsg);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败,请检查网络");
+            }
+        });
+
+    }
+
 }
 

@@ -81,5 +81,9 @@ public interface IService {
     @POST(Constant.getUserStatistics)
     Call<ResponseBody> getUserStatistics (@Body RequestBody status);
 
+    //获取banner
+    @POST(Constant.Banner)
+    Call<ResponseBody> getBanner(@Body RequestBody status);
+
 
 }

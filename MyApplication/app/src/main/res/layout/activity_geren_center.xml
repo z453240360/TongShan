@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_geren_center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ts888.tongshan.tongshan.activity.GerenCenterActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbars_gerencenter_activity"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:background="#1b7ab4"
+        android:popupTheme="@style/AppTheme">
+
+        <TextView
+            android:id="@+id/mTxt_center_Activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="个人中心"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:layout_below="@id/toolbars_gerencenter_activity"
+        android:id="@+id/img_center"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+
+        android:text="你好张三"
+        android:layout_below="@id/toolbars_gerencenter_activity"
+        android:layout_toRightOf="@id/img_center"
+        android:id="@+id/mTxt_gerenname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="绑定手机"
+        android:layout_below="@id/img_center"
+        android:id="@+id/mTxt_bangding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="123456789"
+        android:layout_toRightOf="@id/mTxt_bangding"
+        android:layout_below="@id/img_center"
+        android:id="@+id/mTxt_phoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:text="所属门店"
+        android:layout_below="@id/mTxt_bangding"
+        android:id="@+id/mTxt_mendian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="上海福州路营业部"
+        android:layout_toRightOf="@id/mTxt_bangding"
+        android:layout_below="@id/mTxt_bangding"
+        android:id="@+id/mTxt_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_below="@id/mTxt_mendian"
+        android:id="@+id/mBtn_bangzhu"
+        android:text="帮助中心"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_below="@id/mBtn_bangzhu"
+        android:id="@+id/mBtn_women"
+        android:text="关于我们"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_below="@id/mBtn_women"
+        android:id="@+id/mBtn_tuichu"
+        android:text="退出"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

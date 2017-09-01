@@ -82,6 +82,7 @@ public class GeRenYeJiActivity extends AppCompatActivity implements IMainView{
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 
+
     }
 
     @Override
@@ -134,34 +135,44 @@ public class GeRenYeJiActivity extends AppCompatActivity implements IMainView{
         myWedget1.setTextNumber(piecesSum);
         myWedget1.setTextDanwei("件");
         myWedget1.setTextFenLei("进件量");
+        myWedget1.setOnClick(this,"点击了1");
 
         myWedget2.setTextNumber(piecesOk);
         myWedget2.setTextDanwei("件");
         myWedget2.setTextFenLei("通过件数");
+        myWedget2.setOnClick(this,"点击了2");
 
         myWedget3.setTextNumber(signCount);
         myWedget3.setTextDanwei("件");
         myWedget3.setTextFenLei("签约件数");
+        myWedget3.setOnClick(this,"点击了3");
 
         myWedget4.setTextNumber(loanCount);
         myWedget4.setTextDanwei("件");
         myWedget4.setTextFenLei("放款件数");
+        myWedget4.setOnClick(this,"点击了4");
 
         myWedget5.setTextNumber(cancelCount);
         myWedget5.setTextDanwei("件");
         myWedget5.setTextFenLei("取消件数");
+        myWedget5.setOnClick(this,"点击了5");
 
         myWedget6.setTextNumber(refuseCount);
         myWedget6.setTextDanwei("件");
         myWedget6.setTextFenLei("拒绝件数");
+        myWedget6.setOnClick(this,"点击了6");
 
         myWedget7.setTextNumber(loanAmount);
         myWedget7.setTextDanwei("元");
         myWedget7.setTextFenLei("放款金额");
+        myWedget7.setOnClick(this,"点击了7");
 
         myWedget8.setTextNumber(overdueCount);
         myWedget8.setTextDanwei("名");
         myWedget8.setTextFenLei("逾期客户");
+        myWedget8.setOnClick(this,"点击了8");
+
+
     }
 
 
