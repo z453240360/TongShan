@@ -1,5 +1,8 @@
 package com.ts888.tongshan.tongshan.fragment;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ts888.tongshan.tongshan.MainActivity;
 import com.ts888.tongshan.tongshan.R;
 
 import butterknife.BindView;
@@ -47,6 +51,8 @@ public class GengDuoFragment extends Fragment {
     Button mBtnTuichu;
     Unbinder unbinder;
     private Button mBtn_updata;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor edit;
 
     @Nullable
     @Override
@@ -59,6 +65,11 @@ public class GengDuoFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //获取缓存的token
+        sharedPreferences = getActivity().getSharedPreferences("ts", Context.MODE_PRIVATE);
+        edit = sharedPreferences.edit();
+
+
         mBtn_updata = (Button) view.findViewById(R.id.mBtn_updata);
 
         mBtn_updata.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +98,10 @@ public class GengDuoFragment extends Fragment {
             case R.id.mBtn_women:
                 break;
             case R.id.mBtn_tuichu:
+                edit.putString("token", "");
+                edit.commit();
+                startActivity(new Intent(getActivity(), MainActivity.class));
+                getActivity().finish();
                 break;
         }
     }

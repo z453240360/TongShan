@@ -258,7 +258,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         if (!code.equals("1")) {
             Toast.makeText(this, "" + loginBean.getMessage(), Toast.LENGTH_SHORT).show();
             return;
-        }else if (code.equals(19902)){
+        } else if (code.equals(19902)) {
             Toast.makeText(this, "" + loginBean.getMessage(), Toast.LENGTH_SHORT).show();
             return;
         }
@@ -276,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
 
         //成功跳转到业务界面
         startActivity(new Intent(MainActivity.this, YeWuActivity.class));
-
+        finish();
     }
 
     //APP更新与否判断
@@ -321,12 +321,12 @@ public class MainActivity extends AppCompatActivity implements IMainView {
             String phoneNo = sharedPreferences.getString("phoneNo", "");
             String token = sharedPreferences.getString("token", "");
 
-            if (phoneNo.equals("")||token.equals("")){
+            if (phoneNo.equals("") || token.equals("")) {
                 return;
             }
 
-//            startActivity(new Intent(MainActivity.this, YeWuActivity.class));
-
+            startActivity(new Intent(MainActivity.this, YeWuActivity.class));
+            finish();
 //            AlertDialog dialog = new AlertDialog.Builder(this)
 //                    .setTitle("确认登陆")
 //                    .setMessage("是否使用号码："+phoneNo+" 登陆")

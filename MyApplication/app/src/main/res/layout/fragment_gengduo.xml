@@ -67,14 +67,29 @@
         android:text="所属门店" />
 
     <TextView
-        android:id="@+id/mTxt_address"
+        android:id="@+id/mTxt_tuandui"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/mTxt_bangding"
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/mTxt_bangding"
         android:text="上海福州路营业部" />
+    <TextView
+        android:id="@+id/mTxt_tuandui2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mTxt_tuandui"
+        android:layout_marginLeft="10dp"
+        android:text="所属团队" />
 
+    <TextView
+        android:id="@+id/mTxt_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mTxt_tuandui"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/mTxt_bangding"
+        android:text="上海第一团队" />
 
 
 
@@ -82,6 +97,8 @@
     <Button
         android:id="@+id/mBtn_tuichu"
         android:layout_width="match_parent"
+        android:background="#fff"
+        android:layout_marginBottom="20dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text="退出" />
@@ -111,6 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/mBtn_bangzhu"
+
             android:background="@null"
             android:text="关于我们" />
     </RelativeLayout>
