@@ -90,6 +90,7 @@ public class LongHuTuanDuiFragment extends Fragment implements IMainView {
             public void onRefresh() {
                 page = 1;
                 mGeRenDatas.clear();
+                adapter.notifyDataSetChanged();
                 parmsBean.setPage(page);
                 parmsBean.setRows(row);
                 present.getGroupRanking(parmsBean, token);

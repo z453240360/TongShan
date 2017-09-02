@@ -58,20 +58,14 @@ public class YeWuActivity extends AppCompatActivity {
         ColorState.StatusBarLightMode(this);
         //状态栏颜色为白色
         ColorState.setWindowStatusBarColor(this, Color.WHITE);
-
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.activity_ye_wu);
 
         activity_ye_wu = (RelativeLayout) findViewById(R.id.activity_ye_wu);
-//        setToolBarShow();
 
+        initToolBar();
 
-        //设置标题栏
-        toolbar = (Toolbar) findViewById(R.id.toolbars_yewu_activity);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.mipmap.zuojiantou);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         //获取缓存的token
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
@@ -79,20 +73,15 @@ public class YeWuActivity extends AppCompatActivity {
         init();
     }
 
-//    private void setToolBarShow() {
-//
-//        activity_ye_wu.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View view, MotionEvent motionEvent) {
-//                switch (motionEvent.getAction()){
-//                    case motionEvent.ACTION_MOVE:
-//                        break;
-//                }
-//                return false;
-//            }
-//        });
-//
-////    }
+    private void initToolBar() {
+        //设置标题栏
+        toolbar = (Toolbar) findViewById(R.id.toolbars_yewu_activity);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.mipmap.zuojiantou);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
+
 
     private void init() {
 
@@ -136,25 +125,6 @@ public class YeWuActivity extends AppCompatActivity {
         list.add(xiaoXiFragment);
         list.add(gengDuoFragment);
 
-        //设置点击回调事件，点击相应的按钮，跳转到不同的功能页面
-        shouyeFragment.setCallBack(new ShouyeFragment.TextCallBack() {
-            @Override
-            public void getText(String str) {
-                if (str.equals("jinjian")){
-                    startActivity(new Intent(YeWuActivity.this, JinjianActivity.class));
-                }else if (str.equals("kehu")){
-                    startActivity(new Intent(YeWuActivity.this, KeHuActivity.class));
-                }else if (str.equals("shisuan")){
-                    startActivity(new Intent(YeWuActivity.this, ShiSuanActivity.class));
-                }else if (str.equals("chanpinzhongxin")) {
-                    startActivity(new Intent(YeWuActivity.this, ProductCenterActivity.class));
-                }else if (str.equals("longhubang")) {
-                    startActivity(new Intent(YeWuActivity.this, LongHuBangActivity.class));
-                }else if (str.equals("gerenyeji")) {
-                    startActivity(new Intent(YeWuActivity.this, GeRenYeJiActivity.class));
-                }
-            }
-        });
 
         gengDuoFragment.setCallBack(new ShouyeFragment.TextCallBack() {
             @Override

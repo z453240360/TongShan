@@ -41,7 +41,8 @@
         <activity android:name=".activity.WebActivity" />
         <activity android:name=".activity.BaseActivity" />
         <activity android:name=".activity.GerenCenterActivity" />
-        <activity android:name=".activity.AdvActivity"></activity>
+        <activity android:name=".activity.AdvActivity" />
+        <activity android:name=".TestActivity"></activity>
     </application>
 
 </manifest>

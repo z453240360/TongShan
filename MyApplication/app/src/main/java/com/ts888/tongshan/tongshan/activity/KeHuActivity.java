@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,16 +17,23 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.bean.ParmsBean;
+import com.ts888.tongshan.tongshan.fragment.GengDuoFragment;
 import com.ts888.tongshan.tongshan.fragment.KeHuFragment;
+import com.ts888.tongshan.tongshan.fragment.KeHuFragment2;
+import com.ts888.tongshan.tongshan.fragment.KeHuFragment3;
 import com.ts888.tongshan.tongshan.fragment.ShouyeFragment;
+import com.ts888.tongshan.tongshan.fragment.XiaoXiFragment;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 import com.ts888.tongshan.tongshan.util.ColorState;
+
+import java.util.ArrayList;
 
 /**
  * 客户界面
@@ -47,13 +55,119 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
     private SearchView searchView;
     private ProgressDialog dialog;
 
+    private ArrayList<Fragment> list = new ArrayList<>();
+    private Fragment lastFragment;
+    private String userCode;
+    private KeHuFragment keHuFragment;
+    private KeHuFragment2 keHuFragment2;
+    private KeHuFragment3 keHuFragment3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //设置状态栏及标题栏
         ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.activity_ke_hu);
+
+        //获取用户码和token
+        sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
+        userCode = sharedPreferences.getString("userCode","88888");
+        token = sharedPreferences.getString("token", "888888");
+
+        init();
+        initToolbar();
+
+
+        //初始化参数以及网络逻辑类
+        present = new Present(this);
+        parmsBean = new ParmsBean();
+        parmsBean.setUserCode(userCode);
+
+        //发送网络请求，获取客户基本信息
+        present.getFindUserBaseInfoByCode(parmsBean,token);//用户基本信息
+
+
+
+
+
+        //Fragent管理类
+        manager = getSupportFragmentManager();
+
+        initFragment();
+
+        manager.beginTransaction().add(R.id.mFl_kehu, list.get(0)).commit();
+        lastFragment = list.get(0);
+        initRg();
+
+        //设置点击回调监听，跳转到详情界面，获取客户详情列表
+        keHuFragment.setCallBack(new ShouyeFragment.TextCallBack() {
+            @Override
+            public void getText(String str) {
+                Log.i(TAG, "getText获取usecode: "+str);
+
+                Intent intent = new Intent(KeHuActivity.this,XiangQingActivity.class);
+                intent.putExtra("useC",str);  //这里获取的useCode不能查询到相关信息
+                intent.putExtra("token",token);
+                startActivity(intent);
+            }
+        });
+
+        //设置点击回调监听，跳转到详情界面，获取客户详情列表
+        keHuFragment2.setCallBack(new ShouyeFragment.TextCallBack() {
+            @Override
+            public void getText(String str) {
+                Log.i(TAG, "getText获取usecode: "+str);
+
+                Intent intent = new Intent(KeHuActivity.this,XiangQingActivity.class);
+                intent.putExtra("useC",str);  //这里获取的useCode不能查询到相关信息
+                intent.putExtra("token",token);
+                startActivity(intent);
+            }
+        });
+
+        //设置点击回调监听，跳转到详情界面，获取客户详情列表
+        keHuFragment3.setCallBack(new ShouyeFragment.TextCallBack() {
+            @Override
+            public void getText(String str) {
+                Log.i(TAG, "getText获取usecode: "+str);
+
+                Intent intent = new Intent(KeHuActivity.this,XiangQingActivity.class);
+                intent.putExtra("useC",str);  //这里获取的useCode不能查询到相关信息
+                intent.putExtra("token",token);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
+
+
+    }
+
+    private void initRg() {
+        mRg_KeHu.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton select = (RadioButton) findViewById(i);
+                int index = Integer.parseInt(select.getTag().toString());
+
+                if (list.get(index).isAdded()) {
+                    manager.beginTransaction().show(list.get(index)).commit();
+                } else {
+                    manager.beginTransaction().add(R.id.mFl_kehu, list.get(index)).commit();
+                }
+
+                manager.beginTransaction().hide(lastFragment).commit();
+                lastFragment = list.get(index);
+            }
+        });
+
+    }
+    private void init() {
         //加载框
         dialog = new ProgressDialog(this);
         //初始化控件searchView
@@ -63,46 +177,35 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
         toolbar = (Toolbar) findViewById(R.id.toolbars_kehu_activity);
 
         searchButton.setImageResource(R.mipmap.sousuo);
+    }
+
+    private void initToolbar() {
         //设置toolbar
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.mipmap.zuojiantou);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+    }
 
-        //获取用户码和token
-        sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
-        String userCode = sharedPreferences.getString("userCode","88888");
-        token = sharedPreferences.getString("token", "888888");
-        //初始化参数以及网络逻辑类
-        present = new Present(this);
-        parmsBean = new ParmsBean();
-        parmsBean.setUserCode(userCode);
-        //发送网络请求，获取客户基本信息
-        present.getFindUserBaseInfoByCode(parmsBean,token);//用户基本信息
-        //Fragent管理类
-        manager = getSupportFragmentManager();
-        //初始化客户基本信息碎片，传入用户码和token
-        KeHuFragment keHuFragment = new KeHuFragment();
+    private void initFragment() {
+
+        keHuFragment = new KeHuFragment();
         Bundle bundle = new Bundle();
         bundle.putString("key",userCode);
         bundle.putString("towKey",token);
         keHuFragment.setArguments(bundle);
 
-        manager.beginTransaction().replace(R.id.mFl_kehu, keHuFragment).commit();
-        //设置点击回调监听，跳转到详情界面，获取客户详情列表
-        keHuFragment.setCallBack(new ShouyeFragment.TextCallBack() {
-            @Override
-            public void getText(String str) {
-                Log.i(TAG, "getText获取usecode: "+str);
+        keHuFragment2 = new KeHuFragment2();
+        keHuFragment2.setArguments(bundle);
 
-                Intent intent = new Intent(KeHuActivity.this,XiangQingActivity.class);
-//                parmsBean.setUserCode("TS_20170614103419437225140");
+        keHuFragment3 = new KeHuFragment3();
+        keHuFragment3.setArguments(bundle);
 
-                intent.putExtra("useC",str);  //这里获取的useCode不能查询到相关信息
-                intent.putExtra("token",token);
-                startActivity(intent);
-            }
-        });
+
+        list.add(keHuFragment);
+        list.add(keHuFragment2);
+        list.add(keHuFragment3);
+
 
     }
 

@@ -1,5 +1,6 @@
 package com.ts888.tongshan.tongshan.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,13 +18,20 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.ts888.tongshan.tongshan.R;
+import com.ts888.tongshan.tongshan.activity.GeRenYeJiActivity;
 import com.ts888.tongshan.tongshan.activity.GongGaoActivity;
+import com.ts888.tongshan.tongshan.activity.JinjianActivity;
+import com.ts888.tongshan.tongshan.activity.KeHuActivity;
+import com.ts888.tongshan.tongshan.activity.LongHuBangActivity;
+import com.ts888.tongshan.tongshan.activity.ProductCenterActivity;
 import com.ts888.tongshan.tongshan.activity.QiandanActivity;
+import com.ts888.tongshan.tongshan.activity.ShiSuanActivity;
 import com.ts888.tongshan.tongshan.bean.BannerResultBean;
 import com.ts888.tongshan.tongshan.bean.BannerTypeBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 import com.ts888.tongshan.tongshan.util.PicLoader;
+import com.ts888.tongshan.tongshan.wedget.ShouyeWedget;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -32,9 +40,6 @@ import com.youth.banner.listener.OnBannerListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.ts888.tongshan.tongshan.R.id.mBtn_chanpin;
-import static com.ts888.tongshan.tongshan.R.id.mBtn_longhu;
-import static com.ts888.tongshan.tongshan.R.id.mBtn_shisuan;
 
 
 /**
@@ -42,9 +47,9 @@ import static com.ts888.tongshan.tongshan.R.id.mBtn_shisuan;
  * 首页Fragment
  */
 
-public class ShouyeFragment extends Fragment implements IMainView{
+public class ShouyeFragment extends Fragment implements IMainView {
 
-    private Button mBtn_jinjian, mBtn_kehu, mBtn_shisuan, mBtn_chanpin, mBtn_longhu, mBtn_yeji,mBtn_qiangdan,mBtn_gonggao;
+    private ShouyeWedget wed1,wed2,wed3,wed4,wed5,wed6,wed7,wed8,wed9;
     private SharedPreferences sharedPreferences;
     private String token;
     private Present present;
@@ -52,6 +57,7 @@ public class ShouyeFragment extends Fragment implements IMainView{
     private Banner banner;
     private List<String> imgUrls = new ArrayList<>();
     private List<String> titles = new ArrayList<>();
+    private ProgressDialog dialog;
 
     @Nullable
     @Override
@@ -63,7 +69,7 @@ public class ShouyeFragment extends Fragment implements IMainView{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        sharedPreferences=getActivity().getSharedPreferences("ts", Context.MODE_PRIVATE);
+        sharedPreferences = getActivity().getSharedPreferences("ts", Context.MODE_PRIVATE);
         token = sharedPreferences.getString("token", "");
         banner = (Banner) view.findViewById(R.id.banner);
 
@@ -72,64 +78,76 @@ public class ShouyeFragment extends Fragment implements IMainView{
         bean.setType(1);
         present.getBanner(bean, "");
 
-        mBtn_kehu = (Button) view.findViewById(R.id.mBtn_kehu);
-        mBtn_jinjian = (Button) view.findViewById(R.id.mBtn_jinjian);
-        mBtn_shisuan = (Button) view.findViewById(R.id.mBtn_shisuan);
-        mBtn_chanpin = (Button) view.findViewById(R.id.mBtn_chanpin);
-        mBtn_longhu = (Button) view.findViewById(R.id.mBtn_longhu);
-        mBtn_yeji = (Button) view.findViewById(R.id.mBtn_yeji);
-        mBtn_qiangdan=(Button) view.findViewById(R.id.mBtn_qiangdan);
-        mBtn_qiangdan.setOnClickListener(new View.OnClickListener() {
+        dialog = new ProgressDialog(getActivity());
+        dialog.setMessage("Loading...");
+        dialog.setCancelable(false);
+
+        wed1 = (ShouyeWedget) view.findViewById(R.id.wed1);//进见
+        wed2 = (ShouyeWedget) view.findViewById(R.id.wed2);//客户
+        wed3 = (ShouyeWedget) view.findViewById(R.id.wed3);//审批
+        wed4 = (ShouyeWedget) view.findViewById(R.id.wed4);//枪弹
+        wed5 = (ShouyeWedget) view.findViewById(R.id.wed5);//失算
+        wed6 = (ShouyeWedget) view.findViewById(R.id.wed6);//个人业绩
+        wed7 = (ShouyeWedget) view.findViewById(R.id.wed7);//龙虎榜
+        wed8 = (ShouyeWedget) view.findViewById(R.id.wed8);//公告栏
+        wed9 = (ShouyeWedget) view.findViewById(R.id.wed9);//产品中心
+
+        wed4.getButton().setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 startActivity(new Intent(getActivity(), QiandanActivity.class));
             }
         });
-        mBtn_gonggao=(Button) view.findViewById(R.id.mBtn_gonggao);
-        mBtn_gonggao.setOnClickListener(new View.OnClickListener() {
+        wed8.getButton().setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 startActivity(new Intent(getActivity(), GongGaoActivity.class));
             }
         });
 
+        wed2.getButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), KeHuActivity.class));
+            }
+        });
+        wed1.getButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), JinjianActivity.class));
+            }
+        });
 
-        mBtn_kehu.setOnClickListener(new View.OnClickListener() {
+        wed5.getButton().setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                callBack.getText("kehu");
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ShiSuanActivity.class));
             }
         });
-        mBtn_jinjian.setOnClickListener(new View.OnClickListener() {
+
+        wed9.getButton().setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                callBack.getText("jinjian");
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ProductCenterActivity.class));
             }
         });
-        mBtn_shisuan.setOnClickListener(new View.OnClickListener() {
+
+        wed7.getButton().setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                callBack.getText("shisuan");
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), LongHuBangActivity.class));
             }
         });
-        mBtn_chanpin.setOnClickListener(new View.OnClickListener() {
+
+        wed6.getButton().setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                callBack.getText("chanpinzhongxin");
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), GeRenYeJiActivity.class));
             }
         });
-        mBtn_longhu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                callBack.getText("longhubang");
-            }
-        });
-        mBtn_yeji.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                callBack.getText("gerenyeji");
-            }
-        });
+
+
+
     }
 
     @Override
@@ -139,12 +157,12 @@ public class ShouyeFragment extends Fragment implements IMainView{
 
     @Override
     public void showLoading() {
-
+//        dialog.show();
     }
 
     @Override
     public void cancelLoading() {
-
+//        dialog.cancel();
     }
 
     @Override
@@ -160,17 +178,17 @@ public class ShouyeFragment extends Fragment implements IMainView{
 
     /**
      * 获取首要banner
+     *
      * @param s
      */
     @Override
     public void getUpDate(String s) {
-        Log.i("dd", "getUpDate: "+s);
+        Log.i("dd", "getUpDate: " + s);
         Gson gson = new Gson();
         BannerResultBean bannerResultBean = gson.fromJson(s, BannerResultBean.class);
         String code = bannerResultBean.getCode();
-        if (!"1".equals(code))
-        {
-            Toast.makeText(getActivity(), ""+bannerResultBean.getMessage(), Toast.LENGTH_SHORT).show();
+        if (!"1".equals(code)) {
+            Toast.makeText(getActivity(), "" + bannerResultBean.getMessage(), Toast.LENGTH_SHORT).show();
             return;
         }
         List<BannerResultBean.DataBean> data = bannerResultBean.getData();

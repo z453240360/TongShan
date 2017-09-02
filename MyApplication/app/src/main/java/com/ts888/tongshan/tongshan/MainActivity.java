@@ -325,7 +325,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
                 return;
             }
 
-            startActivity(new Intent(MainActivity.this, YeWuActivity.class));
+//            startActivity(new Intent(MainActivity.this, YeWuActivity.class));
 
 //            AlertDialog dialog = new AlertDialog.Builder(this)
 //                    .setTitle("确认登陆")

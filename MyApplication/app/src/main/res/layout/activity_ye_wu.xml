@@ -26,15 +26,6 @@
             android:textSize="20sp" />
     </android.support.v7.widget.Toolbar>
 
-    <ImageView
-        android:visibility="invisible"
-        android:layout_alignParentTop="true"
-        android:id="@+id/img"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="0dp"
-        android:src="@mipmap/logo_heng" />
-
     <RadioGroup
         android:background="#ffffff"
         android:id="@+id/mRg_main"
@@ -93,7 +84,7 @@
             android:paddingTop="10dp"
             android:gravity="center"
             android:tag="2"
-            android:clickable="false"
+            android:clickable="true"
             android:text="更多"
             android:textColor="@drawable/radiobuttoncolor2"
             android:textSize="15sp" />
@@ -101,7 +92,6 @@
 
     <TextView
         android:id="@+id/linegeren"
-        android:layout_below="@id/mRg_longhu"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:layout_above="@id/mRg_main"
@@ -112,6 +102,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/linegeren"
-        android:layout_below="@id/img"
-        android:layout_marginTop="0dp" />
+        android:layout_alignParentTop="true"
+         />
 </RelativeLayout>
