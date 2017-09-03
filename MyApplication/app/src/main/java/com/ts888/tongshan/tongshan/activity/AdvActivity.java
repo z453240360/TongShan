@@ -75,6 +75,7 @@ public class AdvActivity extends AppCompatActivity implements IMainView{
             Toast.makeText(this, ""+bannerResultBean.getMessage(), Toast.LENGTH_SHORT).show();
             return;
         }
+
         List<BannerResultBean.DataBean> data = bannerResultBean.getData();
 
         for (int i = 0; i < data.size(); i++) {
