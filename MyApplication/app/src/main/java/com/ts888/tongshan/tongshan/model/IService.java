@@ -85,5 +85,25 @@ public interface IService {
     @POST(Constant.Banner)
     Call<ResponseBody> getBanner(@Body RequestBody status);
 
+    //公告查询
+    @POST(Constant.getNoticeInfoList)
+    Call<ResponseBody> getNoticeInfoList(@Body RequestBody status);
+
+    //公告管理
+    @POST(Constant.noticeInfo)
+    Call<ResponseBody> noticeInfo(@Body RequestBody status);
+
+    //进件查询
+    @POST(Constant.findApplyInfo)
+    Call<ResponseBody> findApplyInfo(@Body RequestBody status);
+
+    //放款查询
+    @POST(Constant.findLoanInfo)
+    Call<ResponseBody> findLoanInfo(@Body RequestBody status);
+
+    //个人信息
+    @POST(Constant.getUserInfos)
+    Call<ResponseBody> getUserInfos(@Body RequestBody status);
+
 
 }

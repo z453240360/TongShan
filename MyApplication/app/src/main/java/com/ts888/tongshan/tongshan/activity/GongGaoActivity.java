@@ -1,9 +1,12 @@
 package com.ts888.tongshan.tongshan.activity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.Window;
 import android.webkit.WebResourceRequest;
@@ -12,11 +15,18 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.ts888.tongshan.tongshan.R;
+import com.ts888.tongshan.tongshan.bean.LongHuParmsBean;
+import com.ts888.tongshan.tongshan.model.IMainView;
+import com.ts888.tongshan.tongshan.model.Present;
 import com.ts888.tongshan.tongshan.util.ColorState;
 
-public class GongGaoActivity extends AppCompatActivity {
+public class GongGaoActivity extends AppCompatActivity implements IMainView{
     private Toolbar toolbar;
     private WebView webView;
+    private Present present;
+    private SharedPreferences sharedPreferences;
+    private String token;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,9 +34,19 @@ public class GongGaoActivity extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_gong_gao);
 
+        init();
         initView();
         initToolBar();
         loadUrl("");
+    }
+
+    private void init() {
+        present = new Present(this);
+        sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
+        token = sharedPreferences.getString("token", "");
+
+        //
+        present.getNoticeInfoList(new LongHuParmsBean(),token);
     }
 
     private void initView() {
@@ -79,5 +99,35 @@ public class GongGaoActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void getCode(String s) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void cancelLoading() {
+
+    }
+
+    @Override
+    public void showFaliure(String s) {
+
+    }
+
+    @Override
+    public void getLogin(String s) {
+
+    }
+
+    @Override
+    public void getUpDate(String s) {
+        Log.i("dd", "getUpDate: "+s);
     }
 }

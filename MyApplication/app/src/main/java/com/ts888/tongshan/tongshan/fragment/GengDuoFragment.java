@@ -13,16 +13,23 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.ts888.tongshan.tongshan.MainActivity;
 import com.ts888.tongshan.tongshan.R;
-import com.ts888.tongshan.tongshan.activity.GerenCenterActivity;
+import com.ts888.tongshan.tongshan.bean.GeRenXinXiBean;
+import com.ts888.tongshan.tongshan.bean.JinJianBean;
+import com.ts888.tongshan.tongshan.model.IMainView;
+import com.ts888.tongshan.tongshan.model.Present;
 import com.ts888.tongshan.tongshan.util.BitmapUtils;
 
 import java.io.ByteArrayOutputStream;
@@ -38,7 +45,7 @@ import butterknife.Unbinder;
  * 业务页显示的第三个按钮对应的页面（更多页面）
  */
 
-public class GengDuoFragment extends Fragment {
+public class GengDuoFragment extends Fragment implements IMainView {
 
     @BindView(R.id.mBtn_updata)
     Button mBtnUpdata;
@@ -61,9 +68,18 @@ public class GengDuoFragment extends Fragment {
     @BindView(R.id.mBtn_tuichu)
     Button mBtnTuichu;
     Unbinder unbinder;
+    @BindView(R.id.mTxt_tuandui)
+    TextView mTxtTuandui;
+    @BindView(R.id.txt3)
+    TextView txt3;
+    @BindView(R.id.rl_3)
+    RelativeLayout rl3;
     private Button mBtn_updata;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor edit;
+    private Present present;
+    private String token;
+    private JinJianBean jinJian;
 
     @Nullable
     @Override
@@ -78,17 +94,21 @@ public class GengDuoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         //获取缓存的token
         sharedPreferences = getActivity().getSharedPreferences("ts", Context.MODE_PRIVATE);
+        token = sharedPreferences.getString("token", "");
         edit = sharedPreferences.edit();
+
+        present = new Present(this);
+        jinJian = new JinJianBean();
+
         mBtn_updata = (Button) view.findViewById(R.id.mBtn_updata);
-
-
-
         mBtn_updata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 callBack.getText("updata");
             }
         });
+
+        present.getUserInfos(jinJian, token);
     }
 
     @Override
@@ -101,18 +121,36 @@ public class GengDuoFragment extends Fragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.mBtn_updata:
+
+
                 break;
             case R.id.img_center:
 //                startActivity(new Intent(getActivity(), GerenCenterActivity.class));
                 //调用相册
                 Intent intent = new Intent(Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, 1);
                 break;
 
             case R.id.mBtn_bangzhu:
+
+                //公告管理
+//                present.noticeInfo(new LongHuParmsBean(),token);
+
+//                jinJian.setName("龙");
+
+                //进件查询
+//                present.findApplyInfo(jinJian,token);//返回数据为空
+
+                //放款查询
+//                present.findLoanInfo(jinJian,token);
+
+                //个人信息
+//                present.getUserInfos(jinJian,token);
+
                 break;
             case R.id.mBtn_women:
+
                 break;
             case R.id.mBtn_tuichu:
                 edit.putString("token", "");
@@ -121,6 +159,63 @@ public class GengDuoFragment extends Fragment {
                 getActivity().finish();
                 break;
         }
+    }
+
+    @Override
+    public void getCode(String s) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void cancelLoading() {
+
+    }
+
+    @Override
+    public void showFaliure(String s) {
+
+    }
+
+    @Override
+    public void getLogin(String s) {
+
+    }
+
+    @Override
+    public void getUpDate(String s) {
+        Log.i("dd", "getUpDate: " + s);
+        Gson gson = new Gson();
+        GeRenXinXiBean geRenXinXiBean = gson.fromJson(s, GeRenXinXiBean.class);
+        String code = geRenXinXiBean.getCode();
+        if (!code.equals("1")) {
+            if (code.equals("19902")){
+                edit.putString("token", "");
+                edit.commit();
+                Toast.makeText(getActivity(), "" + geRenXinXiBean.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), MainActivity.class));
+                getActivity().finish();
+            }
+
+            Toast.makeText(getActivity(), "" + geRenXinXiBean.getMessage().toString(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        GeRenXinXiBean.DataBean data = geRenXinXiBean.getData();
+
+        if (null == data) {
+            Toast.makeText(getActivity(), "数据结果为空", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        mTxtGerenname.setText(""+data.getStaffName());
+        mTxtPhoneNumber.setText(""+data.getPhoneNo());
+        mTxtAddress.setText(""+data.getOrgName());
+        mTxtTuandui.setText(""+data.getGroupName());
     }
 
 
@@ -150,18 +245,14 @@ public class GengDuoFragment extends Fragment {
             c.close();
         }
     }
+
     //加载图片
-    private void showImage(String imaePath){
+    private void showImage(String imaePath) {
         Bitmap bm = BitmapFactory.decodeFile(imaePath);
-
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        bm.compress(Bitmap.CompressFormat.JPEG,100,out);
+        bm.compress(Bitmap.CompressFormat.JPEG, 100, out);
         byte[] bytes = out.toByteArray();
-
-
         String s = Base64.encodeToString(bytes, Base64.DEFAULT);
-
-
         Bitmap circleBitmap = BitmapUtils.getCircleBitmap(bm);
         imgCenter.setImageBitmap(circleBitmap);
     }

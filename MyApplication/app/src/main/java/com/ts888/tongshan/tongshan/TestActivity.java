@@ -5,12 +5,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.ts888.tongshan.tongshan.bean.LongHuParmsBean;
+import com.ts888.tongshan.tongshan.model.IMainView;
+import com.ts888.tongshan.tongshan.model.Present;
 import com.ts888.tongshan.tongshan.wedget.ShouyeWedget;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TestActivity extends AppCompatActivity {
+public class TestActivity extends AppCompatActivity implements IMainView{
 
     @BindView(R.id.wed1)
     ShouyeWedget wed1;
@@ -31,17 +34,46 @@ public class TestActivity extends AppCompatActivity {
     @BindView(R.id.wed9)
     ShouyeWedget wed9;
 
+    Present present;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test2);
         ButterKnife.bind(this);
-        Toast.makeText(this, "??", Toast.LENGTH_SHORT).show();
-        wed1.getButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(TestActivity.this, "??", Toast.LENGTH_SHORT).show();
-            }
-        });
+        present = new Present(this);
+
+
+        present.getNoticeInfoList(new LongHuParmsBean(),"");
+    }
+
+    @Override
+    public void getCode(String s) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void cancelLoading() {
+
+    }
+
+    @Override
+    public void showFaliure(String s) {
+
+    }
+
+    @Override
+    public void getLogin(String s) {
+
+    }
+
+    @Override
+    public void getUpDate(String s) {
+
     }
 }

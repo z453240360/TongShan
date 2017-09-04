@@ -213,7 +213,8 @@ public class ShouyeFragment extends Fragment implements IMainView {
             @Override
             public void OnBannerClick(int position) {
 
-//                Toast.makeText(getActivity(), ""+position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), ""+position, Toast.LENGTH_SHORT).show();
+
 
             }
         });

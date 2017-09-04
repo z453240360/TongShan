@@ -880,5 +880,202 @@ public class DateModel {
 
     }
 
+    //公告查询
+    public void getNoticeInfoList(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.getNoticeInfoList(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+                    callBack.failed("服务器异常,状态码："+code);
+                    return;
+                }
+                String individualRanking = null;
+                try {
+                    individualRanking = response.body().string();
+                    if (null==individualRanking){
+                        callBack.failed("请求的数据为空，或参数异常");
+                        return;
+                    }
+                    callBack.succesed(individualRanking);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败");
+            }
+        });
+
+    }
+
+
+    //公告管理
+    public void noticeInfo(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.noticeInfo(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+                    callBack.failed("服务器异常,状态码："+code);
+                    return;
+                }
+                String individualRanking = null;
+                try {
+                    individualRanking = response.body().string();
+                    if (null==individualRanking){
+                        callBack.failed("请求的数据为空，或参数异常");
+                        return;
+                    }
+                    callBack.succesed(individualRanking);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败");
+            }
+        });
+
+    }
+
+
+    //进件查询
+    public void findApplyInfo(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.findApplyInfo(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+                    callBack.failed("服务器异常,状态码："+code);
+                    return;
+                }
+                String individualRanking = null;
+                try {
+                    individualRanking = response.body().string();
+                    if (null==individualRanking){
+                        callBack.failed("请求的数据为空，或参数异常");
+                        return;
+                    }
+                    callBack.succesed(individualRanking);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败");
+            }
+        });
+
+    }
+
+    //放款查询
+    public void findLoanInfo(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.findLoanInfo(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+                    callBack.failed("服务器异常,状态码："+code);
+                    return;
+                }
+                String individualRanking = null;
+                try {
+                    individualRanking = response.body().string();
+                    if (null==individualRanking){
+                        callBack.failed("请求的数据为空，或参数异常");
+                        return;
+                    }
+                    callBack.succesed(individualRanking);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败");
+            }
+        });
+
+    }
+    //个人信息
+    public void getUserInfos(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.getUserInfos(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+                    callBack.failed("服务器异常,状态码："+code);
+                    return;
+                }
+                String individualRanking = null;
+                try {
+                    individualRanking = response.body().string();
+                    if (null==individualRanking){
+                        callBack.failed("请求的数据为空，或参数异常");
+                        return;
+                    }
+                    callBack.succesed(individualRanking);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败");
+            }
+        });
+
+    }
+
+
 }
 

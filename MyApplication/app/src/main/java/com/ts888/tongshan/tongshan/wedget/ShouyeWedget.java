@@ -42,8 +42,8 @@ public class ShouyeWedget extends FrameLayout {
 
     public ShouyeWedget(Context context, AttributeSet attrs) {
         super(context, attrs);
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShouyeWedget);
 
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.ShouyeWedget);
         icon=ta.getResourceId(R.styleable.ShouyeWedget_drawTop,R.mipmap.ic_launcher);
         texts = ta.getString(R.styleable.ShouyeWedget_text);
         init(context);

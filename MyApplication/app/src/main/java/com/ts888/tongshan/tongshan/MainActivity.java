@@ -71,8 +71,6 @@ public class MainActivity extends AppCompatActivity implements IMainView {
                 mBtn_getPassword.setText(msg.arg1 + " s");
             }
         }
-
-        ;
     };
 
     @Override
@@ -106,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         present = new Present(this);  //初始化请求逻辑管理类
         mEd_phoneNumber = (EditText) findViewById(R.id.mEd_user_phoneNumber);  //电话号码输入框
         mEd_code = (EditText) findViewById(R.id.mEd_user_password);                 //验证码输入框
-        mEd_phoneNumber.setText("18616850004");//初始设置可用的号码
+        mEd_phoneNumber.setText("18616851636");//初始设置可用的号码
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);  //数据存储初始化
         editor = sharedPreferences.edit();
 
@@ -297,11 +295,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         }
         String md5 = data.getMd5();//md5
         String description = data.getDescription(); //备注test,返回更新信息
-
-
         int forceUpdate = data.getForceUpdate();//0不强制更新，1，强制更新
-
-
         int needUpdate = data.getNeedUpdate();//是否需要更新
         String url = data.getUrl();//测试地址
         String recentVersion = data.getRecentVersion();//当前版本号

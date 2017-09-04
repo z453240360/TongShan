@@ -72,4 +72,20 @@ public interface Constant {
     //轮播页面  参数：（0 ：首页bannner），（1,：启动页吧bannner）
     String Banner ="appsales-entry/banner/findBannerByType";
 
+
+    //消息公告查询
+    String getNoticeInfoList ="appsales-entry/notice/getNoticeInfoList";
+
+    //公告管理
+    String noticeInfo ="appsales-entry/appsales-admin/notice/noticeInfo";
+
+    //进件查询
+    String findApplyInfo ="appsales-entry/applyInfo/findApplyInfo";
+
+    //放款查询
+    String findLoanInfo ="appsales-entry/loanInfo/findLoanInfo";
+
+    //个人信息
+    String getUserInfos ="appsales-entry/login/getUserInfo";
+
 }
