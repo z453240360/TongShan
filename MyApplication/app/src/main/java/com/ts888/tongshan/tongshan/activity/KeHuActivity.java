@@ -15,7 +15,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -23,12 +22,10 @@ import android.widget.Toast;
 
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.bean.ParmsBean;
-import com.ts888.tongshan.tongshan.fragment.GengDuoFragment;
 import com.ts888.tongshan.tongshan.fragment.KeHuFragment;
 import com.ts888.tongshan.tongshan.fragment.KeHuFragment2;
 import com.ts888.tongshan.tongshan.fragment.KeHuFragment3;
 import com.ts888.tongshan.tongshan.fragment.ShouyeFragment;
-import com.ts888.tongshan.tongshan.fragment.XiaoXiFragment;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 import com.ts888.tongshan.tongshan.util.ColorState;
@@ -88,15 +85,9 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
         //发送网络请求，获取客户基本信息
         present.getFindUserBaseInfoByCode(parmsBean,token);//用户基本信息
 
-
-
-
-
         //Fragent管理类
         manager = getSupportFragmentManager();
-
         initFragment();
-
         manager.beginTransaction().add(R.id.mFl_kehu, list.get(0)).commit();
         lastFragment = list.get(0);
         initRg();
@@ -108,7 +99,8 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
                 Log.i(TAG, "getText获取usecode: "+str);
 
                 Intent intent = new Intent(KeHuActivity.this,XiangQingActivity.class);
-                intent.putExtra("useC",str);  //这里获取的useCode不能查询到相关信息
+                //这里获取的useCode不能查询到相关信息
+                intent.putExtra("useC",str);
                 intent.putExtra("token",token);
                 startActivity(intent);
             }

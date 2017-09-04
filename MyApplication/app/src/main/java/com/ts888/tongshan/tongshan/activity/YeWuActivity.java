@@ -65,11 +65,9 @@ public class YeWuActivity extends AppCompatActivity {
         activity_ye_wu = (RelativeLayout) findViewById(R.id.activity_ye_wu);
 
         initToolBar();
-
-
         //获取缓存的token
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
-        token = sharedPreferences.getString("token", "888888");              //获取存储的token
+        token = sharedPreferences.getString("token", "888888"); //获取存储的token
         init();
     }
 
@@ -82,16 +80,13 @@ public class YeWuActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
-
     private void init() {
-
         mRgMain = (RadioGroup) findViewById(R.id.mRg_main);
         manager = getSupportFragmentManager();
         initFragment();
         manager.beginTransaction().add(R.id.mFl_main, list.get(0)).commit();
         lastFragment = list.get(0);
         initRg();
-
     }
 
     private void initRg() {
@@ -114,7 +109,6 @@ public class YeWuActivity extends AppCompatActivity {
 
     }
 
-
     private void initFragment() {
 
         ShouyeFragment shouyeFragment = new ShouyeFragment();
@@ -125,7 +119,6 @@ public class YeWuActivity extends AppCompatActivity {
         list.add(xiaoXiFragment);
         list.add(gengDuoFragment);
 
-
         gengDuoFragment.setCallBack(new ShouyeFragment.TextCallBack() {
             @Override
             public void getText(String str) {
@@ -135,9 +128,6 @@ public class YeWuActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
     }
 
     @Override
@@ -155,7 +145,6 @@ public class YeWuActivity extends AppCompatActivity {
     public boolean onTouchEvent(MotionEvent event) {
         float down = 0;
         float move = 0;
-
         switch (event.getAction())
         {
             case MotionEvent.ACTION_MOVE:
@@ -165,15 +154,11 @@ public class YeWuActivity extends AppCompatActivity {
                 down = event.getY();
                 break;
         }
-
         if (move-down>100){
             Log.i(TAG, "向上: "+(move-down));
         }else {
             Log.i(TAG, "向下 "+(move-down));
         }
-
-
-
         return super.onTouchEvent(event);
     }
 

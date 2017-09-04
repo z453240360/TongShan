@@ -104,7 +104,6 @@ public class GengDuoFragment extends Fragment {
                 break;
             case R.id.img_center:
 //                startActivity(new Intent(getActivity(), GerenCenterActivity.class));
-
                 //调用相册
                 Intent intent = new Intent(Intent.ACTION_PICK,
                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);

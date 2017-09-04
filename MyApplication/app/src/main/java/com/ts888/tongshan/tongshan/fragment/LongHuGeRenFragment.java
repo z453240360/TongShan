@@ -138,7 +138,6 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
 
     }
 
-
     @Override
     public void onDestroyView() {
         super.onDestroyView();
