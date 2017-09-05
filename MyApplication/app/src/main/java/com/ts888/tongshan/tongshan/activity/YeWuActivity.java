@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -54,10 +55,18 @@ public class YeWuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        //设置状态栏和标题栏
 //        ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //透明导航栏
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
         //设置状态栏字体为黑色
         ColorState.StatusBarLightMode(this);
         //状态栏颜色为白色
-        ColorState.setWindowStatusBarColor(this, Color.WHITE);
+//        ColorState.setWindowStatusBarColor(this, Color.WHITE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.activity_ye_wu);

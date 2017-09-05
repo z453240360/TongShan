@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -46,10 +48,17 @@ public class AdvActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //透明导航栏
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
+        //状态栏颜色为白色
+//        ColorState.setWindowStatusBarColor(this, Color.WHITE);
         //设置状态栏字体为黑色
         ColorState.StatusBarLightMode(this);
-        //状态栏颜色为白色
-        ColorState.setWindowStatusBarColor(this, Color.WHITE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         pref = getSharedPreferences("login", Context.MODE_PRIVATE);
         boolean flag = pref.getBoolean("flag", false);
@@ -72,6 +81,9 @@ public class AdvActivity extends AppCompatActivity {
 //     				Log.i("oye", "======= onPageSelected   "+position);
                     if(position == list.size()-1) {
                         but.setVisibility(View.VISIBLE);
+                        pref.edit().putBoolean("flag", true).commit();
+                        startActivity(new Intent(AdvActivity.this,StartActivity.class));
+                        finish();
                     } else {
                         but.setVisibility(View.GONE);
                     }
@@ -82,6 +94,12 @@ public class AdvActivity extends AppCompatActivity {
                     RadioButton rb = (RadioButton) group.getChildAt(position);
                     //通过getId方法获取应该被选中的rb的id值
                     group.check(rb.getId());
+
+                    if (position==list.size()){
+                        pref.edit().putBoolean("flag", true).commit();
+                        startActivity(new Intent(AdvActivity.this,StartActivity.class));
+                        finish();
+                    }
                 }
                 //当页面滚动过程中不断调用的方法
                 /**

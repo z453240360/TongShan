@@ -2,6 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_adv"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.ts888.tongshan.tongshan.activity.AdvActivity">
@@ -13,13 +15,15 @@
 
     <Button
         android:id="@+id/button1"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="51dp"
+        android:layout_marginBottom="45dp"
         android:onClick="click"
-        android:text="Button"
+        android:background="@null"
+        android:text="立即体验"
         android:visibility="gone" />
 
     <RadioGroup
@@ -32,6 +36,7 @@
         >
 
         <RadioButton
+            android:button="@drawable/viewpage_point"
             android:id="@+id/radio0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,11 +45,13 @@
 
         <RadioButton
             android:id="@+id/radio1"
+            android:button="@drawable/viewpage_point"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
 
         <RadioButton
+            android:button="@drawable/viewpage_point"
             android:id="@+id/radio2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

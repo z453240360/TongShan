@@ -78,8 +78,15 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         super.onCreate(savedInstanceState);
         //设置状态栏字体为黑色
         ColorState.StatusBarLightMode(this);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            //透明状态栏
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //透明导航栏
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        }
         //状态栏颜色为白色
-        ColorState.setWindowStatusBarColor(this, Color.WHITE);
+//        ColorState.setWindowStatusBarColor(this, Color.WHITE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);   //设置无标题栏
         setContentView(R.layout.activity_main);
 
