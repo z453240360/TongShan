@@ -9,15 +9,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.ts888.tongshan.tongshan.R;
@@ -165,10 +164,10 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
         //初始化控件searchView
         searchView = (SearchView) findViewById(R.id.searchView);
         mRg_KeHu = (RadioGroup) findViewById(R.id.mRg_kehu);
-        ImageView searchButton = (ImageView)searchView.findViewById(R.id.search_button);
+//        ImageView searchButton = (ImageView)searchView.findViewById(R.id.search_button);
         toolbar = (Toolbar) findViewById(R.id.toolbars_kehu_activity);
 
-        searchButton.setImageResource(R.mipmap.sousuo);
+//        searchButton.setImageResource(R.mipmap.sousuo);
     }
 
     private void initToolbar() {

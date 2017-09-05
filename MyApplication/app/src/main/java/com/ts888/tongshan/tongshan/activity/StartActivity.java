@@ -23,7 +23,6 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
         new Handler().postDelayed(new Runnable() {
             public void run() {
-                /* Create an Intent that will start the Main WordPress Activity. */
                 Intent mainIntent = new Intent(StartActivity.this, MainActivity.class);
                 StartActivity.this.startActivity(mainIntent);
                 StartActivity.this.finish();

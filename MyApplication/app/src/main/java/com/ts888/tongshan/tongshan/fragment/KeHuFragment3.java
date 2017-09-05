@@ -39,6 +39,7 @@ public class KeHuFragment3 extends Fragment implements IMainView {
     private int row = 20;
     private LikeListAdapter adapter;
     private LinearLayoutManager manager;
+    private boolean isFirst=true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -92,7 +93,7 @@ public class KeHuFragment3 extends Fragment implements IMainView {
                 if (page>=5){
 //                    if (isFirst){
 //                        Toast.makeText(getActivity(), "只能查看前50名业绩", Toast.LENGTH_SHORT).show();
-//                        isFirst=false;
+//                         isFirst=false;
 //                    }
 //                    Toast.makeText(getActivity(), "只能查看前50名业绩", Toast.LENGTH_SHORT).show();
                     mKeHu_rl.loadMoreComplete();
@@ -142,6 +143,10 @@ public class KeHuFragment3 extends Fragment implements IMainView {
         list = findScheduleBean.getData();
 
         if (list.size()==0){
+            if (isFirst) {
+                Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
+                isFirst = false;
+            }
             Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
             return;
         }

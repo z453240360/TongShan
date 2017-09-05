@@ -38,6 +38,10 @@ public interface Constant {
     //查询待进件客户信息
     String findInApprovalApplyInfo = "appsales-entry/applyInfo/findInApprovalApplyInfo";
 
+    //模糊查询待进件客户信息
+    String findInApprovalApplyInfoByUserName = "appsales-entry/applyInfo/findInApprovalApplyInfoByUserName";
+
+
     //获取试算参数
     String findCalcParameter = "appsales-entry/calcContractInfo/findCalcParameter";
 

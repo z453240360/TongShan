@@ -24,9 +24,7 @@ import static com.ts888.tongshan.tongshan.R.id.view;
 
 /**
  * Created by Administrator on 2017/8/1.
- * 基础信息展示页面
- *
- *
+ * 基础信息展示页面 *
  */
 
 public class JichuXinXiFragment extends Fragment implements IMainView {

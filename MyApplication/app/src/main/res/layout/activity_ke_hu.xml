@@ -96,7 +96,8 @@
         android:layout_height="0.5dp"
         android:background="#508a8a8a" />
 
-    <android.support.v7.widget.SearchView
+    <SearchView
+        android:visibility="gone"
         android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -104,9 +105,9 @@
         android:layout_marginTop="0dp"
         android:background="#ffffff"
         android:gravity="center"
-        android:queryHint="搜索" />
+        android:queryHint="请输入搜索内容" />
     <TextView
-        android:layout_below="@id/searchView"
+        android:layout_below="@id/mRg_kehu"
         android:id="@+id/line_kehu2"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"

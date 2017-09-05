@@ -9,7 +9,8 @@
 
     <ImageView
         android:id="@+id/sImg"
-        android:src="@mipmap/banner_01"
+        android:src="@mipmap/no4"
+        android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </RelativeLayout>

@@ -182,6 +182,30 @@ public class Present {
 
     }
 
+    //模糊查询待进件客户信息
+    public void getFindInApprovalApplyInfoByUserName(JinJianBean parmsBean,String token){
+        iMainView.showLoading();
+        String timeStamp = String.valueOf(System.currentTimeMillis());
+        String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
+        Gson g = new Gson();
+        final String params = g.toJson(parmsBean);
+        String md51 = EncoderUtils.encoder(md5);
+        dateModel.getFindInApprovalApplyInfoByUserName(timeStamp, md51, params, token,new ICallBack() {
+            @Override
+            public void succesed(String s) {
+                iMainView.getLogin(s);
+                iMainView.cancelLoading();
+            }
+
+            @Override
+            public void failed(String s) {
+                iMainView.showFaliure(s);
+                iMainView.cancelLoading();
+            }
+        });
+
+    }
+
     //查询待进件客户信息
     public void getFindCalcParameter (ParmsBean parmsBean,String token){
         iMainView.showLoading();

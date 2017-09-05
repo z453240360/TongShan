@@ -13,6 +13,7 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.bean.LongHuParmsBean;
@@ -129,5 +130,6 @@ public class GongGaoActivity extends AppCompatActivity implements IMainView{
     @Override
     public void getUpDate(String s) {
         Log.i("dd", "getUpDate: "+s);
+        Toast.makeText(this, ""+s, Toast.LENGTH_SHORT).show();
     }
 }

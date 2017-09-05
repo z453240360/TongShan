@@ -39,6 +39,7 @@ public class KeHuFragment2 extends Fragment implements IMainView {
     private int row = 20;
     private LikeListAdapter adapter;
     private LinearLayoutManager manager;
+    private boolean isFirst=true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -144,6 +145,10 @@ public class KeHuFragment2 extends Fragment implements IMainView {
         list = findScheduleBean.getData();
 
         if (list.size()==0){
+            if (isFirst) {
+                Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
+                isFirst = false;
+            }
             Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
             return;
         }

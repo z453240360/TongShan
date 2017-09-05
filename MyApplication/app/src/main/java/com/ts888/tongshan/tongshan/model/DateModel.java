@@ -439,6 +439,43 @@ public class DateModel {
 
     }
 
+    //模糊查询待进件客户信息
+    public void getFindInApprovalApplyInfoByUserName(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.getFindInApprovalApplyInfoByUserName(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+                    callBack.failed("服务器异常,状态码："+code);
+                    return;
+                }
+
+                try {
+                    if (null==response.body()){
+                        callBack.failed("请求的数据为空，或参数异常");
+                        return;
+                    }
+                    callBack.succesed(response.body().string());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败");
+            }
+        });
+
+    }
 
     //获取试算参数
     public void getFindCalcParameter (final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
@@ -842,7 +879,6 @@ public class DateModel {
 
     }
 
-
     //获取banner
     public void getBanner (final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
 
@@ -919,7 +955,6 @@ public class DateModel {
 
     }
 
-
     //公告管理
     public void noticeInfo(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
 
@@ -958,7 +993,6 @@ public class DateModel {
         });
 
     }
-
 
     //进件查询
     public void findApplyInfo(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
@@ -1075,7 +1109,6 @@ public class DateModel {
         });
 
     }
-
 
 }
 

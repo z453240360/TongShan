@@ -1,16 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center"
-        android:text="个人中心"
-        android:textColor="#000"
-        android:textSize="20sp" />
+    <android.support.percent.PercentRelativeLayout
+        android:background="#126CB0"
+        android:id="@+id/p1"
+        android:layout_alignParentTop="true"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="32%"
+        app:layout_widthPercent="100%"
+        >
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_marginTopPercent="5%"
+            app:layout_heightPercent="32%"
+            app:layout_widthPercent="100%"
+            android:gravity="center"
+            android:text="个人中心"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+
+
+        <ImageView
+            app:layout_heightPercent="30%"
+            app:layout_widthPercent="30%"
+            android:id="@+id/img_center"
+            app:layout_marginTopPercent="3%"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/title"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/touxiang" />
+
+
+        <TextView
+            android:textSize="14sp"
+            android:textColor="#fff"
+            app:layout_marginTopPercent="6%"
+            android:id="@+id/mTxt_gerenname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_center"
+            android:layout_centerHorizontal="true"
+            android:text="你好张三" />
+    </android.support.percent.PercentRelativeLayout>
 
 
     <Button
@@ -25,111 +64,211 @@
         android:textSize="20sp"
         android:visibility="gone" />
 
-    <ImageView
-        android:id="@+id/img_center"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_below="@id/title"
-        />
 
-    <TextView
-        android:id="@+id/mTxt_gerenname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title"
-        android:layout_toRightOf="@id/img_center"
-        android:text="你好张三" />
-
-    <TextView
-        android:id="@+id/mTxt_bangding"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/img_center"
-        android:layout_marginLeft="10dp"
-        android:text="绑定手机" />
-
-    <TextView
-        android:id="@+id/mTxt_phoneNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/img_center"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@id/mTxt_bangding"
-        android:text="123456789" />
-
-
-    <TextView
-        android:id="@+id/mTxt_mendian"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/mTxt_bangding"
-        android:layout_marginLeft="10dp"
-        android:text="所属门店" />
-
-    <TextView
-        android:id="@+id/mTxt_tuandui"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/mTxt_bangding"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@id/mTxt_bangding"
-        android:text="上海福州路营业部" />
-    <TextView
-        android:id="@+id/mTxt_tuandui2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/mTxt_tuandui"
-        android:layout_marginLeft="10dp"
-        android:text="所属团队" />
-
-    <TextView
-        android:id="@+id/mTxt_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/mTxt_tuandui"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@id/mTxt_bangding"
-        android:text="上海第一团队" />
-
-
-
-
-    <Button
-        android:id="@+id/mBtn_tuichu"
-        android:layout_width="match_parent"
+    <android.support.percent.PercentRelativeLayout
         android:background="#fff"
-        android:layout_marginBottom="20dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="退出" />
+        android:id="@+id/p12"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@id/p1"
+        app:layout_heightPercent="23%"
+        app:layout_widthPercent="100%"
+        >
 
-    <RelativeLayout
+        <TextView
+            app:layout_marginLeftPercent="5%"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:id="@+id/mTxt_bangding"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_heightPercent="32%"
+            app:layout_widthPercent="20%"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:text="绑定手机"
+            android:textColor="#7f7f7f" />
+
+        <TextView
+            app:layout_marginRightPercent="5%"
+            app:layout_marginLeftPercent="5%"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:id="@+id/mTxt_phoneNumber"
+            android:layout_alignTop="@id/mTxt_bangding"
+            android:layout_alignBottom="@id/mTxt_bangding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/mTxt_bangding"
+            android:text="123456789"
+            android:textColor="#000" />
+        <TextView
+            android:background="#50aaaaaa"
+            android:id="@+id/line1"
+            android:layout_below="@id/mTxt_phoneNumber"
+            android:layout_width="match_parent"
+            android:textColor="#50aaaaaa"
+            android:layout_height="1dp" />
+
+        <TextView
+            app:layout_heightPercent="32%"
+            app:layout_widthPercent="20%"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:id="@+id/mTxt_mendian"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/line1"
+            app:layout_marginLeftPercent="5%"
+            android:text="所属门店"
+            android:textColor="#7f7f7f" />
+
+        <TextView
+            app:layout_marginRightPercent="5%"
+            app:layout_marginLeftPercent="5%"
+            android:gravity="center_vertical"
+            android:id="@+id/mTxt_tuandui"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line1"
+            android:layout_marginLeft="20dp"
+            android:layout_alignTop="@id/mTxt_mendian"
+            android:layout_alignBottom="@id/mTxt_mendian"
+            android:layout_toRightOf="@id/mTxt_bangding"
+            android:text="上海福州路营业部"
+            android:textColor="#000" />
+
+        <TextView
+            android:background="#50aaaaaa"
+            android:id="@+id/line2"
+            android:layout_below="@id/mTxt_tuandui"
+            android:layout_width="match_parent"
+            android:textColor="#50aaaaaa"
+            android:layout_height="1dp" />
+
+        <TextView
+            app:layout_heightPercent="32%"
+            app:layout_widthPercent="20%"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:id="@+id/mTxt_tuandui2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/line2"
+            app:layout_marginLeftPercent="5%"
+            android:text="所属团队"
+            android:textColor="#7f7f7f" />
+
+        <TextView
+            app:layout_marginRightPercent="5%"
+            app:layout_marginLeftPercent="5%"
+            android:layout_alignTop="@id/mTxt_tuandui2"
+            android:layout_alignBottom="@id/mTxt_tuandui2"
+            android:gravity="center_vertical"
+            android:textSize="14sp"
+            android:id="@+id/mTxt_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line2"
+            android:layout_marginLeft="20dp"
+            android:layout_toRightOf="@id/mTxt_bangding"
+            android:text="上海第一团队"
+            android:textColor="#000" />
+
+        <!--<TextView-->
+            <!--android:id="@+id/line3"-->
+            <!--android:background="#50aaaaaa"-->
+            <!--android:layout_below="@id/mTxt_address"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:textColor="#50aaaaaa"-->
+            <!--android:layout_height="1dp" />-->
+        </android.support.percent.PercentRelativeLayout>
+
+
+
+
+
+    <android.support.percent.PercentRelativeLayout
         android:id="@+id/rl_3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/mBtn_tuichu"
+        android:layout_marginTop="10dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_heightPercent="15%"
+        app:layout_widthPercent="100%"
+        android:layout_below="@id/p12"
         android:background="#ffffff"
         android:gravity="center_vertical">
 
         <Button
+            app:layout_heightPercent="49%"
+            app:layout_widthPercent="100%"
+            app:layout_marginLeftPercent="5%"
+            android:gravity="center_vertical"
             android:id="@+id/mBtn_bangzhu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:background="@null"
             android:text="帮助中心" />
+
+        <ImageView
+            app:layout_marginRightPercent="5%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/youjiantou"
+            android:layout_alignBottom="@id/mBtn_bangzhu"
+            android:layout_alignTop="@id/mBtn_bangzhu"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+
+            />
+
         <TextView
             android:id="@+id/txt3"
             android:layout_width="match_parent"
             android:layout_height="0.3dp"
             android:layout_below="@id/mBtn_bangzhu"
-            android:background="#aaaaaa" />
-        <Button
-            android:id="@+id/mBtn_women"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/mBtn_bangzhu"
+            android:background="#50aaaaaa" />
 
+        <Button
+            app:layout_heightPercent="49%"
+            app:layout_widthPercent="20%"
+            android:gravity="center_vertical"
+            android:id="@+id/mBtn_women"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/mBtn_bangzhu"
+            app:layout_marginLeftPercent="5%"
             android:background="@null"
             android:text="关于我们" />
-    </RelativeLayout>
-</RelativeLayout>
+
+        <ImageView
+            app:layout_marginRightPercent="5%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/youjiantou"
+            android:layout_alignBottom="@id/mBtn_women"
+            android:layout_alignTop="@id/mBtn_women"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+
+            />
+    </android.support.percent.PercentRelativeLayout>
+
+
+    <Button
+        android:layout_below="@id/rl_3"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        app:layout_heightPercent="7%"
+        app:layout_widthPercent="100%"
+        app:layout_marginLeftPercent="5%"
+        app:layout_marginRightPercent="5%"
+        app:layout_marginTopPercent="5%"
+        android:id="@+id/mBtn_tuichu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#126CB0"
+        android:text="退出登陆" />
+</android.support.percent.PercentRelativeLayout>

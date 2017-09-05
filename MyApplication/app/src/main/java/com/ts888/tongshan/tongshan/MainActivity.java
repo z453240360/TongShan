@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         ColorState.setWindowStatusBarColor(this, Color.WHITE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);   //设置无标题栏
         setContentView(R.layout.activity_main);
+
         init();
         initUpdate();
     }

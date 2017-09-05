@@ -50,6 +50,11 @@ public interface IService {
     @POST(Constant.findInApprovalApplyInfo)
     Call<ResponseBody> getFindInApprovalApplyInfo(@Body RequestBody status);
 
+    //模糊查询待进件客户信息
+    @POST(Constant.findInApprovalApplyInfoByUserName)
+    Call<ResponseBody> getFindInApprovalApplyInfoByUserName(@Body RequestBody status);
+
+
     //获取试算参数
     @POST(Constant.findCalcParameter )
     Call<ResponseBody> getFindCalcParameter(@Body RequestBody status);
