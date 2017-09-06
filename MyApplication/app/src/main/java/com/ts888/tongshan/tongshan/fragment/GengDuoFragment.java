@@ -212,7 +212,7 @@ public class GengDuoFragment extends Fragment implements IMainView {
             return;
         }
 
-        mTxtGerenname.setText(""+data.getStaffName());
+        mTxtGerenname.setText("您好，"+data.getStaffName());
         mTxtPhoneNumber.setText(""+data.getPhoneNo());
         mTxtAddress.setText(""+data.getOrgName());
         mTxtTuandui.setText(""+data.getGroupName());

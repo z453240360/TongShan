@@ -11,9 +11,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -33,6 +36,7 @@ import java.util.List;
 
 import static android.R.attr.data;
 import static android.R.attr.editable;
+import static android.content.Context.INPUT_METHOD_SERVICE;
 import static com.ts888.tongshan.tongshan.R.id.ed_search1;
 import static com.ts888.tongshan.tongshan.R.id.searchView;
 
@@ -57,6 +61,7 @@ public class KeHuFragment extends Fragment implements IMainView {
     private LikeListAdapter adapter;
     private LinearLayoutManager manager;
     private boolean isFirst = true;
+    private RelativeLayout activity_main;
 
     @Override
     public void onResume() {
@@ -174,6 +179,16 @@ public class KeHuFragment extends Fragment implements IMainView {
                     mKeHu_rl.smoothScrollToPosition(mList.size() - 1);
                     mKeHu_rl.loadMoreComplete();
                 }
+            }
+        });
+
+        //设置点击空白处，自动隐藏键盘
+        activity_main = (RelativeLayout) view.findViewById(R.id.rl1);
+        activity_main.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                InputMethodManager manager = (InputMethodManager) getActivity().getSystemService(INPUT_METHOD_SERVICE);
+                return manager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
             }
         });
     }

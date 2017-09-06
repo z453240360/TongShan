@@ -2,14 +2,17 @@ package com.ts888.tongshan.tongshan.fragment;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -125,6 +128,7 @@ public class KeHuFragment2 extends Fragment implements IMainView {
             //--设置背景
             mView.setBackgroundColor(Color.TRANSPARENT);
 
+
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -139,8 +143,8 @@ public class KeHuFragment2 extends Fragment implements IMainView {
 
                 bean.setName(query);
                 present.findApplyInfo(bean, tokens);
-                ed_search1.setVisibility(View.INVISIBLE);
-                textView.setVisibility(View.VISIBLE);
+//                ed_search1.setVisibility(View.INVISIBLE);
+//                textView.setVisibility(View.VISIBLE);
                 return false;
             }
 
@@ -155,13 +159,21 @@ public class KeHuFragment2 extends Fragment implements IMainView {
         bean = new JinJianBean();
         mKeHu_rl = (XRecyclerView) view.findViewById(R.id.kehu_rl);
         ed_search1= (SearchView) view.findViewById(R.id.ed_search1);
+        ed_search1.setIconifiedByDefault(false);
+//        int identifier = ed_search1.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
+//        EditText ed = (EditText) ed_search1.findViewById(identifier);
+//        ed.setTextSize(14);
+//        ed.setGravity(Gravity.CENTER);
+//
+//        Drawable drawable = getActivity().getResources().getDrawable(R.mipmap.sousuo);
+//        ed.setCompoundDrawables(drawable,null,null,null);
 
         textView = (TextView) view.findViewById(R.id.text);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                textView.setVisibility(View.INVISIBLE);
-                ed_search1.setVisibility(View.VISIBLE);
+//                textView.setVisibility(View.INVISIBLE);
+//                ed_search1.setVisibility(View.VISIBLE);
                 ed_search1.requestFocus();
             }
         });

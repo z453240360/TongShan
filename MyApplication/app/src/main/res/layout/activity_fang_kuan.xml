@@ -52,14 +52,14 @@
 
         <TextView
             android:id="@+id/mTxt_jiekuanren"
-            android:text="借 款 人"
+            android:text="借  款  人"
             android:layout_alignParentTop="true"
             android:gravity="center_vertical"
             android:textColor="#7f7f7f"
             android:textSize="14sp"
             app:layout_marginLeftPercent="5%"
             app:layout_heightPercent="10%"
-            app:layout_widthPercent="20%"
+            app:layout_widthPercent="23%"
             android:layout_width="0dp"
             android:layout_height="0dp" />
 
@@ -99,7 +99,7 @@
             android:textSize="14sp"
             app:layout_marginLeftPercent="5%"
             app:layout_heightPercent="10%"
-            app:layout_widthPercent="20%"
+            app:layout_widthPercent="23%"
             android:layout_width="0dp"
             android:layout_height="0dp" />
         <TextView
@@ -133,7 +133,7 @@
             android:textSize="14sp"
             app:layout_marginLeftPercent="5%"
             app:layout_heightPercent="10%"
-            app:layout_widthPercent="20%"
+            app:layout_widthPercent="23%"
             android:layout_width="0dp"
             android:layout_height="0dp" />
 
@@ -168,7 +168,7 @@
             android:textSize="14sp"
             app:layout_marginLeftPercent="5%"
             app:layout_heightPercent="10%"
-            app:layout_widthPercent="20%"
+            app:layout_widthPercent="23%"
             android:layout_width="0dp"
             android:layout_height="0dp" />
 
@@ -203,7 +203,7 @@
             android:textSize="14sp"
             app:layout_marginLeftPercent="5%"
             app:layout_heightPercent="10%"
-            app:layout_widthPercent="20%"
+            app:layout_widthPercent="23%"
             android:layout_width="0dp"
             android:layout_height="0dp" />
 
@@ -239,7 +239,7 @@
             android:textSize="14sp"
             app:layout_marginLeftPercent="5%"
             app:layout_heightPercent="10%"
-            app:layout_widthPercent="20%"
+            app:layout_widthPercent="23%"
             android:layout_width="0dp"
             android:layout_height="0dp" />
         <TextView
@@ -275,7 +275,7 @@
             android:textSize="14sp"
             app:layout_marginLeftPercent="5%"
             app:layout_heightPercent="10%"
-            app:layout_widthPercent="20%"
+            app:layout_widthPercent="23%"
             android:layout_width="0dp"
             android:layout_height="0dp" />
         <TextView
@@ -310,7 +310,7 @@
             app:layout_marginLeftPercent="5%"
             android:layout_width="0dp"
             app:layout_heightPercent="10%"
-            app:layout_widthPercent="20%"
+            app:layout_widthPercent="23%"
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/mTxt_beizhu2"
