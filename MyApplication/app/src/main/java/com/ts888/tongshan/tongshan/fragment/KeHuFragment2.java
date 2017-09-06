@@ -1,25 +1,34 @@
 package com.ts888.tongshan.tongshan.fragment;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.ts888.tongshan.tongshan.R;
-import com.ts888.tongshan.tongshan.adapter.LikeListAdapter;
-import com.ts888.tongshan.tongshan.bean.FindScheduleBean;
-import com.ts888.tongshan.tongshan.bean.ParmsBean;
+import com.ts888.tongshan.tongshan.activity.FangKuanActivity;
+import com.ts888.tongshan.tongshan.adapter.LikeListAdapter2;
+import com.ts888.tongshan.tongshan.bean.JinJianBean;
+import com.ts888.tongshan.tongshan.bean.Jinjian2_Bean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.ts888.tongshan.tongshan.R.id.searchView;
 
 /**
  * Created by Administrator on 2017/7/31.
@@ -29,21 +38,20 @@ public class KeHuFragment2 extends Fragment implements IMainView {
 
 
     private XRecyclerView mKeHu_rl;
-    private List<FindScheduleBean.DataBean> list = new ArrayList();
-
-    private List<FindScheduleBean.DataBean> mList = new ArrayList();
+    private SearchView ed_search1;
     private Present present;
-    private ParmsBean parmsBean;
     private String tokens;
-    private int page =1;
-    private int row = 20;
-    private LikeListAdapter adapter;
+    private LikeListAdapter2 adapter2;
     private LinearLayoutManager manager;
-    private boolean isFirst=true;
+    private boolean isFirst = true;
+    private JinJianBean bean;
+    private TextView textView;
+    private List<Jinjian2_Bean.DataBean> mDates = new ArrayList<>();
+    private List<Jinjian2_Bean.DataBean> mDatess = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_kehu, container, false);
+        View view = inflater.inflate(R.layout.fragment_kehu2, container, false);
         return view;
     }
 
@@ -52,64 +60,118 @@ public class KeHuFragment2 extends Fragment implements IMainView {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        initToken();
+        init(view);
 
-        tokens = getArguments().getString("towKey");
-        String userCodes = getArguments().getString("key");
-
-        parmsBean = new ParmsBean();
-        parmsBean.setPage(page);
-        parmsBean.setRows(row);
-        mKeHu_rl = (XRecyclerView) view.findViewById(R.id.kehu_rl);
-        present = new Present(this);
-        present.getFindInApprovalApplyInfo(parmsBean, tokens);
-
-
-
+        //进件查询
+        present.findApplyInfo(bean, tokens);//返回数据为空
+        adapter2 = new LikeListAdapter2(getActivity(), mDatess);
         //Recylerview加载数据
-        adapter = new LikeListAdapter(getActivity(),mList);
-        mKeHu_rl.setAdapter(adapter);
+        mKeHu_rl.setAdapter(adapter2);
         manager = new LinearLayoutManager(getActivity());
         mKeHu_rl.setLayoutManager(manager);
-        adapter.setOnItemClickListener(new LikeListAdapter.OnItemClickListener() {
+
+        adapter2.setOnItemClickListener(new LikeListAdapter2.OnItemClickListener() {
             @Override
             public void onItemClick(int pos, View view) {
-                callBack.getText(mList.get(pos).getUserCode());
+
+                Jinjian2_Bean.DataBean dataBean = mDatess.get(pos);
+                Intent intent = new Intent(getActivity(), FangKuanActivity.class);
+
+                intent.putExtra("name",dataBean.getName());
+                intent.putExtra("idCard",dataBean.getIdCardNo());
+                intent.putExtra("data",dataBean.getApplyDate());
+                intent.putExtra("money",dataBean.getApprovalAmount());
+                intent.putExtra("limit",dataBean.getLoanLife());
+                intent.putExtra("feilv",dataBean.getProductRate());
+                intent.putExtra("jiedian",dataBean.getTaskNode());
+                intent.putExtra("beizhu",dataBean.getRemark());
+                startActivity(intent);
+
             }
         });
 
-        //下拉刷新，上拉加载
+
+//        下拉刷新，上拉加载
         mKeHu_rl.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                page = 1;
-                mList.clear();
-                adapter.notifyDataSetChanged();
-                parmsBean.setPage(page);
-                parmsBean.setRows(row);
-                present.getFindInApprovalApplyInfo(parmsBean, tokens);
+                mDatess.clear();
+                adapter2.notifyDataSetChanged();
+                String s = ed_search1.getQuery().toString();
+
+                bean.setName(s);
+                present.findApplyInfo(bean, tokens);
                 mKeHu_rl.refreshComplete();
             }
 
             @Override
             public void onLoadMore() {
-                if (page>=5){
-//                    if (isFirst){
-//                        Toast.makeText(getActivity(), "只能查看前50名业绩", Toast.LENGTH_SHORT).show();
-//                        isFirst=false;
-//                    }
-//                    Toast.makeText(getActivity(), "只能查看前50名业绩", Toast.LENGTH_SHORT).show();
-                    mKeHu_rl.loadMoreComplete();
-                    return;
-                }
-                page++;
-                parmsBean.setPage(page);
-                parmsBean.setRows(row);
-                present.getFindInApprovalApplyInfo(parmsBean, tokens);
-                mKeHu_rl.smoothScrollToPosition(mList.size()-1);
                 mKeHu_rl.loadMoreComplete();
 
             }
         });
+
+        ed_search1.setIconifiedByDefault(false);
+
+        Class<? extends SearchView> aClass = ed_search1.getClass();
+        //--指定某个私有属性,mSearchPlate是搜索框父布局的名字
+        Field ownField = null;
+        try {
+            ownField = aClass.getDeclaredField("mSearchPlate");
+            //--暴力反射,只有暴力反射才能拿到私有属性
+            ownField.setAccessible(true);
+            View mView = (View) ownField.get(ed_search1);
+            //--设置背景
+            mView.setBackgroundColor(Color.TRANSPARENT);
+
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        ed_search1.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                mDatess.clear();
+                adapter2.notifyDataSetChanged();
+
+                bean.setName(query);
+                present.findApplyInfo(bean, tokens);
+                ed_search1.setVisibility(View.INVISIBLE);
+                textView.setVisibility(View.VISIBLE);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+    }
+
+    private void init(View view) {
+        bean = new JinJianBean();
+        mKeHu_rl = (XRecyclerView) view.findViewById(R.id.kehu_rl);
+        ed_search1= (SearchView) view.findViewById(R.id.ed_search1);
+
+        textView = (TextView) view.findViewById(R.id.text);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textView.setVisibility(View.INVISIBLE);
+                ed_search1.setVisibility(View.VISIBLE);
+                ed_search1.requestFocus();
+            }
+        });
+        present = new Present(this);
+    }
+
+    private void initToken() {
+        tokens = getArguments().getString("towKey");
+        String userCodes = getArguments().getString("key");
+
     }
 
     @Override
@@ -134,42 +196,40 @@ public class KeHuFragment2 extends Fragment implements IMainView {
 
     @Override
     public void getLogin(String s) {
-        Gson g = new Gson();
-        FindScheduleBean findScheduleBean = g.fromJson(s, FindScheduleBean.class);
-        String code = findScheduleBean.getCode();
-        if (!code.equals("1")){
-            Toast.makeText(getActivity(), ""+findScheduleBean.getMessage(), Toast.LENGTH_SHORT).show();
-            return;
-        }
 
-        list = findScheduleBean.getData();
-
-        if (list.size()==0){
-            if (isFirst) {
-                Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
-                isFirst = false;
-            }
-            Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        mList.addAll(list);
-        adapter.notifyDataSetChanged();
     }
 
     @Override
     public void getUpDate(String s) {
+        Log.i("dd", "getLogin:+进件 " + s);
+        Gson gson = new Gson();
+        Jinjian2_Bean jinjian2_bean = gson.fromJson(s, Jinjian2_Bean.class);
+        String code = jinjian2_bean.getCode();
+        if (!code.equals("1")) {
+            Toast.makeText(getActivity(), "" + jinjian2_bean.getMessage().toString(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        mDates = jinjian2_bean.getData();
+        if (mDates.size() == 0) {
+            return;
+        }
+        mDatess.addAll(mDates);
+        adapter2.notifyDataSetChanged();
+
 
     }
 
-    public interface TextCallBack{
+    public interface TextCallBack {
         void getText(String str);
     }
 
     private ShouyeFragment.TextCallBack callBack;
 
-    public void setCallBack(ShouyeFragment.TextCallBack callBack){
+    public void setCallBack(ShouyeFragment.TextCallBack callBack) {
         this.callBack = callBack;
     }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

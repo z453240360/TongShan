@@ -126,10 +126,10 @@ public class GengDuoFragment extends Fragment implements IMainView {
                 break;
             case R.id.img_center:
 //                startActivity(new Intent(getActivity(), GerenCenterActivity.class));
-                //调用相册
-                Intent intent = new Intent(Intent.ACTION_PICK,
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, 1);
+//                //调用相册
+//                Intent intent = new Intent(Intent.ACTION_PICK,
+//                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                startActivityForResult(intent, 1);
                 break;
 
             case R.id.mBtn_bangzhu:

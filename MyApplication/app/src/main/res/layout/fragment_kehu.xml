@@ -4,17 +4,25 @@
     android:layout_height="match_parent"
     >
 
-    <EditText
+    <SearchView
+        android:focusable="false"
+        android:focusableInTouchMode="true"
         android:id="@+id/ed_search1"
-        android:hint="请输入搜索内容"
+        android:queryHint="搜索"
         android:background="#fff"
         android:gravity="center"
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <TextView
+        android:layout_below="@id/ed_search1"
+        android:id="@+id/line_kehu"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#508a8a8a" />
     <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:id="@+id/kehu_rl"
-        android:layout_below="@id/ed_search1"
+        android:layout_below="@id/line_kehu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </RelativeLayout>

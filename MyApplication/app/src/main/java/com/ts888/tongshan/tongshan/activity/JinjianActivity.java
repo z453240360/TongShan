@@ -64,6 +64,7 @@ public class JinjianActivity extends AppCompatActivity implements IMainView {
         mEd_idCard = (EditText) findViewById(R.id.mEd_shenfenzheng_jinjian_Activity);
         mTxt_statue = (TextView) findViewById(R.id.mTxt_xinxi_jinjian_activity);
 
+
         //初始化逻辑处理层
         present = new Present(this);
 

@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_fang_kuan"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ts888.tongshan.tongshan.activity.FangKuanActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbars_fangkuan"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:background="#1b7ab4"
+        android:gravity="center"
+        android:popupTheme="@style/AppTheme">
+
+        <TextView
+            android:id="@+id/mTxt_xiangqing_fangkuan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="客户详情"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:layout_below="@id/toolbars_fangkuan"
+        android:id="@+id/mTxt_jiekuan"
+        android:text="基础信息"
+        android:gravity="center_vertical"
+        android:textColor="#7f7f7f"
+        android:textSize="14sp"
+        app:layout_marginLeftPercent="5%"
+        app:layout_heightPercent="5%"
+        app:layout_widthPercent="100%"
+        android:layout_width="0dp"
+        android:layout_height="0dp" />
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/pr_1"
+        android:background="#fff"
+        android:layout_below="@id/mTxt_jiekuan"
+        app:layout_heightPercent="70%"
+        app:layout_widthPercent="100%"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        >
+
+        <TextView
+            android:id="@+id/mTxt_jiekuanren"
+            android:text="借 款 人"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical"
+            android:textColor="#7f7f7f"
+            android:textSize="14sp"
+            app:layout_marginLeftPercent="5%"
+            app:layout_heightPercent="10%"
+            app:layout_widthPercent="20%"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+        <TextView
+            android:id="@+id/mTxt_jiekuanren2"
+            android:text="张康了"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:layout_toRightOf="@id/mTxt_jiekuanren"
+            android:layout_alignBottom="@id/mTxt_jiekuanren"
+            android:layout_alignTop="@id/mTxt_jiekuanren"
+            app:layout_marginLeftPercent="7%"
+            app:layout_marginRightPercent="5%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+
+
+        <TextView
+            android:background="#50aaaaaa"
+            android:id="@+id/line1"
+            android:layout_below="@id/mTxt_jiekuanren"
+            android:layout_width="match_parent"
+            android:textColor="#50aaaaaa"
+            android:layout_height="1dp" />
+
+
+        <TextView
+            android:id="@+id/mTxt_idCard"
+            android:text="身份证号"
+            android:layout_below="@id/line1"
+            android:gravity="center_vertical"
+            android:textColor="#7f7f7f"
+            android:textSize="14sp"
+            app:layout_marginLeftPercent="5%"
+            app:layout_heightPercent="10%"
+            app:layout_widthPercent="20%"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+        <TextView
+            android:id="@+id/mTxt_idCard2"
+            android:text="123456789"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:layout_toRightOf="@id/mTxt_idCard"
+            android:layout_alignBottom="@id/mTxt_idCard"
+            android:layout_alignTop="@id/mTxt_idCard"
+            app:layout_marginLeftPercent="7%"
+            app:layout_marginRightPercent="5%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:background="#50aaaaaa"
+            android:id="@+id/line2"
+            android:layout_below="@id/mTxt_idCard"
+            android:layout_width="match_parent"
+            android:textColor="#50aaaaaa"
+            android:layout_height="1dp" />
+        <TextView
+            android:id="@+id/mTxt_dates"
+            android:text="进件日期"
+            android:layout_below="@id/line2"
+            android:gravity="center_vertical"
+            android:textColor="#7f7f7f"
+            android:textSize="14sp"
+            app:layout_marginLeftPercent="5%"
+            app:layout_heightPercent="10%"
+            app:layout_widthPercent="20%"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+        <TextView
+            android:id="@+id/mTxt_dates2"
+            android:text="123456789"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:layout_toRightOf="@id/mTxt_dates"
+            android:layout_alignBottom="@id/mTxt_dates"
+            android:layout_alignTop="@id/mTxt_dates"
+            app:layout_marginLeftPercent="7%"
+            app:layout_marginRightPercent="5%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:background="#50aaaaaa"
+            android:id="@+id/line3"
+            android:layout_below="@id/mTxt_dates"
+            android:layout_width="match_parent"
+            android:textColor="#50aaaaaa"
+            android:layout_height="1dp" />
+        <TextView
+            android:id="@+id/mTxt_money"
+            android:text="审批金额"
+            android:layout_below="@id/line3"
+            android:gravity="center_vertical"
+            android:textColor="#7f7f7f"
+            android:textSize="14sp"
+            app:layout_marginLeftPercent="5%"
+            app:layout_heightPercent="10%"
+            app:layout_widthPercent="20%"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+        <TextView
+            android:id="@+id/mTxt_money2"
+            android:text="123456789"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:layout_toRightOf="@id/mTxt_money"
+            android:layout_alignBottom="@id/mTxt_money"
+            android:layout_alignTop="@id/mTxt_money"
+            app:layout_marginLeftPercent="7%"
+            app:layout_marginRightPercent="5%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:background="#50aaaaaa"
+            android:id="@+id/line4"
+            android:layout_below="@id/mTxt_money"
+            android:layout_width="match_parent"
+            android:textColor="#50aaaaaa"
+            android:layout_height="1dp" />
+        <TextView
+            android:id="@+id/mTxt_limit"
+            android:text="期        限"
+            android:layout_below="@id/line4"
+            android:gravity="center_vertical"
+            android:textColor="#7f7f7f"
+            android:textSize="14sp"
+            app:layout_marginLeftPercent="5%"
+            app:layout_heightPercent="10%"
+            app:layout_widthPercent="20%"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+        <TextView
+            android:id="@+id/mTxt_limit2"
+            android:text="123456789"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:layout_toRightOf="@id/mTxt_limit"
+            android:layout_alignBottom="@id/mTxt_limit"
+            android:layout_alignTop="@id/mTxt_limit"
+            app:layout_marginLeftPercent="7%"
+            app:layout_marginRightPercent="5%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:background="#50aaaaaa"
+            android:id="@+id/line5"
+            android:layout_below="@id/mTxt_limit"
+            android:layout_width="match_parent"
+            android:textColor="#50aaaaaa"
+            android:layout_height="1dp" />
+
+        <TextView
+            android:id="@+id/mTxt_product"
+            android:text="产品费率"
+            android:layout_below="@id/line5"
+            android:gravity="center_vertical"
+            android:textColor="#7f7f7f"
+            android:textSize="14sp"
+            app:layout_marginLeftPercent="5%"
+            app:layout_heightPercent="10%"
+            app:layout_widthPercent="20%"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+        <TextView
+            android:id="@+id/mTxt_product2"
+            android:text="123456789"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:layout_toRightOf="@id/mTxt_product"
+            android:layout_alignBottom="@id/mTxt_product"
+            android:layout_alignTop="@id/mTxt_product"
+            app:layout_marginLeftPercent="7%"
+            app:layout_marginRightPercent="5%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:background="#50aaaaaa"
+            android:id="@+id/line6"
+            android:layout_below="@id/mTxt_product"
+            android:layout_width="match_parent"
+            android:textColor="#50aaaaaa"
+            android:layout_height="1dp" />
+
+
+        <TextView
+            android:id="@+id/mTxt_jiedian"
+            android:text="当前节点"
+            android:layout_below="@id/line6"
+            android:gravity="center_vertical"
+            android:textColor="#7f7f7f"
+            android:textSize="14sp"
+            app:layout_marginLeftPercent="5%"
+            app:layout_heightPercent="10%"
+            app:layout_widthPercent="20%"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+        <TextView
+            android:id="@+id/mTxt_jiedian2"
+            android:text="123456789"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:layout_toRightOf="@id/mTxt_jiedian"
+            android:layout_alignBottom="@id/mTxt_jiedian"
+            android:layout_alignTop="@id/mTxt_jiedian"
+            app:layout_marginLeftPercent="7%"
+            app:layout_marginRightPercent="5%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:background="#50aaaaaa"
+            android:id="@+id/line7"
+            android:layout_below="@id/mTxt_jiedian"
+            android:layout_width="match_parent"
+            android:textColor="#50aaaaaa"
+            android:layout_height="1dp" />
+        <TextView
+            android:id="@+id/mTxt_beizhu"
+            android:text="备        注"
+            android:layout_below="@id/line7"
+            android:gravity="center_vertical"
+            android:textColor="#7f7f7f"
+            android:textSize="14sp"
+            app:layout_marginLeftPercent="5%"
+            android:layout_width="0dp"
+            app:layout_heightPercent="10%"
+            app:layout_widthPercent="20%"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/mTxt_beizhu2"
+            android:text="123456789"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:layout_toRightOf="@id/mTxt_beizhu"
+            android:layout_alignBottom="@id/mTxt_beizhu"
+            android:layout_alignTop="@id/mTxt_beizhu"
+            app:layout_marginLeftPercent="7%"
+            app:layout_marginRightPercent="5%"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:background="#50aaaaaa"
+            android:id="@+id/line8"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:textColor="#50aaaaaa"
+            android:layout_height="1dp" />
+
+    </android.support.percent.PercentRelativeLayout>
+
+
+
+
+
+
+
+</android.support.percent.PercentRelativeLayout>

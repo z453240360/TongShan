@@ -1,6 +1,7 @@
 package com.ts888.tongshan.tongshan.fragment;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -25,10 +27,14 @@ import com.ts888.tongshan.tongshan.bean.ParmsBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.R.attr.data;
+import static android.R.attr.editable;
+import static com.ts888.tongshan.tongshan.R.id.ed_search1;
+import static com.ts888.tongshan.tongshan.R.id.searchView;
 
 /**
  * Created by Administrator on 2017/7/31.
@@ -38,7 +44,7 @@ public class KeHuFragment extends Fragment implements IMainView {
 
 
     private XRecyclerView mKeHu_rl;
-    private EditText editText;
+    private SearchView editText;
     private List<FindScheduleBean.DataBean> list = new ArrayList();
 
     private List<FindScheduleBean.DataBean> mList = new ArrayList();
@@ -51,6 +57,13 @@ public class KeHuFragment extends Fragment implements IMainView {
     private LikeListAdapter adapter;
     private LinearLayoutManager manager;
     private boolean isFirst = true;
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        editText.setFocusable(true);
+        editText.setFocusableInTouchMode(true);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -72,29 +85,48 @@ public class KeHuFragment extends Fragment implements IMainView {
         parmsBean.setPage(page);
         parmsBean.setRows(row);
         mKeHu_rl = (XRecyclerView) view.findViewById(R.id.kehu_rl);
-        editText = (EditText) view.findViewById(R.id.ed_search1);
+        editText = (SearchView) view.findViewById(ed_search1);
+        editText.setIconifiedByDefault(false);
+        editText.clearFocus();
         present = new Present(this);
         present.getFindInApprovalApplyInfo(parmsBean, tokens);
 
+        Class<? extends SearchView> aClass = editText.getClass();
+        //--指定某个私有属性,mSearchPlate是搜索框父布局的名字
+        Field ownField = null;
+        try {
+            ownField = aClass.getDeclaredField("mSearchPlate");
+            //--暴力反射,只有暴力反射才能拿到私有属性
+            ownField.setAccessible(true);
+            View mView = (View) ownField.get(editText);
+            //--设置背景
+            mView.setBackgroundColor(Color.TRANSPARENT);
 
-        editText.addTextChangedListener(new TextWatcher() {
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+
+        editText.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public boolean onQueryTextSubmit(String s) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-                jinJianBean.setName(editable.toString());
+                jinJianBean.setName(s);
                 present.getFindInApprovalApplyInfoByUserName(jinJianBean, tokens);
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
             }
         });
+
+
+
 
         //Recylerview加载数据
         adapter = new LikeListAdapter(getActivity(), mList);
@@ -112,33 +144,36 @@ public class KeHuFragment extends Fragment implements IMainView {
         mKeHu_rl.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                page = 1;
-                mList.clear();
-                adapter.notifyDataSetChanged();
-                parmsBean.setPage(page);
-                parmsBean.setRows(row);
-                present.getFindInApprovalApplyInfo(parmsBean, tokens);
-                mKeHu_rl.refreshComplete();
+                if (!(editText.getQuery().toString()).equals("")){
+                    jinJianBean.setName(editText.getQuery().toString());
+                    present.getFindInApprovalApplyInfoByUserName(jinJianBean, tokens);
+                    mKeHu_rl.refreshComplete();
+
+                }else {
+                    page = 1;
+                    editText.clearFocus();
+                    adapter.notifyDataSetChanged();
+                    parmsBean.setPage(page);
+                    parmsBean.setRows(row);
+                    present.getFindInApprovalApplyInfo(parmsBean, tokens);
+                    mKeHu_rl.refreshComplete();
+                }
             }
 
             @Override
             public void onLoadMore() {
-                if (page >= 5) {
-//                    if (isFirst){
-//                        Toast.makeText(getActivity(), "只能查看前50名业绩", Toast.LENGTH_SHORT).show();
-//                        isFirst=false;
-//                    }
-//                    Toast.makeText(getActivity(), "只能查看前50名业绩", Toast.LENGTH_SHORT).show();
+                if (!(editText.getQuery().toString()).equals("")){
+                    jinJianBean.setName(editText.getQuery().toString());
+                    present.getFindInApprovalApplyInfoByUserName(jinJianBean, tokens);
                     mKeHu_rl.loadMoreComplete();
-                    return;
+                }else{
+                    page++;
+                    parmsBean.setPage(page);
+                    parmsBean.setRows(row);
+                    present.getFindInApprovalApplyInfo(parmsBean, tokens);
+                    mKeHu_rl.smoothScrollToPosition(mList.size() - 1);
+                    mKeHu_rl.loadMoreComplete();
                 }
-                page++;
-                parmsBean.setPage(page);
-                parmsBean.setRows(row);
-                present.getFindInApprovalApplyInfo(parmsBean, tokens);
-                mKeHu_rl.smoothScrollToPosition(mList.size() - 1);
-                mKeHu_rl.loadMoreComplete();
-
             }
         });
     }
@@ -179,6 +214,7 @@ public class KeHuFragment extends Fragment implements IMainView {
             if (isFirst) {
                 Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
                 isFirst = false;
+                return;
             }
             Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
             return;
@@ -201,6 +237,9 @@ public class KeHuFragment extends Fragment implements IMainView {
     public void setCallBack(ShouyeFragment.TextCallBack callBack) {
         this.callBack = callBack;
     }
+
+
+
 
     @Override
     public void onDestroyView() {

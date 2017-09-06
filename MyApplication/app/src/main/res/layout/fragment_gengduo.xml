@@ -11,7 +11,7 @@
         android:layout_alignParentTop="true"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_heightPercent="32%"
+        app:layout_heightPercent="35%"
         app:layout_widthPercent="100%"
         >
         <TextView
@@ -28,8 +28,8 @@
 
 
         <ImageView
-            app:layout_heightPercent="40%"
-            app:layout_widthPercent="40%"
+            app:layout_heightPercent="35%"
+            app:layout_widthPercent="35%"
             android:id="@+id/img_center"
             app:layout_marginTopPercent="3%"
             android:layout_width="0dp"
@@ -40,7 +40,7 @@
 
 
         <TextView
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textColor="#fff"
             app:layout_marginTopPercent="6%"
             android:id="@+id/mTxt_gerenname"
@@ -71,19 +71,21 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_below="@id/p1"
-        app:layout_heightPercent="23%"
+        app:layout_heightPercent="25%"
         app:layout_widthPercent="100%"
         >
 
         <TextView
-            app:layout_marginLeftPercent="5%"
+            android:drawableLeft="@mipmap/shouji"
+            android:drawablePadding="6dp"
+            app:layout_marginLeftPercent="5.5%"
             android:gravity="center_vertical"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:id="@+id/mTxt_bangding"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_heightPercent="32%"
-            app:layout_widthPercent="20%"
+            app:layout_widthPercent="25%"
             android:layout_alignParentTop="true"
             android:layout_marginLeft="10dp"
             android:text="绑定手机"
@@ -93,7 +95,7 @@
             app:layout_marginRightPercent="5%"
             app:layout_marginLeftPercent="5%"
             android:gravity="center_vertical"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:id="@+id/mTxt_phoneNumber"
             android:layout_alignTop="@id/mTxt_bangding"
             android:layout_alignBottom="@id/mTxt_bangding"
@@ -112,10 +114,12 @@
             android:layout_height="1dp" />
 
         <TextView
+            android:drawableLeft="@mipmap/mendian"
+            android:drawablePadding="5dp"
             app:layout_heightPercent="32%"
-            app:layout_widthPercent="20%"
+            app:layout_widthPercent="25%"
             android:gravity="center_vertical"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:id="@+id/mTxt_mendian"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -133,6 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/line1"
             android:layout_marginLeft="20dp"
+            android:textSize="16sp"
             android:layout_alignTop="@id/mTxt_mendian"
             android:layout_alignBottom="@id/mTxt_mendian"
             android:layout_toRightOf="@id/mTxt_bangding"
@@ -148,10 +153,12 @@
             android:layout_height="1dp" />
 
         <TextView
+            android:drawableLeft="@mipmap/tuandui"
+            android:drawablePadding="5dp"
             app:layout_heightPercent="32%"
-            app:layout_widthPercent="20%"
+            app:layout_widthPercent="25%"
             android:gravity="center_vertical"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:id="@+id/mTxt_tuandui2"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -166,7 +173,7 @@
             android:layout_alignTop="@id/mTxt_tuandui2"
             android:layout_alignBottom="@id/mTxt_tuandui2"
             android:gravity="center_vertical"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:id="@+id/mTxt_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -175,14 +182,6 @@
             android:layout_toRightOf="@id/mTxt_bangding"
             android:text="上海第一团队"
             android:textColor="#000" />
-
-        <!--<TextView-->
-            <!--android:id="@+id/line3"-->
-            <!--android:background="#50aaaaaa"-->
-            <!--android:layout_below="@id/mTxt_address"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:textColor="#50aaaaaa"-->
-            <!--android:layout_height="1dp" />-->
         </android.support.percent.PercentRelativeLayout>
 
 
@@ -201,15 +200,18 @@
         android:gravity="center_vertical">
 
         <Button
+            android:drawableLeft="@mipmap/aboutus"
+            android:drawablePadding="5dp"
             app:layout_heightPercent="49%"
             app:layout_widthPercent="100%"
+            android:textSize="16sp"
             app:layout_marginLeftPercent="5%"
             android:gravity="center_vertical"
             android:id="@+id/mBtn_bangzhu"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@null"
-            android:text="帮助中心" />
+            android:text="关于我们" />
 
         <ImageView
             app:layout_marginRightPercent="5%"
@@ -231,16 +233,19 @@
             android:background="#50aaaaaa" />
 
         <Button
+            android:drawableLeft="@mipmap/bangzhu"
+            android:drawablePadding="5dp"
             app:layout_heightPercent="49%"
-            app:layout_widthPercent="20%"
+            app:layout_widthPercent="100%"
             android:gravity="center_vertical"
             android:id="@+id/mBtn_women"
             android:layout_width="0dp"
+            android:textSize="16sp"
             android:layout_height="0dp"
             android:layout_below="@id/mBtn_bangzhu"
             app:layout_marginLeftPercent="5%"
             android:background="@null"
-            android:text="关于我们" />
+            android:text="帮助中心" />
 
         <ImageView
             app:layout_marginRightPercent="5%"
@@ -261,6 +266,7 @@
         android:gravity="center"
         android:textColor="#fff"
         android:textSize="20sp"
+        style="@style/Base.Widget.AppCompat.Button.Borderless"
         app:layout_heightPercent="7%"
         app:layout_widthPercent="100%"
         app:layout_marginLeftPercent="5%"

@@ -26,6 +26,7 @@ import com.ts888.tongshan.tongshan.activity.LongHuBangActivity;
 import com.ts888.tongshan.tongshan.activity.ProductCenterActivity;
 import com.ts888.tongshan.tongshan.activity.QiandanActivity;
 import com.ts888.tongshan.tongshan.activity.ShiSuanActivity;
+import com.ts888.tongshan.tongshan.activity.WebActivity;
 import com.ts888.tongshan.tongshan.bean.BannerResultBean;
 import com.ts888.tongshan.tongshan.bean.BannerTypeBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
@@ -41,7 +42,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 /**
  * Created by dongdong on 2017/7/30.
  * 首页Fragment
@@ -49,7 +49,7 @@ import java.util.List;
 
 public class ShouyeFragment extends Fragment implements IMainView {
 
-    private ShouyeWedget wed1,wed2,wed3,wed4,wed5,wed6,wed7,wed8,wed9;
+    private ShouyeWedget wed1, wed2, wed3, wed4, wed5, wed6, wed7, wed8, wed9;
     private SharedPreferences sharedPreferences;
     private String token;
     private Present present;
@@ -147,7 +147,6 @@ public class ShouyeFragment extends Fragment implements IMainView {
         });
 
 
-
     }
 
     @Override
@@ -191,7 +190,7 @@ public class ShouyeFragment extends Fragment implements IMainView {
             Toast.makeText(getActivity(), "" + bannerResultBean.getMessage(), Toast.LENGTH_SHORT).show();
             return;
         }
-        List<BannerResultBean.DataBean> data = bannerResultBean.getData();
+        final List<BannerResultBean.DataBean> data = bannerResultBean.getData();
 
         for (int i = 0; i < data.size(); i++) {
             BannerResultBean.DataBean dataBean = data.get(i);
@@ -213,9 +212,10 @@ public class ShouyeFragment extends Fragment implements IMainView {
             @Override
             public void OnBannerClick(int position) {
 
-                Toast.makeText(getActivity(), ""+position, Toast.LENGTH_SHORT).show();
-
-
+                Intent intent = new Intent(getActivity(), WebActivity.class);
+                intent.putExtra("producturl", data.get(position).getImgUrl());
+                intent.putExtra("title", data.get(position).getTitle());
+                startActivity(intent);
             }
         });
 

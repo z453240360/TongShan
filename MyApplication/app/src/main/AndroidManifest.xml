@@ -43,10 +43,8 @@
         <activity android:name=".activity.GerenCenterActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".TestActivity" />
-        <activity android:name=".activity.StartActivity"
-            >
-
-        </activity>
+        <activity android:name=".activity.StartActivity"></activity>
+        <activity android:name=".activity.FangKuanActivity"></activity>
     </application>
 
 </manifest>

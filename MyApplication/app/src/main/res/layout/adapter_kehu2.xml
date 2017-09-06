@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff">
+
+    <TextView
+        android:id="@+id/mTxt_name2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        android:text="孙小宝"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+
+    <TextView
+        android:id="@+id/mTxt_time2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mTxt_name2"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="申请时间:"
+        android:textColor="#8b8b8b"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/mTxt_time22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/mTxt_time2"
+        android:layout_alignTop="@id/mTxt_time2"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/mTxt_time2"
+        android:gravity="center"
+        android:text="申请时间:"
+        android:textColor="#8b8b8b"
+        android:textSize="14sp" />
+
+
+    <TextView
+        android:id="@+id/mTxt_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/mTxt_time2"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/mTxt_name2"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:paddingLeft="20dp"
+        android:text="审批中"
+        android:textColor="#8b8b8b"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/line_kehu"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/mTxt_time2"
+        android:background="#508a8a8a" />
+
+</RelativeLayout>
