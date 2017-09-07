@@ -33,12 +33,8 @@ import com.ts888.tongshan.tongshan.model.Present;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.R.attr.data;
-import static android.R.attr.editable;
 import static android.content.Context.INPUT_METHOD_SERVICE;
 import static com.ts888.tongshan.tongshan.R.id.ed_search1;
-import static com.ts888.tongshan.tongshan.R.id.searchView;
 
 /**
  * Created by Administrator on 2017/7/31.
@@ -50,7 +46,6 @@ public class KeHuFragment extends Fragment implements IMainView {
     private XRecyclerView mKeHu_rl;
     private SearchView editText;
     private List<FindScheduleBean.DataBean> list = new ArrayList();
-
     private List<FindScheduleBean.DataBean> mList = new ArrayList();
     private Present present;
     private ParmsBean parmsBean;
@@ -75,7 +70,6 @@ public class KeHuFragment extends Fragment implements IMainView {
         View view = inflater.inflate(R.layout.fragment_kehu, container, false);
         return view;
     }
-
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -106,7 +100,6 @@ public class KeHuFragment extends Fragment implements IMainView {
             View mView = (View) ownField.get(editText);
             //--设置背景
             mView.setBackgroundColor(Color.TRANSPARENT);
-
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -150,12 +143,14 @@ public class KeHuFragment extends Fragment implements IMainView {
             @Override
             public void onRefresh() {
                 if (!(editText.getQuery().toString()).equals("")){
+                    mList.clear();
                     jinJianBean.setName(editText.getQuery().toString());
                     present.getFindInApprovalApplyInfoByUserName(jinJianBean, tokens);
                     mKeHu_rl.refreshComplete();
 
                 }else {
                     page = 1;
+                    mList.clear();
                     editText.clearFocus();
                     adapter.notifyDataSetChanged();
                     parmsBean.setPage(page);
@@ -226,12 +221,12 @@ public class KeHuFragment extends Fragment implements IMainView {
         list = findScheduleBean.getData();
 
         if (list.size() == 0) {
-            if (isFirst) {
-                Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
-                isFirst = false;
-                return;
-            }
-            Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
+//            if (isFirst) {
+//                Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
+//                isFirst = false;
+//                return;
+//            }
+//            Toast.makeText(getActivity(), "没有更多数据了", Toast.LENGTH_SHORT).show();
             return;
         }
         mList.addAll(list);

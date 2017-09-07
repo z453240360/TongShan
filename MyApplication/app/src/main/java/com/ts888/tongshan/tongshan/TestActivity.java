@@ -2,39 +2,25 @@ package com.ts888.tongshan.tongshan;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ts888.tongshan.tongshan.bean.LongHuParmsBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
-import com.ts888.tongshan.tongshan.wedget.ShouyeWedget;
+import com.ts888.tongshan.tongshan.wedget.SearchView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TestActivity extends AppCompatActivity implements IMainView{
+public class TestActivity extends AppCompatActivity implements IMainView {
 
-    @BindView(R.id.wed1)
-    ShouyeWedget wed1;
-    @BindView(R.id.wed2)
-    ShouyeWedget wed2;
-    @BindView(R.id.wed3)
-    ShouyeWedget wed3;
-    @BindView(R.id.wed4)
-    ShouyeWedget wed4;
-    @BindView(R.id.wed5)
-    ShouyeWedget wed5;
-    @BindView(R.id.wed6)
-    ShouyeWedget wed6;
-    @BindView(R.id.wed7)
-    ShouyeWedget wed7;
-    @BindView(R.id.wed8)
-    ShouyeWedget wed8;
-    @BindView(R.id.wed9)
-    ShouyeWedget wed9;
 
     Present present;
+    @BindView(R.id.test)
+    TextView test;
+    @BindView(R.id.search)
+    SearchView search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +28,14 @@ public class TestActivity extends AppCompatActivity implements IMainView{
         setContentView(R.layout.activity_test2);
         ButterKnife.bind(this);
         present = new Present(this);
-
-
-        present.getNoticeInfoList(new LongHuParmsBean(),"");
+        present.getNoticeInfoList(new LongHuParmsBean(), "");
+        
+        search.setCallBack(new SearchView.SearchCallBack() {
+            @Override
+            public void onSearchCallBack(String s) {
+                Toast.makeText(TestActivity.this, ""+s, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

@@ -28,7 +28,7 @@
                 android:layout_gravity="center"
                 android:text="试算工具"
                 android:textColor="#ffffff"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
         </android.support.v7.widget.Toolbar>
 
 
@@ -73,7 +73,9 @@
             <EditText
                 android:id="@+id/mEd_jine"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="10dp"

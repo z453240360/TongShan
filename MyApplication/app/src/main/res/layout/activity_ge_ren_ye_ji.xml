@@ -23,7 +23,7 @@
             android:layout_gravity="center"
             android:text="个人业绩"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </android.support.v7.widget.Toolbar>
 
     <TextView

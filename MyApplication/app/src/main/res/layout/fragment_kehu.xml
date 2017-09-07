@@ -11,7 +11,7 @@
         android:focusable="false"
         android:focusableInTouchMode="true"
         android:id="@+id/ed_search1"
-        android:queryHint="搜索"
+        android:queryHint="请输入关键字"
         android:background="#fff"
         android:gravity="center"
         android:layout_alignParentTop="true"
@@ -21,10 +21,11 @@
         android:layout_below="@id/ed_search1"
         android:id="@+id/line_kehu"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="0.3dp"
         android:background="#508a8a8a" />
     <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:id="@+id/kehu_rl"
+        android:layout_marginTop="6dp"
         android:layout_below="@id/line_kehu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

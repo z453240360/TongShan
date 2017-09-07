@@ -22,7 +22,7 @@
             android:layout_gravity="center"
             android:text="龙虎榜（月度排名）"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
     </android.support.v7.widget.Toolbar>
 
     <RadioGroup

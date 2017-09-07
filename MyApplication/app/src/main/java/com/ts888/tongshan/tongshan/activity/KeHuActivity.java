@@ -13,7 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SearchView;
@@ -48,7 +50,7 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
     private SharedPreferences sharedPreferences;
     private String token;
     private Toolbar toolbar;
-    private SearchView searchView;
+//    private SearchView searchView;
     private ProgressDialog dialog;
 
     private ArrayList<Fragment> list = new ArrayList<>();
@@ -57,6 +59,7 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
     private KeHuFragment keHuFragment;
     private KeHuFragment2 keHuFragment2;
     private KeHuFragment3 keHuFragment3;
+    private InputMethodManager manager1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,12 +165,13 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
         //加载框
         dialog = new ProgressDialog(this);
         //初始化控件searchView
-        searchView = (SearchView) findViewById(R.id.searchView);
+//        searchView = (SearchView) findViewById(R.id.searchView);
         mRg_KeHu = (RadioGroup) findViewById(R.id.mRg_kehu);
 //        ImageView searchButton = (ImageView)searchView.findViewById(R.id.search_button);
         toolbar = (Toolbar) findViewById(R.id.toolbars_kehu_activity);
 
 //        searchButton.setImageResource(R.mipmap.sousuo);
+        manager1 = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
     }
 
     private void initToolbar() {
@@ -247,4 +251,19 @@ public class KeHuActivity extends AppCompatActivity implements IMainView{
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public boolean onTouchEvent(android.view.MotionEvent event) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        return imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);}
+//    @Override
+//    public boolean onTouchEvent(MotionEvent event) {
+//        // TODO Auto-generated method stub
+//        if(event.getAction() == MotionEvent.ACTION_DOWN){
+//            if(getCurrentFocus()!=null && getCurrentFocus().getWindowToken()!=null){
+//                manager1.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+//            }
+//        }
+//        return super.onTouchEvent(event);
+//    }
 }

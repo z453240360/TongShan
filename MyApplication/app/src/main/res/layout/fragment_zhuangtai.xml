@@ -16,13 +16,15 @@
             >
 
             <TextView
+                android:layout_marginTop="30dp"
+                android:layout_alignParentTop="true"
                 android:background="#ffffff"
                 android:id="@+id/mTxt_shenfenzhenghao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:text="客户姓名"
+                android:layout_marginLeft="20dp"
+                android:text="客户姓名："
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
@@ -40,35 +42,36 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:layout_marginBottom="10dp"
                 android:layout_below="@id/mTxt_zhuangtainame"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
                 android:id="@+id/mTxt_time_zhuangtai2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textSize="15sp"
+                android:textSize="12sp"
                 android:textColor="#8b8b8b" />
 
             <TextView
-                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="30dp"
                 android:layout_toLeftOf="@+id/mTxt_time_zhuangtai2"
                 android:layout_below="@id/mTxt_shenfenzhenghao"
                 android:id="@+id/mTxt_time_zhuangtai"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="申请时间:"
-                android:textSize="15sp"
+                android:textSize="12sp"
                 android:textColor="#8b8b8b" />
 
         </RelativeLayout>
 
         <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_width="match_parent"
             android:layout_height="0.1dp"
-            android:background="#8b8b8b" />
+            android:background="#508b8b8b" />
 
         <RelativeLayout
             android:background="#ffffff"
@@ -77,14 +80,14 @@
             >
 
             <TextView
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_centerVertical="true"
                 android:id="@+id/mTxt_jiekuan2"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="申请金额:"
                 android:textColor="#126cb0"
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/mTxt_jiekuanname2"
@@ -94,7 +97,7 @@
                 android:layout_alignBottom="@id/mTxt_jiekuan2"
                 android:layout_toRightOf="@id/mTxt_jiekuan2"
                 android:text=""
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textColor="#126cb0" />
 
 
@@ -104,10 +107,11 @@
                 android:layout_alignParentRight="true"
                 android:id="@+id/mTxt_qixian2"
                 android:layout_width="wrap_content"
+                android:layout_marginRight="20dp"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@id/mTxt_jiekuanname2"
                 android:text=""
-                android:textSize="20sp"
+                android:textSize="14sp"
                 android:textColor="#27b75e" />
 
             <TextView
@@ -118,22 +122,21 @@
                 android:layout_toLeftOf="@id/mTxt_qixian2"
                 android:text="期限:  "
                 android:layout_marginLeft="10dp"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textColor="#27b75e" />
 
         </RelativeLayout>
+
         <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_width="match_parent"
             android:layout_height="0.1dp"
-            android:background="#8b8b8b" />
+            android:background="#508b8b8b" />
         <RelativeLayout
             android:background="@null"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             >
 
             <TextView
@@ -144,13 +147,13 @@
                 android:drawablePadding="10dp"
                 android:text="信息认证 "
                 android:textColor="#000000"
-                android:textSize="22sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/mTxt_shouji2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="40dp"
+                android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
                 android:textSize="18sp"
                 android:layout_alignBottom="@id/mTxt_shouji"
@@ -161,7 +164,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.1dp"
-            android:background="#8b8b8b" />
+            android:background="#508b8b8b" />
 
         <RelativeLayout
             android:background="#ffffff"
@@ -170,7 +173,7 @@
             >
 
             <TextView
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:layout_centerVertical="true"
                 android:id="@+id/mTxt_jichu"
                 android:drawableLeft="@mipmap/jichuxinxi"
@@ -179,13 +182,13 @@
                 android:drawablePadding="10dp"
                 android:text="基础信息 "
                 android:textColor="#000000"
-                android:textSize="20sp" />
+                android:textSize="14sp" />
 
 
             <TextView
                 android:text="未认证"
-                android:layout_marginRight="10dp"
-                android:textSize="18sp"
+                android:layout_marginRight="20dp"
+                android:textSize="14sp"
                 android:layout_alignParentRight="true"
                 android:id="@+id/mTxt_jichu2"
                 android:layout_width="wrap_content"
@@ -199,7 +202,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.1dp"
-            android:background="#8b8b8b" />
+            android:background="#508b8b8b" />
         <RelativeLayout
             android:background="#ffffff"
             android:layout_width="match_parent"
@@ -207,7 +210,7 @@
             >
 
             <TextView
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:drawableLeft="@mipmap/renmairenzheng"
                 android:layout_centerVertical="true"
                 android:id="@+id/mTxt_renmai"
@@ -216,13 +219,13 @@
                 android:drawablePadding="10dp"
                 android:text="人脉信息"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
 
 
             <TextView
-                android:layout_marginRight="10dp"
-                android:textSize="18sp"
+                android:layout_marginRight="20dp"
+                android:textSize="14sp"
                 android:layout_alignParentRight="true"
                 android:id="@+id/mTxt_renmai2"
                 android:layout_width="wrap_content"
@@ -237,7 +240,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.1dp"
-            android:background="#8b8b8b" />
+            android:background="#508b8b8b" />
 
         <RelativeLayout
             android:background="#ffffff"
@@ -246,7 +249,7 @@
             >
 
             <TextView
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:drawableLeft="@mipmap/yinhangliushui"
                 android:layout_centerVertical="true"
                 android:id="@+id/mTxt_yinhang"
@@ -255,13 +258,13 @@
                 android:drawablePadding="10dp"
                 android:text="银行流水"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
 
 
             <TextView
-                android:layout_marginRight="10dp"
-                android:textSize="18sp"
+                android:layout_marginRight="20dp"
+                android:textSize="14sp"
                 android:layout_alignParentRight="true"
                 android:id="@+id/mTxt_yinghang2"
                 android:layout_width="wrap_content"
@@ -276,7 +279,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0.1dp"
-            android:background="#8b8b8b" />
+            android:background="#508b8b8b" />
 
         <RelativeLayout
             android:background="#ffffff"
@@ -285,7 +288,7 @@
             >
 
             <TextView
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="20dp"
                 android:drawableLeft="@mipmap/gerenzhengxin"
                 android:layout_centerVertical="true"
                 android:id="@+id/mTxt_geren"
@@ -294,19 +297,23 @@
                 android:drawablePadding="10dp"
                 android:text="个人征信"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <TextView
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
                 android:id="@+id/mTxt_geren2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:text="未认证"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:layout_alignBottom="@id/mTxt_geren"
                 android:textColor="#8b8b8b" />
         </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="#508b8b8b" />
     </LinearLayout>
 </ScrollView>

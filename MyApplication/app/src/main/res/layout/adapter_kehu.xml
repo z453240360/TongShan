@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:paddingTop="0dp"
-    android:layout_marginBottom="1dp"
+    android:layout_marginBottom="4dp"
     android:background="#ffffff"
     android:layout_height="wrap_content">
 
@@ -11,6 +11,7 @@
         android:paddingLeft="20dp"
         android:layout_marginTop="5dp"
         android:textColor="#126cb0"
+        android:textSize="12sp"
         android:id="@+id/mTxt_dangqianjiedian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,16 +21,16 @@
         android:textColor="#126cb0"
         android:layout_alignBottom="@id/mTxt_dangqianjiedian"
         android:id="@+id/mTxt_jianban"
-        android:textSize="14sp"
+        android:textSize="12sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/mTxt_dangqianjiedian"
-        android:text="简版征信" />
+        android:text="" />
 
     <TextView
         android:layout_marginRight="20dp"
         android:textColor="#0bb04a"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:id="@+id/mTxt_wuqian"
         android:layout_alignBottom="@id/mTxt_dangqianjiedian"
         android:layout_width="wrap_content"
@@ -39,7 +40,7 @@
 
     <TextView
         android:textColor="#0bb04a"
-        android:textSize="14sp"
+        android:textSize="12sp"
         android:id="@+id/mTxt_jine"
         android:layout_width="wrap_content"
         android:layout_alignBottom="@id/mTxt_dangqianjiedian"
@@ -64,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="孙小宝" />
+            android:text="" />
 
         <ImageView
             android:id="@+id/mBtn_open"
@@ -75,7 +76,7 @@
             android:src="@mipmap/youjiantou_01" />
 
         <TextView
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="20dp"
             android:layout_below="@id/mTxt_sunxiaobao"
             android:id="@+id/view"
             android:background="#508b8b8b"
@@ -86,9 +87,10 @@
 
     <TextView
         android:paddingLeft="20dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:textColor="#8b8b8b"
-        android:textSize="14sp"
+        android:textSize="12sp"
+        android:layout_marginBottom="5dp"
         android:id="@+id/mTxt_shenqinshijian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -98,7 +100,7 @@
     <TextView
         android:layout_marginLeft="10dp"
         android:textColor="#8b8b8b"
-        android:textSize="14sp"
+        android:textSize="12sp"
         android:id="@+id/mTxt_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -106,9 +108,10 @@
         android:layout_toRightOf="@id/mTxt_shenqinshijian"
         android:text="" />
     <TextView
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="5dp"
         android:layout_below="@id/mTxt_shenqinshijian"
         android:id="@+id/view2"
+        android:visibility="invisible"
         android:background="#508b8b8b"
         android:layout_width="match_parent"
         android:layout_height="0.1dp"/>

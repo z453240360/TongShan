@@ -10,8 +10,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -31,7 +33,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.ts888.tongshan.tongshan.R.id.searchView;
 
 /**
  * Created by Administrator on 2017/7/31.
@@ -42,13 +43,13 @@ public class KeHuFragment2 extends Fragment implements IMainView {
 
     private XRecyclerView mKeHu_rl;
     private SearchView ed_search1;
+//    private com.ts888.tongshan.tongshan.wedget.SearchView my_search;
     private Present present;
     private String tokens;
     private LikeListAdapter2 adapter2;
     private LinearLayoutManager manager;
     private boolean isFirst = true;
     private JinJianBean bean;
-    private TextView textView;
     private List<Jinjian2_Bean.DataBean> mDates = new ArrayList<>();
     private List<Jinjian2_Bean.DataBean> mDatess = new ArrayList<>();
 
@@ -128,7 +129,6 @@ public class KeHuFragment2 extends Fragment implements IMainView {
             //--设置背景
             mView.setBackgroundColor(Color.TRANSPARENT);
 
-
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
@@ -143,8 +143,6 @@ public class KeHuFragment2 extends Fragment implements IMainView {
 
                 bean.setName(query);
                 present.findApplyInfo(bean, tokens);
-//                ed_search1.setVisibility(View.INVISIBLE);
-//                textView.setVisibility(View.VISIBLE);
                 return false;
             }
 
@@ -153,30 +151,23 @@ public class KeHuFragment2 extends Fragment implements IMainView {
                 return false;
             }
         });
+
+//        my_search.setCallBack(new com.ts888.tongshan.tongshan.wedget.SearchView.SearchCallBack() {
+//            @Override
+//            public void onSearchCallBack(String s) {
+//                present.findApplyInfo(bean, tokens);
+//            }
+//        });
     }
 
     private void init(View view) {
         bean = new JinJianBean();
         mKeHu_rl = (XRecyclerView) view.findViewById(R.id.kehu_rl);
         ed_search1= (SearchView) view.findViewById(R.id.ed_search1);
-        ed_search1.setIconifiedByDefault(false);
-//        int identifier = ed_search1.getContext().getResources().getIdentifier("android:id/search_src_text", null, null);
-//        EditText ed = (EditText) ed_search1.findViewById(identifier);
-//        ed.setTextSize(14);
-//        ed.setGravity(Gravity.CENTER);
-//
-//        Drawable drawable = getActivity().getResources().getDrawable(R.mipmap.sousuo);
-//        ed.setCompoundDrawables(drawable,null,null,null);
 
-        textView = (TextView) view.findViewById(R.id.text);
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                textView.setVisibility(View.INVISIBLE);
-//                ed_search1.setVisibility(View.VISIBLE);
-                ed_search1.requestFocus();
-            }
-        });
+        ed_search1.setIconifiedByDefault(false);
+
+//        my_search = (com.ts888.tongshan.tongshan.wedget.SearchView) view.findViewById(R.id.ed_search1);
         present = new Present(this);
     }
 
@@ -247,4 +238,8 @@ public class KeHuFragment2 extends Fragment implements IMainView {
         super.onDestroyView();
 
     }
+
+
+
+
 }

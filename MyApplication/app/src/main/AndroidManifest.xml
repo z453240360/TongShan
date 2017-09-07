@@ -13,6 +13,8 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+
+    <!-- .activity.AdvActivity    .TestActivity  -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/daidao"
@@ -43,6 +45,7 @@
         <activity android:name=".activity.GerenCenterActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".TestActivity" />
+
         <activity android:name=".activity.StartActivity"></activity>
         <activity android:name=".activity.FangKuanActivity"></activity>
     </application>
