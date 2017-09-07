@@ -33,6 +33,7 @@ import com.ts888.tongshan.tongshan.model.Present;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+
 import static android.content.Context.INPUT_METHOD_SERVICE;
 import static com.ts888.tongshan.tongshan.R.id.ed_search1;
 
@@ -106,7 +107,6 @@ public class KeHuFragment extends Fragment implements IMainView {
             e.printStackTrace();
         }
 
-
         editText.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -122,8 +122,6 @@ public class KeHuFragment extends Fragment implements IMainView {
                 return false;
             }
         });
-
-
 
 
         //Recylerview加载数据
@@ -142,13 +140,13 @@ public class KeHuFragment extends Fragment implements IMainView {
         mKeHu_rl.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-                if (!(editText.getQuery().toString()).equals("")){
+                if (!(editText.getQuery().toString()).equals("")) {
                     mList.clear();
                     jinJianBean.setName(editText.getQuery().toString());
                     present.getFindInApprovalApplyInfoByUserName(jinJianBean, tokens);
                     mKeHu_rl.refreshComplete();
 
-                }else {
+                } else {
                     page = 1;
                     mList.clear();
                     editText.clearFocus();
@@ -162,11 +160,11 @@ public class KeHuFragment extends Fragment implements IMainView {
 
             @Override
             public void onLoadMore() {
-                if (!(editText.getQuery().toString()).equals("")){
+                if (!(editText.getQuery().toString()).equals("")) {
                     jinJianBean.setName(editText.getQuery().toString());
                     present.getFindInApprovalApplyInfoByUserName(jinJianBean, tokens);
                     mKeHu_rl.loadMoreComplete();
-                }else{
+                } else {
                     page++;
                     parmsBean.setPage(page);
                     parmsBean.setRows(row);
@@ -247,8 +245,6 @@ public class KeHuFragment extends Fragment implements IMainView {
     public void setCallBack(ShouyeFragment.TextCallBack callBack) {
         this.callBack = callBack;
     }
-
-
 
 
     @Override
