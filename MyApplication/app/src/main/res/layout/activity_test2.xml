@@ -10,6 +10,7 @@
 
     <TextView
         android:id="@+id/test"
+        android:background="#48aa4a"
         android:text="demo"
         android:layout_width="wrap_content"
         android:layout_height="200dp" />

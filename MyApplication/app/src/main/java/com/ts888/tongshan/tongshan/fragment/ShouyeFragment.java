@@ -180,7 +180,6 @@ public class ShouyeFragment extends Fragment implements IMainView {
 
     }
 
-
     /**
      * 获取首要banner
      *

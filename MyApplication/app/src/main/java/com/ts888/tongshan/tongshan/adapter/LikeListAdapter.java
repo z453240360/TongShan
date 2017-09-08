@@ -91,7 +91,6 @@ public class LikeListAdapter extends RecyclerView.Adapter<LikeListAdapter.MyView
     //增加一条数据
     public void insertData(int pos, FindScheduleBean.DataBean data) {
         mDatas.add(pos, data);
-
         notifyItemInserted(pos);
     }
 

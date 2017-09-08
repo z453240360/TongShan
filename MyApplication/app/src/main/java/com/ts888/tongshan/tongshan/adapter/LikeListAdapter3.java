@@ -53,7 +53,7 @@ public class LikeListAdapter3 extends RecyclerView.Adapter<LikeListAdapter3.MyVi
         if (taskNode.equals("放款中")){
             holder.mTxt_status3.setTextColor(Color.rgb(18,108,176));
         }else if (taskNode.equals("放款成功")){
-            holder.mTxt_status3.setTextColor(Color.GREEN);
+            holder.mTxt_status3.setTextColor(Color.rgb(72,170,74));
         }else if (taskNode.equals("放款失败")){
             holder.mTxt_status3.setTextColor(Color.RED);
         }else if (taskNode.equals("扣服务费中")){
@@ -61,7 +61,7 @@ public class LikeListAdapter3 extends RecyclerView.Adapter<LikeListAdapter3.MyVi
         }else if (taskNode.equals("扣服务费失败")){
             holder.mTxt_status3.setTextColor(Color.RED);
         }else if (taskNode.equals("扣服务费成功")){
-            holder.mTxt_status3.setTextColor(Color.GREEN);
+            holder.mTxt_status3.setTextColor(Color.rgb(72,170,74));
         }else if (taskNode.equals("结束")){
             holder.mTxt_status3.setTextColor(Color.BLACK);
         }else {

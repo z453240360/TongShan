@@ -139,12 +139,6 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
-
-    @Override
     public void getCode(String s) {
         Log.i(TAG, "个人列表数据: "+s);
         progressDialog.cancel();
@@ -221,5 +215,11 @@ public class LongHuGeRenFragment extends Fragment implements IMainView {
         }
         int individualRanking = data.getIndividualRankingDto().getIndividualRanking();
         mBtn_geren_dangqian.setText("我的当前名次：第 "+individualRanking+" 名");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 }

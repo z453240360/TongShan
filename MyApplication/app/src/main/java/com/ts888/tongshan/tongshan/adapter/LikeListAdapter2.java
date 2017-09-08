@@ -51,35 +51,35 @@ public class LikeListAdapter2 extends RecyclerView.Adapter<LikeListAdapter2.MyVi
 
         String taskNode = dataBean.getTaskNode();
 
-        if (taskNode.equals("01")){
+        if (taskNode.equals("录入复核")){
             holder.mTxt_status.setText("录入复核");
             holder.mTxt_status.setTextColor(Color.rgb(18,108,176));
-        }else if (taskNode.equals("02")){
+        }else if (taskNode.equals("回退门店")){
             holder.mTxt_status.setText("回退门店");
             holder.mTxt_status.setTextColor(Color.rgb(18,108,176));
-        }else if (taskNode.equals("03")){
+        }else if (taskNode.equals("审批中")){
             holder.mTxt_status.setText("审批中");
             holder.mTxt_status.setTextColor(Color.rgb(18,108,176));
-        }else if (taskNode.equals("05")){
+        }else if (taskNode.equals("资金渠道确认")){
             holder.mTxt_status.setText("资金渠道确认");
-            holder.mTxt_status.setTextColor(Color.GREEN);
-        } else if (taskNode.equals("06")){
+            holder.mTxt_status.setTextColor(Color.rgb(72,170,74));
+        } else if (taskNode.equals("面签")){
             holder.mTxt_status.setText("面签");
             holder.mTxt_status.setTextColor(Color.rgb(18,108,176));
-        } else if (taskNode.equals("07")){
+        } else if (taskNode.equals("合同复核")){
             holder.mTxt_status.setText("合同复核");
             holder.mTxt_status.setTextColor(Color.rgb(18,108,176));
-        }else if (taskNode.equals("09")){
+        }else if (taskNode.equals("取消")){
             holder.mTxt_status.setText("取消");
             holder.mTxt_status.setTextColor(Color.BLACK);
-        }else if (taskNode.equals("10")){
+        }else if (taskNode.equals("拒绝")){
             holder.mTxt_status.setText("拒绝");
             holder.mTxt_status.setTextColor(Color.RED);
         }else {
             holder.mTxt_status.setText(taskNode);
             holder.mTxt_status.setTextColor(Color.BLACK);
         }
-
+//        holder.mTxt_status.setText(taskNode);
         holder.mTxt_name2.setText(dataBean.getName());
         holder.mTxt_time22.setText(dataBean.getApplyDate());
 
