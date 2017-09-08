@@ -200,6 +200,7 @@
         android:gravity="center_vertical">
 
         <Button
+            android:textColor="#7f7f7f"
             android:drawableLeft="@mipmap/aboutus"
             android:drawablePadding="10dp"
             app:layout_heightPercent="49%"
@@ -238,6 +239,7 @@
             app:layout_widthPercent="100%"
             android:gravity="center_vertical"
             android:id="@+id/mBtn_women"
+            android:textColor="#7f7f7f"
             android:layout_width="0dp"
             android:textSize="14sp"
             android:layout_height="0dp"
