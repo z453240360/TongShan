@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 
 import com.google.gson.Gson;
+import com.ts888.tongshan.tongshan.MainActivity;
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.activity.GeRenYeJiActivity;
 import com.ts888.tongshan.tongshan.activity.GongGaoActivity;
@@ -41,6 +42,8 @@ import com.youth.banner.listener.OnBannerListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.id.edit;
+
 
 /**
  * Created by dongdong on 2017/7/30.
@@ -58,6 +61,7 @@ public class ShouyeFragment extends Fragment implements IMainView {
     private List<String> imgUrls = new ArrayList<>();
     private List<String> titles = new ArrayList<>();
     private ProgressDialog dialog;
+    private SharedPreferences.Editor edit;
 
     @Nullable
     @Override
@@ -71,6 +75,8 @@ public class ShouyeFragment extends Fragment implements IMainView {
         super.onViewCreated(view, savedInstanceState);
         sharedPreferences = getActivity().getSharedPreferences("ts", Context.MODE_PRIVATE);
         token = sharedPreferences.getString("token", "");
+        edit = sharedPreferences.edit();
+
         banner = (Banner) view.findViewById(R.id.banner);
 
         present = new Present(this);
@@ -187,6 +193,16 @@ public class ShouyeFragment extends Fragment implements IMainView {
         BannerResultBean bannerResultBean = gson.fromJson(s, BannerResultBean.class);
         String code = bannerResultBean.getCode();
         if (!"1".equals(code)) {
+
+            if (code.equals("19902")){
+
+                edit.putString("token", "");
+                edit.commit();
+                startActivity(new Intent(getActivity(), MainActivity.class));
+                getActivity().finish();
+                return;
+            }
+
             Toast.makeText(getActivity(), "" + bannerResultBean.getMessage(), Toast.LENGTH_SHORT).show();
             return;
         }

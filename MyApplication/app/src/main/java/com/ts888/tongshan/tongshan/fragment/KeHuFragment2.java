@@ -152,6 +152,8 @@ public class KeHuFragment2 extends Fragment implements IMainView {
             }
         });
 
+
+
 //        my_search.setCallBack(new com.ts888.tongshan.tongshan.wedget.SearchView.SearchCallBack() {
 //            @Override
 //            public void onSearchCallBack(String s) {
