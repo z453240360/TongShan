@@ -3,7 +3,7 @@
 
     <item android:drawable="@color/colorBlue"/>
     <item >
-        <bitmap android:src="@drawable/banner_01"
+        <bitmap android:src="@mipmap/no4"
             android:gravity="fill_vertical|fill_horizontal"/>
     </item>
 </layer-list>

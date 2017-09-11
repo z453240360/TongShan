@@ -59,10 +59,11 @@
                 android:textColor="#126cb0"
                 android:textSize="14sp" />
 
+
             <TextView
-                android:layout_width="3dp"
-                android:layout_height="match_parent"
-                android:textColor="#aaaaaa" />
+                android:background="#508a8a8a"
+                android:layout_width="1dp"
+                android:layout_height="match_parent" />
 
             <Button
                 android:id="@+id/mBtn_pd_biaozhun"
@@ -83,9 +84,9 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:layout_width="3dp"
-                android:layout_height="match_parent"
-                android:textColor="#aaaaaa" />
+                android:background="#508a8a8a"
+                android:layout_width="1dp"
+                android:layout_height="match_parent" />
 
             <Button
                 android:id="@+id/mBtn_pd_jinjian"

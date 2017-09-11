@@ -34,8 +34,8 @@
 
         <TextView
             android:id="@+id/mtxt_jine"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:layout_below="@id/toolbars_shisuan_activity"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
@@ -44,7 +44,7 @@
             android:gravity="right|center_vertical"
             android:text="申请金额："
             android:textColor="#000000"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
 
         <RelativeLayout
@@ -68,7 +68,7 @@
                 android:paddingRight="20dp"
                 android:text="万元"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/mEd_jine"
@@ -85,14 +85,14 @@
                 android:inputType="number|numberDecimal"
                 android:paddingLeft="2dp"
                 android:textColorHint="#aaaaaa"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
         </RelativeLayout>
 
 
         <TextView
             android:id="@+id/txt_qixian"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:layout_below="@id/mtxt_jine"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
@@ -101,7 +101,7 @@
             android:gravity="right|center_vertical"
             android:text="期        限："
             android:textColor="#000000"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
 
         <Spinner
@@ -128,8 +128,8 @@
 
         <TextView
             android:id="@+id/txt_feilv"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
             android:layout_below="@id/txt_qixian"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
@@ -138,7 +138,7 @@
             android:gravity="right|center_vertical"
             android:text="费        率："
             android:textColor="#000000"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
         <Spinner
             android:id="@+id/mSpinner2"
@@ -175,7 +175,7 @@
             android:onClick="onClick"
             android:text="查   询"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/mTxt_chaxun_jinjian_Activity"
@@ -186,33 +186,39 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
+            android:textSize="12sp"
             android:drawableLeft="@mipmap/jingshi"
             android:drawablePadding="10dp"
             android:text="试算结果仅供参考，具体以审批通过后的合同金额为准"
             android:textColor="#1b7ab4" />
-
+        <TextView
+            android:id="@+id/txt0"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:layout_below="@id/mTxt_chaxun_jinjian_Activity"
+            android:background="#aaaaaa" />
         <RelativeLayout
             android:id="@+id/rl_1"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@id/mTxt_chaxun_jinjian_Activity"
-            android:layout_marginTop="20dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/txt0"
+
             android:background="#ffffff"
             android:gravity="center_vertical">
 
             <TextView
                 android:id="@+id/mTxt_feilv"
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginLeft="10dp"
                 android:gravity="right"
                 android:text="月  费  率:"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <TextView
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:id="@+id/mTxt_feilv2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -232,24 +238,23 @@
         <RelativeLayout
             android:id="@+id/rl_2"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_below="@id/txt1"
             android:background="#ffffff"
             android:gravity="center_vertical">
 
             <TextView
                 android:id="@+id/mTxt_qixian"
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginLeft="10dp"
                 android:gravity="right"
                 android:text="期        限:"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <TextView
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:layout_toRightOf="@id/mTxt_qixian"
                 android:id="@+id/mTxt_qixian2"
                 android:text=""
@@ -270,7 +275,7 @@
         <RelativeLayout
             android:id="@+id/rl_3"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_below="@id/txt2"
             android:background="#ffffff"
             android:gravity="center_vertical">
@@ -278,19 +283,18 @@
             <TextView
 
                 android:id="@+id/mTxt_daoshou"
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|center_vertical"
-                android:layout_marginLeft="10dp"
                 android:gravity="right"
                 android:text="到手金额:"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
 
             <TextView
                 android:id="@+id/yuan1"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:text="元"
                 android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
@@ -302,7 +306,7 @@
 
             <TextView
                 android:layout_toLeftOf="@id/yuan1"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:layout_toRightOf="@id/mTxt_daoshou"
                 android:id="@+id/mTxt_daoshou2"
                 android:layout_width="match_parent"
@@ -322,24 +326,23 @@
         <RelativeLayout
             android:id="@+id/rl_4"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_below="@id/txt3"
             android:background="#ffffff"
             android:gravity="center_vertical">
 
             <TextView
                 android:id="@+id/mTxt_hetong"
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginLeft="10dp"
                 android:gravity="right"
                 android:text="合同金额:"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
             <TextView
                 android:id="@+id/yuan2"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:text="元"
                 android:layout_marginRight="20dp"
                 android:layout_alignParentRight="true"
@@ -350,7 +353,7 @@
                 android:textColor="#000000" />
 
             <TextView
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:layout_toRightOf="@id/mTxt_hetong"
                 android:layout_toLeftOf="@id/yuan2"
                 android:id="@+id/mTxt_hetong2"
@@ -372,22 +375,21 @@
         <RelativeLayout
             android:id="@+id/rl_5"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_below="@id/txt4"
             android:background="#ffffff"
             android:gravity="center_vertical">
             <TextView
                 android:id="@+id/mTxt_meiyue"
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity ="center_vertical"
-                android:layout_marginLeft="10dp"
                 android:gravity="right|center_vertical"
                 android:text="每月应还:"
                 android:textColor="#000000"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
             <TextView
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:text="元"
                 android:id="@+id/yuan3"
                 android:layout_marginRight="20dp"
@@ -398,7 +400,7 @@
                 android:gravity="center_vertical"
                 android:textColor="#000000" />
             <TextView
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:layout_toRightOf="@id/mTxt_meiyue"
                 android:layout_toLeftOf="@id/yuan3"
                 android:id="@+id/mTxt_meiyue2"

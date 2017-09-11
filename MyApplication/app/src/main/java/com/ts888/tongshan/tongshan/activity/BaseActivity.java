@@ -14,11 +14,9 @@ public abstract class BaseActivity extends AppCompatActivity implements IMainVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         initView();
         initToolBar();
         initBean();
-
     }
 
     protected abstract void initToolBar();
