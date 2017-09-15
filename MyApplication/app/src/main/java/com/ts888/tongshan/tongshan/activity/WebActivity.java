@@ -77,7 +77,6 @@ public class WebActivity extends AppCompatActivity {
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
                 return super.shouldOverrideUrlLoading(view, request);
             }
-
             // 当前网页的所有内容,都在webview上去展示,并不会重新开启新的浏览器。
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -85,8 +84,6 @@ public class WebActivity extends AppCompatActivity {
                 return true; //注意这里改为true
             }
         });
-
-
     }
 
     @Override

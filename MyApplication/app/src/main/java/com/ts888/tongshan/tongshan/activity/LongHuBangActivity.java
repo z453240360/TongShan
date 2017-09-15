@@ -79,10 +79,8 @@ public class LongHuBangActivity extends AppCompatActivity implements IMainView{
 
         present = new Present(this);
         present.getFindRankingByStaffId(new LongHuParmsBean(),token);
-
         manager = getSupportFragmentManager();
         initFragment();
-
         manager.beginTransaction().add(R.id.frame_longhu, list.get(0)).commit();
         lastFragment = list.get(0);
         initRg();

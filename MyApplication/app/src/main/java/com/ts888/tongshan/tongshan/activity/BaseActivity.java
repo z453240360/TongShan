@@ -26,4 +26,5 @@ public abstract class BaseActivity extends AppCompatActivity implements IMainVie
     protected abstract void initView();
 
 
+
 }
