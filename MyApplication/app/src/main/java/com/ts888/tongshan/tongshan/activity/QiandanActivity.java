@@ -31,7 +31,6 @@ public class QiandanActivity extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_qiandan);
         ButterKnife.bind(this);
-
         initToobar();
     }
 

@@ -25,16 +25,6 @@
             android:textSize="18sp" />
     </android.support.v7.widget.Toolbar>
 
-    <TextView
-        android:layout_below="@id/toolbars_qiangdan"
-        android:text="上海营业部"
-        android:id="@+id/mTxt_qiangdan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
-    <com.jcodecraeer.xrecyclerview.XRecyclerView
-        android:layout_below="@id/mTxt_qiangdan"
-        android:id="@+id/rc_qiandan"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+
 </RelativeLayout>

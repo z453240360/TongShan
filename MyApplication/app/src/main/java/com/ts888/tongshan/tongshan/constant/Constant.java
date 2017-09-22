@@ -12,6 +12,10 @@ public interface Constant {
     //app渠道
     String CHANNEL = "official";
 
+    String API_KEY = "pmjWn6kLz6mcQf2N";
+
+    String SECURITY_KEY = "1cLLub8UOLvlT69ITSBFgHX50f9T4rOG";
+
     //测试环境
     String BASEURL = "https://appsales-uat.tsjinrong.cn/";
     //生产环境
@@ -69,13 +73,9 @@ public interface Constant {
     //上传apk
     String apkInfo = "appsales-entry/appcredit-admin/apk/apkInfo";
 
-    String API_KEY = "pmjWn6kLz6mcQf2N";
-
-    String SECURITY_KEY = "1cLLub8UOLvlT69ITSBFgHX50f9T4rOG";
 
     //轮播页面  参数：（0 ：首页bannner），（1,：启动页吧bannner）
     String Banner ="appsales-entry/banner/findBannerByType";
-
 
     //消息公告查询
     String getNoticeInfoList ="appsales-entry/notice/getNoticeInfoList";
@@ -92,4 +92,15 @@ public interface Constant {
     //个人信息
     String getUserInfos ="appsales-entry/login/getUserInfo";
 
+    //查询所有抢单信息(无参数)
+    String getGrabInfoList ="appsales-entry/grab/getGrabInfoList";
+
+    //查询我的抢单信息(无参数)
+    String getMyGrabList="appsales-entry/grab/myGrabList";
+
+    //抢单触发
+    String grabInfo="appsales-entry/grab/grabInfo";
+
+    //单子取消
+    String cancelGrab="appsales-entry/grab/cancelGrab";
 }
