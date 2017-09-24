@@ -90,14 +90,16 @@ public class YeWuActivity extends AppCompatActivity {
 
     private void init() {
         mRgMain = (RadioGroup) findViewById(R.id.mRg_main);
-        manager = getSupportFragmentManager();
+
         initFragment();
-        manager.beginTransaction().add(R.id.mFl_main, list.get(0)).commit();
-        lastFragment = list.get(0);
+
         initRg();
     }
 
     private void initRg() {
+        manager.beginTransaction().add(R.id.mFl_main, list.get(0)).commit();
+        lastFragment = list.get(0);
+
         mRgMain.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
@@ -118,6 +120,7 @@ public class YeWuActivity extends AppCompatActivity {
     }
 
     private void initFragment() {
+        manager = getSupportFragmentManager();
 
         ShouyeFragment shouyeFragment = new ShouyeFragment();
         XiaoXiFragment xiaoXiFragment = new XiaoXiFragment();

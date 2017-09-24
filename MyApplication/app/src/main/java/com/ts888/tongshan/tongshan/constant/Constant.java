@@ -103,4 +103,10 @@ public interface Constant {
 
     //单子取消
     String cancelGrab="appsales-entry/grab/cancelGrab";
+
+    //城市PK
+    String getCityPKResults="appsales-entry/pk/getCityPKResults";
+
+    //团队PK
+    String getTeamResults="appsales-entry/pk/getTeamResults";
 }

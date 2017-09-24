@@ -6,6 +6,7 @@ import com.ts888.tongshan.tongshan.bean.BannerTypeBean;
 import com.ts888.tongshan.tongshan.bean.FindCalcParameterBean;
 import com.ts888.tongshan.tongshan.bean.JinJianBean;
 import com.ts888.tongshan.tongshan.bean.LongHuParmsBean;
+import com.ts888.tongshan.tongshan.bean.PKParmsBean;
 import com.ts888.tongshan.tongshan.bean.ParmsBean;
 import com.ts888.tongshan.tongshan.util.EncoderUtils;
 
@@ -533,6 +534,162 @@ public class Present {
             @Override
             public void succesed(String s) {
                 iMainView.getUpDate(s);
+                iMainView.cancelLoading();
+            }
+
+            @Override
+            public void failed(String s) {
+                iMainView.showFaliure(s);
+                iMainView.cancelLoading();
+            }
+        });
+
+    }
+
+    //查询所有抢单信息列表
+    public void getGrabInfoList(JinJianBean parmsBean, String token){
+        iMainView.showLoading();
+        String timeStamp = String.valueOf(System.currentTimeMillis());
+        String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
+        Gson g = new Gson();
+        final String params = g.toJson(parmsBean);
+        String md51 = EncoderUtils.encoder(md5);
+
+
+        dateModel.getGrabInfoList(timeStamp, md51, params, token,new ICallBack() {
+            @Override
+            public void succesed(String s) {
+                iMainView.getUpDate(s);
+                iMainView.cancelLoading();
+            }
+
+            @Override
+            public void failed(String s) {
+                iMainView.showFaliure(s);
+                iMainView.cancelLoading();
+            }
+        });
+
+    }
+
+    //查询我的单信息列表
+    public void getMyGrabList(JinJianBean parmsBean, String token){
+        iMainView.showLoading();
+        String timeStamp = String.valueOf(System.currentTimeMillis());
+        String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
+        Gson g = new Gson();
+        final String params = g.toJson(parmsBean);
+        String md51 = EncoderUtils.encoder(md5);
+
+
+        dateModel.getMyGrabList(timeStamp, md51, params, token,new ICallBack() {
+            @Override
+            public void succesed(String s) {
+                iMainView.getUpDate(s);
+                iMainView.cancelLoading();
+            }
+
+            @Override
+            public void failed(String s) {
+                iMainView.showFaliure(s);
+                iMainView.cancelLoading();
+            }
+        });
+
+    }
+
+    //抢单
+    public void grabInfo(ParmsBean parmsBean, String token){
+        iMainView.showLoading();
+        String timeStamp = String.valueOf(System.currentTimeMillis());
+        String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
+        Gson g = new Gson();
+        final String params = g.toJson(parmsBean);
+        String md51 = EncoderUtils.encoder(md5);
+
+
+        dateModel.grabInfo(timeStamp, md51, params, token,new ICallBack() {
+            @Override
+            public void succesed(String s) {
+                iMainView.getCode(s);
+                iMainView.cancelLoading();
+            }
+
+            @Override
+            public void failed(String s) {
+                iMainView.showFaliure(s);
+                iMainView.cancelLoading();
+            }
+        });
+
+    }
+
+    //取消抢单
+    public void cancelGrab(ParmsBean parmsBean, String token){
+        iMainView.showLoading();
+        String timeStamp = String.valueOf(System.currentTimeMillis());
+        String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
+        Gson g = new Gson();
+        final String params = g.toJson(parmsBean);
+        String md51 = EncoderUtils.encoder(md5);
+
+
+        dateModel.cancelGrab(timeStamp, md51, params, token,new ICallBack() {
+            @Override
+            public void succesed(String s) {
+                iMainView.getCode(s);
+                iMainView.cancelLoading();
+            }
+
+            @Override
+            public void failed(String s) {
+                iMainView.showFaliure(s);
+                iMainView.cancelLoading();
+            }
+        });
+
+    }
+
+    //城市PK
+    public void getCityPKResults(PKParmsBean parmsBean, String token){
+        iMainView.showLoading();
+        String timeStamp = String.valueOf(System.currentTimeMillis());
+        String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
+        Gson g = new Gson();
+        final String params = g.toJson(parmsBean);
+        String md51 = EncoderUtils.encoder(md5);
+
+
+        dateModel.getCityPKResults(timeStamp, md51, params, token,new ICallBack() {
+            @Override
+            public void succesed(String s) {
+                iMainView.getCode(s);
+                iMainView.cancelLoading();
+            }
+
+            @Override
+            public void failed(String s) {
+                iMainView.showFaliure(s);
+                iMainView.cancelLoading();
+            }
+        });
+
+    }
+
+    //团队PK
+    public void getTeamResults(PKParmsBean parmsBean, String token){
+        iMainView.showLoading();
+        String timeStamp = String.valueOf(System.currentTimeMillis());
+        String md5 = SECURITY_KEY + "|" + API_KEY + "|" + timeStamp + "|" + SECURITY_KEY;
+        Gson g = new Gson();
+        final String params = g.toJson(parmsBean);
+        String md51 = EncoderUtils.encoder(md5);
+
+
+        dateModel.getTeamResults(timeStamp, md51, params, token,new ICallBack() {
+            @Override
+            public void succesed(String s) {
+                iMainView.getCode(s);
                 iMainView.cancelLoading();
             }
 

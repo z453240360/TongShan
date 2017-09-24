@@ -24,6 +24,7 @@ import com.ts888.tongshan.tongshan.activity.GongGaoActivity;
 import com.ts888.tongshan.tongshan.activity.JinjianActivity;
 import com.ts888.tongshan.tongshan.activity.KeHuActivity;
 import com.ts888.tongshan.tongshan.activity.LongHuBangActivity;
+import com.ts888.tongshan.tongshan.activity.PK_Activity;
 import com.ts888.tongshan.tongshan.activity.ProductCenterActivity;
 import com.ts888.tongshan.tongshan.activity.QiandanActivity;
 import com.ts888.tongshan.tongshan.activity.ShiSuanActivity;
@@ -98,16 +99,10 @@ public class ShouyeFragment extends Fragment implements IMainView {
         wed8 = (ShouyeWedget) view.findViewById(R.id.wed8);//公告栏
         wed9 = (ShouyeWedget) view.findViewById(R.id.wed9);//产品中心
 
-        wed4.getButton().setOnClickListener(new View.OnClickListener() {
+        wed1.getButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), QiandanActivity.class));
-            }
-        });
-        wed8.getButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), GongGaoActivity.class));
+                startActivity(new Intent(getActivity(), JinjianActivity.class));
             }
         });
 
@@ -117,10 +112,18 @@ public class ShouyeFragment extends Fragment implements IMainView {
                 startActivity(new Intent(getActivity(), KeHuActivity.class));
             }
         });
-        wed1.getButton().setOnClickListener(new View.OnClickListener() {
+
+        wed3.getButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), JinjianActivity.class));
+                startActivity(new Intent(getActivity(), PK_Activity.class));
+            }
+        });
+
+        wed4.getButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), QiandanActivity.class));
             }
         });
 
@@ -130,11 +133,10 @@ public class ShouyeFragment extends Fragment implements IMainView {
                 startActivity(new Intent(getActivity(), ShiSuanActivity.class));
             }
         });
-
-        wed9.getButton().setOnClickListener(new View.OnClickListener() {
+        wed6.getButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), ProductCenterActivity.class));
+                startActivity(new Intent(getActivity(), GeRenYeJiActivity.class));
             }
         });
 
@@ -145,12 +147,23 @@ public class ShouyeFragment extends Fragment implements IMainView {
             }
         });
 
-        wed6.getButton().setOnClickListener(new View.OnClickListener() {
+        wed8.getButton().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), GeRenYeJiActivity.class));
+                startActivity(new Intent(getActivity(), GongGaoActivity.class));
             }
         });
+
+        wed9.getButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ProductCenterActivity.class));
+            }
+        });
+
+
+
+
 
 
     }

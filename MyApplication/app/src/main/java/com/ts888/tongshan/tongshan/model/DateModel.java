@@ -1071,6 +1071,7 @@ public class DateModel {
         });
 
     }
+
     //个人信息
     public void getUserInfos(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
 
@@ -1110,5 +1111,238 @@ public class DateModel {
 
     }
 
+    //查询所有抢单信息
+    public void getGrabInfoList(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.getGrabInfoList(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+                    callBack.failed("服务器异常,状态码："+code);
+                    return;
+                }
+                String grab = null;
+                try {
+                    grab = response.body().string();
+                    if (null==grab){
+                        callBack.failed("请求的数据为空，或参数异常");
+                        return;
+                    }
+                    callBack.succesed(grab);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败");
+            }
+        });
+
+    }
+
+    //查询我的抢单信息
+    public void getMyGrabList(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.getMyGrabList(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+                    callBack.failed("服务器异常,状态码："+code);
+                    return;
+                }
+                String grab = null;
+                try {
+                    grab = response.body().string();
+                    if (null==grab){
+                        callBack.failed("请求的数据为空，或参数异常");
+                        return;
+                    }
+                    callBack.succesed(grab);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败");
+            }
+        });
+
+    }
+
+    //查询所有抢单信息
+    public void grabInfo(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.grabInfo(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+                    callBack.failed("服务器异常,状态码："+code);
+                    return;
+                }
+                String grab = null;
+                try {
+                    grab = response.body().string();
+                    if (null==grab){
+                        callBack.failed("请求的数据为空，或参数异常");
+                        return;
+                    }
+                    callBack.succesed(grab);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败");
+            }
+        });
+
+    }
+
+    //查询所有抢单信息
+    public void cancelGrab(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.cancelGrab(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+                    callBack.failed("服务器异常,状态码："+code);
+                    return;
+                }
+                String grab = null;
+                try {
+                    grab = response.body().string();
+                    if (null==grab){
+                        callBack.failed("请求的数据为空，或参数异常");
+                        return;
+                    }
+                    callBack.succesed(grab);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败");
+            }
+        });
+
+    }
+
+    //城市PK
+    public void getCityPKResults(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.getCityPKResults(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+                    callBack.failed("服务器异常,状态码："+code);
+                    return;
+                }
+                String grab = null;
+                try {
+                    grab = response.body().string();
+                    if (null==grab){
+                        callBack.failed("请求的数据为空，或参数异常");
+                        return;
+                    }
+                    callBack.succesed(grab);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败");
+            }
+        });
+
+    }
+
+    //团队PK
+    public void getTeamResults(final String timeStamp, final String md51, String params,String token,final ICallBack callBack){
+
+        Retrofit retrofit = getUserClict(timeStamp,md51,token);
+        IService iService = retrofit.create(IService.class);
+
+        RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params);
+
+        Call<ResponseBody> calls = iService.getTeamResults(body);
+
+        calls.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                int code = response.code();
+                if (code!=200){
+                    callBack.failed("服务器异常,状态码："+code);
+                    return;
+                }
+                String grab = null;
+                try {
+                    grab = response.body().string();
+                    if (null==grab){
+                        callBack.failed("请求的数据为空，或参数异常");
+                        return;
+                    }
+                    callBack.succesed(grab);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                callBack.failed("请求网络失败");
+            }
+        });
+
+    }
 }
 

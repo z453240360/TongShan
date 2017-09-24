@@ -7,6 +7,16 @@ package com.ts888.tongshan.tongshan.bean;
 public class JinJianBean {
     String name;
 
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    String startTime;
+
     public String getName() {
         return name;
     }

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/mTxt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="徐帆" />
+
+    <TextView
+        android:id="@+id/mTxt_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/mTxt_name"
+        android:text="申请金额" />
+
+    <TextView
+
+        android:id="@+id/mTxt_moneyNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/mTxt_money"
+        android:text="3200000" />
+
+    <TextView
+        android:id="@+id/mTxt_moneyUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/mTxt_moneyNum"
+        android:text="元" />
+
+    <TextView
+        android:id="@+id/mTxt_succesed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mTxt_name"
+        android:layout_marginLeft="10dp"
+        android:text="抢单成功" />
+
+    <ImageView
+        android:id="@+id/mImg_flag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mTxt_name"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/mTxt_succesed"
+        android:src="@mipmap/xiajiantou" />
+
+    <ImageView
+        android:id="@+id/mImg_msm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:src="@mipmap/mendianzhanji" />
+
+    <ImageView
+        android:id="@+id/mImg_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_toLeftOf="@id/mImg_msm"
+        android:src="@mipmap/mendianzhanji" />
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/mTxt_succesed"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentTop="true"
+            android:background="#508a8a8a" />
+
+        <Button
+            android:id="@+id/mBtn_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="取消" />
+
+        <EditText
+            android:id="@+id/mEd_cancle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/mBtn_send"
+            android:hint="取消抢单理由" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

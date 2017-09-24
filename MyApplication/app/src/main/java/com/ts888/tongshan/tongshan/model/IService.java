@@ -110,5 +110,28 @@ public interface IService {
     @POST(Constant.getUserInfos)
     Call<ResponseBody> getUserInfos(@Body RequestBody status);
 
+    //查询所有的抢单信息
+    @POST(Constant.getGrabInfoList)
+    Call<ResponseBody> getGrabInfoList(@Body RequestBody status);
 
+
+    //查询我的抢单信息
+    @POST(Constant.getMyGrabList)
+    Call<ResponseBody> getMyGrabList(@Body RequestBody status);
+
+    //抢单触发
+    @POST(Constant.grabInfo)
+    Call<ResponseBody> grabInfo(@Body RequestBody status);
+
+    //取消抢单
+    @POST(Constant.cancelGrab)
+    Call<ResponseBody> cancelGrab(@Body RequestBody status);
+
+    //城市PK
+    @POST(Constant.getCityPKResults)
+    Call<ResponseBody> getCityPKResults(@Body RequestBody status);
+
+    //团队PK
+    @POST(Constant.getTeamResults)
+    Call<ResponseBody> getTeamResults(@Body RequestBody status);
 }

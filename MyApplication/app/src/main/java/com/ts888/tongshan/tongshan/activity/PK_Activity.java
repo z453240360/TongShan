@@ -13,8 +13,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.ts888.tongshan.tongshan.R;
+import com.ts888.tongshan.tongshan.fragment.CityPk_Fragment;
 import com.ts888.tongshan.tongshan.fragment.Grabs_Fragment;
 import com.ts888.tongshan.tongshan.fragment.Grabs_MineFragment;
+import com.ts888.tongshan.tongshan.fragment.GroupPk_Fragment;
 import com.ts888.tongshan.tongshan.util.ColorState;
 
 import java.util.ArrayList;
@@ -22,17 +24,19 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class QiandanActivity extends AppCompatActivity {
+public class PK_Activity extends AppCompatActivity {
 
-
+    @BindView(R.id.toolbars_qiangdan)
+    Toolbar toolbarsQiangdan;
     @BindView(R.id.ll)
     RadioGroup ll;
     @BindView(R.id.grab_frame)
     FrameLayout grabFrame;
-    private Toolbar toolbarsQiangdan;
     private ArrayList<Fragment> list = new ArrayList<>();
     private FragmentManager manager;
     private Fragment lastFragment;
+    private CityPk_Fragment cityPk;
+    private GroupPk_Fragment groupPk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +44,7 @@ public class QiandanActivity extends AppCompatActivity {
         //设置状态栏及标题栏
         ColorState.setWindowStatusBarColorBlue(this, Color.BLUE);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_qiandan);
+        setContentView(R.layout.activity_pk_);
         ButterKnife.bind(this);
         initToobar();
         initFragment();
@@ -56,17 +60,15 @@ public class QiandanActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
-
-
     //添加Fragment
     private void initFragment() {
         manager = getSupportFragmentManager();
 
-        Grabs_Fragment grabs_fragment = new Grabs_Fragment();
-        Grabs_MineFragment grabs_mineFragment = new Grabs_MineFragment();
+         cityPk = new CityPk_Fragment();
+         groupPk = new GroupPk_Fragment();
 
-        list.add(grabs_fragment);
-        list.add(grabs_mineFragment);
+        list.add(cityPk);
+        list.add(groupPk);
 
         manager.beginTransaction().add(R.id.grab_frame, list.get(0)).commit();
         lastFragment = list.get(0);
@@ -89,7 +91,6 @@ public class QiandanActivity extends AppCompatActivity {
         });
 
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

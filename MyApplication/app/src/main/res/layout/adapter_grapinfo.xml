@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#fff"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:textSize="12sp"
+        android:layout_alignParentTop="true"
+        android:id="@+id/mTxt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="名字" />
+
+    <TextView
+        android:textSize="12sp"
+        android:layout_below="@id/mTxt_name"
+        android:id="@+id/mTxt_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="申请金额" />
+
+    <TextView
+        android:textSize="14sp"
+        android:layout_alignBottom="@id/mTxt_money"
+        android:layout_toRightOf="@id/mTxt_money"
+        android:id="@+id/mTxt_moneyNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="300000" />
+
+    <TextView
+        android:textSize="12sp"
+        android:layout_alignBottom="@id/mTxt_money"
+        android:layout_alignTop="@id/mTxt_money"
+        android:layout_toRightOf="@id/mTxt_moneyNum"
+        android:id="@+id/mTxt_moneyUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="元" />
+    <Button
+        android:text="抢单"
+        android:layout_alignParentRight="true"
+        android:id="@+id/mBtn_grap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
