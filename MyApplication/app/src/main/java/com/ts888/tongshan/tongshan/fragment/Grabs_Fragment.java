@@ -67,34 +67,38 @@ public class Grabs_Fragment extends Fragment implements IMainView {
         present = new Present(this);
         bean = new ParmsBean();
         present.getGrabInfoList(new JinJianBean(), token);//查询所有抢单信息
-        adapter = new GrapInfoAdapter(getActivity(),mDatas);
-        mXRecylerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mXRecylerView.setAdapter(adapter);
-        mXRecylerView.setRefreshProgressStyle(ProgressStyle.BallBeat);
-        mXRecylerView.setLoadingMoreProgressStyle(ProgressStyle.LineScalePulseOutRapid);
-        mXRecylerView.setLoadingListener(new XRecyclerView.LoadingListener() {
-            @Override
-            public void onRefresh() {
-                mDatas.clear();
-                adapter.notifyDataSetChanged();
-                present.getGrabInfoList(new JinJianBean(), token);
-                mXRecylerView.refreshComplete();
-            }
 
-            @Override
-            public void onLoadMore() {
-                mXRecylerView.loadMoreComplete();
-            }
-        });
 
-        adapter.setOnItemClickListener(new GrapInfoAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(int pos, View view) {
-                String phoneNo = mDatas.get(pos).getPhoneNo();
-                bean.setPhoneNo(phoneNo);
-                present.grabInfo(bean,token);//抢单
-            }
-        });
+
+
+//        adapter = new GrapInfoAdapter(getActivity(),mDatas);
+//        mXRecylerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        mXRecylerView.setAdapter(adapter);
+//        mXRecylerView.setRefreshProgressStyle(ProgressStyle.BallBeat);
+//        mXRecylerView.setLoadingMoreProgressStyle(ProgressStyle.LineScalePulseOutRapid);
+//        mXRecylerView.setLoadingListener(new XRecyclerView.LoadingListener() {
+//            @Override
+//            public void onRefresh() {
+//                mDatas.clear();
+//                adapter.notifyDataSetChanged();
+//                present.getGrabInfoList(new JinJianBean(), token);
+//                mXRecylerView.refreshComplete();
+//            }
+//
+//            @Override
+//            public void onLoadMore() {
+//                mXRecylerView.loadMoreComplete();
+//            }
+//        });
+//
+//        adapter.setOnItemClickListener(new GrapInfoAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(int pos, View view) {
+//                String phoneNo = mDatas.get(pos).getPhoneNo();
+//                bean.setPhoneNo(phoneNo);
+//                present.grabInfo(bean,token);//抢单
+//            }
+//        });
     }
 
     @Override
@@ -144,8 +148,17 @@ public class Grabs_Fragment extends Fragment implements IMainView {
         if (mDatas.size()==0){
             return;
         }
+        adapter = new GrapInfoAdapter(getActivity(),mDatas);
+        mXRecylerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mXRecylerView.setAdapter(adapter);
 
-        adapter.notifyDataSetChanged();
+
+
+
+
+
+
+//        adapter.notifyDataSetChanged();
     }
 
 
