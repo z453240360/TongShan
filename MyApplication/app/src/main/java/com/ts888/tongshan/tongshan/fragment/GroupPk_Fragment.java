@@ -19,6 +19,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.adapter.GrapInfoAdapter;
 import com.ts888.tongshan.tongshan.bean.GrabBean;
+import com.ts888.tongshan.tongshan.bean.GroupPKBean;
 import com.ts888.tongshan.tongshan.bean.JinJianBean;
 import com.ts888.tongshan.tongshan.bean.PKParmsBean;
 import com.ts888.tongshan.tongshan.bean.ParmsBean;
@@ -26,6 +27,7 @@ import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -39,11 +41,11 @@ import butterknife.Unbinder;
 
 public class GroupPk_Fragment extends Fragment implements IMainView {
 
-
     private Present present;
     private SharedPreferences sharedPreferences;
     private String token;
     private PKParmsBean bean;
+    private String currentMonth;
 
     @Nullable
     @Override
@@ -55,19 +57,34 @@ public class GroupPk_Fragment extends Fragment implements IMainView {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        currentMonth = getCurrentMonth();
         sharedPreferences = getActivity().getSharedPreferences("ts", Context.MODE_APPEND);
         token = sharedPreferences.getString("token", "");
         present = new Present(this);
         bean = new PKParmsBean();
-        bean.setStartTime("08");
-
+        bean.setStartTime(currentMonth);
         present.getTeamResults(bean, token);//团队PK
-
     }
 
     @Override
     public void getCode(String s) {
-        Log.i("dd", "团队PK: "+s);
+        Log.i("dd", "团队PK: " + s);
+        Gson gson = new Gson();
+        GroupPKBean groupPKBean = gson.fromJson(s, GroupPKBean.class);
+        String code = groupPKBean.getCode();
+        if (!code.equals("1")) {
+            Toast.makeText(getActivity(), ""+groupPKBean.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+        List<GroupPKBean.DataBean> data = groupPKBean.getData();
+        for (int i = 0; i < data.size(); i++) {
+            GroupPKBean.DataBean dataBean = data.get(i);
+            String belongCity = dataBean.getBelongCity();
+            String teamName = dataBean.getTeamName();//团队名称
+            int results = dataBean.getResults();//业绩
+            double displayNumber = dataBean.getDisplayNumber();//柱状图参考数据
+
+        }
     }
 
     @Override
@@ -95,5 +112,11 @@ public class GroupPk_Fragment extends Fragment implements IMainView {
         Log.i("dd", "团队PK2: " + s);
     }
 
+    //获取当前系统的月份
+    public String getCurrentMonth(){
+        Calendar calendar = Calendar.getInstance();
+        int month = calendar.get(Calendar.MONTH);
+        return month+"";
+    }
 
 }

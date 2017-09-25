@@ -95,7 +95,7 @@
                     <com.ts888.tongshan.tongshan.wedget.ShouyeWedget
                         android:id="@+id/wed3"
                         android:layout_marginTop="5dp"
-                        app:text="审批"
+                        app:text="月度PK"
                         app:drawTop="@mipmap/shenpi"
                         android:background="#fff"
                         android:layout_width="match_parent"

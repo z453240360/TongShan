@@ -18,6 +18,7 @@ import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.adapter.GrapInfoAdapter;
+import com.ts888.tongshan.tongshan.bean.CityPKBean;
 import com.ts888.tongshan.tongshan.bean.GrabBean;
 import com.ts888.tongshan.tongshan.bean.JinJianBean;
 import com.ts888.tongshan.tongshan.bean.PKParmsBean;
@@ -26,6 +27,7 @@ import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -43,6 +45,7 @@ public class CityPk_Fragment extends Fragment implements IMainView {
     private SharedPreferences sharedPreferences;
     private String token;
     private PKParmsBean bean;
+    private String currentMonth;
 
 
     @Nullable
@@ -55,11 +58,15 @@ public class CityPk_Fragment extends Fragment implements IMainView {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        currentMonth = getCurrentMonth();
+
         sharedPreferences = getActivity().getSharedPreferences("ts", Context.MODE_APPEND);
         token = sharedPreferences.getString("token", "");
         present = new Present(this);
         bean = new PKParmsBean();
-        bean.setStartTime("08");
+
+
+        bean.setStartTime(currentMonth);
         present.getCityPKResults(bean, token);//cityPk信息
     }
 
@@ -67,6 +74,19 @@ public class CityPk_Fragment extends Fragment implements IMainView {
     @Override
     public void getCode(String s) {
         Log.i("dd", "city: "+s);
+        Gson gson = new Gson();
+        CityPKBean cityPKBean = gson.fromJson(s, CityPKBean.class);
+        String code = cityPKBean.getCode();
+        if (!code.equals("1")){
+            Toast.makeText(getActivity(), ""+cityPKBean.getMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        CityPKBean.DataBean data = cityPKBean.getData();
+        String challengeCityName = data.getChallengeCityName();//挑战方城市名
+        String acceptCityName = data.getAcceptCityName();//被挑战方城市名称
+        double challengeDisplayNumber = data.getChallengeDisplayNumber();//挑战方柱状图参考
+        double acceptDisplayNumber = data.getAcceptDisplayNumber();//被挑战方柱状图参考
     }
 
     @Override
@@ -94,5 +114,18 @@ public class CityPk_Fragment extends Fragment implements IMainView {
 
     }
 
+    //获取当前系统的月份
+    public String getCurrentMonth(){
+
+        Calendar calendar = Calendar.getInstance();
+        int month = calendar.get(Calendar.MONTH);
+        if(month<9){
+            int i =  month + 1;
+            return "0"+i+"";
+        }
+
+
+        return month+1+"";
+    }
 
 }

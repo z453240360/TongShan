@@ -91,8 +91,8 @@ public class ShouyeFragment extends Fragment implements IMainView {
 
         wed1 = (ShouyeWedget) view.findViewById(R.id.wed1);//进见
         wed2 = (ShouyeWedget) view.findViewById(R.id.wed2);//客户
-        wed3 = (ShouyeWedget) view.findViewById(R.id.wed3);//审批
-        wed4 = (ShouyeWedget) view.findViewById(R.id.wed4);//枪弹
+        wed3 = (ShouyeWedget) view.findViewById(R.id.wed3);//月度PK
+        wed4 = (ShouyeWedget) view.findViewById(R.id.wed4);//抢单
         wed5 = (ShouyeWedget) view.findViewById(R.id.wed5);//失算
         wed6 = (ShouyeWedget) view.findViewById(R.id.wed6);//个人业绩
         wed7 = (ShouyeWedget) view.findViewById(R.id.wed7);//龙虎榜
