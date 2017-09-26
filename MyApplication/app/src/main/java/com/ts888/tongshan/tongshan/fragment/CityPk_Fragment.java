@@ -27,6 +27,7 @@ import com.ts888.tongshan.tongshan.bean.PKParmsBean;
 import com.ts888.tongshan.tongshan.bean.ParmsBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
+import com.ts888.tongshan.tongshan.wedget.PKText;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -54,7 +55,7 @@ public class CityPk_Fragment extends Fragment implements IMainView {
     private RelativeLayout sheet;
     private TextView challengeCity,acceptCity,city,city2,money1,money2;
     private int heightPixels;
-
+    private PKText pkText;
 
     @Nullable
     @Override
@@ -73,7 +74,9 @@ public class CityPk_Fragment extends Fragment implements IMainView {
         city2= (TextView) view.findViewById(R.id.city2);
         money1 = (TextView) view.findViewById(R.id.challengeCity2);
         money2 = (TextView) view.findViewById(R.id.acceptCity2);
+        pkText = (PKText) view.findViewById(R.id.pktxt);
 
+        pkText.setTextHeight(10);
 
         sharedPreferences = getActivity().getSharedPreferences("ts", Context.MODE_APPEND);
         token = sharedPreferences.getString("token", "");

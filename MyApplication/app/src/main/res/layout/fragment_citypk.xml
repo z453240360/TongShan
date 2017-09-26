@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.ts888.tongshan.tongshan.wedget.StokeText
-        android:background="@color/colorAccent"
-        android:layout_width="match_parent"
-        android:text="你好"
-        android:textColor="#ffffff"
-        android:gravity="center"
-        android:layout_height="30dp"
-        />
+   <com.ts888.tongshan.tongshan.wedget.PKText
+       android:layout_width="match_parent"
+       android:layout_height="100dp"
+       android:id="@+id/pktxt"
+       >
+
+
+   </com.ts888.tongshan.tongshan.wedget.PKText>
 <RelativeLayout
     android:id="@+id/percentSheet"
     android:layout_centerInParent="true"
