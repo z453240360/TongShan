@@ -1,103 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    android:layout_marginTop="10dp"
+    android:background="#fff"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/mTxt_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="徐帆" />
-
-    <TextView
-        android:id="@+id/mTxt_money"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/mTxt_name"
-        android:text="申请金额" />
-
-    <TextView
-
-        android:id="@+id/mTxt_moneyNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/mTxt_money"
-        android:text="3200000" />
-
-    <TextView
-        android:id="@+id/mTxt_moneyUnit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/mTxt_moneyNum"
-        android:text="元" />
-
-    <TextView
-        android:id="@+id/mTxt_succesed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/mTxt_name"
-        android:layout_marginLeft="10dp"
-        android:text="抢单成功" />
-
-    <ImageView
-        android:id="@+id/mImg_flag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/mTxt_name"
-        android:layout_marginLeft="10dp"
-        android:layout_toRightOf="@id/mTxt_succesed"
-        android:src="@mipmap/xiajiantou" />
-
-    <ImageView
-        android:id="@+id/mImg_msm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:src="@mipmap/mendianzhanji" />
-
-    <ImageView
-        android:id="@+id/mImg_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:layout_toLeftOf="@id/mImg_msm"
-        android:src="@mipmap/mendianzhanji" />
+    android:layout_height="wrap_content">
 
     <RelativeLayout
-        android:id="@+id/rl"
+        android:id="@+id/rl_dd"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/mTxt_succesed"
-        android:visibility="visible">
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/line"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
             android:layout_alignParentTop="true"
-            android:background="#508a8a8a" />
+            android:layout_marginTop="15dp"
+            android:textSize="15dp"
+            android:textColor="@color/dongdongBlack"
+            android:id="@+id/mTxt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="徐帆" />
 
-        <Button
-            android:id="@+id/mBtn_send"
+        <TextView
+            android:layout_alignBottom="@id/mTxt_name"
+            android:textSize="12dp"
+            android:textColor="#818181"
+            android:id="@+id/mTxt_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/mTxt_name"
+            android:text="申请金额:" />
+
+        <TextView
+            android:layout_alignBottom="@id/mTxt_name"
+            android:textColor="@color/dongdongBlue"
+            android:textSize="13sp"
+            android:id="@+id/mTxt_moneyNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/mTxt_money"
+            android:text="3200000" />
+
+        <TextView
+            android:layout_alignBottom="@id/mTxt_name"
+            android:textColor="@color/dongdongBlue"
+            android:textSize="13sp"
+            android:id="@+id/mTxt_moneyUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/mTxt_moneyNum"
+            android:text="元" />
+
+        <TextView
+            android:layout_marginTop="15dp"
+            android:textColor="#9c9c9c"
+            android:textSize="12sp"
+            android:id="@+id/mTxt_succesed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mTxt_name"
+            android:layout_marginLeft="10dp"
+            android:text="抢单成功" />
+
+        <ImageView
+            android:layout_alignBottom="@id/mTxt_succesed"
+            android:layout_alignTop="@id/mTxt_succesed"
+            android:id="@+id/mImg_flag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/mTxt_succesed"
+            android:src="@mipmap/xiajiantou" />
+
+        <ImageView
+            android:id="@+id/mImg_msm"
+            android:layout_centerVertical="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="取消" />
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/dd_youjian" />
 
-        <EditText
-            android:id="@+id/mEd_cancle"
-            android:layout_width="match_parent"
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/mImg_phone"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/mBtn_send"
-            android:hint="取消抢单理由" />
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/mImg_msm"
+            android:src="@mipmap/ddd_dianhua" />
+
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/mTxt_succesed"
+            android:background="#508a8a8a" />
+
 
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_dd"
+        android:visibility="visible">
+
+        <Button
+            android:background="@color/dongdongBlue"
+            android:id="@+id/mBtn_send"
+            android:textSize="12sp"
+            android:textColor="#fff"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:text="确认关闭" />
+
+        <EditText
+            android:paddingLeft="5dp"
+            android:background="@drawable/yuanjiao"
+            android:layout_marginLeft="10dp"
+            android:layout_alignTop="@id/mBtn_send"
+            android:layout_alignBottom="@id/mBtn_send"
+            android:id="@+id/mEd_cancle"
+            android:textSize="12sp"
+            android:textColorHint="#c6c6c6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/mBtn_send"
+            android:hint="输入案件跟进情况" />
+
+
+    </RelativeLayout>
 
 </RelativeLayout>

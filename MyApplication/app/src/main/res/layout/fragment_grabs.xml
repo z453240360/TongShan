@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.percent.PercentRelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/mTxt_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_marginLeftPercent="3%"
+        app:layout_heightPercent="6%"
+        android:gravity="center_vertical"
         android:layout_alignParentTop="true"
-        android:drawableLeft="@mipmap/shouji"
+        android:drawablePadding="10dp"
+        android:textSize="12sp"
+        android:textColor="@color/dongdongBlue"
+        android:drawableLeft="@mipmap/dd_dianpu"
         android:text="上海营业部" />
 
     <TextView
@@ -16,11 +23,11 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/mTxt_title"
-        android:background="#508a8a8a" />
+        android:background="@color/dongdongLine" />
 
     <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:id="@+id/mXRecylerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/txt_line1" />
-</RelativeLayout>
+</android.support.percent.PercentRelativeLayout>

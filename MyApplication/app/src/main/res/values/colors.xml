@@ -9,4 +9,9 @@
     <color name="colorWhite">#10ffffff</color>
     <color name="colorBlue">#1b7ab4</color>
     <color name="colorMy">#27b75e</color>
+    <color name="dongdongBlue">#126cb0</color>
+    <color name="dongdongLine">#508a8a8a</color>
+    <color name="dongdongBlack">#343434</color>
+    <color name="dongdongTextBlack">#000000</color>
+
 </resources>

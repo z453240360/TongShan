@@ -59,9 +59,9 @@ public class CityPKBean {
         private String startTime;
         private String endTime;
         private String surplusTime;
-        private int challengeAmount;
-        private int acceptAmount;
-        private int distanceAmount;
+        private double challengeAmount;
+        private double acceptAmount;
+        private double distanceAmount;
         private double challengeDisplayNumber;
         private double acceptDisplayNumber;
 
@@ -105,27 +105,27 @@ public class CityPKBean {
             this.surplusTime = surplusTime;
         }
 
-        public int getChallengeAmount() {
+        public double getChallengeAmount() {
             return challengeAmount;
         }
 
-        public void setChallengeAmount(int challengeAmount) {
+        public void setChallengeAmount(double challengeAmount) {
             this.challengeAmount = challengeAmount;
         }
 
-        public int getAcceptAmount() {
+        public double getAcceptAmount() {
             return acceptAmount;
         }
 
-        public void setAcceptAmount(int acceptAmount) {
+        public void setAcceptAmount(double acceptAmount) {
             this.acceptAmount = acceptAmount;
         }
 
-        public int getDistanceAmount() {
+        public double getDistanceAmount() {
             return distanceAmount;
         }
 
-        public void setDistanceAmount(int distanceAmount) {
+        public void setDistanceAmount(double distanceAmount) {
             this.distanceAmount = distanceAmount;
         }
 

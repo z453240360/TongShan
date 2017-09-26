@@ -16,7 +16,7 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GrapInfoAdapter extends RecyclerView.Adapter<GrapInfoAdapter.MyViewHolder> {
+public class GrapInfoAdapter extends RecyclerView.Adapter<GrapInfoAdapter.MyGrapInfiViewHolder> {
     private List<GrabBean.DataBean> mDatas = new ArrayList();
     private Context mContext;
     private LayoutInflater mInflater;
@@ -29,23 +29,24 @@ public class GrapInfoAdapter extends RecyclerView.Adapter<GrapInfoAdapter.MyView
 
     @Override
     public int getItemCount() {
-        return mDatas.size();
+        return mDatas==null?0:mDatas.size();
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyGrapInfiViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.adapter_grapinfo, parent, false);
-        MyViewHolder myViewHolder = new MyViewHolder(view);
+        MyGrapInfiViewHolder myViewHolder = new MyGrapInfiViewHolder(view);
 
         return myViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyGrapInfiViewHolder holder, final int position) {
 
         GrabBean.DataBean dataBean = mDatas.get(position);
-        String customerName = dataBean.getCustomerName();
-        long amount = dataBean.getAmount();
+
+        String customerName = dataBean.getCustomerName();//客户姓名
+        long amount = dataBean.getAmount();//金额
 
         holder.mTxt_name.setText(customerName);
         holder.mTxt_moneyNum.setText(amount+"");
@@ -60,10 +61,10 @@ public class GrapInfoAdapter extends RecyclerView.Adapter<GrapInfoAdapter.MyView
     }
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyGrapInfiViewHolder extends RecyclerView.ViewHolder {
         private TextView mTxt_name,mTxt_moneyNum,mTxt_moneyUnit,mTxt_money;
         private Button mBtn_qiangdan;
-        public MyViewHolder(View itemView) {
+        public MyGrapInfiViewHolder(View itemView) {
             super(itemView);
             mTxt_moneyNum = (TextView) itemView.findViewById(R.id.mTxt_moneyNum);
             mTxt_name = (TextView) itemView.findViewById(R.id.mTxt_name);

@@ -23,6 +23,7 @@ import com.ts888.tongshan.tongshan.bean.JinJianBean;
 import com.ts888.tongshan.tongshan.bean.ParmsBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
+import com.ts888.tongshan.tongshan.util.ShowTostUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,35 +69,31 @@ public class Grabs_Fragment extends Fragment implements IMainView {
         bean = new ParmsBean();
         present.getGrabInfoList(new JinJianBean(), token);//查询所有抢单信息
 
-
-
-
 //        adapter = new GrapInfoAdapter(getActivity(),mDatas);
 //        mXRecylerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 //        mXRecylerView.setAdapter(adapter);
-//        mXRecylerView.setRefreshProgressStyle(ProgressStyle.BallBeat);
-//        mXRecylerView.setLoadingMoreProgressStyle(ProgressStyle.LineScalePulseOutRapid);
-//        mXRecylerView.setLoadingListener(new XRecyclerView.LoadingListener() {
-//            @Override
-//            public void onRefresh() {
-//                mDatas.clear();
-//                adapter.notifyDataSetChanged();
-//                present.getGrabInfoList(new JinJianBean(), token);
-//                mXRecylerView.refreshComplete();
-//            }
-//
-//            @Override
-//            public void onLoadMore() {
-//                mXRecylerView.loadMoreComplete();
-//            }
-//        });
-//
+
+        mXRecylerView.setRefreshProgressStyle(ProgressStyle.BallBeat);
+        mXRecylerView.setLoadingMoreProgressStyle(ProgressStyle.LineScalePulseOutRapid);
+        mXRecylerView.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                mDatas.clear();
+                adapter.notifyDataSetChanged();
+                present.getGrabInfoList(new JinJianBean(), token);
+                mXRecylerView.refreshComplete();
+            }
+
+            @Override
+            public void onLoadMore() {
+                mXRecylerView.loadMoreComplete();
+            }
+        });
 //        adapter.setOnItemClickListener(new GrapInfoAdapter.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(int pos, View view) {
-//                String phoneNo = mDatas.get(pos).getPhoneNo();
-//                bean.setPhoneNo(phoneNo);
-//                present.grabInfo(bean,token);//抢单
+//                bean.setPhoneNo(mDatas.get(pos).getPhoneNo());
+//                present.grabInfo(bean,token);//点击抢单
 //            }
 //        });
     }
@@ -124,7 +121,7 @@ public class Grabs_Fragment extends Fragment implements IMainView {
 
     @Override
     public void showFaliure(String s) {
-
+        ShowTostUtil.toast(getActivity(),s);
     }
 
     @Override
@@ -134,7 +131,7 @@ public class Grabs_Fragment extends Fragment implements IMainView {
 
     @Override
     public void getUpDate(String s) {
-        Log.i("dd", "getUpDate: " + s);
+        Log.i("dd", "抢单: " + s);
         Gson gson = new Gson();
         GrabBean grabBean = gson.fromJson(s, GrabBean.class);
         String code = grabBean.getCode();
@@ -148,15 +145,10 @@ public class Grabs_Fragment extends Fragment implements IMainView {
         if (mDatas.size()==0){
             return;
         }
+
         adapter = new GrapInfoAdapter(getActivity(),mDatas);
         mXRecylerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mXRecylerView.setAdapter(adapter);
-
-
-
-
-
-
 
 //        adapter.notifyDataSetChanged();
     }

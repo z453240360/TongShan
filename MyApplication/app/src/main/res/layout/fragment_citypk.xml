@@ -1,6 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<android.support.percent.PercentRelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <com.ts888.tongshan.tongshan.wedget.StokeText
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:text="你好"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:layout_height="30dp"
+        />
+<RelativeLayout
+    android:id="@+id/percentSheet"
+    android:layout_centerInParent="true"
+    android:background="#fff"
+    app:layout_heightPercent="50%"
+    android:layout_width="match_parent"
+    android:layout_height="0dp">
+
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/city"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="30dp"
+        android:background="#fff"
+        android:text="上海"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+    <TextView
+        android:id="@+id/line1"
+        android:layout_above="@id/city"
+        android:background="#116db0"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
+
+    <RelativeLayout
+        android:gravity="center_horizontal"
+        android:layout_above="@id/line1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/challengeCity"
+            android:background="#e53c3c"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/challengeCity2"
+            android:background="#fff"
+            android:text="5个元宝"
+            android:textColor="#000"
+            android:layout_above="@id/challengeCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+
+
+
+    <TextView
+        android:id="@+id/acceptCity"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:background="#e3b138"
+        android:layout_above="@id/line1"
+        android:layout_width="30dp"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/city2"
+        android:layout_alignLeft="@id/acceptCity"
+        android:layout_below="@id/acceptCity"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:background="#fff"
+        android:text="乌鲁木齐"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/acceptCity2"
+        android:layout_alignLeft="@id/acceptCity"
+        android:layout_above="@id/acceptCity"
+        android:gravity="center"
+        android:background="#fff"
+        android:text="10个元宝"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
+
+
+
+
+
+
+
+
+</android.support.percent.PercentRelativeLayout>

@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
     private String TAG = "dd";
     private String phoneNo;
     private ProgressDialog dialog;
+    private long exitTime = 0;
     private ApkUpDateParamsBeam beam;
     private RelativeLayout activity_main;
     private SharedPreferences.Editor editor;
@@ -348,8 +349,6 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         }
 
     }
-
-    private long exitTime = 0;
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

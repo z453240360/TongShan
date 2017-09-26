@@ -42,7 +42,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#aaaaaa" />
+            android:background="#50aaaaaa" />
 
         <RelativeLayout
             android:id="@+id/rl_main"
@@ -100,7 +100,7 @@
         android:onClick="onClick"
         android:text="登   录"
         android:textColor="#f7f7f7"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
 
 
 </RelativeLayout>

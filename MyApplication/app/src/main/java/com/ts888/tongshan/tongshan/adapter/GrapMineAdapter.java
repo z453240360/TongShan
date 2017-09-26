@@ -18,6 +18,7 @@ import com.ts888.tongshan.tongshan.bean.OrgRankingBean;
 import com.ts888.tongshan.tongshan.util.DataFormatFromInt;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,18 +28,20 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
     private List<GrapMyBean.DataBean> mDatas = new ArrayList<>();
     private Context mContext;
     private LayoutInflater mInflater;
-    private Map<String,Boolean> map;
+    private Map<Integer,Boolean> map=new HashMap<>();
 
     public GrapMineAdapter(Context context, List<GrapMyBean.DataBean> datas) {
         this.mInflater = LayoutInflater.from(context);
         mDatas = datas;
         this.mContext = context;
-//        initMap();
+        initMap();
     }
 
     private void initMap() {
-        for (int i = 0; i < mDatas.size(); i++) {
-            map.put(i+"",true);
+        if (mDatas!= null) {
+            for (int i = 0; i < mDatas.size(); i++) {
+                map.put(i, false);
+            }
         }
     }
 
@@ -57,6 +60,11 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
         long amount = dataBean.getAmount();
         String grabTime = dataBean.getGrabTime();
         String customerName = dataBean.getCustomerName();
+
+
+
+
+
 
     }
 
@@ -78,7 +86,7 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
             mImg_flag = (ImageView) itemView.findViewById(R.id.mImg_flag);
             mImg_phone = (ImageView) itemView.findViewById(R.id.mImg_phone);
             mImg_msm = (ImageView) itemView.findViewById(R.id.mImg_msm);
-            mEd_send = (EditText) itemView.findViewById(R.id.cancel);
+            mEd_send = (EditText) itemView.findViewById(R.id.mEd_cancle);
         }
     }
 
