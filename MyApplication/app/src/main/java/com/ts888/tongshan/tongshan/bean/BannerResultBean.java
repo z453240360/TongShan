@@ -11,7 +11,7 @@ public class BannerResultBean {
 
     /**
      * code : 1
-     * data : [{"title":"夏日1","imgUrl":"https://s3.cn-north-1.amazonaws.com.cn/appsales-dev.tsjinrong.cn/static/banner/banner1.jpg","type":1,"status":1,"priority":1},{"title":"夏日2","imgUrl":"https://s3.cn-north-1.amazonaws.com.cn/appsales-dev.tsjinrong.cn/static/banner/banner1.jpg","type":1,"status":1,"priority":2},{"title":"百度","imgUrl":"http://www.baidu.com","type":1,"status":1,"priority":3}]
+     * data : [{"title":"夏日","imgUrl":"https://s3.cn-north-1.amazonaws.com.cn/appsales-dev.tsjinrong.cn/static/banner/banner1.jpg","type":1,"status":1,"priority":1,"redirectUrl":"https://s3.cn-north-1.amazonaws.com.cn/appsales-dev.tsjinrong.cn/static/banner/banner1.jpg"},{"title":null,"imgUrl":"https://s3.cn-north-1.amazonaws.com.cn/appsales-dev.tsjinrong.cn/static/banner/banner1.jpg","type":1,"status":1,"priority":2,"redirectUrl":"https://s3.cn-north-1.amazonaws.com.cn/appsales-dev.tsjinrong.cn/notice/app-notice-98fc0d8561e74f929e0df8b06414a8e7.jpg"}]
      * message : null
      */
 
@@ -45,11 +45,12 @@ public class BannerResultBean {
 
     public static class DataBean {
         /**
-         * title : 夏日1
+         * title : 夏日
          * imgUrl : https://s3.cn-north-1.amazonaws.com.cn/appsales-dev.tsjinrong.cn/static/banner/banner1.jpg
          * type : 1
          * status : 1
          * priority : 1
+         * redirectUrl : https://s3.cn-north-1.amazonaws.com.cn/appsales-dev.tsjinrong.cn/static/banner/banner1.jpg
          */
 
         private String title;
@@ -57,6 +58,7 @@ public class BannerResultBean {
         private int type;
         private int status;
         private int priority;
+        private String redirectUrl;
 
         public String getTitle() {
             return title;
@@ -96,6 +98,14 @@ public class BannerResultBean {
 
         public void setPriority(int priority) {
             this.priority = priority;
+        }
+
+        public String getRedirectUrl() {
+            return redirectUrl;
+        }
+
+        public void setRedirectUrl(String redirectUrl) {
+            this.redirectUrl = redirectUrl;
         }
     }
 }

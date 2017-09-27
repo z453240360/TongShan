@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.adapter.GrapMineAdapter;
@@ -22,6 +23,7 @@ import com.ts888.tongshan.tongshan.bean.ParmsBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -35,7 +37,8 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
     private SharedPreferences sharedPreferences;
     private String token;
     private ParmsBean bean;
-    private List<GrapMyBean.DataBean> myDatas;
+    private List<GrapMyBean.DataBean> myDatas=new ArrayList<>();
+    private List<GrapMyBean.DataBean> myAllDatas=new ArrayList<>();
     private GrapMineAdapter grapMineAdapter;
     private XRecyclerView xRl;
 
@@ -49,20 +52,34 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         xRl = (XRecyclerView) view.findViewById(R.id.myGrapRl);
-
         init();
     }
 
     private void init() {
-
-        grapMineAdapter = new GrapMineAdapter(getActivity(),myDatas);
         sharedPreferences = getActivity().getSharedPreferences("ts", Context.MODE_APPEND);
         token = sharedPreferences.getString("token", "");
         present = new Present(this);
         present.getMyGrabList(new JinJianBean(), token);//我的订单信息
 
+        grapMineAdapter = new GrapMineAdapter(getActivity(),myAllDatas);
         xRl.setLayoutManager(new LinearLayoutManager(getActivity()));
         xRl.setAdapter(grapMineAdapter);
+        xRl.setRefreshProgressStyle(ProgressStyle.BallBeat);
+        xRl.setLoadingMoreProgressStyle(ProgressStyle.LineScalePulseOutRapid);
+        xRl.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                myAllDatas.clear();
+                grapMineAdapter.notifyDataSetChanged();
+                present.getMyGrabList(new JinJianBean(), token);
+                xRl.refreshComplete();
+            }
+
+            @Override
+            public void onLoadMore() {
+                xRl.loadMoreComplete();
+            }
+        });
 
 //        bean = new ParmsBean();
 //        bean.setPhoneNo("1332342342420");
@@ -106,6 +123,7 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
         }
 
         myDatas = grapMyBean.getData();
+        myAllDatas.addAll(myAllDatas);
         grapMineAdapter.notifyDataSetChanged();
     }
 }

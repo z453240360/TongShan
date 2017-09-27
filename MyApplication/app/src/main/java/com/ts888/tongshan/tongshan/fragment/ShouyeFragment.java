@@ -244,8 +244,7 @@ public class ShouyeFragment extends Fragment implements IMainView {
                 Intent intent = new Intent(getActivity(), WebActivity.class);
 
                 intent.putExtra("title", data.get(position).getTitle());
-                intent.putExtra("producturl", data.get(position).getImgUrl());
-                Log.i("dd", "OnBannerClick: "+ data.get(position).getImgUrl());
+                intent.putExtra("producturl", data.get(position).getRedirectUrl());
                 startActivity(intent);
             }
         });

@@ -51,6 +51,7 @@ public class Grabs_Fragment extends Fragment implements IMainView {
     private ParmsBean bean;
 
     private List<GrabBean.DataBean> mDatas = new ArrayList<>();
+    private List<GrabBean.DataBean> mAllDatas = new ArrayList<>();
 
     @Nullable
     @Override
@@ -69,10 +70,10 @@ public class Grabs_Fragment extends Fragment implements IMainView {
         bean = new ParmsBean();
         present.getGrabInfoList(new JinJianBean(), token);//查询所有抢单信息
 
-//        adapter = new GrapInfoAdapter(getActivity(),mDatas);
-//        mXRecylerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        mXRecylerView.setAdapter(adapter);
 
+        adapter = new GrapInfoAdapter(getActivity(),mAllDatas);
+        mXRecylerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mXRecylerView.setAdapter(adapter);
         mXRecylerView.setRefreshProgressStyle(ProgressStyle.BallBeat);
         mXRecylerView.setLoadingMoreProgressStyle(ProgressStyle.LineScalePulseOutRapid);
         mXRecylerView.setLoadingListener(new XRecyclerView.LoadingListener() {
@@ -89,13 +90,6 @@ public class Grabs_Fragment extends Fragment implements IMainView {
                 mXRecylerView.loadMoreComplete();
             }
         });
-//        adapter.setOnItemClickListener(new GrapInfoAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(int pos, View view) {
-//                bean.setPhoneNo(mDatas.get(pos).getPhoneNo());
-//                present.grabInfo(bean,token);//点击抢单
-//            }
-//        });
     }
 
     @Override
@@ -146,11 +140,11 @@ public class Grabs_Fragment extends Fragment implements IMainView {
             return;
         }
 
-        adapter = new GrapInfoAdapter(getActivity(),mDatas);
-        mXRecylerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mXRecylerView.setAdapter(adapter);
+        mAllDatas.addAll(mDatas);
+        adapter.notifyDataSetChanged();
 
-//        adapter.notifyDataSetChanged();
+
+
     }
 
 
