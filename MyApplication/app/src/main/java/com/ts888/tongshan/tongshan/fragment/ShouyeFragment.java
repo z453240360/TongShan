@@ -63,6 +63,7 @@ public class ShouyeFragment extends Fragment implements IMainView {
     private List<String> titles = new ArrayList<>();
     private ProgressDialog dialog;
     private SharedPreferences.Editor edit;
+    private List<BannerResultBean.DataBean> data;
 
     @Nullable
     @Override
@@ -218,7 +219,7 @@ public class ShouyeFragment extends Fragment implements IMainView {
             Toast.makeText(getActivity(), "" + bannerResultBean.getMessage(), Toast.LENGTH_SHORT).show();
             return;
         }
-        final List<BannerResultBean.DataBean> data = bannerResultBean.getData();
+        data = bannerResultBean.getData();
 
         for (int i = 0; i < data.size(); i++) {
             BannerResultBean.DataBean dataBean = data.get(i);
@@ -241,8 +242,10 @@ public class ShouyeFragment extends Fragment implements IMainView {
             public void OnBannerClick(int position) {
 
                 Intent intent = new Intent(getActivity(), WebActivity.class);
-                intent.putExtra("producturl", data.get(position).getImgUrl());
+
                 intent.putExtra("title", data.get(position).getTitle());
+                intent.putExtra("producturl", data.get(position).getImgUrl());
+                Log.i("dd", "OnBannerClick: "+ data.get(position).getImgUrl());
                 startActivity(intent);
             }
         });

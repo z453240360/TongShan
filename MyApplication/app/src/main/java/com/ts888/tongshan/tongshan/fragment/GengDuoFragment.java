@@ -214,8 +214,9 @@ public class GengDuoFragment extends Fragment implements IMainView {
 
         mTxtGerenname.setText("您好，"+data.getStaffName());
         mTxtPhoneNumber.setText(""+data.getPhoneNo());
-        mTxtAddress.setText(""+data.getOrgName());
-        mTxtTuandui.setText(""+data.getGroupName());
+
+        mTxtAddress.setText(""+data.getGroupName());
+        mTxtTuandui.setText(""+data.getOrgName());
     }
 
 

@@ -1,114 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.percent.PercentRelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.percent.PercentRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-   <com.ts888.tongshan.tongshan.wedget.PKText
-       android:layout_width="match_parent"
-       android:layout_height="100dp"
-       android:id="@+id/pktxt"
-       >
-
-
-   </com.ts888.tongshan.tongshan.wedget.PKText>
-<RelativeLayout
-    android:id="@+id/percentSheet"
-    android:layout_centerInParent="true"
-    android:background="#fff"
-    app:layout_heightPercent="50%"
-    android:layout_width="match_parent"
-    android:layout_height="0dp">
-
-
-    <TextView
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
-        android:id="@+id/city"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="30dp"
-        android:background="#fff"
-        android:text="上海"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-
-
-    <TextView
-        android:id="@+id/line1"
-        android:layout_above="@id/city"
-        android:background="#116db0"
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
+    android:layout_height="match_parent"
+    android:background="@mipmap/pk_background">
 
     <RelativeLayout
-        android:gravity="center_horizontal"
-        android:layout_above="@id/line1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_centerHorizontal="true"
-            android:id="@+id/challengeCity"
-            android:background="#e53c3c"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content" />
 
-        <TextView
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
-            android:id="@+id/challengeCity2"
-            android:background="#fff"
-            android:text="5个元宝"
-            android:textColor="#000"
-            android:layout_above="@id/challengeCity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        android:id="@+id/percentSheet"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"
+        android:background="@null"
+        app:layout_heightPercent="50%">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+
+                <com.ts888.tongshan.tongshan.wedget.PKText
+                    android:id="@+id/challageCityPK"
+                    app:pk_backGroud="@drawable/yuanjiao_pk"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+
+                <com.ts888.tongshan.tongshan.wedget.PKText
+                    app:pk_backGroud="@drawable/yuanjiao_pk2"
+                    android:id="@+id/acceptCityPK"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+
     </RelativeLayout>
 
 
-
-
-    <TextView
-        android:id="@+id/acceptCity"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="50dp"
-        android:background="#e3b138"
-        android:layout_above="@id/line1"
-        android:layout_width="30dp"
-        android:layout_height="50dp" />
-
-    <TextView
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
-        android:id="@+id/city2"
-        android:layout_alignLeft="@id/acceptCity"
-        android:layout_below="@id/acceptCity"
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:background="#fff"
-        android:text="乌鲁木齐"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_marginTop="10dp"
-        android:id="@+id/acceptCity2"
-        android:layout_alignLeft="@id/acceptCity"
-        android:layout_above="@id/acceptCity"
-        android:gravity="center"
-        android:background="#fff"
-        android:text="10个元宝"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-</RelativeLayout>
-
+        android:background="#dad2d8"
+        app:layout_heightPercent="15%"
+        app:layout_marginBottomPercent="5%"
+        app:layout_marginLeftPercent="5%"
+        app:layout_marginRightPercent="5%">
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:text="领先对方城市 "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
 
+            <TextView
+                android:gravity="center"
+                android:id="@+id/mTxt_moneyPK"
+                android:text="5"
+                android:textColor="#ff1800"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
+            <TextView
+                android:gravity="center"
+                android:text=" 个元宝"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:gravity="center"
+                android:textSize="12sp"
+                android:textColor="#000"
+                android:text="1个金元宝 ≈ 1万元"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
 
 
 </android.support.percent.PercentRelativeLayout>

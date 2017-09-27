@@ -87,7 +87,8 @@
         <activity
             android:name=".activity.FangKuanActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.PK_Activity"></activity>
+        <activity android:name=".activity.PK_Activity" />
+        <activity android:name=".activity.AboutAsActivity"></activity>
     </application>
 
 </manifest>

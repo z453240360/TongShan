@@ -1,6 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/pk_background"
+    android:orientation="vertical">
 
-</LinearLayout>
+
+    <RelativeLayout
+        app:layout_marginLeftPercent="3%"
+        app:layout_marginRightPercent="3%"
+        android:id="@+id/percentSheet"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true"
+        android:background="@null"
+        app:layout_heightPercent="50%">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/ll1"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+
+                <com.ts888.tongshan.tongshan.wedget.PKText
+                    android:id="@+id/PK1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:pk_backGroud="@drawable/yuanjiao_pk2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ll2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+
+                <com.ts888.tongshan.tongshan.wedget.PKText
+                    android:id="@+id/PK2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:pk_backGroud="@drawable/yuanjiao_pk2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ll3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+
+                <com.ts888.tongshan.tongshan.wedget.PKText
+                    android:id="@+id/PK3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:pk_backGroud="@drawable/yuanjiao_pk2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ll4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+
+                <com.ts888.tongshan.tongshan.wedget.PKText
+                    android:id="@+id/PK4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:pk_backGroud="@drawable/yuanjiao_pk2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/ll5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center_horizontal">
+
+                <com.ts888.tongshan.tongshan.wedget.PKText
+                    android:id="@+id/PK5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:pk_backGroud="@drawable/yuanjiao_pk2" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/percentSheet"
+        android:orientation="horizontal"
+        app:layout_heightPercent="15%"
+        app:layout_marginLeftPercent="3%"
+        app:layout_marginRightPercent="3%"
+        app:layout_marginTopPercent="5%"
+
+        >
+
+        <com.ts888.tongshan.tongshan.wedget.PK_RangeText
+            android:id="@+id/range1"
+            android:layout_width="0dp"
+            android:visibility="gone"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:pkTxt_rangeNum="1"
+            app:pkTxt_RangeColor="#eb0000" />
+
+        <com.ts888.tongshan.tongshan.wedget.PK_RangeText
+            android:id="@+id/range2"
+            app:pkTxt_rangeNum="2"
+            android:visibility="gone"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:pkTxt_RangeColor="#eb6f00" />
+
+        <com.ts888.tongshan.tongshan.wedget.PK_RangeText
+            android:id="@+id/range3"
+            app:pkTxt_rangeNum="3"
+            android:layout_width="0dp"
+            android:visibility="gone"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:pkTxt_RangeColor="#eca000" />
+
+        <com.ts888.tongshan.tongshan.wedget.PK_RangeText
+            android:id="@+id/range4"
+            app:pkTxt_rangeNum="4"
+            android:visibility="gone"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:pkTxt_RangeColor="#000" />
+
+        <com.ts888.tongshan.tongshan.wedget.PK_RangeText
+            android:id="@+id/range5"
+            app:pkTxt_rangeNum="5"
+            android:visibility="gone"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:pkTxt_RangeColor="#000" />
+
+    </LinearLayout>
+
+
+</android.support.percent.PercentRelativeLayout>

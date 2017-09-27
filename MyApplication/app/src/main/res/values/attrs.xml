@@ -4,4 +4,16 @@
         <attr name="text" format="string" />
         <attr name="drawTop" format="reference" />
     </declare-styleable>
+
+    <declare-styleable name="PKText">
+        <attr name="pkTxt_color" format="color"/>
+        <attr name="pkTxt_width" format="dimension"/>
+        <attr name="pk_backGroud" format="reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="PK_RangeText">
+        <attr name="pkTxt_RangeColor" format="color"/>
+        <attr name="pkTxt_rangeNum" format="string"/>
+    </declare-styleable>
+
 </resources>

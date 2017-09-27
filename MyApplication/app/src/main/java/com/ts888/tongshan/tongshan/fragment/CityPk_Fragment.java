@@ -2,45 +2,24 @@ package com.ts888.tongshan.tongshan.fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.jcodecraeer.xrecyclerview.ProgressStyle;
-import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.ts888.tongshan.tongshan.R;
-import com.ts888.tongshan.tongshan.adapter.GrapInfoAdapter;
 import com.ts888.tongshan.tongshan.bean.CityPKBean;
-import com.ts888.tongshan.tongshan.bean.GrabBean;
-import com.ts888.tongshan.tongshan.bean.JinJianBean;
 import com.ts888.tongshan.tongshan.bean.PKParmsBean;
-import com.ts888.tongshan.tongshan.bean.ParmsBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 import com.ts888.tongshan.tongshan.wedget.PKText;
-
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
-import static com.ts888.tongshan.tongshan.R.id.acceptCity;
-import static com.ts888.tongshan.tongshan.R.id.city;
-import static com.ts888.tongshan.tongshan.R.id.city2;
-
 
 /**
  * Created by dongdong on 2017/7/30.
@@ -52,10 +31,10 @@ public class CityPk_Fragment extends Fragment implements IMainView {
     private SharedPreferences sharedPreferences;
     private String token;
     private PKParmsBean bean;
-    private RelativeLayout sheet;
-    private TextView challengeCity,acceptCity,city,city2,money1,money2;
     private int heightPixels;
-    private PKText pkText;
+    private PKText challageCityPK,acceptCityPK;
+    private TextView mTxt_moneyNumPK;
+    private int money=0;
 
     @Nullable
     @Override
@@ -67,33 +46,18 @@ public class CityPk_Fragment extends Fragment implements IMainView {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        sheet = (RelativeLayout) view.findViewById(R.id.percentSheet);
-        challengeCity = (TextView) view.findViewById(R.id.challengeCity);
-        acceptCity = (TextView) view.findViewById(R.id.acceptCity);
-        city= (TextView) view.findViewById(R.id.city);
-        city2= (TextView) view.findViewById(R.id.city2);
-        money1 = (TextView) view.findViewById(R.id.challengeCity2);
-        money2 = (TextView) view.findViewById(R.id.acceptCity2);
-        pkText = (PKText) view.findViewById(R.id.pktxt);
 
-        pkText.setTextHeight(10);
+        challageCityPK = (PKText) view.findViewById(R.id.challageCityPK);
+        acceptCityPK = (PKText) view.findViewById(R.id.acceptCityPK);
+        mTxt_moneyNumPK = (TextView) view.findViewById(R.id.mTxt_moneyPK);
+
 
         sharedPreferences = getActivity().getSharedPreferences("ts", Context.MODE_APPEND);
         token = sharedPreferences.getString("token", "");
         present = new Present(this);
         bean = new PKParmsBean();
         present.getCityPKResults(bean, token);//cityPk信息
-
-
         heightPixels = getResources().getDisplayMetrics().heightPixels;
-
-
-
-
-//        RelativeLayout.LayoutParams sheetLayoutParams = (RelativeLayout.LayoutParams) sheet.getLayoutParams(); //取控件textView当前的布局参数 linearParams.height = 20;// 控件的高强制设成20
-//        sheetLayoutParams.height= heightPixels /3+100;
-//        sheet.setLayoutParams(sheetLayoutParams);
-
 
     }
 
@@ -124,33 +88,27 @@ public class CityPk_Fragment extends Fragment implements IMainView {
 
             if (challengeAmount!=0) {
                 double v = acceptAmount / challengeAmount;
-                //动态设置柱体高度
-                RelativeLayout.LayoutParams challgedCity = (RelativeLayout.LayoutParams) challengeCity.getLayoutParams(); //取控件textView当前的布局参数 linearParams.height = 20;// 控件的高强制设成20
-                challgedCity.height = heightPixels/4;// 控件的宽强制设成
-                challengeCity.setLayoutParams(challgedCity); //使设置好的布局参数应用到控件
-
-                RelativeLayout.LayoutParams acceptedCity = (RelativeLayout.LayoutParams) acceptCity.getLayoutParams(); //取控件textView当前的布局参数 linearParams.height = 20;// 控件的高强制设成20
-                acceptedCity.height = (int) (heightPixels * v/4);// 控件的宽强制设成30
-                acceptCity.setLayoutParams(acceptedCity); //使设置好的布局参数应用到控件
+                challageCityPK.setTextHeight((int)(heightPixels/3.5));
+                acceptCityPK.setTextHeight((int)(heightPixels/3.5*v));
+                money = (int)(challengeAmount-acceptAmount);
             }
 
         }else {
             if (acceptAmount!=0) {
                 double v = challengeAmount / acceptAmount;
-                //动态设置柱体高度
-                RelativeLayout.LayoutParams challgedCity = (RelativeLayout.LayoutParams) challengeCity.getLayoutParams(); //取控件textView当前的布局参数 linearParams.height = 20;// 控件的高强制设成20
-                challgedCity.height = (int) (heightPixels * v/4);// 控件的宽强制设成30
-                challengeCity.setLayoutParams(challgedCity); //使设置好的布局参数应用到控件
-                RelativeLayout.LayoutParams acceptedCity = (RelativeLayout.LayoutParams) acceptCity.getLayoutParams(); //取控件textView当前的布局参数 linearParams.height = 20;// 控件的高强制设成20
-                acceptedCity.height = heightPixels/4;// 控件的宽强制设成30
-                acceptCity.setLayoutParams(acceptedCity); //使设置好的布局参数应用到控件
+                acceptCityPK.setTextHeight((int)(heightPixels/3.5));
+                challageCityPK.setTextHeight((int)(heightPixels/3.5*v));
+                money = (int)(acceptAmount-challengeAmount);
             }
         }
 
-        city.setText(challengeCityName);
-        city2.setText(acceptCityName);
-        money1.setText((int) challengeAmount+"个元宝");
-        money2.setText((int) acceptAmount+"个元宝");
+
+        acceptCityPK.getText_money().setText((int) acceptAmount+"");
+        acceptCityPK.getTxt_area().setText(acceptCityName);
+        challageCityPK.getText_money().setText((int) challengeAmount+"");
+        challageCityPK.getTxt_area().setText(challengeCityName);
+        mTxt_moneyNumPK.setText(money+"");
+
     }
 
     @Override
