@@ -56,6 +56,7 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
     private XRecyclerView xRl;
     private int removePos=-1;
     private Dialog dialog;
+    private LinearLayoutManager manager;
 
     @Nullable
     @Override
@@ -78,7 +79,11 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
         present.getMyGrabList(new JinJianBean(), token);//我的订单信息
 
         grapMineAdapter = new GrapMineAdapter(getActivity(),myAllDatas);
-        xRl.setLayoutManager(new LinearLayoutManager(getActivity()));
+        manager = new LinearLayoutManager(getActivity());
+        manager.setStackFromEnd(false);
+        manager.setReverseLayout(true);
+
+        xRl.setLayoutManager(manager);
         xRl.setAdapter(grapMineAdapter);
         xRl.setRefreshProgressStyle(ProgressStyle.BallBeat);
         xRl.setLoadingMoreProgressStyle(ProgressStyle.LineScalePulseOutRapid);
