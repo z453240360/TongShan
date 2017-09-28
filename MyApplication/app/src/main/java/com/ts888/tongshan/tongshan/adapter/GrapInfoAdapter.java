@@ -58,12 +58,16 @@ public class GrapInfoAdapter extends RecyclerView.Adapter<GrapInfoAdapter.MyGrap
                 }
             }
         });
+
+
+
     }
 
 
     public class MyGrapInfiViewHolder extends RecyclerView.ViewHolder {
         private TextView mTxt_name,mTxt_moneyNum,mTxt_moneyUnit,mTxt_money;
         private Button mBtn_qiangdan;
+        private View itemView;
         public MyGrapInfiViewHolder(View itemView) {
             super(itemView);
             mTxt_moneyNum = (TextView) itemView.findViewById(R.id.mTxt_moneyNum);

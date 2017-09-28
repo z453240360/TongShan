@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@null"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:background="@null"
+        android:id="@+id/img_bag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scaleType="fitXY"
+        android:src="@mipmap/dd_tanchuang"
+        />
+
+    <TextView
+        android:id="@+id/mTXT_CALL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/img_bag"
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@mipmap/dd_dianhua"
+        android:drawablePadding="3dp"
+        android:text="立即联系"
+        android:textColor="#fff"
+        app:layout_marginBottomPercent="3%" />
+
+    <Button
+        android:id="@+id/mBtn_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/img_bag"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/dd_queren"
+        app:layout_marginBottomPercent="9%" />
+
+    <LinearLayout
+        android:background="@null"
+        android:orientation="vertical"
+        android:gravity="left"
+        android:layout_above="@id/mBtn_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+
+        android:textColor="#fff"
+        app:layout_marginBottomPercent="3%" >
+
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:id="@+id/mTxt_mesg3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="客户姓名：张三"
+            android:textColor="#fff"
+            app:layout_marginBottomPercent="3%" />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:id="@+id/mTxt_mesg1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="意向金额：32000元"
+            android:textColor="#fff"
+            app:layout_marginBottomPercent="3%" />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:id="@+id/mTxt_mesg2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="申请城市：上海"
+            android:textColor="#fff"
+            app:layout_marginBottomPercent="3%" />
+    </LinearLayout>
+
+
+</android.support.percent.PercentRelativeLayout>

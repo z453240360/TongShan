@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements IMainView {
         if (null == controller) {
             controller = UpdateVersionController.getInstance(this);  //创建App更新管理类
         }
+
         present.getApkUpdate(beam, null);    //发送更新请求
     }
 

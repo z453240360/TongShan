@@ -8,16 +8,21 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.bean.GrapMyBean;
 import com.ts888.tongshan.tongshan.bean.OrgRankingBean;
 import com.ts888.tongshan.tongshan.util.DataFormatFromInt;
+import com.ts888.tongshan.tongshan.util.DataUtils;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +34,7 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
     private Context mContext;
     private LayoutInflater mInflater;
     private Map<Integer,Boolean> map=new HashMap<>();
+    private boolean isFirst=true;
 
     public GrapMineAdapter(Context context, List<GrapMyBean.DataBean> datas) {
         this.mInflater = LayoutInflater.from(context);
@@ -56,15 +62,81 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         GrapMyBean.DataBean dataBean = mDatas.get(position);
-        String phoneNo = dataBean.getPhoneNo();
-        long amount = dataBean.getAmount();
-        String grabTime = dataBean.getGrabTime();
-        String customerName = dataBean.getCustomerName();
+        String phoneNo = dataBean.getPhoneNo();//电话
+        long amount = dataBean.getAmount();//申请金额
+        String grabTime = dataBean.getGrabTime();//申请时间
+        String customerName = dataBean.getCustomerName();//客户姓名
+
+        Date date = null;
+        String justTime ="";
+        try {
+            date = DataUtils.stringToDate(grabTime, "yyyy-MM-dd kk:mm:ss");
+            justTime = DataUtils.formatDateTime(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        holder.mTxt_name.setText(customerName);
+        holder.mTxt_moneyNum.setText(amount+"");
+        holder.mTxt_sucessed.setText(justTime);
+        holder.rl_dd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isFirst){
+                    map.put(position,true);
+                    isFirst=false;
+                    holder.rl.setVisibility(View.VISIBLE);
+                    holder.mImg_flag.setImageResource(R.mipmap.dd_shouqi);
+                }else {
+                    map.put(position,false);
+                    isFirst=true;
+                    holder.rl.setVisibility(View.GONE);
+                    holder.mEd_send.setText("");
+                    holder.mImg_flag.setImageResource(R.mipmap.dd_xiala);
+                }
+            }
+        });
+
+        holder.mImg_phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mListener!=null){
+                    mListener.onPhoneButtonClick(position, holder.mEd_send.getText().toString());
+                }
+            }
+        });
 
 
+        holder.mImg_msm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mListener!=null){
+                    mListener.onMsmClicked(position, "我在哪里"+position);
+                }
+            }
+        });
+
+        holder.mBtn_send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mListener!=null){
+                    mListener.onComfirmClicked(position, holder.mEd_send.getText().toString());
+                }
+            }
+        });
 
 
+        if (map.get(position)==null){
+            map.put(position,false);
+        }
 
+        if(map.get(position)) {
+            holder.rl.setVisibility(View.VISIBLE);
+            holder.mImg_flag.setImageResource(R.mipmap.dd_shouqi);
+        }else {
+            holder.rl.setVisibility(View.GONE);
+            holder.mImg_flag.setImageResource(R.mipmap.dd_xiala);
+        }
 
     }
 
@@ -77,9 +149,12 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
         private TextView mTxt_name,mTxt_moneyNum,mTxt_sucessed;
         private ImageView mImg_flag,mImg_phone,mImg_msm;
         private EditText mEd_send;
+        private RelativeLayout rl,rl_dd;
+        private Button mBtn_send;
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            mBtn_send = (Button) itemView.findViewById(R.id.mBtn_send);
             mTxt_name = (TextView) itemView.findViewById(R.id.mTxt_name);
             mTxt_moneyNum = (TextView) itemView.findViewById(R.id.mTxt_moneyNum);
             mTxt_sucessed = (TextView) itemView.findViewById(R.id.mTxt_succesed);
@@ -87,6 +162,8 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
             mImg_phone = (ImageView) itemView.findViewById(R.id.mImg_phone);
             mImg_msm = (ImageView) itemView.findViewById(R.id.mImg_msm);
             mEd_send = (EditText) itemView.findViewById(R.id.mEd_cancle);
+            rl = (RelativeLayout) itemView.findViewById(R.id.rl);
+            rl_dd = (RelativeLayout) itemView.findViewById(R.id.rl_dd);
         }
     }
 
@@ -106,6 +183,9 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
 
     public interface OnItemClickListener {
         void onItemClick(int pos, View view);
+        void onPhoneButtonClick(int pos,String s);
+        void onMsmClicked(int pos,String s);
+        void onComfirmClicked(int pos,String s);
     }
 
     private OnItemClickListener mListener;
