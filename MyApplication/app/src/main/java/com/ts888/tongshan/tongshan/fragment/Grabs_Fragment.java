@@ -2,12 +2,10 @@ package com.ts888.tongshan.tongshan.fragment;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -75,7 +73,7 @@ public class Grabs_Fragment extends Fragment implements IMainView {
         present = new Present(this);
         bean = new ParmsBean();
         present.getGrabInfoList(new JinJianBean(), token);//查询所有抢单信息
-        dialog2 = new Dialog(getActivity());
+        dialog2 = new Dialog(getActivity(),R.style.testDialog);
 
         adapter = new GrapInfoAdapter(getActivity(), mAllDatas);
         mXRecylerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -162,10 +160,11 @@ public class Grabs_Fragment extends Fragment implements IMainView {
 
 
         } else {
+            Dialog dialogFailed = new Dialog(getActivity(),R.style.testDialog);
             View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_grapfailed, null);
             //TODO 弹出框
-            dialog2.setContentView(view);
-            dialog2.show();
+            dialogFailed.setContentView(view);
+            dialogFailed.show();
         }
 
 

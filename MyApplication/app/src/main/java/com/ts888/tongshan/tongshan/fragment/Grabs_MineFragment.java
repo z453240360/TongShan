@@ -36,9 +36,6 @@ import com.ts888.tongshan.tongshan.util.ShowTostUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.ts888.tongshan.tongshan.R.id.mBtn_conform;
-import static com.ts888.tongshan.tongshan.R.id.view;
-
 
 /**
  * Created by dongdong on 2017/7/30.
@@ -57,6 +54,9 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
     private int removePos=-1;
     private Dialog dialog;
     private LinearLayoutManager manager;
+    private View view;
+    private Button mBtn_cancle;
+    private Button mBtn_conform;
 
     @Nullable
     @Override
@@ -72,7 +72,20 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
     }
 
     private void init() {
-        dialog = new Dialog(getActivity());
+        dialog = new Dialog(getActivity(),R.style.testDialog);
+        view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_give_up_grap, null);
+        dialog.setContentView(view);
+        dialog.setCancelable(false);
+//        mBtn_cancle = (Button)view.findViewById(R.id.mBtn_cancel);
+//        mBtn_conform = (Button)view.findViewById(R.id.mBtn_conform);
+//        mBtn_cancle.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dialog.cancel();
+//                callBack.getText("抢单成功");
+//            }
+//        });
+
         sharedPreferences = getActivity().getSharedPreferences("ts", Context.MODE_APPEND);
         token = sharedPreferences.getString("token", "");
         present = new Present(this);
@@ -81,7 +94,7 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
         grapMineAdapter = new GrapMineAdapter(getActivity(),myAllDatas);
         manager = new LinearLayoutManager(getActivity());
         manager.setStackFromEnd(false);
-        manager.setReverseLayout(true);
+        manager.setReverseLayout(false);
 
         xRl.setLayoutManager(manager);
         xRl.setAdapter(grapMineAdapter);
@@ -147,22 +160,14 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
                     ShowTostUtil.toast(getActivity(),"请说明理由");
                     return;
                 }
-//                View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_give_up_grap, null);
-//                dialog.setContentView(view);
-//                dialog.setCancelable(false);
-//                dialog.show();
 
-//                Button mBtn_cancle = (Button)view.findViewById(R.id.mBtn_cancel);
-//                Button mBtn_conform = (Button)view.findViewById(R.id.mBtn_conform);
 
-//                mBtn_cancle.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        dialog.cancel();
-//                        callBack.getText("抢单成功");
-//                    }
-//                });
-//
+                dialog.show();
+
+
+
+
+
 //                mBtn_conform.setOnClickListener(new View.OnClickListener() {
 //                    @Override
 //                    public void onClick(View view) {

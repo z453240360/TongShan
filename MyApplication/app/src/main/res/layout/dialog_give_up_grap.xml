@@ -29,48 +29,41 @@
             android:layout_marginTop="50dp"
             android:text="请确认客户是否放弃进件" />
 
-        <TextView
-            android:id="@+id/txt_t"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/txt"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="30dp"
-            android:background="@color/dongdongBlue" />
+        <!--<TextView-->
+            <!--android:id="@+id/txt_t"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:layout_below="@id/txt"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:layout_marginTop="30dp"-->
+            <!--android:background="@color/dongdongBlue" />-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txt_t"
-            android:background="@drawable/yuanjiao_about"
-            android:orientation="horizontal">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@id/txt_t"-->
+            <!--android:background="@drawable/yuanjiao_about"-->
+            <!--android:orientation="horizontal">-->
 
-            <Button
-                android:id="@+id/mBtn_cancel"
-                style="@style/Base.Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@id/txt"
-                android:layout_weight="1"
-                android:background="@drawable/radiobuttoncolor"
-                android:text="取消"
-                android:textColor="@color/dongdongBlue" />
+            <!--<Button-->
+                <!--android:id="@+id/mBtn_cancel"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@drawable/radiobuttoncolor"-->
+                <!--android:text="取消"-->
+                <!--android:textColor="@color/dongdongBlue" />-->
 
-            <Button
-                android:id="@+id/mBtn_conform"
-                style="@style/Base.Widget.AppCompat.Button.Borderless"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txt"
-                android:layout_marginBottom="0dp"
-                android:layout_toRightOf="@id/mBtn_cancel"
-                android:layout_weight="1"
-                android:background="@drawable/yuanjiaologinbutton"
-                android:text="确认"
-                android:textColor="#fff" />
+            <!--<Button-->
+                <!--android:id="@+id/mBtn_conform"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@drawable/yuanjiaologinbutton"-->
+                <!--android:text="确认"-->
+                <!--android:textColor="#fff" />-->
 
-        </LinearLayout>
+        <!--</LinearLayout>-->
     </RelativeLayout>
 
     <ImageView
