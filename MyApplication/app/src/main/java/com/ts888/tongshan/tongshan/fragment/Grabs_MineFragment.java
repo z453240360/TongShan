@@ -199,6 +199,9 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
                 }
 
 
+
+
+
                 dialog.show();
 
                 mBtn_conform.setOnClickListener(new View.OnClickListener() {
@@ -212,11 +215,11 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
                     }
                 });
 
-
-
             }
         });
     }
+
+
 
     //取消订单
     @Override
@@ -245,6 +248,8 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
 //        }else {
 //            ShowTostUtil.toast(getActivity(),grabCancleBean.getData());
 //        }
+
+        refresh();
 
     }
 
