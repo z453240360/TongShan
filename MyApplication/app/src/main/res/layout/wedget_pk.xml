@@ -13,7 +13,7 @@
         android:layout_alignParentBottom="true"
         android:id="@+id/wedget_area"
         android:textColor="#fff"
-        android:text="上海"
+        android:text="0"
         android:background="@null"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
@@ -32,7 +32,7 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/wedget_money"
         android:layout_above="@id/mTxt_height"
-        android:text="元宝"
+        android:text="0"
         android:background="@null"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

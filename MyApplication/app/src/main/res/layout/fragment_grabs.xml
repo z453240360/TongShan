@@ -16,7 +16,7 @@
         android:textSize="12sp"
         android:textColor="@color/dongdongBlue"
         android:drawableLeft="@mipmap/dd_dianpu"
-        android:text="上海营业部" />
+        android:text="" />
 
     <TextView
         android:id="@+id/txt_line1"

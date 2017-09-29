@@ -29,6 +29,10 @@ public class QiandanActivity extends AppCompatActivity {
     RadioGroup ll;
     @BindView(R.id.grab_frame)
     FrameLayout grabFrame;
+    @BindView(R.id.mRb_shouye)
+    RadioButton mRbShouye;
+    @BindView(R.id.mRb_xiaoxi)
+    RadioButton mRbXiaoxi;
     private Toolbar toolbarsQiangdan;
     private ArrayList<Fragment> list = new ArrayList<>();
     private FragmentManager manager;
@@ -55,7 +59,6 @@ public class QiandanActivity extends AppCompatActivity {
         toolbarsQiangdan.setNavigationIcon(R.mipmap.zuojiantou);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
-
 
 
     //添加Fragment
@@ -85,6 +88,16 @@ public class QiandanActivity extends AppCompatActivity {
 
                 manager.beginTransaction().hide(lastFragment).commit();
                 lastFragment = list.get(index);
+            }
+        });
+
+
+        grabs_fragment.setCallBack(new Grabs_Fragment.TextCallBack() {
+            @Override
+            public void getText(String str) {
+                if (str.equals("succesed")) {
+                    mRbXiaoxi.setChecked(true);
+                }
             }
         });
 

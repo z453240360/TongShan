@@ -177,6 +177,7 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
     //删除一条数据
     public void removeData(int pos) {
         mDatas.remove(pos);
+        map.remove(pos);
         notifyItemRemoved(pos);
     }
 

@@ -81,7 +81,7 @@
             <TextView
                 android:gravity="center"
                 android:id="@+id/mTxt_moneyPK"
-                android:text="5"
+                android:text="0"
                 android:textColor="#ff1800"
                 android:textStyle="bold"
                 android:textSize="24sp"

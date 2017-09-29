@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_help_center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ts888.tongshan.tongshan.activity.HelpCenterActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbars_qiangdan"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:background="#1b7ab4"
+        android:gravity="center"
+        android:popupTheme="@style/AppTheme">
+
+        <TextView
+            android:id="@+id/mTxt_qiangdan_web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="帮助中心"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+    </android.support.v7.widget.Toolbar>
+    <TextView
+        android:text="帮助中心"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

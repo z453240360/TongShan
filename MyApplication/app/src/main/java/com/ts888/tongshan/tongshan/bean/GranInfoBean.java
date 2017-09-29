@@ -54,7 +54,7 @@ public class GranInfoBean {
 
         private String customerName;
         private int amount;
-        private Object phoneNo;
+        private String phoneNo;
         private Object channel;
         private String city;
         private Object msg;
@@ -77,11 +77,11 @@ public class GranInfoBean {
             this.amount = amount;
         }
 
-        public Object getPhoneNo() {
+        public String getPhoneNo() {
             return phoneNo;
         }
 
-        public void setPhoneNo(Object phoneNo) {
+        public void setPhoneNo(String phoneNo) {
             this.phoneNo = phoneNo;
         }
 

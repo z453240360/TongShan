@@ -533,7 +533,7 @@ public class Present {
         dateModel.getUserInfos(timeStamp, md51, params, token,new ICallBack() {
             @Override
             public void succesed(String s) {
-                iMainView.getUpDate(s);
+                iMainView.getLogin(s);
                 iMainView.cancelLoading();
             }
 

@@ -2,6 +2,7 @@ package com.ts888.tongshan.tongshan.fragment;
 
 import android.Manifest;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,9 +10,11 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,6 +39,8 @@ import com.ts888.tongshan.tongshan.util.ShowTostUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.attr.data;
+
 
 /**
  * Created by dongdong on 2017/7/30.
@@ -43,20 +48,22 @@ import java.util.List;
 
 public class Grabs_MineFragment extends Fragment implements IMainView {
 
+    private View view;
     private Present present;
-    private SharedPreferences sharedPreferences;
     private String token;
     private ParmsBean bean;
-    private List<GrapMyBean.DataBean> myDatas=new ArrayList<>();
-    private List<GrapMyBean.DataBean> myAllDatas=new ArrayList<>();
-    private GrapMineAdapter grapMineAdapter;
-    private XRecyclerView xRl;
-    private int removePos=-1;
     private Dialog dialog;
-    private LinearLayoutManager manager;
-    private View view;
+    private Bundle bundle;
     private Button mBtn_cancle;
     private Button mBtn_conform;
+    private XRecyclerView xRl;
+    private ProgressDialog progressDialog;
+    private LinearLayoutManager manager;
+    private SharedPreferences sharedPreferences;
+    private GrapMineAdapter grapMineAdapter;
+    private List<GrapMyBean.DataBean> myDatas=new ArrayList<>();
+    private List<GrapMyBean.DataBean> myAllDatas=new ArrayList<>();
+
 
     @Nullable
     @Override
@@ -72,25 +79,47 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
     }
 
     private void init() {
-        dialog = new Dialog(getActivity(),R.style.testDialog);
-        view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_give_up_grap, null);
-        dialog.setContentView(view);
-        dialog.setCancelable(false);
-//        mBtn_cancle = (Button)view.findViewById(R.id.mBtn_cancel);
-//        mBtn_conform = (Button)view.findViewById(R.id.mBtn_conform);
-//        mBtn_cancle.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                dialog.cancel();
-//                callBack.getText("抢单成功");
-//            }
-//        });
-
+        //获取token
         sharedPreferences = getActivity().getSharedPreferences("ts", Context.MODE_APPEND);
         token = sharedPreferences.getString("token", "");
+
+
+        //加载框
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Loading...");
+
+
+        //弹出框以及对应的控件功能
+        view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_give_up_grap, null);
+        dialog = new Dialog(getActivity(),R.style.dialog);
+        dialog.setContentView(view);
+        dialog.setCancelable(false);
+
+        mBtn_cancle = (Button)view.findViewById(R.id.mBtn_cancel);
+        mBtn_conform = (Button)view.findViewById(R.id.mBtn_conform);
+
+        //弹框取消
+        mBtn_cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
+
+
+
+        //初始化数据层对象
         present = new Present(this);
         present.getMyGrabList(new JinJianBean(), token);//我的订单信息
 
+
+        //存储点击位置信息，以备取消成功后删除
+        bundle = new Bundle();
+        bundle.putInt("postion",-1);
+
+
+        //刷新列表显示内容
         grapMineAdapter = new GrapMineAdapter(getActivity(),myAllDatas);
         manager = new LinearLayoutManager(getActivity());
         manager.setStackFromEnd(false);
@@ -115,6 +144,8 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
             }
         });
 
+
+        //列表的监听事件：拨打电话、发送信息、取消订单
         grapMineAdapter.setOnItemClickListener(new GrapMineAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int pos, View view) {
@@ -122,24 +153,30 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
             }
 
             @Override
-            public void onPhoneButtonClick(int pos, String s) {
+            public void onPhoneButtonClick(int pos, String s) {   //拨打电话
 
                 String phoneNo = myAllDatas.get(pos).getPhoneNo();
-                if (phoneNo.equals("")){
-                    ShowTostUtil.toast(getActivity(),"电话号码为空");
+                if (phoneNo.equals("")||null==phoneNo){
+                    ShowTostUtil.toast(getActivity(),"没有查到对应的联系电话");
                     return;
                 }
 
-                diaPhone(phoneNo);
+                // 判断环境兼容，检查自己的权限，是否被同意
+                if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    //如果不同意，就去请求权限   参数1：上下文，2：权限，3：请求码
+                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, 1);
+                } else {
+                    //同意就拨打
+                    diaPhone(myAllDatas.get(pos).getPhoneNo());
+                }
 
             }
 
             @Override
-            public void onMsmClicked(int pos, String s) {
-                ShowTostUtil.toast(getActivity(),"xinxi"+pos);
+            public void onMsmClicked(int pos, String s) {     //发送信息
                 String phoneNo = myAllDatas.get(pos).getPhoneNo();
                 if (phoneNo.equals("")){
-                    ShowTostUtil.toast(getActivity(),"电话号码为空");
+                    ShowTostUtil.toast(getActivity(),"没有查到对应的联系电话");
                     return;
                 }
 
@@ -153,7 +190,7 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
             }
 
             @Override
-            public void onComfirmClicked(final int pos, String s) {
+            public void onComfirmClicked(final int pos, String s) {  //确认取消
 
 
                 if (s.equals("")){
@@ -164,28 +201,24 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
 
                 dialog.show();
 
-
-
-
-
-//                mBtn_conform.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
+                mBtn_conform.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
                         bean = new ParmsBean();
                         bean.setPhoneNo(myAllDatas.get(pos).getPhoneNo());
                         present.cancelGrab(bean, token);//取消订单
-                        removePos=pos;
-//                        dialog.cancel();
-//                    }
-//                });
+                        bundle.putInt("postion",pos);
+                        dialog.cancel();
+                    }
+                });
 
 
 
             }
         });
-
     }
 
+    //取消订单
     @Override
     public void getCode(String s) {
         Log.i("dd", "取消订单: " + s);
@@ -196,26 +229,38 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
             ShowTostUtil.toast(getActivity(),grabCancleBean.getMessage().toString());
             return;
         }
+
         ShowTostUtil.toast(getActivity(),grabCancleBean.getData());
-        if (removePos!=-1) {
-            grapMineAdapter.removeData(removePos);
-            removePos = -1;
-        }
+
+        myAllDatas.clear();
+        grapMineAdapter.notifyDataSetChanged();
+        present.getMyGrabList(new JinJianBean(), token);//我的订单信息
+
+
+//        int postion = bundle.getInt("postion");
+//
+//        if (postion!=-1){
+//            grapMineAdapter.removeData(postion);
+//            ShowTostUtil.toast(getActivity(),grabCancleBean.getData());
+//        }else {
+//            ShowTostUtil.toast(getActivity(),grabCancleBean.getData());
+//        }
+
     }
 
     @Override
     public void showLoading() {
-
+        progressDialog.show();
     }
 
     @Override
     public void cancelLoading() {
-
+        progressDialog.cancel();
     }
 
     @Override
     public void showFaliure(String s) {
-
+        ShowTostUtil.toast(getActivity(),s);
     }
 
     @Override
@@ -223,6 +268,7 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
 
     }
 
+    //我的订单查询
     @Override
     public void getUpDate(String s) {
         Log.i("dd", "我的订单查询: " + s);
@@ -241,25 +287,39 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
 
 
     public void diaPhone(String phoneNum){
-        ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, 0x11);
-
-        Intent intent=new Intent();
-        intent.setAction(Intent.ACTION_DIAL);
+        if (phoneNum.equals("")||null==phoneNum){
+            ShowTostUtil.toast(getActivity(),"没有查到联系电话");
+            return;
+        }
+        Intent intent = new Intent(Intent.ACTION_CALL);
         intent.setData(Uri.parse("tel:"+phoneNum));
-        startActivity(intent);
+        try {
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 0x11) {
-            // If request is cancelled, the result arrays are empty.
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-            } else {
-                ShowTostUtil.toast(getActivity(),"请开启手机拨号权限");
-            }
+        //判断请求码
+        switch (requestCode) {
+            case 1:
+                //如果同意，就拨打
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    String phone = bundle.getString("phone");
+                    if (phone==null||"".equals(phone))
+                    {
+                        ShowTostUtil.toast(getActivity(),"没有查到联系电话");
+                        return;
+                    }
+                    diaPhone(phone);
+                } else {
+                    Toast.makeText(getActivity(), "请开启权限", Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
     }
 
@@ -271,5 +331,21 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
 
     public void setCallBack(Grabs_MineFragment.TextCallBack callBack) {
         this.callBack = callBack;
+    }
+
+    public void refresh(){
+        myAllDatas.clear();
+        grapMineAdapter.notifyDataSetChanged();
+        present.getMyGrabList(new JinJianBean(), token);
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden){
+
+        }else {
+            refresh();
+        }
     }
 }

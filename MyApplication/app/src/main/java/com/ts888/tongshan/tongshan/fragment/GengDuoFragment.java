@@ -26,6 +26,9 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.ts888.tongshan.tongshan.MainActivity;
 import com.ts888.tongshan.tongshan.R;
+import com.ts888.tongshan.tongshan.activity.AboutAsActivity;
+import com.ts888.tongshan.tongshan.activity.HelpCenterActivity;
+import com.ts888.tongshan.tongshan.activity.WebActivity;
 import com.ts888.tongshan.tongshan.bean.GeRenXinXiBean;
 import com.ts888.tongshan.tongshan.bean.JinJianBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
@@ -132,29 +135,24 @@ public class GengDuoFragment extends Fragment implements IMainView {
 //                startActivityForResult(intent, 1);
                 break;
 
+            //关于我们
             case R.id.mBtn_bangzhu:
-
-                //公告管理
-//                present.noticeInfo(new LongHuParmsBean(),token);
-
-//                jinJian.setName("龙");
-
-                //进件查询
-//                present.findApplyInfo(jinJian,token);//返回数据为空
-
-                //放款查询
-//                present.findLoanInfo(jinJian,token);
-
-                //个人信息
-//                present.getUserInfos(jinJian,token);
-
+                startActivity(new Intent(getActivity(), AboutAsActivity.class));
                 break;
+            //帮助中心
             case R.id.mBtn_women:
-
+                Intent intent = new Intent(getActivity(), WebActivity.class);
+                intent.putExtra("producturl","");
+                intent.putExtra("title","帮助中心");
+                startActivity(intent);
                 break;
+            //退出登陆
             case R.id.mBtn_tuichu:
                 edit.putString("token", "");
+                edit.putString("phoneNo","");
+                edit.putString("userCode","");
                 edit.commit();
+
                 startActivity(new Intent(getActivity(), MainActivity.class));
                 getActivity().finish();
                 break;
@@ -183,11 +181,6 @@ public class GengDuoFragment extends Fragment implements IMainView {
 
     @Override
     public void getLogin(String s) {
-
-    }
-
-    @Override
-    public void getUpDate(String s) {
         Log.i("dd", "getUpDate: " + s);
         Gson gson = new Gson();
         GeRenXinXiBean geRenXinXiBean = gson.fromJson(s, GeRenXinXiBean.class);
@@ -217,6 +210,11 @@ public class GengDuoFragment extends Fragment implements IMainView {
 
         mTxtAddress.setText(""+data.getGroupName());
         mTxtTuandui.setText(""+data.getOrgName());
+    }
+
+    @Override
+    public void getUpDate(String s) {
+
     }
 
 

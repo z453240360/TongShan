@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <!-- .activity.AdvActivity    .TestActivity -->
     <application
@@ -89,7 +89,8 @@
             android:name=".activity.FangKuanActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".activity.PK_Activity" />
-        <activity android:name=".activity.AboutAsActivity"></activity>
+        <activity android:name=".activity.AboutAsActivity" />
+        <activity android:name=".activity.HelpCenterActivity"></activity>
     </application>
 
 </manifest>

@@ -1,20 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_about_as"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="none"
+
     android:background="@null"
     tools:context="com.ts888.tongshan.tongshan.activity.AboutAsActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbars_qiangdan"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:background="#1b7ab4"
+        android:gravity="center"
+        android:popupTheme="@style/AppTheme">
 
+        <TextView
+
+            android:id="@+id/mTxt_qiangdan_web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="关于我们"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+    </android.support.v7.widget.Toolbar>
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:background="@null"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
         <LinearLayout
             android:background="@drawable/yuanjiao_about"
             android:layout_marginTop="10dp"
@@ -30,9 +54,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
+                android:textSize="18sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="贷道"
+                android:text="贷  道"
                 android:textColor="#000"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -42,52 +67,76 @@
             android:background="@drawable/yuanjiao_about"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:layout_marginRight="10dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <TextView
+                android:text="产品概述"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:drawablePadding="10dp"
+                android:layout_marginLeft="10dp"
                 android:drawableLeft="@mipmap/dd_lingxing"
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <TextView
-                android:layout_marginTop="10dp"
+                android:textSize="12sp"
+                android:lineSpacingMultiplier="1.5"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/txt1"
+
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp"
-                android:text="贷道"
-                android:textColor="#000"
+                android:text="贷道，是由上海通善互联网金融信息有限公司自主研发，能够帮助销售人员获取潜在客户，追踪进件情况，提高效率，帮助销售经理及时掌握团队业务流程和业绩情况等的一款APP产品。"
+                android:textColor="#444444"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginBottom="10dp"
             android:background="@drawable/yuanjiao_about"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:layout_marginRight="10dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <ImageView
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:drawablePadding="10dp"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:text="产品概述"
+                android:drawableLeft="@mipmap/dd_lingxing"
                 android:layout_marginTop="20dp"
-                android:src="@mipmap/dd_logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <TextView
+
+                android:lineSpacingMultiplier="1.5"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/txt2"
+                android:textSize="12sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:text="贷道"
-                android:textColor="#000"
+                android:text=""
+                android:textColor="#444444"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
         </LinearLayout>
 
 
     </LinearLayout>
+    </ScrollView>
 
 
 
-
-</ScrollView>
+</LinearLayout>

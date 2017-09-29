@@ -62,7 +62,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:gravity="left"
-                android:text="客户姓名：张三"
+                android:text=""
                 android:textColor="#fff"
                 app:layout_marginBottomPercent="3%" />
 
@@ -73,7 +73,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:gravity="left"
-                android:text="意向金额：32000元"
+                android:text=""
                 android:textColor="#fff"
                 app:layout_marginBottomPercent="3%" />
 
@@ -84,7 +84,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:gravity="left"
-                android:text="申请城市：上海"
+                android:text=""
                 android:textColor="#fff"
                 app:layout_marginBottomPercent="3%" />
         </LinearLayout>
