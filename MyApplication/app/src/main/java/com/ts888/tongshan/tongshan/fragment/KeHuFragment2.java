@@ -144,7 +144,6 @@ public class KeHuFragment2 extends Fragment implements IMainView {
             public boolean onQueryTextSubmit(String query) {
                 mDatess.clear();
                 adapter2.notifyDataSetChanged();
-
                 bean.setName(query);
                 present.findApplyInfo(bean, tokens);
                 return false;

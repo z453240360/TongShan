@@ -112,7 +112,7 @@
                 android:drawablePadding="10dp"
                 android:textColor="#000"
                 android:textSize="18sp"
-                android:text="产品概述"
+                android:text="功能要点"
                 android:drawableLeft="@mipmap/dd_lingxing"
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"

@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,11 +37,13 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
     private Map<Integer,Boolean> map=new HashMap<>();
     private boolean isFirst=true;
 
+    private String TAG ="dd";
     public GrapMineAdapter(Context context, List<GrapMyBean.DataBean> datas) {
         this.mInflater = LayoutInflater.from(context);
         mDatas = datas;
         this.mContext = context;
         initMap();
+        Log.i(TAG, "GrapMineAdapter: ");
     }
 
     private void initMap() {
@@ -54,13 +57,17 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Log.i(TAG, "onCreateViewHolder: ");
         View view = mInflater.inflate(R.layout.adapter_mygrap, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(view);
         return myViewHolder;
-    }
+    }//1
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
+        Log.i(TAG, "onBindViewHolder: ");
+        holder.itemView.setTag(position);
+
         GrapMyBean.DataBean dataBean = mDatas.get(position);
         String phoneNo = dataBean.getPhoneNo();//电话
         long amount = dataBean.getAmount();//申请金额
@@ -83,12 +90,12 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
             @Override
             public void onClick(View view) {
                 if (isFirst){
-                    map.put(position,true);
+                    map.put((Integer) holder.itemView.getTag(),true);
                     isFirst=false;
                     holder.rl.setVisibility(View.VISIBLE);
                     holder.mImg_flag.setImageResource(R.mipmap.dd_shouqi);
                 }else {
-                    map.put(position,false);
+                    map.put((Integer) holder.itemView.getTag(),false);
                     isFirst=true;
                     holder.rl.setVisibility(View.GONE);
                     holder.mEd_send.setText("");
@@ -101,7 +108,7 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
             @Override
             public void onClick(View view) {
                 if (mListener!=null){
-                    mListener.onPhoneButtonClick(position, holder.mEd_send.getText().toString());
+                    mListener.onPhoneButtonClick((Integer) holder.itemView.getTag(), holder.mEd_send.getText().toString());
                 }
             }
         });
@@ -111,7 +118,7 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
             @Override
             public void onClick(View view) {
                 if (mListener!=null){
-                    mListener.onMsmClicked(position, "我在哪里"+position);
+                    mListener.onMsmClicked((Integer) holder.itemView.getTag(), "我在哪里"+position);
                 }
             }
         });
@@ -120,17 +127,17 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
             @Override
             public void onClick(View view) {
                 if (mListener!=null){
-                    mListener.onComfirmClicked(position, holder.mEd_send.getText().toString());
+                    mListener.onComfirmClicked((Integer) holder.itemView.getTag(), holder.mEd_send.getText().toString());
                 }
             }
         });
 
 
-        if (map.get(position)==null){
-            map.put(position,false);
+        if (map.get((Integer) holder.itemView.getTag())==null){
+            map.put((Integer) holder.itemView.getTag(),false);
         }
 
-        if(map.get(position)) {
+        if(map.get((Integer) holder.itemView.getTag())) {
             holder.rl.setVisibility(View.VISIBLE);
             holder.mImg_flag.setImageResource(R.mipmap.dd_shouqi);
         }else {
@@ -138,12 +145,13 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
             holder.mImg_flag.setImageResource(R.mipmap.dd_xiala);
         }
 
-    }
+    }//4
 
     @Override
     public int getItemCount() {
+        Log.i(TAG, "getItemCount: ");
         return mDatas == null ? 0 : mDatas.size();
-    }
+    }//3
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView mTxt_name,mTxt_moneyNum,mTxt_sucessed;
@@ -154,6 +162,7 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            Log.i(TAG, "MyViewHolder: ");
             mBtn_send = (Button) itemView.findViewById(R.id.mBtn_send);
             mTxt_name = (TextView) itemView.findViewById(R.id.mTxt_name);
             mTxt_moneyNum = (TextView) itemView.findViewById(R.id.mTxt_moneyNum);
@@ -165,7 +174,7 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
             rl = (RelativeLayout) itemView.findViewById(R.id.rl);
             rl_dd = (RelativeLayout) itemView.findViewById(R.id.rl_dd);
         }
-    }
+    }//2
 
     //增加一条数据
     public void insertData(int pos,GrapMyBean.DataBean data) {
@@ -176,6 +185,7 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
 
     //删除一条数据
     public void removeData(int pos) {
+        Log.i(TAG, "removeData: ");
         mDatas.remove(pos);
         map.remove(pos);
         notifyItemRemoved(pos);
