@@ -81,7 +81,9 @@ public class AdvActivity extends AppCompatActivity {
                     if(position == list.size()-1) {
                         but.setVisibility(View.VISIBLE);
                         pref.edit().putBoolean("flag", true).commit();
-                        startActivity(new Intent(AdvActivity.this,StartActivity.class));
+//                        startActivity(new Intent(AdvActivity.this,StartActivity.class));
+
+                        startActivity(new Intent(AdvActivity.this,MainActivity.class));
                         finish();
                     } else {
                         but.setVisibility(View.GONE);
@@ -96,7 +98,8 @@ public class AdvActivity extends AppCompatActivity {
 
                     if (position==list.size()){
                         pref.edit().putBoolean("flag", true).commit();
-                        startActivity(new Intent(AdvActivity.this,StartActivity.class));
+//                        startActivity(new Intent(AdvActivity.this,StartActivity.class));
+                        startActivity(new Intent(AdvActivity.this,MainActivity.class));
                         finish();
                     }
                 }
@@ -132,8 +135,10 @@ public class AdvActivity extends AppCompatActivity {
                 }
             });
         } else {
-            startActivity(new Intent(AdvActivity.this,StartActivity.class));
+//            startActivity(new Intent(AdvActivity.this,StartActivity.class));
+            startActivity(new Intent(AdvActivity.this,MainActivity.class));
             finish();
+
         }
     }
 
@@ -160,7 +165,8 @@ public class AdvActivity extends AppCompatActivity {
 
     public void click (View v) {
         pref.edit().putBoolean("flag", true).commit();
-        startActivity(new Intent(AdvActivity.this,StartActivity.class));
+//        startActivity(new Intent(AdvActivity.this,StartActivity.class));
+        startActivity(new Intent(AdvActivity.this,MainActivity.class));
         finish();
     }
 

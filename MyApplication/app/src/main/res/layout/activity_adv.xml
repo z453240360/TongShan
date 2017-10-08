@@ -6,6 +6,7 @@
     android:clipToPadding="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/StartTheme"
     tools:context="com.ts888.tongshan.tongshan.activity.AdvActivity">
 
     <android.support.v4.view.ViewPager

@@ -119,6 +119,8 @@ public class KeHuFragment extends Fragment implements IMainView {
 
             @Override
             public boolean onQueryTextChange(String s) {
+                jinJianBean.setName(s);
+                present.getFindInApprovalApplyInfoByUserName(jinJianBean, tokens);
                 return false;
             }
         });

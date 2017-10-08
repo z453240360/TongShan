@@ -133,6 +133,7 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
             @Override
             public void onRefresh() {
                 myAllDatas.clear();
+                grapMineAdapter.clearMap();
                 grapMineAdapter.notifyDataSetChanged();
                 present.getMyGrabList(new JinJianBean(), token);
                 xRl.refreshComplete();
@@ -198,10 +199,6 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
                     return;
                 }
 
-
-
-
-
                 dialog.show();
 
                 mBtn_conform.setOnClickListener(new View.OnClickListener() {
@@ -210,6 +207,8 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
                         bean = new ParmsBean();
                         bean.setPhoneNo(myAllDatas.get(pos).getPhoneNo());
                         present.cancelGrab(bean, token);//取消订单
+                        myAllDatas.clear();
+                        grapMineAdapter.clearMap();
                         bundle.putInt("postion",pos);
                         dialog.cancel();
                     }
@@ -218,8 +217,6 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
             }
         });
     }
-
-
 
     //取消订单
     @Override
@@ -235,22 +232,7 @@ public class Grabs_MineFragment extends Fragment implements IMainView {
 
         ShowTostUtil.toast(getActivity(),grabCancleBean.getData());
 
-        myAllDatas.clear();
-        grapMineAdapter.notifyDataSetChanged();
-        present.getMyGrabList(new JinJianBean(), token);//我的订单信息
-
-
-//        int postion = bundle.getInt("postion");
-//
-//        if (postion!=-1){
-//            grapMineAdapter.removeData(postion);
-//            ShowTostUtil.toast(getActivity(),grabCancleBean.getData());
-//        }else {
-//            ShowTostUtil.toast(getActivity(),grabCancleBean.getData());
-//        }
-
         refresh();
-
     }
 
     @Override

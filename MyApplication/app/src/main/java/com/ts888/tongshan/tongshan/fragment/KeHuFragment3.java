@@ -148,6 +148,12 @@ public class KeHuFragment3 extends Fragment implements IMainView {
 
             @Override
             public boolean onQueryTextChange(String s) {
+                mDatess.clear();
+                adapter3.notifyDataSetChanged();
+
+                jinJianBean.setName(s);
+                present.findLoanInfo(jinJianBean,tokens);
+                mKeHu_rl.refreshComplete();
                 return false;
             }
         });

@@ -151,6 +151,10 @@ public class KeHuFragment2 extends Fragment implements IMainView {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                mDatess.clear();
+                adapter2.notifyDataSetChanged();
+                bean.setName(newText);
+                present.findApplyInfo(bean, tokens);
                 return false;
             }
         });

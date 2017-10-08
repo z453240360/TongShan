@@ -234,7 +234,7 @@ public class ShouyeFragment extends Fragment implements IMainView {
         banner.isAutoPlay(true);
 //        banner.setBannerStyle(BannerConfig.NUM_INDICATOR);
 //        banner.setBannerAnimation(Transformer.FlipHorizontal);
-        banner.setDelayTime(2000);
+        banner.setDelayTime(5000);
 //        banner.setBannerTitles(titles);
         banner.start();
         banner.setOnBannerListener(new OnBannerListener() {

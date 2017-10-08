@@ -179,7 +179,6 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
     //增加一条数据
     public void insertData(int pos,GrapMyBean.DataBean data) {
         mDatas.add(pos, data);
-
         notifyItemInserted(pos);
     }
 
@@ -187,10 +186,13 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
     public void removeData(int pos) {
         Log.i(TAG, "removeData: ");
         mDatas.remove(pos);
-        map.remove(pos);
+        map.clear();
         notifyItemRemoved(pos);
     }
 
+    public void clearMap(){
+        map.clear();
+    }
 
     public interface OnItemClickListener {
         void onItemClick(int pos, View view);
