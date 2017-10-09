@@ -1,5 +1,6 @@
 package com.ts888.tongshan.tongshan.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -48,6 +49,7 @@ public class KeHuFragment3 extends Fragment implements IMainView {
     private LikeListAdapter3 adapter3;
     private List<Jinjian3_bean.DataBean> mDates=new ArrayList<>();
     private List<Jinjian3_bean.DataBean> mDatess=new ArrayList<>();
+    private ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -65,6 +67,10 @@ public class KeHuFragment3 extends Fragment implements IMainView {
 
         mKeHu_rl = (XRecyclerView) view.findViewById(R.id.kehu_rl);
         searchView = (SearchView) view.findViewById(ed_search1);
+
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
 
         present = new Present(this);
         jinJianBean = new JinJianBean();
@@ -166,12 +172,12 @@ public class KeHuFragment3 extends Fragment implements IMainView {
 
     @Override
     public void showLoading() {
-
+        progressDialog.show();
     }
 
     @Override
     public void cancelLoading() {
-
+        progressDialog.cancel();
     }
 
     @Override

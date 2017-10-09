@@ -7,10 +7,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.ts888.tongshan.tongshan.R;
 import com.ts888.tongshan.tongshan.fragment.Grabs_Fragment;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class QiandanActivity extends AppCompatActivity {
 
@@ -33,6 +36,10 @@ public class QiandanActivity extends AppCompatActivity {
     RadioButton mRbShouye;
     @BindView(R.id.mRb_xiaoxi)
     RadioButton mRbXiaoxi;
+    @BindView(R.id.txt1)
+    TextView txt1;
+    @BindView(R.id.txt2)
+    TextView txt2;
     private Toolbar toolbarsQiangdan;
     private ArrayList<Fragment> list = new ArrayList<>();
     private FragmentManager manager;
@@ -112,5 +119,22 @@ public class QiandanActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @OnClick({R.id.mRb_shouye, R.id.mRb_xiaoxi})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.mRb_shouye:
+                txt1.setVisibility(View.VISIBLE);
+                txt1.setBackgroundColor(Color.parseColor("#1a71b3"));
+                txt2.setVisibility(View.INVISIBLE);
+
+                break;
+            case R.id.mRb_xiaoxi:
+                txt2.setVisibility(View.VISIBLE);
+                txt2.setBackgroundColor(Color.parseColor("#1a71b3"));
+                txt1.setVisibility(View.INVISIBLE);
+                break;
+        }
     }
 }

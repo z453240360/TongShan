@@ -1,5 +1,6 @@
 package com.ts888.tongshan.tongshan.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -58,6 +59,7 @@ public class KeHuFragment extends Fragment implements IMainView {
     private LinearLayoutManager manager;
     private boolean isFirst = true;
     private RelativeLayout activity_main;
+    private ProgressDialog progressDialog;
 
     @Override
     public void onResume() {
@@ -75,6 +77,10 @@ public class KeHuFragment extends Fragment implements IMainView {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
 
 
         tokens = getArguments().getString("towKey");
@@ -195,12 +201,12 @@ public class KeHuFragment extends Fragment implements IMainView {
 
     @Override
     public void showLoading() {
-
+        progressDialog.show();
     }
 
     @Override
     public void cancelLoading() {
-
+        progressDialog.cancel();
     }
 
     @Override

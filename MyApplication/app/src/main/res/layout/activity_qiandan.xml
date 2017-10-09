@@ -27,11 +27,11 @@
     </android.support.v7.widget.Toolbar>
 
     <RadioGroup
-        android:layout_below="@id/toolbars_qiangdan"
-        android:background="#ffffff"
         android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="55dp"
+        android:layout_below="@id/toolbars_qiangdan"
+        android:background="#ffffff"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -44,12 +44,11 @@
             android:button="@null"
             android:checked="true"
             android:drawablePadding="0dp"
-            android:drawableTop="@drawable/radiodrawable"
             android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:tag="0"
             android:text="抢单"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
             android:textColor="@drawable/radiobuttoncolor"
             android:textSize="15sp" />
 
@@ -61,23 +60,50 @@
             android:layout_weight="1"
             android:button="@null"
             android:drawablePadding="0dp"
-            android:drawableTop="@drawable/radiodrable2"
             android:gravity="center"
-            android:tag="1"
-            android:text="我的案件"
             android:paddingBottom="5dp"
             android:paddingTop="5dp"
+            android:tag="1"
+            android:text="我的案件"
             android:textColor="@drawable/radiobuttoncolor2"
             android:textSize="15sp" />
     </RadioGroup>
 
-    <FrameLayout
+    <LinearLayout
+        android:background="#ffffff"
         android:layout_below="@id/ll"
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="2dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/txt1"
+            android:layout_weight="1"
+            android:background="@color/dongdongBlue"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/txt2"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <FrameLayout
         android:id="@+id/grab_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"></FrameLayout>
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/ll_bottom"></FrameLayout>
 
 </RelativeLayout>

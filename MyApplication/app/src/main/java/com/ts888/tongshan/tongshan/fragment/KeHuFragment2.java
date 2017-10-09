@@ -1,5 +1,6 @@
 package com.ts888.tongshan.tongshan.fragment;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -56,6 +57,7 @@ public class KeHuFragment2 extends Fragment implements IMainView {
     private JinJianBean bean;
     private List<Jinjian2_Bean.DataBean> mDates = new ArrayList<>();
     private List<Jinjian2_Bean.DataBean> mDatess = new ArrayList<>();
+    private ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -70,6 +72,10 @@ public class KeHuFragment2 extends Fragment implements IMainView {
 
         initToken();
         init(view);
+
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
 
         //进件查询
         present.findApplyInfo(bean, tokens);//返回数据为空
@@ -193,12 +199,12 @@ public class KeHuFragment2 extends Fragment implements IMainView {
 
     @Override
     public void showLoading() {
-
+        progressDialog.show();
     }
 
     @Override
     public void cancelLoading() {
-
+        progressDialog.cancel();
     }
 
     @Override

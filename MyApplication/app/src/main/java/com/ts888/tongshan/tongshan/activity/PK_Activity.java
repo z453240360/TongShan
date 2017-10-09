@@ -51,8 +51,8 @@ public class PK_Activity extends AppCompatActivity {
     }
 
     private void initToobar() {
-        //设置自定义标题栏
 
+        //设置自定义标题栏
         toolbarsQiangdan = (Toolbar) findViewById(R.id.toolbars_qiangdan);
         setSupportActionBar(toolbarsQiangdan);
         getSupportActionBar().setHomeButtonEnabled(true);

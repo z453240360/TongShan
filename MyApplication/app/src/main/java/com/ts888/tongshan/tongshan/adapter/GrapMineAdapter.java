@@ -43,7 +43,6 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
         mDatas = datas;
         this.mContext = context;
         initMap();
-        Log.i(TAG, "GrapMineAdapter: ");
     }
 
     private void initMap() {
@@ -57,7 +56,6 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Log.i(TAG, "onCreateViewHolder: ");
         View view = mInflater.inflate(R.layout.adapter_mygrap, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(view);
         return myViewHolder;
@@ -65,7 +63,6 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        Log.i(TAG, "onBindViewHolder: ");
         holder.itemView.setTag(position);
 
         GrapMyBean.DataBean dataBean = mDatas.get(position);
@@ -149,7 +146,6 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
 
     @Override
     public int getItemCount() {
-        Log.i(TAG, "getItemCount: ");
         return mDatas == null ? 0 : mDatas.size();
     }//3
 
@@ -162,7 +158,6 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            Log.i(TAG, "MyViewHolder: ");
             mBtn_send = (Button) itemView.findViewById(R.id.mBtn_send);
             mTxt_name = (TextView) itemView.findViewById(R.id.mTxt_name);
             mTxt_moneyNum = (TextView) itemView.findViewById(R.id.mTxt_moneyNum);
@@ -184,7 +179,6 @@ public class GrapMineAdapter extends RecyclerView.Adapter<GrapMineAdapter.MyView
 
     //删除一条数据
     public void removeData(int pos) {
-        Log.i(TAG, "removeData: ");
         mDatas.remove(pos);
         map.clear();
         notifyItemRemoved(pos);
