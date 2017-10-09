@@ -36,11 +36,11 @@
         android:textSize="18sp" />
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
@@ -52,66 +52,21 @@
             <com.ts888.tongshan.tongshan.wedget.GeRenWedget
                 android:id="@+id/my_wedget1"
                 android:layout_width="0dp"
-                android:layout_margin="5dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:background="#42e2c2" />
 
             <com.ts888.tongshan.tongshan.wedget.GeRenWedget
                 android:id="@+id/my_wedget2"
-                android:layout_margin="5dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:background="#30e488" />
 
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
 
-            <com.ts888.tongshan.tongshan.wedget.GeRenWedget
-                android:id="@+id/my_wedget3"
-                android:layout_width="0dp"
-                android:layout_margin="5dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#30e488" />
-
-            <com.ts888.tongshan.tongshan.wedget.GeRenWedget
-                android:id="@+id/my_wedget4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="5dp"
-                android:background="#42e2c2" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-
-            <com.ts888.tongshan.tongshan.wedget.GeRenWedget
-                android:id="@+id/my_wedget5"
-                android:layout_width="0dp"
-                android:layout_margin="5dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#dfd264" />
-
-            <com.ts888.tongshan.tongshan.wedget.GeRenWedget
-                android:id="@+id/my_wedget6"
-                android:layout_width="0dp"
-                android:layout_margin="5dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#dfd264" />
-
-        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -122,20 +77,73 @@
                 android:id="@+id/my_wedget7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:background="#73b4f1" />
+
+
+            <com.ts888.tongshan.tongshan.wedget.GeRenWedget
+                android:id="@+id/my_wedget4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="#42e2c2" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <com.ts888.tongshan.tongshan.wedget.GeRenWedget
                 android:id="@+id/my_wedget8"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:background="#ef5858" />
 
-        </LinearLayout>
+            <com.ts888.tongshan.tongshan.wedget.GeRenWedget
+                android:id="@+id/my_wedget3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="#30e488"
+                android:visibility="invisible" />
 
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <com.ts888.tongshan.tongshan.wedget.GeRenWedget
+                android:id="@+id/my_wedget5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="#dfd264" />
+
+            <com.ts888.tongshan.tongshan.wedget.GeRenWedget
+                android:id="@+id/my_wedget6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="#dfd264" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

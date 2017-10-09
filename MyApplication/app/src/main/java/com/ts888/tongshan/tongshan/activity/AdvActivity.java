@@ -38,7 +38,7 @@ public class AdvActivity extends AppCompatActivity {
 
     private ViewPager pager;
     private ArrayList<ImageView> list = new ArrayList<ImageView>();
-    private int [] imgs={R.mipmap.no1,R.mipmap.no2,R.mipmap.no3};
+    private int [] imgs={R.mipmap.no3,R.mipmap.no1,R.mipmap.no2};
     private Button but;
     private SharedPreferences pref;
     private RadioGroup group;

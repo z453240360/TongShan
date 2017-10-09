@@ -20,6 +20,7 @@ import com.ts888.tongshan.tongshan.bean.LongHuParmsBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
 import com.ts888.tongshan.tongshan.util.ColorState;
+import com.ts888.tongshan.tongshan.util.DataFormatFromInt;
 import com.ts888.tongshan.tongshan.wedget.GeRenWedget;
 
 import butterknife.BindView;
@@ -162,8 +163,12 @@ public class GeRenYeJiActivity extends AppCompatActivity implements IMainView{
         myWedget6.setTextFenLei("拒绝件数");
 //        myWedget6.setOnClick(this,"点击了6");
 
-        myWedget7.setTextNumber(loanAmount);
-        myWedget7.setTextDanwei("元");
+
+        double v = Double.parseDouble(loanAmount)/10000;
+
+        String doubleByDouble = DataFormatFromInt.getDoubleByDouble(v);
+        myWedget7.setTextNumber(doubleByDouble);
+        myWedget7.setTextDanwei("万元");
         myWedget7.setTextFenLei("放款金额");
 //        myWedget7.setOnClick(this,"点击了7");
 

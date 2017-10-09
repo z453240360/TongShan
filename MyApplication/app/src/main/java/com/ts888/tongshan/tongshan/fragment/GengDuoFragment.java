@@ -142,7 +142,7 @@ public class GengDuoFragment extends Fragment implements IMainView {
             //帮助中心
             case R.id.mBtn_women:
                 Intent intent = new Intent(getActivity(), WebActivity.class);
-                intent.putExtra("producturl","");
+                intent.putExtra("producturl","https://s3.cn-north-1.amazonaws.com.cn/appsales-dev.tsjinrong.cn/static/help/help.html");
                 intent.putExtra("title","帮助中心");
                 startActivity(intent);
                 break;

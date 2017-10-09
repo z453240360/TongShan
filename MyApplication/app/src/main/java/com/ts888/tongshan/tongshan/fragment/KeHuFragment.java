@@ -116,7 +116,8 @@ public class KeHuFragment extends Fragment implements IMainView {
         editText.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-
+                mList.clear();
+                adapter.notifyDataSetChanged();
                 jinJianBean.setName(s);
                 present.getFindInApprovalApplyInfoByUserName(jinJianBean, tokens);
 
@@ -125,6 +126,8 @@ public class KeHuFragment extends Fragment implements IMainView {
 
             @Override
             public boolean onQueryTextChange(String s) {
+                mList.clear();
+                adapter.notifyDataSetChanged();
                 jinJianBean.setName(s);
                 present.getFindInApprovalApplyInfoByUserName(jinJianBean, tokens);
                 return false;
