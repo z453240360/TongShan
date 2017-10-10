@@ -104,6 +104,9 @@ public class QiandanActivity extends AppCompatActivity {
             public void getText(String str) {
                 if (str.equals("succesed")) {
                     mRbXiaoxi.setChecked(true);
+                    txt2.setVisibility(View.VISIBLE);
+                    txt2.setBackgroundColor(Color.parseColor("#1a71b3"));
+                    txt1.setVisibility(View.INVISIBLE);
                 }
             }
         });

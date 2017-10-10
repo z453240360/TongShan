@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ts888.tongshan.tongshan.bean.JinJianBean;
 import com.ts888.tongshan.tongshan.bean.LongHuParmsBean;
 import com.ts888.tongshan.tongshan.model.IMainView;
 import com.ts888.tongshan.tongshan.model.Present;
@@ -36,6 +37,7 @@ public class TestActivity extends AppCompatActivity implements IMainView {
                 Toast.makeText(TestActivity.this, ""+s, Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     @Override

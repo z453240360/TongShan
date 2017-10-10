@@ -7,6 +7,16 @@ package com.ts888.tongshan.tongshan.bean;
 public class JinJianBean {
     String name;
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    String userName;
+
     public String getStartTime() {
         return startTime;
     }

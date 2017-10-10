@@ -118,18 +118,30 @@ public class KeHuFragment extends Fragment implements IMainView {
             public boolean onQueryTextSubmit(String s) {
                 mList.clear();
                 adapter.notifyDataSetChanged();
-                jinJianBean.setName(s);
+                jinJianBean.setUserName(s);
                 present.getFindInApprovalApplyInfoByUserName(jinJianBean, tokens);
-
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
-                mList.clear();
-                adapter.notifyDataSetChanged();
-                jinJianBean.setName(s);
-                present.getFindInApprovalApplyInfoByUserName(jinJianBean, tokens);
+
+
+                if (s.equals("")) {
+                    page = 1;
+                    mList.clear();
+                    editText.clearFocus();
+                    adapter.notifyDataSetChanged();
+                    parmsBean.setPage(page);
+                    parmsBean.setRows(row);
+                    present.getFindInApprovalApplyInfo(parmsBean, tokens);
+                    mKeHu_rl.refreshComplete();
+                } else {
+                    mList.clear();
+                    adapter.notifyDataSetChanged();
+                    jinJianBean.setUserName(s);
+                    present.getFindInApprovalApplyInfoByUserName(jinJianBean, tokens);
+                }
                 return false;
             }
         });
@@ -153,6 +165,7 @@ public class KeHuFragment extends Fragment implements IMainView {
             public void onRefresh() {
                 if (!(editText.getQuery().toString()).equals("")) {
                     mList.clear();
+                    adapter.notifyDataSetChanged();
                     jinJianBean.setName(editText.getQuery().toString());
                     present.getFindInApprovalApplyInfoByUserName(jinJianBean, tokens);
                     mKeHu_rl.refreshComplete();
@@ -219,6 +232,7 @@ public class KeHuFragment extends Fragment implements IMainView {
 
     @Override
     public void getLogin(String s) {
+        Log.i("dd", "getLogin: " + s);
         Gson g = new Gson();
         FindScheduleBean findScheduleBean = g.fromJson(s, FindScheduleBean.class);
         String code = findScheduleBean.getCode();

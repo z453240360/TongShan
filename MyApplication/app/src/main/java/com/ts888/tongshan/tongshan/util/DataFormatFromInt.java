@@ -1,5 +1,6 @@
 package com.ts888.tongshan.tongshan.util;
 
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 /**
@@ -15,6 +16,7 @@ public class DataFormatFromInt {
         //格式化数据
         float v = (float)(data);
         DecimalFormat fnum = new DecimalFormat("##0.00");
+        fnum.setRoundingMode(RoundingMode.HALF_UP);
         String dd=fnum.format(v);
         return dd;
     }
@@ -22,6 +24,7 @@ public class DataFormatFromInt {
     public static String getFloatByFloat(float data){
 
         DecimalFormat fnum = new DecimalFormat("##0.00");
+        fnum.setRoundingMode(RoundingMode.HALF_UP);
         String dd=fnum.format(data);
         return dd;
     }
@@ -31,6 +34,7 @@ public class DataFormatFromInt {
     public static String getDoubleByDouble(double data){
 
         DecimalFormat fnum = new DecimalFormat("##0.00");
+        fnum.setRoundingMode(RoundingMode.HALF_UP);
         String dd=fnum.format(data);
         return dd;
     }

@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
 /**
  * 个人业绩界面
  */
-public class GeRenYeJiActivity extends AppCompatActivity implements IMainView{
+public class GeRenYeJiActivity extends AppCompatActivity implements IMainView {
 
     @BindView(R.id.mTxt_gerenyeji_Activity)
     TextView mTxtGerenyejiActivity;
@@ -56,6 +56,8 @@ public class GeRenYeJiActivity extends AppCompatActivity implements IMainView{
     private SharedPreferences sharedPreferences;
     private String token;
     private ProgressDialog progressDialog;
+    private double valueMoney;
+    private String money="";
 
 
     @Override
@@ -71,17 +73,16 @@ public class GeRenYeJiActivity extends AppCompatActivity implements IMainView{
 
     private void initView() {
         sharedPreferences = getSharedPreferences("ts", Context.MODE_PRIVATE);
-        token = sharedPreferences.getString("token","888888");
+        token = sharedPreferences.getString("token", "888888");
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Loading...");
         present = new Present(this);
-        present.getUserStatistics(new LongHuParmsBean(),token);
+        present.getUserStatistics(new LongHuParmsBean(), token);
 
         setSupportActionBar(toolbarsGerenyejiActivity);
         toolbarsGerenyejiActivity.setNavigationIcon(R.mipmap.zuojiantou);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
 
 
     }
@@ -103,7 +104,7 @@ public class GeRenYeJiActivity extends AppCompatActivity implements IMainView{
 
     @Override
     public void showFaliure(String s) {
-        Toast.makeText(this, ""+s, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "" + s, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -113,23 +114,22 @@ public class GeRenYeJiActivity extends AppCompatActivity implements IMainView{
 
     @Override
     public void getUpDate(String s) {
-        Log.i("dd", "getUpDate: "+s);
+        Log.i("dd", "getUpDate: " + s);
         Gson gson = new Gson();
         GeRenYeJiBean geRenYeJiBean = gson.fromJson(s, GeRenYeJiBean.class);
         String code = geRenYeJiBean.getCode();
-        if (!code.equals("1"))
-        {
-            Toast.makeText(this, ""+geRenYeJiBean.getMessage(), Toast.LENGTH_SHORT).show();
+        if (!code.equals("1")) {
+            Toast.makeText(this, "" + geRenYeJiBean.getMessage(), Toast.LENGTH_SHORT).show();
             return;
         }
         GeRenYeJiBean.DataBean data = geRenYeJiBean.getData();
 
-        String cancelCount = data.getCancelCount(); //取消件数
+//        String cancelCount = data.getCancelCount(); //取消件数
         String loanAmount = data.getLoanAmount(); //放款金额
         String overdueCount = data.getOverdueCount(); //逾期客户
         String piecesOk = data.getPiecesOk(); // 通过件数
-        String refuseCount = data.getRefuseCount();//拒绝件数
-        String signCount = data.getSignCount(); //签约件数
+//        String refuseCount = data.getRefuseCount();//拒绝件数
+//        String signCount = data.getSignCount(); //签约件数
         String piecesSum = data.getPiecesSum(); //进件量
         String loanCount = data.getLoanCount(); //放款件数
 
@@ -143,9 +143,9 @@ public class GeRenYeJiActivity extends AppCompatActivity implements IMainView{
         myWedget2.setTextFenLei("通过件数");
 //        myWedget2.setOnClick(this,"点击了2");
 
-        myWedget3.setTextNumber(signCount);
-        myWedget3.setTextDanwei("件");
-        myWedget3.setTextFenLei("签约件数");
+//        myWedget3.setTextNumber(signCount);
+//        myWedget3.setTextDanwei("件");
+//        myWedget3.setTextFenLei("签约件数");
 //        myWedget3.setOnClick(this,"点击了3");
 
         myWedget4.setTextNumber(loanCount);
@@ -153,21 +153,26 @@ public class GeRenYeJiActivity extends AppCompatActivity implements IMainView{
         myWedget4.setTextFenLei("放款件数");
 //        myWedget4.setOnClick(this,"点击了4");
 
-        myWedget5.setTextNumber(cancelCount);
-        myWedget5.setTextDanwei("件");
-        myWedget5.setTextFenLei("取消件数");
+//        myWedget5.setTextNumber(cancelCount);
+//        myWedget5.setTextDanwei("件");
+//        myWedget5.setTextFenLei("取消件数");
 //        myWedget5.setOnClick(this,"点击了5");
 
-        myWedget6.setTextNumber(refuseCount);
-        myWedget6.setTextDanwei("件");
-        myWedget6.setTextFenLei("拒绝件数");
+//        myWedget6.setTextNumber(refuseCount);
+//        myWedget6.setTextDanwei("件");
+//        myWedget6.setTextFenLei("拒绝件数");
 //        myWedget6.setOnClick(this,"点击了6");
 
 
-        double v = Double.parseDouble(loanAmount)/10000;
+        try {
+           valueMoney = Double.parseDouble(loanAmount) / 10000;
+            money = DataFormatFromInt.getDoubleByDouble(valueMoney);
+        } catch (NumberFormatException e) {
+            money=loanAmount;
+        }
 
-        String doubleByDouble = DataFormatFromInt.getDoubleByDouble(v);
-        myWedget7.setTextNumber(doubleByDouble);
+
+        myWedget7.setTextNumber(money);
         myWedget7.setTextDanwei("万元");
         myWedget7.setTextFenLei("放款金额");
 //        myWedget7.setOnClick(this,"点击了7");
@@ -183,8 +188,7 @@ public class GeRenYeJiActivity extends AppCompatActivity implements IMainView{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;
