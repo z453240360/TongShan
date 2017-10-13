@@ -105,7 +105,7 @@ public class LikeListAdapter extends RecyclerView.Adapter<LikeListAdapter.MyView
         void onItemClick(int pos, View view);
     }
 
-    private OnItemClickListener mListener;
+    public OnItemClickListener mListener;
 
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.mListener = listener;

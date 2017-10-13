@@ -52,7 +52,7 @@ public class GeRenXinXiBean {
         private String userCode;
         private String phoneNo;
         private String staffName;
-        private Object groupName;
+        private String groupName;
         private String orgName;
 
         public String getUserCode() {
@@ -79,11 +79,11 @@ public class GeRenXinXiBean {
             this.staffName = staffName;
         }
 
-        public Object getGroupName() {
+        public String getGroupName() {
             return groupName;
         }
 
-        public void setGroupName(Object groupName) {
+        public void setGroupName(String groupName) {
             this.groupName = groupName;
         }
 

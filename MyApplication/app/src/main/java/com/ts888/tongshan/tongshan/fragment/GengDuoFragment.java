@@ -42,6 +42,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
+import static android.R.attr.data;
+
 
 /**
  * Created by dongdong on 2017/7/30.
@@ -92,6 +94,7 @@ public class GengDuoFragment extends Fragment implements IMainView {
         return view;
     }
 
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -105,12 +108,12 @@ public class GengDuoFragment extends Fragment implements IMainView {
 
         mBtn_updata = (Button) view.findViewById(R.id.mBtn_updata);
         mBtn_updata.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 callBack.getText("updata");
             }
         });
-
         present.getUserInfos(jinJian, token);
     }
 
@@ -142,15 +145,18 @@ public class GengDuoFragment extends Fragment implements IMainView {
             //帮助中心
             case R.id.mBtn_women:
                 Intent intent = new Intent(getActivity(), WebActivity.class);
-                intent.putExtra("producturl","https://s3.cn-north-1.amazonaws.com.cn/appsales-dev.tsjinrong.cn/static/help/help.html");
-                intent.putExtra("title","帮助中心");
+//                intent.putExtra("producturl","https://s3.cn-north-1.amazonaws.com.cn/appsales-dev.tsjinrong.cn/static/help/help.html");
+
+                intent.putExtra("producturl", "https://s3.cn-north-1.amazonaws.com.cn/appsales.tsjinrong.cn/static/help/help.html");
+
+                intent.putExtra("title", "帮助中心");
                 startActivity(intent);
                 break;
             //退出登陆
             case R.id.mBtn_tuichu:
                 edit.putString("token", "");
-                edit.putString("phoneNo","");
-                edit.putString("userCode","");
+                edit.putString("phoneNo", "");
+                edit.putString("userCode", "");
                 edit.commit();
 
                 startActivity(new Intent(getActivity(), MainActivity.class));
@@ -186,7 +192,7 @@ public class GengDuoFragment extends Fragment implements IMainView {
         GeRenXinXiBean geRenXinXiBean = gson.fromJson(s, GeRenXinXiBean.class);
         String code = geRenXinXiBean.getCode();
         if (!code.equals("1")) {
-            if (code.equals("19902")){
+            if (code.equals("19902")) {
                 edit.putString("token", "");
                 edit.commit();
                 Toast.makeText(getActivity(), "" + geRenXinXiBean.getMessage().toString(), Toast.LENGTH_SHORT).show();
@@ -205,11 +211,37 @@ public class GengDuoFragment extends Fragment implements IMainView {
             return;
         }
 
-        mTxtGerenname.setText("您好，"+data.getStaffName());
-        mTxtPhoneNumber.setText(""+data.getPhoneNo());
+        String staffName = data.getStaffName();
+        String phoneNo = data.getPhoneNo()+"";
+        String groupName = data.getGroupName()+"";
+        String orgName = data.getOrgName()+"";
 
-        mTxtAddress.setText(""+data.getGroupName());
-        mTxtTuandui.setText(""+data.getOrgName());
+        if (staffName.equals("null") || staffName == null) {
+            mTxtGerenname.setText("");
+        } else {
+            mTxtGerenname.setText("您好，" + data.getStaffName());
+        }
+
+        if (phoneNo.equals("null")) {
+            mTxtPhoneNumber.setText("");
+        } else {
+            mTxtPhoneNumber.setText("" + data.getPhoneNo());
+        }
+
+        if ("null".equals(groupName)) {
+            mTxtAddress.setText("");
+        } else {
+            mTxtAddress.setText("" + data.getGroupName());
+        }
+
+
+        if ("null".equals(orgName)) {
+            mTxtTuandui.setText("");
+        } else {
+            mTxtTuandui.setText("" + data.getOrgName());
+        }
+
+
     }
 
     @Override

@@ -8,7 +8,7 @@ public interface Constant {
 
 
     //APP版本号
-    String APPVERSION="1.0.0";
+    String APPVERSION="1.2.1";
     //app渠道
     String CHANNEL = "official";
 
@@ -17,9 +17,9 @@ public interface Constant {
     String SECURITY_KEY = "1cLLub8UOLvlT69ITSBFgHX50f9T4rOG";
 
     //测试环境
-    String BASEURL = "https://appsales-uat.tsjinrong.cn/";
+//    String BASEURL = "https://appsales-uat.tsjinrong.cn/";
     //生产环境
-//    String BASEURL = "https://appsales.tsjinrong.cn/";
+    String BASEURL = "https://appsales.tsjinrong.cn/";
 
     //发送验证码
     String sendVerifyCode = "appsales-entry/login/sendVerifyCode";
