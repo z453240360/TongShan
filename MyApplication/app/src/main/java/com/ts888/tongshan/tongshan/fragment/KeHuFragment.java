@@ -152,6 +152,7 @@ public class KeHuFragment extends Fragment implements IMainView {
         mKeHu_rl.setAdapter(adapter);
         manager = new LinearLayoutManager(getActivity());
         mKeHu_rl.setLayoutManager(manager);
+
         adapter.setOnItemClickListener(new LikeListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int pos, View view) {
